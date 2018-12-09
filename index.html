@@ -96,7 +96,7 @@
 			</div>
 
 			<div id="postings" class="postings-container">
-				<div class="posting">
+				<div id="t_posting" class="posting" style="display: none;">
 					<div class="p-thumbnail">
 						<img src="content/listpic10.jpg" />
 					</div>
@@ -116,81 +116,20 @@
 							</div>
 
 							<div class="p-description">
-								<p>Братишка — всё лучшее под одной крышей.</p>
-								<p>Мы собрали под одной крышей самые эффективные и популярные фитнес-направления от партнеров adidas и Reebok со всего мира.</p>
+								<p>Я на лошади. Ты на белом коне, и я на белом коне. А потом салют... в нашу честь. Салют в нашу честь.</p>
 							</div>
 						</div>
 
 						<div class="p-link">
 							<a href="#">Подробнее &rarr;</a>
 						</div>
-					</div>
-				</div>
 
-				<div class="posting"> <!-- copy -->
-					<div class="p-thumbnail">
-						<img src="content/listpic10.jpg" />
-					</div>
-					<div class="p-body">
-						<div class="p-details">
-							<h3 class="p-title">Братишка</h3>
-
-							<div class="p-tags">
-								<p>
-									<!-- Tags in <a> elements -->
-								</p>
-							</div>
-
-							<div class="p-row">
-								<strong>Расположение:</strong>
-								<span class="p-location">м. Бражская</span>
-							</div>
-
-							<div class="p-description">
-								<p>Братишка — всё лучшее под одной крышей.</p>
-								<p>Мы собрали под одной крышей самые эффективные и популярные фитнес-направления от партнеров adidas и Reebok со всего мира.</p>
-							</div>
-						</div>
-
-						<div class="p-link">
-							<a href="#">Подробнее &rarr;</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="posting"> <!-- copy -->
-					<div class="p-thumbnail">
-						<img src="content/listpic10.jpg" />
-					</div>
-					<div class="p-body">
-						<div class="p-details">
-							<h3 class="p-title">Братишка</h3>
-
-							<div class="p-tags">
-								<p>
-									<!-- Tags in <a> elements -->
-								</p>
-							</div>
-
-							<div class="p-row">
-								<strong>Расположение:</strong>
-								<span class="p-location">м. Бражская</span>
-							</div>
-
-							<div class="p-description">
-								<p>Братишка — всё лучшее под одной крышей.</p>
-								<p>Мы собрали под одной крышей самые эффективные и популярные фитнес-направления от партнеров adidas и Reebok со всего мира.</p>
-							</div>
-						</div>
-
-						<div class="p-link">
-							<a href="#">Подробнее &rarr;</a>
-						</div>
+						<button class="remove_btn">Remove</button>
 					</div>
 				</div>
 			</div> <!-- #postings -->
 
-			<div id="postings-more" style="display: none;">
+			<div id="postings-more">
 				<a href="#">Следующие 20</a>
 			</div>
 		</main>
@@ -209,6 +148,66 @@
 			gMapCanvas.onload = () => {
 				document.getElementById('gmap-spinner').style.display = 'none';
 			};
+
+			const postings = document.getElementById('postings');
+
+			let p = document.getElementById('t_posting');
+
+			function loadData() {
+				fetch("/data.json").then(response => {
+					return response.json();
+				}).then(data => {
+					data.forEach(x => {
+						let q = p.cloneNode(true);
+
+						q.style.display = null;
+
+						q.querySelector('.p-title').textContent = x.title;
+						q.querySelector('.p-thumbnail img').src = x.imgUrl;
+						q.querySelector('.p-location').textContent = x.location;
+						
+						let desc = q.querySelector('.p-description');
+						desc.innerHTML = "";
+
+						x.description.forEach(line => {
+							let descPart = document.createElement('p');
+							descPart.textContent = line;
+							desc.appendChild(descPart);
+						});
+
+						let tags = q.querySelector('.p-tags p');
+					
+						x.tags.forEach(tag => {
+							let tagEl = document.createElement('a');
+							tagEl.textContent = tag;
+							tagEl.href = '#';
+							tags.appendChild(tagEl);
+
+							tags.appendChild(document.createTextNode(" "));
+						});
+
+						postings.appendChild(q);
+					})
+
+					document.querySelectorAll('.remove_btn').forEach(btn => {
+						btn.onclick = e => {
+							console.log(e);
+							e.target.style.display = 'none';
+						};
+					})
+				}).catch(error => {
+					console.log(error);
+				});
+			}
+
+			loadData();
+
+			document.querySelector('#postings-more').onclick = e => {
+				e.preventDefault();
+				loadData();
+			};
+
+
 		});
 	</script>
 </body>

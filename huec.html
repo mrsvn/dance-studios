@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Site stub</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="img/favicon.png">
+
+	<style>
+		div {
+			padding: 2em;
+		}
+
+		button {
+			margin: .5em;
+			padding: 1em;
+		}
+
+		.red {
+			background: pink;
+		}
+
+		.green {
+			background: lightgreen;
+		}
+	</style>
+</head>
+<body>
+	<div id="a">
+		<button id="x">
+			Red
+		</button>
+
+		<button id="y">
+			Green
+		</button>
+	</div>
+
+	<div id="form">
+		<p>
+			<input id="username" placeholder="Username" />
+		</p>
+		<p>
+			<input id="email" placeholder="E-mail" />
+		</p>
+		<p>
+			<input type="password" id="password" placeholder="Password" />
+		</p>
+		<p>
+			<label>
+				<input type="checkbox" id="aggreement" />
+				Я согласен сделать цаплю
+			</label>
+		</p>
+		<p>
+			<button id="submit">Проверить</button>
+		</p>
+	</div>
+
+	<div>
+		<div id="huyalue">---</div>
+
+		<div id="many-btns">
+			
+		</div>
+	</div>
+
+	<div>
+		<canvas>
+			
+		</canvas>
+	</div>
+
+	<script>
+		const div = document.querySelector('#a');
+
+		function makeRed() {
+			div.classList.remove('green');
+			div.classList.add('red');
+		}
+		function makeGreen() {
+			div.classList.remove('red');
+			div.classList.add('green');
+		}
+
+		const btnRed = document.querySelector('#x');
+		btnRed.onclick = makeRed;
+
+		const btnGreen = document.querySelector('#y');
+		btnGreen.onclick = makeGreen;
+
+		const form = document.querySelector('#form');
+		const inputUsername = document.querySelector('#username');
+		const inputEmail = document.querySelector('#email');
+
+		const btnCheck = document.querySelector('#submit');
+
+		//
+		// function validateForm() {
+		// 	inputUsername.classList.remove('red');
+		// 	if(inputUsername.value.length === 0) {
+		// 		inputUsername.classList.add('red');
+		// 	}
+
+		// 	inputEmail.classList.remove('red');
+
+		// 	const emailValue = inputEmail.value;
+
+		// 	if(emailValue.length === 0 || !emailValue.includes('@'))  {
+		// 		inputEmail.classList.add('red');
+		// 	}
+		// }
+
+		btnCheck.onclick = () => {
+			inputUsername.classList.remove('red');
+			if(inputUsername.value.length === 0) {
+				inputUsername.classList.add('red');
+			}
+
+			inputEmail.classList.remove('red');
+
+			const emailValue = inputEmail.value;
+
+			if(emailValue.length === 0 || !emailValue.includes('@'))  {
+				inputEmail.classList.add('red');
+			}
+		};
+
+		const manyBtns = document.querySelector('#many-btns');
+
+		for(let i = 0; i < 100; i++) {
+			const btn = document.createElement('button');
+			btn.textContent = i;
+
+			manyBtns.appendChild(btn);
+		}
+
+		let allButtons = document.querySelectorAll('#many-btns button');
+		console.log(allButtons);
+		let pole = document.querySelector('#huyalue');
+		
+		//
+		// function f(e) {
+		// 	pole.textContent = e.target.textContent;
+		// }
+
+		allButtons.forEach(oneButton => {
+			oneButton.onclick = (e) => pole.textContent = e.target.textContent;
+		})
+
+		// let handleEnter = e => {
+		// 	e.target.style.background = "grey";
+		// };
+
+		// let handleLeave = e => {
+		// 	e.target.style.background = null;
+		// };
+
+		allButtons.forEach(singleButton => {
+			singleButton.onmouseenter = e => {
+				e.target.style.background = "grey";
+			};
+			singleButton.onmouseleave = e => {
+				e.target.style.background = null;
+			};
+		})
+
+		fetch("/priv.txt").then(response => {
+			console.log(response.body);
+		}).catch(error => {
+			console.log(error);
+		});
+
+	</script>
+</body>
+</html>
