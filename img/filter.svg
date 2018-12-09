@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="icon_filter" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="21px" height="21px" viewBox="0 0 21 21" style="enable-background:new 0 0 21 21;" xml:space="preserve" fill="gray">
+	<g>
+		<g id="filter">
+			<path d="
+				M0,4 v1 h21 v-1 z
+				M1.5,7 v1 h18 v-1 z
+				M5.5,10 v1 h10 v-1 z
+				M7,13 v1 h7 v-1 z
+				M8,16 v1 h5 v-1 z
+				"/>
+			<!-- 
+				M3,10 v1 h15 v-1 z
+				M4.5,13 v1 h12 v-1 z
+				M6,16 v1 h9 v-1 z
+			 -->
+		</g>
+	</g>
+</svg>
