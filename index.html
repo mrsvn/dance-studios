@@ -18,8 +18,14 @@
 
 			<span class="brand-title">
 				NaSheste
-				<span class="loc-option">
-					<a href="#">Лос-Анджелес</a>
+				<span class="loc-options">
+					<a href="#" class="loc-opt-current">Лос-Анджелес</a>
+					<div class="loc-opt-dropdown" style="display: none;">
+						<a href="#" style="display: none;">Лос-Анджелес</a>
+						<a href="#">Сен-Тропе</a>
+						<a href="#">Майами</a>
+						<a href="#">Волжский</a>
+					</div>
 				</span>
 			</span>
 
@@ -36,8 +42,8 @@
 
 		<div class="map-top">
 			<div class="gmap_canvas">
-				<iframe id="gmap_canvas" data-src="https://maps.google.com/maps?q=los%20angeles&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" importance="low"></iframe>
 				<img id="gmap-spinner" src="img/spinner-large.svg" />
+				<iframe id="gmap_canvas" data-src="https://maps.google.com/maps?q=los%20angeles&t=&z=11&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" importance="low"></iframe>
 			</div>
 		</div>
 
@@ -207,7 +213,36 @@
 				loadData();
 			};
 
+			const locOptions = document.querySelector('.loc-options');
+			const locCurrent = locOptions.querySelector('.loc-opt-current');
+			const locDropdown = locOptions.querySelector('.loc-opt-dropdown')
+			const locVariants = Array.from(locOptions.querySelectorAll('a'));
 
+			locOptions.querySelector('.loc-opt-current').onclick = e => {
+				e.preventDefault();
+			};
+
+			locOptions.querySelector('.loc-opt-current').onfocus = e => {
+				locDropdown.style.display = null;
+			};
+
+			// document.querySelector('.loc-opt-current')
+			locVariants.forEach(el => {
+				el.onblur = e => {
+					console.log(e.relatedTarget);
+					console.log(locVariants.includes(e.relatedTarget));
+
+					if(!e.relatedTarget || e.relatedTarget.parentNode !== locOptions.querySelector('.loc-opt-dropdown')) {
+						locDropdown.style.display = 'none';
+					}
+				};
+
+				el.onkeydown = e => {
+					if(e.key === 'Escape') {
+						e.target.blur();
+					}
+				};
+			});
 		});
 	</script>
 </body>
