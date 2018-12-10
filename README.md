@@ -1,5 +1,7 @@
 
-### git
+### Инструменты
+
+#### git
 
 `git status`
 
@@ -14,6 +16,25 @@
 Загрузка изменений и merge текущей ветки с тамошней *(лучше так не делать)*:
 
 `git pull`
+
+#### Dev-сервер на node.js
+
+Установка:
+
+```bash
+$ npm install -g http-server
+```
+
+Запуск в текущей папке:
+
+```bash
+$ http-server
+Starting up http-server, serving ./
+Available on:
+  http://127.0.0.1:8080
+  http://192.168.31.134:8080
+Hit CTRL-C to stop the server
+```
 
 ### JS
 
