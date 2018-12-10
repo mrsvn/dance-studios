@@ -39,6 +39,11 @@
 			<div class="login-corner">
 				<a href="#">Войти</a> / <a href="#">Зарегистрироваться</a>
 			</div>
+
+			<div class="user-corner" style="display: none;">
+				<img src="http://placehold.jp/100x100.png" class="avatar-corner" />
+				<span class="username-corner">Shmonka1997</span>
+			</div>
 		</header>
 
 		<div class="map-top">
@@ -99,7 +104,7 @@
 			</div>
 
 			<div class="postings-count">
-				Найдено 798 студий
+				Найдено <span>798</span> студий
 			</div>
 
 			<div id="postings" class="postings-container">
@@ -218,12 +223,26 @@
 				locDropdown.style.display = null;
 			};
 
-			// document.querySelector('.loc-opt-current')
 			locVariants.forEach(el => {
-				el.onblur = e => {
-					console.log(e.relatedTarget);
-					console.log(locVariants.includes(e.relatedTarget));
+				if(el.dataset.locValue) {
+					el.onclick = e => {
+						e.preventDefault();
 
+						if(!locOptions.style.minWidth) {
+							locOptions.style.minWidth = e.target.clientWidth + 'px';
+						}
+
+						locCurrent.textContent = el.textContent;
+
+						el.style.display = 'none';
+
+						locVariants.forEach(otherEl => {
+							otherEl.style.display = (el.dataset.locValue === otherEl.dataset.locValue) ? 'none' : null;
+						});
+					}
+				}
+
+				el.onblur = e => {
 					if(!e.relatedTarget || e.relatedTarget.parentNode !== locOptions.querySelector('.loc-opt-dropdown')) {
 						locDropdown.style.display = 'none';
 					}
@@ -235,6 +254,16 @@
 					}
 				};
 			});
+
+			/**
+			 *	1. При выборе города в выпадающем меню загружать и показывать соответствующий JSON (из папки /dummy-data)
+			 *		(перед вставкой новых дивов удалить старые) (а теперь не скрыть, а именно удалить)
+			 *	2. Показать число записей в .postings-count
+			 *	3. Нарисовать маленькую форму входа (логин, пароль, галочка) и показывать по клику на ссылку "Войти"
+			 *		(прям под ссылкой в углу, примерно по аналогии со списком городов)
+			 *	4. Валидировать эту форму (неважно, по каким признакам);
+			 *		в случае успеха -- скрыть .login-corner и показать .user-corner (типа, залогинились)
+			 */
 		});
 	</script>
 </body>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Site stub</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        main {
+            padding: 2em;
+            background: #ddd;
+
+            user-select: none;
+        }
+
+        canvas {
+            border: 1px gray dotted;
+            background: white;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+
+            width: 600px;
+            height: 60px;
+        }
+
+        #palette button {
+            display: inline-block;
+
+            width: 25px;
+            height: 25px;
+        }
+
+        #brush {
+            width: 40px;
+            height: 100%;
+
+            vertical-align: middle;
+        }
+
+        #brush strong {
+            display: inline-block;
+            background: black;
+
+            box-sizing: border-box;
+
+            width: 24px;
+            height: 24px;
+
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <canvas width="600" height="400"></canvas>
+
+        <div class="toolbar">
+            <div id="palette"></div>
+            <div id="brush">
+                <strong></strong>
+            </div>
+            <div>
+                <input id="size-selector" type="range" min="1" max="50" step="1" value="24" />
+            </div>
+            <div>
+                <button id="btn-clear">Очистить</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+
+        document.querySelector('#btn-clear').onclick = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        };
+
+        ctx.lineCap = 'round';
+
+        ctx.lineWidth = 24; // толщина линии (px)
+        ctx.strokeStyle = 'black'; // цвет линии
+
+        /**
+         *  1. Нарисовать палитру: создать внутри #palette по кнопке (<button>) каждого цвета из colors
+         */
+        const colors = ['#E52B50', '#FFBF00', '#9966CC', '#FBCEB1', '#7FFFD4', '#007FFF', '#89CFF0'];
+
+        // ...
+
+        /**
+         *  2. При нажатии на каждую из цветных кнопок, менять цвет линии на холсте (см. выше) на ее цвет
+         * 
+         *  2а. Кружок brushIndicator сделать того же цвета
+         */
+        const brushIndicator = document.querySelector('#brush strong');
+
+        // ...
+
+        /**
+         *  3. При изменении значения ползунка #size-selector:
+         *      - делать brushIndicator соответствующего размера в пикселях
+         *      - записывать его значение в ctx.lineWidth
+         *
+         *  (обработчик oninput)
+         */
+
+        document.querySelector('#size-selector').oninput = e => {
+            // ...
+        };
+
+        /**
+         *  4. Изменить следующий обработчик так, чтобы линия рисовалась не из угла, а вслед за указателем
+         */
+        let xPrev = null, yPrev = null;
+        window.onmousemove = e => {
+            const x = e.clientX - canvas.offsetLeft + (ctx.lineWidth % 2 * 0.5),
+                  y = e.clientY - canvas.offsetTop + (ctx.lineWidth % 2 * 0.5);
+            // x, y -- координаты мыши на холсте
+
+            if(xPrev && yPrev) {
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            }
+
+            xPrev = x;
+            yPrev = y;
+        };
+
+        /**
+         *  5. Рисовать только при нажатой кнопке мыши (e.buttons)
+         */
+
+    </script>
+</body>
+</html>

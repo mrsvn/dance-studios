@@ -140,11 +140,26 @@ header .loc-options::after {
     width: 0;
 }
 
-header .login-corner {
+header .login-corner, header .user-corner {
 	/*align-self: flex-end;*/
 
 	line-height: 40px;
 	vertical-align: middle;
+}
+
+header .user-corner .avatar-corner {
+	width: 40px;
+	height: 40px;
+
+	margin-right: 0.5em;
+
+	vertical-align: bottom;
+
+	border-radius: 20px;
+}
+
+header .user-corner .username-corner {
+	font-size: 1.05em;
 }
 
 header nav {
