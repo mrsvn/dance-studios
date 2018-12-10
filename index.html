@@ -21,10 +21,11 @@
 				<span class="loc-options">
 					<a href="#" class="loc-opt-current">Лос-Анджелес</a>
 					<div class="loc-opt-dropdown" style="display: none;">
-						<a href="#" style="display: none;">Лос-Анджелес</a>
-						<a href="#">Сен-Тропе</a>
-						<a href="#">Майами</a>
-						<a href="#">Волжский</a>
+						<a href="#" data-loc-value="los-angeles" style="display: none;">Лос-Анджелес</a>
+						<a href="#" data-loc-value="st-tropez">Сен-Тропе</a>
+						<a href="#" data-loc-value="miami">Майами</a>
+						<a href="#" data-loc-value="volzhsky">Волжский</a>
+						<a href="#" data-loc-value="ivanovo">Иваново</a>
 					</div>
 				</span>
 			</span>
@@ -129,8 +130,6 @@
 						<div class="p-link">
 							<a href="#">Подробнее &rarr;</a>
 						</div>
-
-						<button class="remove_btn">Remove</button>
 					</div>
 				</div>
 			</div> <!-- #postings -->
@@ -160,7 +159,7 @@
 			let p = document.getElementById('t_posting');
 
 			function loadData() {
-				fetch("/data.json").then(response => {
+				fetch("/dummy-data/los-angeles.json").then(response => {
 					return response.json();
 				}).then(data => {
 					data.forEach(x => {
@@ -193,13 +192,6 @@
 						});
 
 						postings.appendChild(q);
-					})
-
-					document.querySelectorAll('.remove_btn').forEach(btn => {
-						btn.onclick = e => {
-							console.log(e);
-							e.target.style.display = 'none';
-						};
 					})
 				}).catch(error => {
 					console.log(error);
