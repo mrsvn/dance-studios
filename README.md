@@ -1,7 +1,7 @@
 
-### Инструменты
+## Инструменты
 
-#### git
+### git
 
 `git status`
 
@@ -17,7 +17,7 @@
 
 `git pull`
 
-#### Dev-сервер на node.js
+### Dev-сервер на node.js
 
 Установка:
 
@@ -36,13 +36,13 @@ Available on:
 Hit CTRL-C to stop the server
 ```
 
-### JS
+## JS
 
 Книга: *McFarland — JavaScript: The Missing Manual* ([скачать без смс на сайте МИЭМ](http://nadin.miem.edu.ru/images_2015/css-the-missing-manual.pdf))
 
-#### Общее
+### Общее
 
-##### Лямбды
+#### Лямбды
 
 ```js
 const doX = () => { console.log("x"); }
@@ -56,7 +56,7 @@ function f(x) { return x + 1; }
 function add(a, b) { return a + b; }
 ```
 
-##### Обход массива
+#### Обход массива
 
 ```js
 const xs = [1, 4, 8, 8];
@@ -66,7 +66,7 @@ xs.forEach(x => {
 });
 ```
 
-#### DOM
+### DOM
 
 Выбор элементов по CSS-селектору:
 
@@ -147,7 +147,7 @@ container.insertBefore(el, huel); // insert `el` to `container` (before its exis
 el.parent.removeChild(el); // remove `el` from the document
 ```
 
-#### События и их обработка
+### События и их обработка
 
 Назначение обработчика:
 
