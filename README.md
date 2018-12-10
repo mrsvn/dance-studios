@@ -38,7 +38,7 @@ Hit CTRL-C to stop the server
 
 ## JS
 
-Книга: *McFarland — JavaScript: The Missing Manual* ([скачать без смс на сайте МИЭМ](http://nadin.miem.edu.ru/images_2015/css-the-missing-manual.pdf))
+Книга: *McFarland — JavaScript: The Missing Manual* ([скачать без смс](ftp://ftp.micronet-rostov.ru/linux-support/books/programming/JavaScript/[O%60Reilly]%20-%20JavaScript.%20The%20Missing%20Manual%20-%20[McFarland].pdf))
 
 ### Общее
 
