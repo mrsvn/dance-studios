@@ -62,13 +62,19 @@ Hit CTRL-C to stop the server
 
 ## JS
 
-Книга: **McFarland — JavaScript: The Missing Manual**
+### Книга
+
+#### McFarland — JavaScript: The Missing Manual
 
 Есть два стула:
 - первое издание (2008), скачать без SMS: [`ftp://ftp.micronet-rostov.ru/linux-support/books/programming/JavaScript/[O%60Reilly]%20-%20JavaScript.%20The%20Missing%20Manual%20-%20[McFarland].pdf`](ftp://ftp.micronet-rostov.ru/linux-support/books/programming/JavaScript/[O%60Reilly]%20-%20JavaScript.%20The%20Missing%20Manual%20-%20[McFarland].pdf)
 - третье издание (2014), скачать без регистрации: [`http://web-algarve.com/books/JS%20AJAX%20jquery%20&%20angular/JavaScript%20&%20jQuery-%20The%20Missing%20Manual,%203rd%20Edition.pdf`](http://web-algarve.com/books/JS%20AJAX%20jquery%20&%20angular/JavaScript%20&%20jQuery-%20The%20Missing%20Manual,%203rd%20Edition.pdf)
 
 С одной стороны, третье намного новее, с другой стороны, там большой упор делается на jQuery.
+
+#### Haverbeke — Eloquent Javascript, 3rd ed.
+
+[Онлайн-версия и ссылки на PDF](http://eloquentjavascript.net/)
 
 ### Общее
 
