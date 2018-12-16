@@ -107,7 +107,7 @@
 				Найдено <span>798</span> студий
 			</div>
 
-			<div id="postings" class="postings-container">
+			<div id="postings">
 				<div id="t_posting" class="posting" style="display: none;">
 					<div class="p-thumbnail">
 						<img src="content/listpic10.jpg" />
@@ -149,122 +149,6 @@
 		Пидо&reg;, пизда, &trade;, гоми&copy;, мудила
 	</footer>
 
-	<script>
-		window.addEventListener('load', () => {
-			const gMapCanvas = document.getElementById('gmap_canvas');
-
-			gMapCanvas.src = gMapCanvas.dataset.src;
-
-			gMapCanvas.onload = () => {
-				document.getElementById('gmap-spinner').style.display = 'none';
-			};
-
-			const postings = document.getElementById('postings');
-
-			let p = document.getElementById('t_posting');
-
-			function loadData() {
-				fetch("/dummy-data/los-angeles.json").then(response => {
-					return response.json();
-				}).then(data => {
-					data.forEach(x => {
-						let q = p.cloneNode(true);
-
-						q.style.display = null;
-
-						q.querySelector('.p-title').textContent = x.title;
-						q.querySelector('.p-thumbnail img').src = x.imgUrl;
-						q.querySelector('.p-location').textContent = x.location;
-						
-						let desc = q.querySelector('.p-description');
-						desc.innerHTML = "";
-
-						x.description.forEach(line => {
-							let descPart = document.createElement('p');
-							descPart.textContent = line;
-							desc.appendChild(descPart);
-						});
-
-						let tags = q.querySelector('.p-tags p');
-					
-						x.tags.forEach(tag => {
-							let tagEl = document.createElement('a');
-							tagEl.textContent = tag;
-							tagEl.href = '#';
-							tags.appendChild(tagEl);
-
-							tags.appendChild(document.createTextNode(" "));
-						});
-
-						postings.appendChild(q);
-					})
-				}).catch(error => {
-					console.log(error);
-				});
-			}
-
-			loadData();
-
-			document.querySelector('#postings-more').onclick = e => {
-				e.preventDefault();
-				loadData();
-			};
-
-			const locOptions = document.querySelector('.loc-options');
-			const locCurrent = locOptions.querySelector('.loc-opt-current');
-			const locDropdown = locOptions.querySelector('.loc-opt-dropdown')
-			const locVariants = Array.from(locOptions.querySelectorAll('a'));
-
-			locOptions.querySelector('.loc-opt-current').onclick = e => {
-				e.preventDefault();
-			};
-
-			locOptions.querySelector('.loc-opt-current').onfocus = e => {
-				locDropdown.style.display = null;
-			};
-
-			locVariants.forEach(el => {
-				if(el.dataset.locValue) {
-					el.onclick = e => {
-						e.preventDefault();
-
-						if(!locOptions.style.minWidth) {
-							locOptions.style.minWidth = e.target.clientWidth + 'px';
-						}
-
-						locCurrent.textContent = el.textContent;
-
-						el.style.display = 'none';
-
-						locVariants.forEach(otherEl => {
-							otherEl.style.display = (el.dataset.locValue === otherEl.dataset.locValue) ? 'none' : null;
-						});
-					}
-				}
-
-				el.onblur = e => {
-					if(!e.relatedTarget || e.relatedTarget.parentNode !== locOptions.querySelector('.loc-opt-dropdown')) {
-						locDropdown.style.display = 'none';
-					}
-				};
-
-				el.onkeydown = e => {
-					if(e.key === 'Escape') {
-						e.target.blur();
-					}
-				};
-			});
-
-			/**
-			 *	1. При выборе города в выпадающем меню загружать и показывать соответствующий JSON (из папки /dummy-data)
-			 *		(перед вставкой новых дивов удалить старые) (а теперь не скрыть, а именно удалить)
-			 *	2. Показать число записей в .postings-count
-			 *	3. Нарисовать маленькую форму входа (логин, пароль, галочка) и показывать по клику на ссылку "Войти"
-			 *		(прям под ссылкой в углу, примерно по аналогии со списком городов)
-			 *	4. Валидировать эту форму (неважно, по каким признакам);
-			 *		в случае успеха -- скрыть .login-corner и показать .user-corner (типа, залогинились)
-			 */
-		});
-	</script>
+	<script src="js/index.js"></script>
 </body>
 </html>
