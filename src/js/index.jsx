@@ -20,9 +20,35 @@ class ListingsContainer extends React.Component {
 
 class Listing extends React.Component {
     render() {
+        const content = this.props.content;
+
         return (
             <div className={'posting'}>
-                <pre>{JSON.stringify(this.props.content)}</pre>
+                <div className={'p-thumbnail'}>
+                  <img src={content.imgUrl}>
+                  </img>
+                </div>
+              <div className={'p-body'}>
+                <div className={'p-details'}>
+                <h3 className={'p-title'}>{ content.title }</h3>
+
+                  <div className={'p-tags'}>
+                      <p>
+                     <a href='#'>{ content.tags }</a>
+
+                       </p>
+                  </div>
+                  <div className={'p-row'}>
+                    <b>Расположение:</b> <span> м. { content.location } </span>
+                  </div>
+                  <div className={'p-description'}>
+                    <p>{ content.description }</p>
+                  </div>
+                </div>
+                <div className={ 'p-link' }>
+                  <a href="#">Подробнее &rarr;</a>
+                </div>
+              </div>
             </div>
         );
     }
