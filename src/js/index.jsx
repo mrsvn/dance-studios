@@ -7,9 +7,12 @@ class LoginCorner extends React.Component {
     super(props);
 
     this.state = {
-      isShown: false
+      isShown: false,
+      email: "",
+      password: ""
     };
   }
+
   showForm(e) {
     this.setState({
       isShown: true
@@ -17,10 +20,23 @@ class LoginCorner extends React.Component {
 
     e.preventDefault();
   }
+
   hideForm(e){
     this.setState({
       isShown: false
         });
+  }
+
+  handleEmailInput(e) {
+    this.setState({
+        email: e.target.value
+    });
+  }
+
+  handlePasswordInput(e) {
+    this.setState({
+        password: e.target.value
+    });
   }
 
   render() {
@@ -32,8 +48,8 @@ class LoginCorner extends React.Component {
           <a href="#" onClick={e => this.showForm(e)}>Войти</a> / <a href="#">Зарегистрироваться</a>
           <div style={formStyle} className="login-form">
             <div onClick={e => this.hideForm(e) } style={{textAlign:"right"}}>X</div>
-            <input placeholder="E-mail"/><br/>
-              <input type="password" placeholder="Пароль"/><br/>
+            <input value={this.state.email} onInput={e => this.handleEmailInput(e)} placeholder="E-mail"/><br/>
+            <input value={this.state.password} onInput={e => this.handlePasswordInput(e)} type="password" placeholder="Пароль"/><br/>
                 <button>Войти</button>
           </div>
         </div>
