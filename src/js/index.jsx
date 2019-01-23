@@ -39,6 +39,22 @@ class LoginCorner extends React.Component {
     });
   }
 
+  loadData() {
+    fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({email: this.state.email, password: this.state.password})
+    }).then(response => {
+      return response.json();
+    }).then(data => {
+      console.log(data);
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
   render() {
     let formStyle;
     if (this.state.isShown) formStyle = {};
@@ -48,9 +64,9 @@ class LoginCorner extends React.Component {
           <a href="#" onClick={e => this.showForm(e)}>Войти</a> / <a href="#">Зарегистрироваться</a>
           <div style={formStyle} className="login-form">
             <div onClick={e => this.hideForm(e) } style={{textAlign:"right"}}>X</div>
-            <input value={this.state.email} onInput={e => this.handleEmailInput(e)} placeholder="E-mail"/><br/>
-            <input value={this.state.password} onInput={e => this.handlePasswordInput(e)} type="password" placeholder="Пароль"/><br/>
-                <button>Войти</button>
+            <input value={this.state.email} onChange={e => this.handleEmailInput(e)} placeholder="E-mail"/><br/>
+            <input value={this.state.password} onChange={e => this.handlePasswordInput(e)} type="password" placeholder="Пароль"/><br/>
+            <button onClick={e => this.loadData(e)}>Войти</button>
           </div>
         </div>
     );
@@ -134,38 +150,6 @@ window.addEventListener('load', () => {
             return response.json();
         }).then(data => {
             ReactDOM.render(<ListingsContainer data={data}/>, document.querySelector('#postings'));
-
-            // data.forEach(x => {
-            //     let q = p.cloneNode(true);
-            //
-            //     q.style.display = null;
-            //
-            //     q.querySelector('.p-title').textContent = x.title;
-            //     q.querySelector('.p-thumbnail img').src = x.imgUrl;
-            //     q.querySelector('.p-location').textContent = x.location;
-            //
-            //     let desc = q.querySelector('.p-description');
-            //     desc.innerHTML = "";
-            //
-            //     x.description.forEach(line => {
-            //         let descPart = document.createElement('p');
-            //         descPart.textContent = line;
-            //         desc.appendChild(descPart);
-            //     });
-            //
-            //     let tags = q.querySelector('.p-tags p');
-            //
-            //     x.tags.forEach(tag => {
-            //         let tagEl = document.createElement('a');
-            //         tagEl.textContent = tag;
-            //         tagEl.href = '#';
-            //         tags.appendChild(tagEl);
-            //
-            //         tags.appendChild(document.createTextNode(" "));
-            //     });
-            //
-            //     postings.appendChild(q);
-            // })
         }).catch(error => {
             console.log(error);
         });
