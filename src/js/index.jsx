@@ -60,6 +60,15 @@ class Listing extends React.Component {
     render() {
         const content = this.props.content;
 
+        let tag_links = [];
+
+        content.tags.forEach(tag => {
+            tag_links.push(<>
+                <a href='#'>{tag}</a>
+                &nbsp;
+            </>);
+        });
+
         return (
             <div className={'posting'}>
                 <div className={'p-thumbnail'}>
@@ -71,10 +80,7 @@ class Listing extends React.Component {
                 <h3 className={'p-title'}>{ content.title }</h3>
 
                   <div className={'p-tags'}>
-                      <p>
-                     <a href='#'>{ content.tags }</a>
-
-                       </p>
+                      <p>{ tag_links }</p>
                   </div>
                   <div className={'p-row'}>
                     <b>Расположение:</b> <span> м. { content.location } </span>
