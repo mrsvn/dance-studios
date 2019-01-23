@@ -90,15 +90,15 @@ header .loc-opt-current:hover {
 header .loc-opt-current::after {
     content: "";
     display: inline-block;
-    
+
     width: 0;
     height: 0;
 
     margin-left: .25em;
     margin-right: .25em;
-    
+
     vertical-align: middle;
-    
+
     border-top: .3em solid;
     border-right: .3em solid transparent;
     border-bottom: 0;
@@ -160,6 +160,13 @@ header .user-corner .avatar-corner {
 
 header .user-corner .username-corner {
 	font-size: 1.05em;
+}
+
+header .login-form {
+	background: white;
+	padding: 1em;
+	position: absolute;
+	border: 1px black dotted;
 }
 
 header nav {
@@ -497,7 +504,7 @@ main .postings-container {
 .p-details .p-description {
 	font-size: 0.875em;
 	font-style: italic;
-	
+
 	opacity: .75;
 }
 

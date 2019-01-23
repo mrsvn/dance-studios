@@ -2,6 +2,44 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+class LoginCorner extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isShown: false
+    };
+  }
+  showForm(e) {
+    this.setState({
+      isShown: true
+    });
+
+    e.preventDefault();
+  }
+  hideForm(e){
+    this.setState({
+      isShown: false
+        });
+  }
+
+  render() {
+    let formStyle;
+    if (this.state.isShown) formStyle = {};
+    else formStyle = {display: "none"};
+    return (
+        <div className="login-corner">
+          <a href="#" onClick={e => this.showForm(e)}>Войти</a> / <a href="#">Зарегистрироваться</a>
+          <div style={formStyle} className="login-form">
+            <div onClick={e => this.hideForm(e) } style={{textAlign:"right"}}>X</div>
+            <input placeholder="E-mail"/><br/>
+              <input type="password" placeholder="Пароль"/><br/>
+                <button>Войти</button>
+          </div>
+        </div>
+    );
+  }
+}
 class ListingsContainer extends React.Component {
     render() {
         const listingComponents = [];
@@ -55,6 +93,8 @@ class Listing extends React.Component {
 }
 
 window.addEventListener('load', () => {
+    ReactDOM.render(<LoginCorner/>, document.querySelector('#login-corner'));
+
     const gMapCanvas = document.getElementById('gmap_canvas');
 
     gMapCanvas.src = gMapCanvas.dataset.src;
