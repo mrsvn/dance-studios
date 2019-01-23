@@ -3,9 +3,9 @@ const express = require('express');
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('Hello, world!');
-});
+// app.get('/', (req, res) => {
+//     res.send('Hello, world!');
+// });
 
 app.use(express.urlencoded({extended: false}));
 
@@ -28,6 +28,8 @@ app.post('/login', (req, res) => {
         res.status(400).send('{ "status": "INVALID_CREDENTIALS" }');
     }
 });
+
+app.use('/', express.static(path.join(__dirname, '..')));
 
 const port = 3000;
 
