@@ -13,7 +13,9 @@ class LoginCorner extends React.Component {
       password: "",
       passwordForChecking:"",
       agreeToConditions: false,
-      username: null
+      username: null,
+      errorMessage: null,
+      requestInProgress: false
     };
   }
 
@@ -70,6 +72,10 @@ class LoginCorner extends React.Component {
 }
 
   loadData() {
+    this.setState({
+      requestInProgress: true
+    });
+
     fetch("/login", {
         method: "POST",
         headers: {
@@ -77,9 +83,15 @@ class LoginCorner extends React.Component {
         },
         body: JSON.stringify({email: this.state.email, password: this.state.password})
     }).then(response => {
+      this.setState({
+        requestInProgress: false
+      });
       return response.json();
     }).then(data => {
-      if (data.status === "OK") this.setState({ username: data.username})
+      if (data.status === "OK")
+        this.setState({username: data.username, userpic: data.userpic})
+      else if (data.status === "THROTTLED") this.setState({errorMessage: "Превышено ограничение на количество попыток входа"})
+      else this.setState({errorMessage: "Неправильный e-mail или пароль"})
     }).catch(error => {
       console.log(error);
     });
@@ -87,7 +99,7 @@ class LoginCorner extends React.Component {
 
   render() {
     let formStyle;
-    if (this.state.loginFormIsShown) formStyle = {};
+    if (this.state.loginFormIsShown) formStyle = {position:"relative"};
     else formStyle = {display: "none"};
 
     let registrationFormStyle;
@@ -105,7 +117,29 @@ class LoginCorner extends React.Component {
               <input value={this.state.email} onChange={e => this.handleEmailInput(e)} placeholder="E-mail"/><br/>
               <input value={this.state.password} onChange={e => this.handlePasswordInput(e)} type="password"
                      placeholder="Пароль"/><br/>
-              <button onClick={e => this.loadData(e)}>Войти</button>
+              <button disabled={(this.state.requestInProgress)} onClick={e => this.loadData(e)}>Войти</button>
+              {(this.state.requestInProgress) ? (
+                  <div style={{
+                    position: "absolute",
+                    background: "rgba(255,255,255,0.5)",
+                    top: "0",
+                    width: "100%",
+                    left: "0",
+                    height: "100%"
+                  }}>
+                    <img style={{
+                      width:"120px",
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translateX(-50%) translateY(-50%)"
+                    }} src={"/img/spinner-cat.gif"} />
+                  </div>
+              ) : null}
+
+              {(this.state.errorMessage === null) ? null : <div style={{color: "red"}}>{this.state.errorMessage}</div>}
+              {/*{ this.state.errorMessage && <div style={{color: "red"}}>Ошибка: {this.state.errorMessage}</div> }*/}
+
             </div>
 
 
@@ -125,7 +159,8 @@ class LoginCorner extends React.Component {
     }
     else {
       return (
-          <div>{this.state.username}</div>
+          <div>{this.state.username}
+          <img src={this.state.userpic} style={{height:"40px", borderRadius: "50%"}}/></div>
       )
     }
   }
@@ -188,8 +223,124 @@ class Listing extends React.Component {
     }
 }
 
+class ListingFilter extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+        <div className="postings-filter">
+          <div className="search-query-container">
+            <input onChange={e => this.props.onQueryChange(e.target.value)} id="search-query" placeholder="Поиск по названию" autoFocus={true} />
+            <button className="search-query-showfilters" id="show-filters">
+              <img src="img/filter.svg" />
+            </button>
+            <button className="search-query-submit" type="submit">
+              <img src="img/search.svg" />
+            </button>
+          </div>
+
+          <div id="postings-filters-form" style={{display: "none"}}>
+            <div className="filter-location">
+              <span className="caption">Метро:</span>
+              <a href="#">Пердановская</a>
+              <a href="#">Дристановская</a>
+              <a href="#" className="current">Поносковский проспект</a>
+              <a href="#">Малые обоссыши</a>
+            </div>
+            <div className="filter-tags">
+              <span className="caption">Виды занятий:</span>
+              <div className="filter-tags-container">
+                <a href="#" className="chosen">пидор</a>
+                <a href="#" className="chosen">пизда</a>
+                <a href="#">туз</a>
+                <a href="#">малафья</a>
+                <a href="#" className="chosen">гомик</a>
+                <a href="#">мудила</a>
+                <a href="#">пилотка</a>
+                <a href="#" className="chosen">манда</a>
+                <a href="#">анус</a>
+                <a href="#">вагина</a>
+                <a href="#">путана</a>
+                <a href="#">пидрила</a>
+                <a href="#">шалава</a>
+                <a href="#">хуила</a>
+                <a href="#">мошонка</a>
+                <a href="#">елда</a>
+              </div>
+            </div>
+            <div className="filter-location">
+              <span className="caption">Город:</span>
+              <a href="#" className="current">Москва</a>
+              <a href="#">Чернобыль</a>
+              <a href="#">Могилев</a>
+            </div>
+          </div>
+        </div>
+    )
+  }
+
+}
+
+class Listings extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+      searchQuery: ""
+    };
+  }
+
+  handleQueryChange(newQuery) {
+    this.setState({
+      searchQuery: newQuery
+    });
+  }
+
+  componentDidMount() {
+    fetch("/dummy-data/los-angeles.json").then(response => {
+      return response.json();
+    }).then(data => {
+      this.setState({
+        data: data
+      });
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  render() {
+    let filteredData = [];
+
+    this.state.data.forEach(item => {
+      if (item.title.toLowerCase().includes(this.state.searchQuery.toLowerCase())) {
+        filteredData.push(item);
+      }
+    });
+
+    return (
+        <>
+          <ListingFilter onQueryChange={q => this.handleQueryChange(q)}/>
+
+          <div className="postings-count">
+            Найдено <span>798</span> студий
+          </div>
+
+          <ListingsContainer data={filteredData}/>
+
+          <div id="postings-more">
+            <a href="#">Следующие 20</a>
+          </div>
+        </>
+    )
+  }
+}
+
 window.addEventListener('load', () => {
     ReactDOM.render(<LoginCorner/>, document.querySelector('#login-corner'));
+    ReactDOM.render(<Listings/>, document.querySelector('#listings'));
 
     const gMapCanvas = document.getElementById('gmap_canvas');
 
@@ -199,69 +350,54 @@ window.addEventListener('load', () => {
         document.getElementById('gmap-spinner').style.display = 'none';
     };
 
-    const postings = document.getElementById('postings');
 
-    let p = document.getElementById('t_posting');
+    // document.querySelector('#postings-more').onclick = e => {
+    //     e.preventDefault();
+    //     loadData();
+    // };
 
-    function loadData() {
-        fetch("/dummy-data/los-angeles.json").then(response => {
-            return response.json();
-        }).then(data => {
-            ReactDOM.render(<ListingsContainer data={data}/>, document.querySelector('#postings'));
-        }).catch(error => {
-            console.log(error);
-        });
-    }
-
-    loadData();
-
-    document.querySelector('#postings-more').onclick = e => {
-        e.preventDefault();
-        loadData();
-    };
-
-    const locOptions = document.querySelector('.loc-options');
-    const locCurrent = locOptions.querySelector('.loc-opt-current');
-    const locDropdown = locOptions.querySelector('.loc-opt-dropdown')
-    const locVariants = Array.from(locOptions.querySelectorAll('a'));
-
-    locOptions.querySelector('.loc-opt-current').onclick = e => {
-        e.preventDefault();
-    };
-
-    locOptions.querySelector('.loc-opt-current').onfocus = e => {
-        locDropdown.style.display = null;
-    };
-
-    locVariants.forEach(el => {
-        if(el.dataset.locValue) {
-            el.onclick = e => {
-                e.preventDefault();
-
-                if(!locOptions.style.minWidth) {
-                    locOptions.style.minWidth = e.target.clientWidth + 'px';
-                }
-
-                locCurrent.textContent = el.textContent;
-
-                el.style.display = 'none';
-
-                locVariants.forEach(otherEl => {
-                    otherEl.style.display = (el.dataset.locValue === otherEl.dataset.locValue) ? 'none' : null;
-                });
-            }
-        }
-
-        el.onblur = e => {
-            if(!e.relatedTarget || e.relatedTarget.parentNode !== locOptions.querySelector('.loc-opt-dropdown')) {
-                locDropdown.style.display = 'none';
-            }
-        };
-
-        el.onkeydown = e => {
-            if(e.key === 'Escape') {
-                e.target.blur();
-            }
-        };
-    });
+    // const locOptions = document.querySelector('.loc-options');
+    // const locCurrent = locOptions.querySelector('.loc-opt-current');
+    // const locDropdown = locOptions.querySelector('.loc-opt-dropdown')
+    // const locVariants = Array.from(locOptions.querySelectorAll('a'));
+    //
+    // locOptions.querySelector('.loc-opt-current').onclick = e => {
+    //     e.preventDefault();
+    // };
+    //
+    // locOptions.querySelector('.loc-opt-current').onfocus = e => {
+    //     locDropdown.style.display = null;
+    // };
+    //
+    // locVariants.forEach(el => {
+    //     if(el.dataset.locValue) {
+    //         el.onclick = e => {
+    //             e.preventDefault();
+    //
+    //             if(!locOptions.style.minWidth) {
+    //                 locOptions.style.minWidth = e.target.clientWidth + 'px';
+    //             }
+    //
+    //             locCurrent.textContent = el.textContent;
+    //
+    //             el.style.display = 'none';
+    //
+    //             locVariants.forEach(otherEl => {
+    //                 otherEl.style.display = (el.dataset.locValue === otherEl.dataset.locValue) ? 'none' : null;
+    //             });
+    //         }
+    //     }
+    //
+    //     el.onblur = e => {
+    //         if(!e.relatedTarget || e.relatedTarget.parentNode !== locOptions.querySelector('.loc-opt-dropdown')) {
+    //             locDropdown.style.display = 'none';
+    //         }
+    //     };
+    //
+    //     el.onkeydown = e => {
+    //         if(e.key === 'Escape') {
+    //             e.target.blur();
+    //         }
+    //     };
+    // });
 });
