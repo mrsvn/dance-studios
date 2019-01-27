@@ -7,7 +7,7 @@ const app = express();
 //     res.send('Hello, world!');
 // });
 
-app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 app.post('/login', (req, res) => {
     const email = req.body.email, pass = req.body.password;

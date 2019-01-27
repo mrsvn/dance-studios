@@ -13,7 +13,8 @@ class LoginCorner extends React.Component {
       password: "",
       passwordForChecking:"",
       agreeToConditions: false,
-      username: null
+      username: null,
+      errorMessage: null
     };
   }
 
@@ -79,7 +80,12 @@ class LoginCorner extends React.Component {
     }).then(response => {
       return response.json();
     }).then(data => {
-      if (data.status === "OK") this.setState({username: data.username})
+      console.log(data);
+      if (data.status === "OK")
+        this.setState({username: data.username, userpic: data.userpic})
+      else if (data.status === "THROTTLED") this.setState({errorMessage: "Превышено ограничение на количество попыток входа"})
+      else this.setState({errorMessage: "Неправильный e-mail или пароль"})
+
     }).catch(error => {
       console.log(error);
     });
@@ -106,6 +112,10 @@ class LoginCorner extends React.Component {
               <input value={this.state.password} onChange={e => this.handlePasswordInput(e)} type="password"
                      placeholder="Пароль"/><br/>
               <button onClick={e => this.loadData(e)}>Войти</button>
+
+              {(this.state.errorMessage === null) ? null : <div style={{color: "red"}}>{this.state.errorMessage}</div>}
+              {/*{ this.state.errorMessage && <div style={{color: "red"}}>Ошибка: {this.state.errorMessage}</div> }*/}
+
             </div>
 
 
@@ -125,7 +135,8 @@ class LoginCorner extends React.Component {
     }
     else {
       return (
-          <div>{this.state.username}</div>
+          <div>{this.state.username}
+          <img src={this.state.userpic} style={{height:"40px", borderRadius: "50%"}}/></div>
       )
     }
   }
