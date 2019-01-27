@@ -7,15 +7,27 @@ class LoginCorner extends React.Component {
     super(props);
 
     this.state = {
-      isShown: false,
+      loginFormIsShown: false,
+      registrationFormIsShown: false,
       email: "",
-      password: ""
+      password: "",
+      passwordForChecking:"",
+      agreeToConditions: false,
+      username: null
     };
   }
 
   showForm(e) {
     this.setState({
-      isShown: true
+      loginFormIsShown: true
+    });
+
+    e.preventDefault();
+  }
+
+  showRegistrationForm(e) {
+    this.setState({
+      registrationFormIsShown: true
     });
 
     e.preventDefault();
@@ -23,8 +35,14 @@ class LoginCorner extends React.Component {
 
   hideForm(e){
     this.setState({
-      isShown: false
+      loginFormIsShown: false
         });
+  }
+
+  hideRegistrationForm (e) {
+    this.setState({
+      registrationFormIsShown: false
+    });
   }
 
   handleEmailInput(e) {
@@ -39,8 +57,20 @@ class LoginCorner extends React.Component {
     });
   }
 
+  handlePasswordForCheckingInput(e) {
+    this.setState({
+      passwordForChecking: e.target.value
+    });
+  }
+
+  handleAgreeToConditions(e) {
+    this.setState({
+      agreeToConditions: true
+    });
+}
+
   loadData() {
-    fetch("http://localhost:3000/login", {
+    fetch("/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -49,7 +79,7 @@ class LoginCorner extends React.Component {
     }).then(response => {
       return response.json();
     }).then(data => {
-      console.log(data);
+      if (data.status === "OK") this.setState({username: data.username})
     }).catch(error => {
       console.log(error);
     });
@@ -57,19 +87,47 @@ class LoginCorner extends React.Component {
 
   render() {
     let formStyle;
-    if (this.state.isShown) formStyle = {};
+    if (this.state.loginFormIsShown) formStyle = {};
     else formStyle = {display: "none"};
-    return (
-        <div className="login-corner">
-          <a href="#" onClick={e => this.showForm(e)}>Войти</a> / <a href="#">Зарегистрироваться</a>
-          <div style={formStyle} className="login-form">
-            <div onClick={e => this.hideForm(e) } style={{textAlign:"right"}}>X</div>
-            <input value={this.state.email} onChange={e => this.handleEmailInput(e)} placeholder="E-mail"/><br/>
-            <input value={this.state.password} onChange={e => this.handlePasswordInput(e)} type="password" placeholder="Пароль"/><br/>
-            <button onClick={e => this.loadData(e)}>Войти</button>
+
+    let registrationFormStyle;
+    if (this.state.registrationFormIsShown) registrationFormStyle = {};
+    else registrationFormStyle = {display: "none"};
+
+
+    if (this.state.username === null) {
+      return (
+          <div className="login-corner">
+            <a href="#" onClick={e => this.showForm(e)}>Войти</a> / <a href="#" onClick={e => this.showRegistrationForm(e)}>Зарегистрироваться</a>
+
+            <div style={formStyle} className="login-form">
+              <div onClick={e => this.hideForm(e)} style={{textAlign: "right"}}>X</div>
+              <input value={this.state.email} onChange={e => this.handleEmailInput(e)} placeholder="E-mail"/><br/>
+              <input value={this.state.password} onChange={e => this.handlePasswordInput(e)} type="password"
+                     placeholder="Пароль"/><br/>
+              <button onClick={e => this.loadData(e)}>Войти</button>
+            </div>
+
+
+              <div style={registrationFormStyle} className="registration-form">
+                <div onClick={e => this.hideRegistrationForm(e)} style={{textAlign: "right", cursor: "pointer"}}>X</div>
+                <input value={this.state.email} onChange={e => this.handleEmailInput(e)} placeholder="E-mail"/><br/>
+                <input value={this.state.password} onChange={e => this.handlePasswordInput(e)} type="password"
+                       placeholder="Пароль"/><br/>
+                <input value={this.state.passwordForChecking} onChange={e => this.handlePasswordForCheckingInput(e)} type="password"
+                       placeholder="Ещё раз пароль"/><br/>
+                <label>Согласен <input type="checkbox" checked={this.state.agreeToConditions} onChange={e => this.handleAgreeToConditions(e)} /></label>
+                <button>Зарегистрироваться</button>
+            </div>
+
           </div>
-        </div>
-    );
+      );
+    }
+    else {
+      return (
+          <div>{this.state.username}</div>
+      )
+    }
   }
 }
 class ListingsContainer extends React.Component {

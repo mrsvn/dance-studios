@@ -169,6 +169,13 @@ header .login-form {
 	border: 1px black dotted;
 }
 
+header .registration-form {
+	background: white;
+	padding: 1em;
+	position: absolute;
+	border: 1px black dotted;
+}
+
 header nav {
 	flex-grow: 1;
 
