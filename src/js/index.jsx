@@ -14,7 +14,8 @@ class LoginCorner extends React.Component {
       passwordForChecking:"",
       agreeToConditions: false,
       username: null,
-      errorMessage: null
+      errorMessage: null,
+      requestInProgress: false
     };
   }
 
@@ -71,6 +72,10 @@ class LoginCorner extends React.Component {
 }
 
   loadData() {
+    this.setState({
+      requestInProgress: true
+    });
+
     fetch("/login", {
         method: "POST",
         headers: {
@@ -78,6 +83,9 @@ class LoginCorner extends React.Component {
         },
         body: JSON.stringify({email: this.state.email, password: this.state.password})
     }).then(response => {
+      this.setState({
+        requestInProgress: false
+      });
       return response.json();
     }).then(data => {
       console.log(data);
@@ -93,7 +101,7 @@ class LoginCorner extends React.Component {
 
   render() {
     let formStyle;
-    if (this.state.loginFormIsShown) formStyle = {};
+    if (this.state.loginFormIsShown) formStyle = {position:"relative"};
     else formStyle = {display: "none"};
 
     let registrationFormStyle;
@@ -111,7 +119,25 @@ class LoginCorner extends React.Component {
               <input value={this.state.email} onChange={e => this.handleEmailInput(e)} placeholder="E-mail"/><br/>
               <input value={this.state.password} onChange={e => this.handlePasswordInput(e)} type="password"
                      placeholder="Пароль"/><br/>
-              <button onClick={e => this.loadData(e)}>Войти</button>
+              <button disabled={(this.state.requestInProgress)} onClick={e => this.loadData(e)}>Войти</button>
+              {(this.state.requestInProgress) ? (
+                  <div style={{
+                    position: "absolute",
+                    background: "rgba(255,255,255,0.5)",
+                    top: "0",
+                    width: "100%",
+                    left: "0",
+                    height: "100%"
+                  }}>
+                    <img style={{
+                      width:"120px",
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translateX(-50%) translateY(-50%)"
+                    }} src={"/img/spinner-cat.gif"} />
+                  </div>
+              ) : null}
 
               {(this.state.errorMessage === null) ? null : <div style={{color: "red"}}>{this.state.errorMessage}</div>}
               {/*{ this.state.errorMessage && <div style={{color: "red"}}>Ошибка: {this.state.errorMessage}</div> }*/}
