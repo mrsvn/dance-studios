@@ -79,7 +79,7 @@ class LoginCorner extends React.Component {
     }).then(response => {
       return response.json();
     }).then(data => {
-      if (data.status === "OK") this.setState({username: data.username})
+      if (data.status === "OK") this.setState({ username: data.username})
     }).catch(error => {
       console.log(error);
     });

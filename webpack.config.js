@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
     entry: './src/js/index.jsx',
     mode: 'development',
+    // mode: 'production',
     watch: false,
     // stats: 'verbose',
     output: {
