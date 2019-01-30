@@ -223,6 +223,39 @@ class Listing extends React.Component {
     }
 }
 
+class RatingSlider extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sliderValue: 25
+    };
+  }
+
+  sliderChange(newValue) {
+    this.setState({
+      sliderValue: newValue
+    });
+
+    this.props.onChange(newValue / 10);
+  }
+
+  render() {
+    return (
+        <span>
+          <span>{(this.state.sliderValue / 10).toFixed(1)}</span>
+          <input
+              onChange={e => this.sliderChange(e.target.value)}
+              type="range"
+              min="0"
+              max="50"
+              value={this.state.sliderValue}
+          />
+        </span>
+    );
+  }
+}
+
 class ListingFilter extends React.Component {
   constructor(props) {
     super(props);
@@ -241,41 +274,310 @@ class ListingFilter extends React.Component {
             </button>
           </div>
 
-          <div id="postings-filters-form" style={{display: "none"}}>
-            <div className="filter-location">
-              <span className="caption">Метро:</span>
-              <a href="#">Пердановская</a>
-              <a href="#">Дристановская</a>
-              <a href="#" className="current">Поносковский проспект</a>
-              <a href="#">Малые обоссыши</a>
-            </div>
-            <div className="filter-tags">
-              <span className="caption">Виды занятий:</span>
-              <div className="filter-tags-container">
-                <a href="#" className="chosen">пидор</a>
-                <a href="#" className="chosen">пизда</a>
-                <a href="#">туз</a>
-                <a href="#">малафья</a>
-                <a href="#" className="chosen">гомик</a>
-                <a href="#">мудила</a>
-                <a href="#">пилотка</a>
-                <a href="#" className="chosen">манда</a>
-                <a href="#">анус</a>
-                <a href="#">вагина</a>
-                <a href="#">путана</a>
-                <a href="#">пидрила</a>
-                <a href="#">шалава</a>
-                <a href="#">хуила</a>
-                <a href="#">мошонка</a>
-                <a href="#">елда</a>
-              </div>
-            </div>
-            <div className="filter-location">
-              <span className="caption">Город:</span>
-              <a href="#" className="current">Москва</a>
-              <a href="#">Чернобыль</a>
-              <a href="#">Могилев</a>
-            </div>
+          <div id="postings-filters-form">
+            {/*<div className="filter-location">*/}
+              {/*<span className="caption">Метро:</span>*/}
+              {/*<a href="#">Пердановская</a>*/}
+              {/*<a href="#">Дристановская</a>*/}
+              {/*<a href="#" className="current">Поносковский проспект</a>*/}
+              {/*<a href="#">Малые обоссыши</a>*/}
+            {/*</div>*/}
+            {/*<div className="filter-tags">*/}
+              {/*<span className="caption">Виды занятий:</span>*/}
+              {/*<div className="filter-tags-container">*/}
+                {/*<a href="#" className="chosen">пидор</a>*/}
+                {/*<a href="#" className="chosen">пизда</a>*/}
+                {/*<a href="#">туз</a>*/}
+                {/*<a href="#">малафья</a>*/}
+                {/*<a href="#" className="chosen">гомик</a>*/}
+                {/*<a href="#">мудила</a>*/}
+                {/*<a href="#">пилотка</a>*/}
+                {/*<a href="#" className="chosen">манда</a>*/}
+                {/*<a href="#">анус</a>*/}
+                {/*<a href="#">вагина</a>*/}
+                {/*<a href="#">путана</a>*/}
+                {/*<a href="#">пидрила</a>*/}
+                {/*<a href="#">шалава</a>*/}
+                {/*<a href="#">хуила</a>*/}
+                {/*<a href="#">мошонка</a>*/}
+                {/*<a href="#">елда</a>*/}
+              {/*</div>*/}
+            {/*</div>*/}
+            {/*<div className="filter-location">*/}
+              {/*<span className="caption">Город:</span>*/}
+              {/*<a href="#" className="current">Москва</a>*/}
+              {/*<a href="#">Чернобыль</a>*/}
+              {/*<a href="#">Могилев</a>*/}
+            {/*</div>*/}
+            <select onChange={e => this.props.onStyleChange(e.target.value)}>
+              <option disabled={true} selected={true}>Направление</option>
+              <option>пидор</option>
+              <option>пизда</option>
+              <option>туз</option>
+              <option>малафья</option>
+              <option>гомик</option>
+              <option>мудила</option>
+              <option>пилотка</option>
+              <option>манда</option>
+              <option>анус</option>
+              <option>вагина</option>
+              <option>путана</option>
+              <option>пидрила</option>
+              <option>шалава</option>
+              <option>хуила</option>
+              <option>мошонка</option>
+              <option>елда</option>
+            </select>
+            <select onChange={e => this.props.onLocationChange(e.target.value)}>
+              <option disabled={true} selected={true}>Станция метро</option>
+              <option>Бульвар Рокоссовского</option>
+              <option>Черкизовская</option>
+              <option>Преображенская площадь</option>
+              <option>Сокольники</option>
+              <option>Красносельская</option>
+              <option>Комсомольская</option>
+              <option>Красные ворота</option>
+              <option>Чистые пруды</option>
+              <option>Лубянка</option>
+              <option>Охотный ряд</option>
+              <option>Кропоткинская</option>
+              <option>Парк культуры</option>
+              <option>Фрунзенская</option>
+              <option>Спортивная</option>
+              <option>Университет</option>
+              <option>Проспект Вернадского</option>
+              <option>Юго-Западная</option>
+              <option>Румянцево</option>
+              <option>Саларьево</option>
+              <option>Алма-Атинская</option>
+              <option>Красногвардейская</option>
+              <option>Домодедовская</option>
+              <option>Орехово</option>
+              <option>Царицыно</option>
+              <option>Кантемировская</option>
+              <option>Каширская</option>
+              <option>Коломенская</option>
+              <option>Технопарк</option>
+              <option>Автозаводская</option>
+              <option>Павелецкая</option>
+              <option>Новокузнецкая</option>
+              <option>Театральная</option>
+              <option>Тверская</option>
+              <option>Маяковская</option>
+              <option>Белорусская</option>
+              <option>Динамо</option>
+              <option>Аэропорт</option>
+              <option>Сокол</option>
+              <option>Войковская</option>
+              <option>Водный стадион</option>
+              <option>Речной вокзал</option>
+              <option>Ховрино</option>
+              <option>Первомайская</option>
+              <option>Измайловская</option>
+              <option>Партизанская</option>
+              <option>Электрозаводская</option>
+              <option>Бауманская</option>
+              <option>Курская</option>
+              <option>Арбатская</option>
+              <option>Смоленская</option>
+              <option>Киевская</option>
+              <option>Парк Победы</option>
+              <option>Славянский бульвар</option>
+              <option>Кунцевская</option>
+              <option>Крылатское</option>
+              <option>Строгино</option>
+              <option>Мякинино</option>
+              <option>Волоколамская</option>
+              <option>Митино</option>
+              <option>Пятницкое шоссе</option>
+              <option>Кунцевская</option>
+              <option>Пионерская</option>
+              <option>Филевский парк</option>
+              <option>Багратионовская</option>
+              <option>Фили</option>
+              <option>Кутузовская</option>
+              <option>Студенческая</option>
+              <option>Киевская</option>
+              <option>Смоленская</option>
+              <option>Арбатская</option>
+              <option>Александровский сад</option>
+              <option>Выставочная</option>
+              <option>Международная</option>
+              <option>Октябрьская</option>
+              <option>Добрынинская</option>
+              <option>Павелецкая</option>
+              <option>Таганская</option>
+              <option>Курская</option>
+              <option>Комсомольская</option>
+              <option>Проспект Мира</option>
+              <option>Новослободская</option>
+              <option>Белорусская</option>
+              <option>Краснопресненская</option>
+              <option>Киевская</option>
+              <option>Медведково</option>
+              <option>Бабушкинская</option>
+              <option>Свиблово</option>
+              <option>Ботанический сад</option>
+              <option>ВДНХ</option>
+              <option>Алексеевская</option>
+              <option>Рижская</option>
+              <option>Проспект Мира</option>
+              <option>Сухаревская</option>
+              <option>Тургеневская</option>
+              <option>Китай-город</option>
+              <option>Третьяковская</option>
+              <option>Октябрьская</option>
+              <option>Шаболовская</option>
+              <option>Ленинский проспект</option>
+              <option>Академическая</option>
+              <option>Профсоюзная</option>
+              <option>Новые Черемушки</option>
+              <option>Калужская</option>
+              <option>Беляево</option>
+              <option>Коньково</option>
+              <option>Теплый Стан</option>
+              <option>Ясенево</option>
+              <option>Новоясеневская</option>
+              <option>Планерная</option>
+              <option>Сходненская</option>
+              <option>Тушинская</option>
+              <option>Спартак</option>
+              <option>Щукинская</option>
+              <option>Октябрьское поле</option>
+              <option>Полежаевская</option>
+              <option>Беговая</option>
+              <option>Баррикадная</option>
+              <option>Пушкинская</option>
+              <option>Кузнецкий мост</option>
+              <option>Китай-город</option>
+              <option>Таганская</option>
+              <option>Пролетарская</option>
+              <option>Волгоградский проспект</option>
+              <option>Текстильщики</option>
+              <option>Кузьминки</option>
+              <option>Рязанский проспект</option>
+              <option>Выхино</option>
+              <option>Лермонтовский проспект</option>
+              <option>Жулебино</option>
+              <option>Котельники</option>
+              <option>Новокосино</option>
+              <option>Новогиреево</option>
+              <option>Перово</option>
+              <option>Шоссе Энтузиастов</option>
+              <option>Авиамоторная</option>
+              <option>Площадь Ильича</option>
+              <option>Марксистская</option>
+              <option>Третьяковская</option>
+              <option>Парк Победы</option>
+              <option>Минская</option>
+              <option>Ломоносовский проспект</option>
+              <option>Раменки</option>
+              <option>Мичуринский проспект</option>
+              <option>Говорово</option>
+              <option>Солнцево</option>
+              <option>Боровское шоссе</option>
+              <option>Новопеределкино</option>
+              <option>Рассказовка</option>
+              <option>Петровский парк</option>
+              <option>ЦСКА</option>
+              <option>Хорошевская</option>
+              <option>Шелепиха</option>
+              <option>Алтуфьево</option>
+              <option>Бибирево</option>
+              <option>Отрадное</option>
+              <option>Владыкино</option>
+              <option>Петровско-Разумовская</option>
+              <option>Тимирязевская</option>
+              <option>Дмитровская</option>
+              <option>Савеловская</option>
+              <option>Менделеевская</option>
+              <option>Цветной бульвар</option>
+              <option>Чеховская</option>
+              <option>Боровицкая</option>
+              <option>Полянка</option>
+              <option>Серпуховская</option>
+              <option>Тульская</option>
+              <option>Нагатинская</option>
+              <option>Нагорная</option>
+              <option>Нахимовский проспект</option>
+              <option>Севастопольская</option>
+              <option>Чертановская</option>
+              <option>Южная</option>
+              <option>Пражская</option>
+              <option>Улица Академика Янгеля</option>
+              <option>Аннино</option>
+              <option>Бульвар Дмитрия Донского</option>
+              <option>Марьина Роща</option>
+              <option>Достоевская</option>
+              <option>Трубная</option>
+              <option>Сретенский бульвар</option>
+              <option>Чкаловская</option>
+              <option>Римская</option>
+              <option>Крестьянская застава</option>
+              <option>Дубровка</option>
+              <option>Кожуховская</option>
+              <option>Печатники</option>
+              <option>Волжская</option>
+              <option>Люблино</option>
+              <option>Братиславская</option>
+              <option>Марьино</option>
+              <option>Борисово</option>
+              <option>Шипиловская</option>
+              <option>Зябликово</option>
+              <option>Бутырская</option>
+              <option>Фонвизинская</option>
+              <option>Петровско-Разумовская</option>
+              <option>Окружная</option>
+              <option>Верхние Лихоборы</option>
+              <option>Селигерская</option>
+              <option>Каширская</option>
+              <option>Варшавская</option>
+              <option>Каховская</option>
+              <option>Битцевский парк</option>
+              <option>Лесопарковая</option>
+              <option>Улица Старокачаловская</option>
+              <option>Улица Скобелевская</option>
+              <option>Бульвар адмирала Ушакова</option>
+              <option>Улица Горчакова</option>
+              <option>Бунинская аллея</option>
+              <option>Тимирязевская</option>
+              <option>Телецентр</option>
+              <option>Выставочный центр </option>
+              <option>Андроновка</option>
+              <option>Шоссе Энтузиастов</option>
+              <option>Соколиная Гора</option>
+              <option>Измайлово</option>
+              <option>Локомотив</option>
+              <option>Бульвар Рокоссовского</option>
+              <option>Белокаменная</option>
+              <option>Ростокино</option>
+              <option>Ботанический сад</option>
+              <option>Владыкино</option>
+              <option>Окружная</option>
+              <option>Лихоборы</option>
+              <option>Коптево</option>
+              <option>Балтийская</option>
+              <option>Стрешнево</option>
+              <option>Панфиловская</option>
+              <option>Зорге</option>
+              <option>Шелепиха</option>
+              <option>Кутузовская</option>
+              <option>Лужники</option>
+              <option>Крымская</option>
+              <option>Верхние Котлы</option>
+              <option>ЗИЛ</option>
+              <option>Автозаводская</option>
+              <option>Дубровка</option>
+              <option>Угрешская</option>
+              <option>Новохохловская</option>
+              <option>Нижегородская</option>
+              <option>Петровский парк</option>
+              <option>ЦСКА</option>
+              <option>Хорошевская</option>
+              <option>Шелепиха</option>
+              <option>Деловой центр</option>
+            </select>
+            <RatingSlider onChange={v => this.props.onRatingChange(v)} />
           </div>
         </div>
     )
@@ -289,13 +591,34 @@ class Listings extends React.Component {
 
     this.state = {
       data: [],
-      searchQuery: ""
+      searchQuery: "",
+      filterLocation: null,
+      filterStyle: null,
+      filterRating: null
     };
   }
 
   handleQueryChange(newQuery) {
     this.setState({
       searchQuery: newQuery
+    });
+  }
+
+  handleLocationChange(newLocation) {
+    this.setState({
+      filterLocation: newLocation
+    });
+  }
+
+  handleStyleChange(newStyle) {
+    this.setState({
+      filterStyle: newStyle
+    });
+  }
+
+  handleRatingChange(newRating) {
+    this.setState({
+      filterRating: newRating
     });
   }
 
@@ -316,13 +639,23 @@ class Listings extends React.Component {
 
     this.state.data.forEach(item => {
       if (item.title.toLowerCase().includes(this.state.searchQuery.toLowerCase())) {
-        filteredData.push(item);
+        if (item.location === this.state.filterLocation || this.state.filterLocation === null) {
+          if (item.tags.includes(this.state.filterStyle) || this.state.filterStyle === null) {
+            if (item.rating >= this.state.filterRating) {
+              filteredData.push(item);
+            }
+          }
+        }
       }
     });
 
     return (
         <>
-          <ListingFilter onQueryChange={q => this.handleQueryChange(q)}/>
+          <ListingFilter onQueryChange={q => this.handleQueryChange(q)}
+                         onLocationChange={q => this.handleLocationChange(q)}
+                         onStyleChange={q => this.handleStyleChange(q)}
+                         onRatingChange={q => this.handleRatingChange(q)} />
+
 
           <div className="postings-count">
             Найдено <span>798</span> студий
