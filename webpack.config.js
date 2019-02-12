@@ -1,14 +1,17 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/js/index.jsx',
+    entry: {
+        index: './src/js/index.jsx',
+        classes: './src/js/classes.jsx'
+    },
     mode: 'development',
     // mode: 'production',
     watch: false,
     // stats: 'verbose',
     output: {
         path: path.resolve(__dirname, 'js'),
-        filename: 'index.js'
+        filename: '[name].js'
     },
     module: {
         rules: [
