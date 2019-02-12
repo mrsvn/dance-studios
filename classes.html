@@ -49,22 +49,29 @@
 				display: flex;
 				justify-content: space-evenly;
 			}
-
-			#date-filter {
+			#date-selector {
 				margin: 50px 0;
 				display: flex;
-				/*justify-content: space-evenly;*/
 			}
 			#classes-calendar {
 				display: flex;
 				flex-grow: 1;
-				background: lightpink;
-
 			}
 			.classes-date {
 				padding: 10px;
+				border: 1px transparent solid;
+				cursor: pointer;
 			}
+			.classes-date:hover {
+				border: 1px salmon solid;
 
+			}
+			.classes-date-weekend {
+				color: darkred;
+			}
+			.classes-date-selected {
+				background: chartreuse;
+			}
 		</style>
 
 		<main>
@@ -94,59 +101,8 @@
 				</div>
 			</div>
 
-			<div id="date-filter">
-				<div>
-					<p>Сегодня</p>
-					<p>12 февараля</p>
-					<p>Вторник</p>
-				</div>
-				<div id="classes-calendar">
-					<div class="classes-date">
-						<div>12</div>
-						<div>ВТ</div>
-					</div>
-					<div class="classes-date">
-						<div>12</div>
-						<div>ВТ</div>
-					</div>
-					<div class="classes-date">
-						<div>12</div>
-						<div>ВТ</div>
-					</div>
-					<div class="classes-date">
-						<div>12</div>
-						<div>ВТ</div>
-					</div>
-					<div class="classes-date">
-						<div>12</div>
-						<div>ВТ</div>
-					</div>
-					<div class="classes-date">
-						<div>12</div>
-						<div>ВТ</div>
-					</div>
-					<div class="classes-date">
-						<div>12</div>
-						<div>ВТ</div>
-					</div>
-					<div class="classes-date">
-						<div>12</div>
-						<div>ВТ</div>
-					</div>
-					<div class="classes-date">
-						<div>12</div>
-						<div>ВТ</div>
-					</div>
-					<div class="classes-date">
-						<div>12</div>
-						<div>ВТ</div>
-					</div>
-					<div class="classes-date">
-						<div>12</div>
-						<div>ВТ</div>
-					</div>
-				</div>
-			</div>
+			<div id="date-selector-container"></div>
+
 			<div style="text-align: center">
 				Выбранная дата: 15 февраля
 			</div>
@@ -205,5 +161,6 @@
 		Пидо&reg;, пизда, &trade;, гоми&copy;, мудила
 	</footer>
 
+	<script src="js/classes.js"></script>
 </body>
 </html>
