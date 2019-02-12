@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Site stub</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="img/favicon.png">
+
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<div class="wrap-page">
+		<header>
+			<img src="img/logo-brand.png" class="brand-logo" />
+
+			<span class="brand-title">
+				NaSheste
+				<span class="loc-options">
+					<a href="#" class="loc-opt-current">Лос-Анджелес</a>
+					<div class="loc-opt-dropdown" style="display: none;">
+						<a href="#" data-loc-value="los-angeles" style="display: none;">Лос-Анджелес</a>
+						<a href="#" data-loc-value="st-tropez">Сен-Тропе</a>
+						<a href="#" data-loc-value="miami">Майами</a>
+						<a href="#" data-loc-value="volzhsky">Волжский</a>
+						<a href="#" data-loc-value="ivanovo">Иваново</a>
+					</div>
+				</span>
+			</span>
+
+			<nav>
+				<a href="#" class="nav-item">Рекомендации</a>
+				<span class="nav-item nav-current">Студии</span>
+				<a href="#" class="nav-item">Занятия</a>
+			</nav>
+
+			<div id="login-corner"></div>
+
+			<div class="user-corner" style="display: none;">
+				<img src="https://placehold.jp/100x100.png" class="avatar-corner" />
+				<span class="username-corner">Shmonka1997</span>
+			</div>
+		</header>
+
+		<style>
+			#class-filters {
+				display: flex;
+				justify-content: space-evenly;
+			}
+
+			#date-filter {
+				margin: 50px 0;
+				display: flex;
+				/*justify-content: space-evenly;*/
+			}
+			#classes-calendar {
+				display: flex;
+				flex-grow: 1;
+				background: lightpink;
+
+			}
+			.classes-date {
+				padding: 10px;
+			}
+
+		</style>
+
+		<main>
+			<div id="class-filters">
+				<div>
+					<h3>Время начала</h3>
+					<div>
+						<input value="00:00"/>
+						<input value="12:00"/>
+					</div>
+				</div>
+				<div>
+					<h3>Вид занятий</h3>
+					<div>
+						<select>
+							<option>Йога</option>
+						</select>
+					</div>
+				</div>
+				<div>
+					<h3>Метро</h3>
+					<div>
+						<select>
+							<option>Сокол</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div id="date-filter">
+				<div>
+					<p>Сегодня</p>
+					<p>12 февараля</p>
+					<p>Вторник</p>
+				</div>
+				<div id="classes-calendar">
+					<div class="classes-date">
+						<div>12</div>
+						<div>ВТ</div>
+					</div>
+					<div class="classes-date">
+						<div>12</div>
+						<div>ВТ</div>
+					</div>
+					<div class="classes-date">
+						<div>12</div>
+						<div>ВТ</div>
+					</div>
+					<div class="classes-date">
+						<div>12</div>
+						<div>ВТ</div>
+					</div>
+					<div class="classes-date">
+						<div>12</div>
+						<div>ВТ</div>
+					</div>
+					<div class="classes-date">
+						<div>12</div>
+						<div>ВТ</div>
+					</div>
+					<div class="classes-date">
+						<div>12</div>
+						<div>ВТ</div>
+					</div>
+					<div class="classes-date">
+						<div>12</div>
+						<div>ВТ</div>
+					</div>
+					<div class="classes-date">
+						<div>12</div>
+						<div>ВТ</div>
+					</div>
+					<div class="classes-date">
+						<div>12</div>
+						<div>ВТ</div>
+					</div>
+					<div class="classes-date">
+						<div>12</div>
+						<div>ВТ</div>
+					</div>
+				</div>
+			</div>
+			<div style="text-align: center">
+				Выбранная дата: 15 февраля
+			</div>
+
+			<table style="width: 100%">
+				<tr>
+					<th>Занятие</th>
+					<th>Метро</th>
+					<th>Студия</th>
+					<th>Направление</th>
+					<th>Время</th>
+					<th>Инструктор</th>
+					<th></th>
+				</tr>
+				<tr>
+					<td>Бачата</td>
+					<td>Сокол</td>
+					<td>
+						<a href="#">танцы Мытищи</a>
+					</td>
+					<td>Танцы</td>
+					<td>12:30 - 13:30</td>
+					<td>Драньков</td>
+					<td><a href="#">Записаться</a> </td>
+				</tr>
+				<tr>
+					<td>Бачата</td>
+					<td>Сокол</td>
+					<td>
+						<a href="#">танцы Мытищи</a>
+					</td>
+					<td>Танцы</td>
+					<td>12:30 - 13:30</td>
+					<td>Драньков</td>
+					<td><em>мест нет</em></td>
+				</tr>
+				<tr>
+					<td>Бачата</td>
+					<td>Сокол</td>
+					<td>
+						<a href="#">танцы Мытищи</a>
+					</td>
+					<td>Танцы</td>
+					<td>12:30 - 13:30</td>
+					<td>Драньков</td>
+					<td><a href="#">Записаться</a> </td>
+				</tr>
+			</table>
+
+
+		</main>
+		<!--<main id="listings"></main>-->
+	</div>
+
+	<footer>
+		Пидо&reg;, пизда, &trade;, гоми&copy;, мудила
+	</footer>
+
+</body>
+</html>
