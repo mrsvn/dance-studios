@@ -1,0 +1,22 @@
+[
+	{
+		"title": "Бачата в Среду утром",
+		"studio": 199,
+		"subway_station": "Сокол",
+		"tag": "Танцы",
+		"t_start": 750,
+		"t_end": 810,
+		"trainer": "Драньков П.",
+		"num_vacancies": 4
+	},
+	{
+		"title": "Бачата в Среду пиздец рано утром",
+		"studio": 199,
+		"subway_station": "Сокол",
+		"tag": "Танцы",
+		"t_start": 750,
+		"t_end": 880,
+		"trainer": "Драньков П. и сыновья",
+		"num_vacancies": 400
+	}
+]
