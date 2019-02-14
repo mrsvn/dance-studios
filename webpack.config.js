@@ -3,7 +3,8 @@ const path = require('path');
 module.exports = {
     entry: {
         index: './src/js/index.jsx',
-        classes: './src/js/classes.jsx'
+        classes: './src/js/classes.jsx',
+        calendar: './src/js/calendar.jsx'
     },
     mode: 'development',
     // mode: 'production',
