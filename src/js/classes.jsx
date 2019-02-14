@@ -61,4 +61,86 @@ class DateSelector extends React.Component {
   }
 }
 
+class ClassRow extends React.Component {
+  render() {
+
+    let enrollLink;
+
+    if (this.props.content.num_vacancies > 0) {
+      enrollLink = <a href="#">Записаться</a>;
+    }
+    else {
+      enrollLink = <em>мест нет</em>;
+    }
+
+
+    return (
+        <tr>
+          <td>{this.props.content.title}</td>
+          <td>{this.props.content.subway_station}</td>
+          <td>
+            <a href={"/studios/" + this.props.content.studio}>танцы Мытищи</a>
+          </td>
+          <td>{this.props.content.tag}</td>
+          <td>{this.props.content.t_start[0] + ":" + this.props.content.t_start[1] + " — " + this.props.content.t_end[0] + ":" + this.props.content.t_end[1] }</td>
+          <td>{this.props.content.trainer}</td>
+          <td>{enrollLink}</td>
+        </tr>
+    )
+  }
+}
+
+class ClassesTable extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: []
+    };
+  }
+
+
+  componentDidMount() {
+    fetch("/dummy-data/vacancies-la.json").then(response => {
+      return response.json();
+    }).then(data => {
+      this.setState({
+        data: data
+      });
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  render() {
+    const classesRows = [];
+
+    this.state.data.forEach((datum, i) => {
+      classesRows.push(<ClassRow key={i} content={datum} />);
+    });
+
+
+    return (
+
+        <table>
+          <thead><tr>
+            <th>Занятие</th>
+            <th>Метро</th>
+            <th>Студия</th>
+            <th>Направление</th>
+            <th>Время</th>
+            <th>Инструктор</th>
+            <th></th>
+          </tr></thead>
+          <tbody>
+          {classesRows}
+          </tbody>
+        </table>
+
+    )
+  }
+}
+
 ReactDOM.render(<DateSelector/>, document.querySelector('#date-selector-container'));
+ReactDOM.render(<ClassesTable/>, document.querySelector('#classes-table-container'));
