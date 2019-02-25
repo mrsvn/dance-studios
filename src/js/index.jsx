@@ -2,170 +2,304 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: "",
+      password: ""
+    }
+  }
+
+  handleCloseClick(e) {
+    e.preventDefault();
+
+    this.props.onClose();
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    // TODO: validate
+    this.props.onSubmit(this.state.email, this.state.password);
+
+    return false;
+  }
+
+  render() {
+    const style = this.props.visible ? { position:"relative" } : { display: "none" };
+    const disabled = this.props.inProgress || !this.props.visible;
+
+    return <form style={style} className="login-form" onSubmit={e => this.handleSubmit(e)}>
+      <div onClick={e => this.handleCloseClick(e)} style={{textAlign: "right"}}>X</div>
+      <input value={this.state.email} disabled={disabled} onChange={e => this.setState({ email: e.target.value })} placeholder="E-mail"/><br/>
+      <input value={this.state.password} disabled={disabled} onChange={e => this.setState({ password: e.target.value })} type="password" placeholder="Пароль"/><br/>
+      <button type="submit" disabled={disabled}>
+        Войти
+      </button>
+      {
+        this.props.inProgress && <div style={{
+            position: "absolute",
+            background: "rgba(255,255,255,0.5)",
+            top: "0",
+            width: "100%",
+            left: "0",
+            height: "100%"
+          }}>
+          <img style={{
+            width:"120px",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translateX(-50%) translateY(-50%)"
+          }} src={"/img/spinner-cat.gif"} />
+        </div>
+      } {
+        this.props.errorStatus && <div style={{color: "red"}}>{ this.props.errorStatus }</div>
+      }
+    </form>;
+  }
+}
+
+class RegisterForm extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email: "",
+      password: "",
+      passwordConfirm: "",
+      agree: false
+    };
+  }
+
+  handleCloseClick(e) {
+    e.preventDefault();
+
+    this.props.onClose();
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    // TODO: validate
+    const { email, password, passwordConfirm, agree } = this.state;
+
+    if(password === passwordConfirm && agree) {
+      this.props.onSubmit(this.state.email, this.state.password);
+    }
+
+    return false;
+  }
+
+  render() {
+    const style = this.props.visible ? { position: 'relative' } : { display: "none" };
+    const disabled = this.props.inProgress || !this.props.visible;
+
+    return <form style={style} className="registration-form" onSubmit={e => this.handleSubmit(e)}>
+      <div onClick={e => this.handleCloseClick(e)} style={{textAlign: "right", cursor: "pointer"}}>X</div>
+      <input value={this.state.email} disabled={disabled}
+             onChange={e => this.setState({ email: e.target.value })}
+             placeholder="E-mail"/><br/>
+      <input value={this.state.password} disabled={disabled}
+             onChange={e => this.setState({ password: e.target.value })}
+             type="password" placeholder="Пароль"/><br/>
+      <input value={this.state.passwordConfirm} disabled={disabled}
+             onChange={e => this.setState({ passwordConfirm: e.target.value })}
+             type="password" placeholder="Ещё раз пароль"/><br/>
+      <label>
+        <input checked={this.state.agree} disabled={disabled}
+               onChange={e => this.setState({ agree: e.target.checked })}
+               type="checkbox" /> Согласен
+      </label><br/>
+      <button type="submit" disabled={disabled}>
+        Зарегистрироваться
+      </button>
+      {
+        this.props.inProgress && <div style={{
+            position: "absolute",
+            background: "rgba(255,255,255,0.5)",
+            top: "0",
+            width: "100%",
+            left: "0",
+            height: "100%"
+          }}>
+          <img style={{
+            width:"120px",
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translateX(-50%) translateY(-50%)"
+          }} src={"/img/spinner-cat.gif"} />
+        </div>
+      } {
+        this.props.errorStatus && <div style={{color: "red"}}>{ this.props.errorStatus }</div>
+      }
+    </form>;
+  }
+}
+
 class LoginCorner extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loginFormIsShown: false,
-      registrationFormIsShown: false,
-      email: "",
-      password: "",
-      passwordForChecking:"",
-      agreeToConditions: false,
-      username: null,
-      errorMessage: null,
-      requestInProgress: false
+      formShown: null,
+      inProgress: false,
+
+      currentAuth: JSON.parse(localStorage.getItem('currentAuth')),
+
+      loginError: null,
+      registerError: null
     };
   }
 
-  showForm(e) {
-    this.setState({
-      loginFormIsShown: true
-    });
+  setFormShown(newFormShown, e) {
+    if(e) e.preventDefault();
 
+    this.setState({ formShown: newFormShown });
+  }
+
+  handleLoginLinkClick(e) {
     e.preventDefault();
+
+    if(this.state.formShown !== 'login') {
+      this.setFormShown('login');
+    }
+    else {
+      this.setFormShown(null);
+    }
   }
 
-  showRegistrationForm(e) {
-    this.setState({
-      registrationFormIsShown: true
-    });
-
+  handleRegisterLinkClick(e) {
     e.preventDefault();
+
+    if(this.state.formShown !== 'register') {
+      this.setFormShown('register');
+    }
+    else {
+      this.setFormShown(null);
+    }
   }
 
-  hideForm(e){
-    this.setState({
-      loginFormIsShown: false
-        });
-  }
+  sendJsonPost(url, body) {
+    return new Promise((resolve, reject) => {
+      this.setState({ inProgress: true }, () => {
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(body)
+        }).then(response => {
+          this.setState({ inProgress: false });
 
-  hideRegistrationForm (e) {
-    this.setState({
-      registrationFormIsShown: false
-    });
-  }
-
-  handleEmailInput(e) {
-    this.setState({
-        email: e.target.value
-    });
-  }
-
-  handlePasswordInput(e) {
-    this.setState({
-        password: e.target.value
-    });
-  }
-
-  handlePasswordForCheckingInput(e) {
-    this.setState({
-      passwordForChecking: e.target.value
-    });
-  }
-
-  handleAgreeToConditions(e) {
-    this.setState({
-      agreeToConditions: true
-    });
-}
-
-  loadData() {
-    this.setState({
-      requestInProgress: true
-    });
-
-    fetch("/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({email: this.state.email, password: this.state.password})
-    }).then(response => {
-      this.setState({
-        requestInProgress: false
+          return response.json();
+        }).then(resolve, reject);
       });
-      return response.json();
-    }).then(data => {
-      if (data.status === "OK")
-        this.setState({username: data.username, userpic: data.userpic})
-      else if (data.status === "THROTTLED") this.setState({errorMessage: "Превышено ограничение на количество попыток входа"})
-      else this.setState({errorMessage: "Неправильный e-mail или пароль"})
-    }).catch(error => {
-      console.log(error);
     });
+  }
+
+  rememberAuth(newAuth) {
+    this.setState({
+      currentAuth: newAuth,
+      loginError: null,
+      registerError: null
+    }, () => {
+      localStorage.setItem('currentAuth', JSON.stringify(newAuth));
+    });
+  }
+
+  handleLoginSubmit(email, password) {
+    this.sendJsonPost("/login", { email, password }).then(data => {
+      if(data.status === "OK") {
+        this.rememberAuth({
+          email,
+          displayName: data.displayName,
+          userpic: data.userpic
+        });
+      }
+      else if(data.status === "THROTTLED") {
+        this.setState({ loginError: "Превышено ограничение на количество попыток входа" });
+      }
+      else {
+        this.setState({ loginError: "Неправильный e-mail или пароль" })
+      }
+    }).catch(error => {
+      console.log("Error logging in", error);
+    });
+  }
+
+  handleRegisterSubmit(email, password) {
+    this.sendJsonPost("/register", { email, password }).then(data => {
+      if(data.status === "OK") {
+        this.rememberAuth({
+          email,
+          displayName: data.displayName,
+          userpic: data.userpic
+        });
+      }
+      else if(data.status === "THROTTLED") {
+        this.setState({ registerError: "Превышено ограничение на количество попыток регистрации" });
+      }
+      else if(data.status === 'EMAIL_TAKEN') {
+        this.setState({ registerError: "Такой e-mail уже зарегистрирован" });
+      }
+      else {
+        this.setState({ registerError: "Неправильный e-mail или пароль" });
+      }
+    }).catch(error => {
+      console.log("Error logging in", error);
+    });
+  }
+
+  handleLogoutClick(e) {
+    e.preventDefault();
+
+    localStorage.removeItem('currentAuth');
+    document.cookie = "authToken=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+
+    this.setState({ currentAuth: null });
+  }
+
+  renderAuthorized() {
+    const { email, displayName, userpic } = this.state.currentAuth;
+
+    return <div>
+      { displayName }
+      <img src={userpic} style={{ height:"40px", borderRadius: "50%" }}/>
+      <a href="#" onClick={e => this.handleLogoutClick(e)}>Выйти</a>
+    </div>;
+  }
+
+  renderUnauthorized() {
+    return <div className="login-corner">
+      <a href="#" onClick={e => this.handleLoginLinkClick(e)}>
+        Войти
+      </a> / <a href="#" onClick={e => this.handleRegisterLinkClick(e)}>
+        Зарегистрироваться
+      </a>
+
+      <LoginForm visible={this.state.formShown === 'login'}
+                 errorStatus={this.state.loginError}
+                 inProgress={this.state.inProgress}
+                 onClose={() => this.setFormShown(null)}
+                 onSubmit={(email, password) => this.handleLoginSubmit(email, password)} />
+
+      <RegisterForm visible={this.state.formShown === 'register'}
+                    errorStatus={this.state.registerError}
+                    inProgress={this.state.inProgress}
+                    onClose={() => this.setFormShown(null)}
+                    onSubmit={(email, password) => this.handleRegisterSubmit(email, password)} />
+    </div>;
   }
 
   render() {
-    let formStyle;
-    if (this.state.loginFormIsShown) formStyle = {position:"relative"};
-    else formStyle = {display: "none"};
-
-    let registrationFormStyle;
-    if (this.state.registrationFormIsShown) registrationFormStyle = {};
-    else registrationFormStyle = {display: "none"};
-
-
-    if (this.state.username === null) {
-      return (
-          <div className="login-corner">
-            <a href="#"
-               onClick={e => this.showForm(e)}>Войти</a> / <a href="#" onClick={e => this.showRegistrationForm(e)}>Зарегистрироваться</a>
-
-            <div style={formStyle} className="login-form">
-              <div onClick={e => this.hideForm(e)} style={{textAlign: "right"}}>X</div>
-              <input value={this.state.email} onChange={e => this.handleEmailInput(e)} placeholder="E-mail"/><br/>
-              <input value={this.state.password} onChange={e => this.handlePasswordInput(e)} type="password"
-                     placeholder="Пароль"/><br/>
-              <button disabled={(this.state.requestInProgress)} onClick={e => this.loadData(e)}>Войти</button>
-              {(this.state.requestInProgress) ? (
-                  <div style={{
-                    position: "absolute",
-                    background: "rgba(255,255,255,0.5)",
-                    top: "0",
-                    width: "100%",
-                    left: "0",
-                    height: "100%"
-                  }}>
-                    <img style={{
-                      width:"120px",
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translateX(-50%) translateY(-50%)"
-                    }} src={"/img/spinner-cat.gif"} />
-                  </div>
-              ) : null}
-
-              {(this.state.errorMessage === null) ? null : <div style={{color: "red"}}>{this.state.errorMessage}</div>}
-              {/*{ this.state.errorMessage && <div style={{color: "red"}}>Ошибка: {this.state.errorMessage}</div> }*/}
-
-            </div>
-
-
-              <div style={registrationFormStyle} className="registration-form">
-                <div onClick={e => this.hideRegistrationForm(e)} style={{textAlign: "right", cursor: "pointer"}}>X</div>
-                <input value={this.state.email} onChange={e => this.handleEmailInput(e)} placeholder="E-mail"/><br/>
-                <input value={this.state.password} onChange={e => this.handlePasswordInput(e)} type="password"
-                       placeholder="Пароль"/><br/>
-                <input value={this.state.passwordForChecking} onChange={e => this.handlePasswordForCheckingInput(e)} type="password"
-                       placeholder="Ещё раз пароль"/><br/>
-                <label>Согласен <input type="checkbox" checked={this.state.agreeToConditions} onChange={e => this.handleAgreeToConditions(e)} /></label>
-                <button>Зарегистрироваться</button>
-            </div>
-
-          </div>
-      );
-    }
-    else {
-      return (
-          <div>{this.state.username}
-          <img src={this.state.userpic} style={{height:"40px", borderRadius: "50%"}}/></div>
-      )
-    }
+    return this.state.currentAuth ? this.renderAuthorized() : this.renderUnauthorized();
   }
 }
+
 class ListingsContainer extends React.Component {
     render() {
         const listingComponents = [];
