@@ -21,6 +21,12 @@ const DivSpinner = styled.div`
   }
 `;
 
+const FormSpinner = ({ src }) => {
+  return <DivSpinner>
+    <img src={src} />
+  </DivSpinner>;
+};
+
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -64,15 +70,17 @@ class LoginForm extends React.Component {
 
     return <form style={style} className="login-form" onSubmit={e => this.handleSubmit(e)}>
       <div onClick={e => this.handleCloseClick(e)} style={{textAlign: "right"}}>X</div>
-      <input ref={this.emailField} value={this.state.email} disabled={formDisabled} onChange={e => this.setState({ email: e.target.value })} placeholder="E-mail" autoFocus={true}/><br/>
-      <input value={this.state.password} disabled={formDisabled} onChange={e => this.setState({ password: e.target.value })} type="password" placeholder="Пароль"/><br/>
+      <input value={this.state.email} disabled={formDisabled}
+             onChange={e => this.setState({ email: e.target.value })}
+             placeholder="E-mail" ref={this.emailField} /><br/>
+      <input value={this.state.password} disabled={formDisabled}
+             onChange={e => this.setState({ password: e.target.value })}
+             type="password" placeholder="Пароль"/><br/>
       <button type="submit" disabled={formDisabled || this.hasEmptyFields()}>
         Войти
       </button>
       {
-        this.props.inProgress && <DivSpinner>
-          <img src={"/img/spinner-cat.gif"} />
-        </DivSpinner>
+        this.props.inProgress && <FormSpinner src="/img/spinner-cat.gif" />
       } {
         this.props.errorStatus && <div style={{color: "red"}}>{ this.props.errorStatus }</div>
       }
@@ -129,9 +137,9 @@ class RegisterForm extends React.Component {
 
     return <form style={style} className="registration-form" onSubmit={e => this.handleSubmit(e)}>
       <div onClick={e => this.handleCloseClick(e)} style={{textAlign: "right", cursor: "pointer"}}>X</div>
-      <input ref={this.emailField} value={this.state.email} disabled={formDisabled}
+      <input value={this.state.email} disabled={formDisabled}
              onChange={e => this.setState({ email: e.target.value })}
-             placeholder="E-mail"/><br/>
+             placeholder="E-mail" ref={this.emailField} /><br/>
       <input value={this.state.password} disabled={formDisabled}
              onChange={e => this.setState({ password: e.target.value })}
              type="password" placeholder="Пароль"/><br/>
@@ -147,9 +155,7 @@ class RegisterForm extends React.Component {
         Зарегистрироваться
       </button>
       {
-        this.props.inProgress && <DivSpinner>
-          <img src={"/img/spinner-cat.gif"} />
-        </DivSpinner>
+        this.props.inProgress && <FormSpinner src="/img/spinner-cat.gif" />
       } {
         this.props.errorStatus && <div style={{color: "red"}}>{ this.props.errorStatus }</div>
       }
