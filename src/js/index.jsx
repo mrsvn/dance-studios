@@ -2,6 +2,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import styled from 'styled-components';
+
+const DivSpinner = styled.div`
+  position: absolute;
+  background: rgba(255,255,255,0.5);
+  top: 0;
+  width: 100%;
+  left: 0;
+  height: 100%;
+
+  & > img {
+    width: 120px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+`;
+
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -39,22 +58,9 @@ class LoginForm extends React.Component {
         Войти
       </button>
       {
-        this.props.inProgress && <div style={{
-            position: "absolute",
-            background: "rgba(255,255,255,0.5)",
-            top: "0",
-            width: "100%",
-            left: "0",
-            height: "100%"
-          }}>
-          <img style={{
-            width:"120px",
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translateX(-50%) translateY(-50%)"
-          }} src={"/img/spinner-cat.gif"} />
-        </div>
+        this.props.inProgress && <DivSpinner>
+          <img src={"/img/spinner-cat.gif"} />
+        </DivSpinner>
       } {
         this.props.errorStatus && <div style={{color: "red"}}>{ this.props.errorStatus }</div>
       }
@@ -117,22 +123,9 @@ class RegisterForm extends React.Component {
         Зарегистрироваться
       </button>
       {
-        this.props.inProgress && <div style={{
-            position: "absolute",
-            background: "rgba(255,255,255,0.5)",
-            top: "0",
-            width: "100%",
-            left: "0",
-            height: "100%"
-          }}>
-          <img style={{
-            width:"120px",
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translateX(-50%) translateY(-50%)"
-          }} src={"/img/spinner-cat.gif"} />
-        </div>
+        this.props.inProgress && <DivSpinner>
+          <img src={"/img/spinner-cat.gif"} />
+        </DivSpinner>
       } {
         this.props.errorStatus && <div style={{color: "red"}}>{ this.props.errorStatus }</div>
       }
