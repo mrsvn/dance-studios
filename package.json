@@ -2,9 +2,13 @@
   "name": "rt18",
   "version": "1.0.0",
   "description": "### git",
-  "main": "webpack.config.js",
+  "main": "server",
+  "scripts": {
+    "start": "node server"
+  },
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mongodb": "^3.1.13"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -16,9 +20,6 @@
     "webpack-cli": "^3.1.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC"

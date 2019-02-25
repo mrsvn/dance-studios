@@ -1,7 +1,11 @@
 const path = require('path');
 const express = require('express');
 
+const MongoClient = require('mongodb').MongoClient
+
 const app = express();
+
+let db;
 
 // app.get('/', (req, res) => {
 //     res.send('Hello, world!');
@@ -74,10 +78,29 @@ app.post('/register', (req, res) => {
             result: 'OK'
         }));
     }
-})
+});
+
+app.get('/v1/studios/:region', (req, res) => {
+  const region = req.params.region;
+
+  db.collection('studios').find({ region: region }).toArray().then(data => {
+    res.status(200).send(JSON.stringify({
+      numTotal: Object.keys(data).length,
+      studios: data
+    }));
+  });
+});
 
 app.use('/', express.static(path.join(__dirname, '..')));
 
-const port = 3000;
+MongoClient.connect('mongodb://localhost:27017/dancer', { useNewUrlParser: true }, (err, client) => {
+    if(err) {
+        throw err;
+    }
 
-app.listen(port, () => console.log(`Listening on port \x1b[1m${port}\x1b[0m.`))
+    db = client.db('dancer');
+
+    const port = 3000;
+
+    app.listen(port, () => console.log(`Listening on port \x1b[1m${port}\x1b[0m.`));
+});

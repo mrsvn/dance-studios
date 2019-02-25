@@ -110,7 +110,8 @@ class LoginCorner extends React.Component {
     if (this.state.username === null) {
       return (
           <div className="login-corner">
-            <a href="#" onClick={e => this.showForm(e)}>Войти</a> / <a href="#" onClick={e => this.showRegistrationForm(e)}>Зарегистрироваться</a>
+            <a href="#"
+               onClick={e => this.showForm(e)}>Войти</a> / <a href="#" onClick={e => this.showRegistrationForm(e)}>Зарегистрироваться</a>
 
             <div style={formStyle} className="login-form">
               <div onClick={e => this.hideForm(e)} style={{textAlign: "right"}}>X</div>
@@ -215,7 +216,7 @@ class Listing extends React.Component {
                   </div>
                 </div>
                 <div className={ 'p-link' }>
-                  <a href="#">Подробнее &rarr;</a>
+                  <a href={`/studio/${ content.urlBit}`}>Подробнее &rarr;</a>
                 </div>
               </div>
             </div>
@@ -591,6 +592,7 @@ class Listings extends React.Component {
 
     this.state = {
       data: [],
+      numTotal: null,
       searchQuery: "",
       filterLocation: null,
       filterStyle: null,
@@ -623,11 +625,12 @@ class Listings extends React.Component {
   }
 
   componentDidMount() {
-    fetch("/dummy-data/los-angeles.json").then(response => {
+    fetch("/v1/studios/los-angeles").then(response => {
       return response.json();
     }).then(data => {
       this.setState({
-        data: data
+        data: data.studios,
+        numTotal: data.numTotal
       });
     }).catch(error => {
       console.log(error);
@@ -658,7 +661,7 @@ class Listings extends React.Component {
 
 
           <div className="postings-count">
-            Найдено <span>798</span> студий
+            Найдено <span>{ this.state.numTotal }</span> студий
           </div>
 
           <ListingsContainer data={filteredData}/>
