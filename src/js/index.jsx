@@ -433,58 +433,12 @@ class ListingFilter extends React.Component {
           </div>
 
           <div id="postings-filters-form">
-            {/*<div className="filter-location">*/}
-              {/*<span className="caption">Метро:</span>*/}
-              {/*<a href="#">Пердановская</a>*/}
-              {/*<a href="#">Дристановская</a>*/}
-              {/*<a href="#" className="current">Поносковский проспект</a>*/}
-              {/*<a href="#">Малые обоссыши</a>*/}
-            {/*</div>*/}
-            {/*<div className="filter-tags">*/}
-              {/*<span className="caption">Виды занятий:</span>*/}
-              {/*<div className="filter-tags-container">*/}
-                {/*<a href="#" className="chosen">пидор</a>*/}
-                {/*<a href="#" className="chosen">пизда</a>*/}
-                {/*<a href="#">туз</a>*/}
-                {/*<a href="#">малафья</a>*/}
-                {/*<a href="#" className="chosen">гомик</a>*/}
-                {/*<a href="#">мудила</a>*/}
-                {/*<a href="#">пилотка</a>*/}
-                {/*<a href="#" className="chosen">манда</a>*/}
-                {/*<a href="#">анус</a>*/}
-                {/*<a href="#">вагина</a>*/}
-                {/*<a href="#">путана</a>*/}
-                {/*<a href="#">пидрила</a>*/}
-                {/*<a href="#">шалава</a>*/}
-                {/*<a href="#">хуила</a>*/}
-                {/*<a href="#">мошонка</a>*/}
-                {/*<a href="#">елда</a>*/}
-              {/*</div>*/}
-            {/*</div>*/}
-            {/*<div className="filter-location">*/}
-              {/*<span className="caption">Город:</span>*/}
-              {/*<a href="#" className="current">Москва</a>*/}
-              {/*<a href="#">Чернобыль</a>*/}
-              {/*<a href="#">Могилев</a>*/}
-            {/*</div>*/}
             <select onChange={e => this.props.onStyleChange(e.target.value)}>
               <option disabled={true} selected={true}>Направление</option>
-              <option>пидор</option>
-              <option>пизда</option>
-              <option>туз</option>
-              <option>малафья</option>
-              <option>гомик</option>
-              <option>мудила</option>
-              <option>пилотка</option>
-              <option>манда</option>
-              <option>анус</option>
-              <option>вагина</option>
-              <option>путана</option>
-              <option>пидрила</option>
-              <option>шалава</option>
-              <option>хуила</option>
-              <option>мошонка</option>
-              <option>елда</option>
+              <option>джаз</option>
+              <option>модерн</option>
+              <option>джаз-модерн</option>
+              <option>бачата</option>
             </select>
             <select onChange={e => this.props.onLocationChange(e.target.value)}>
               <option disabled={true} selected={true}>Станция метро</option>
