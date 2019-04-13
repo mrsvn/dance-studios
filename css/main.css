@@ -167,6 +167,8 @@ header .login-form {
 	padding: 1em;
 	position: absolute;
 	border: 1px black dotted;
+
+	z-index: 10;
 }
 
 header .registration-form {
@@ -174,6 +176,8 @@ header .registration-form {
 	padding: 1em;
 	position: absolute;
 	border: 1px black dotted;
+
+	z-index: 10;
 }
 
 header nav {
