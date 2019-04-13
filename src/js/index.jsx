@@ -8,22 +8,6 @@ import { subwayMoscow } from "./util/subway";
 
 import { LoginCorner } from "./containers/loginCorner";
 
-class ListingsContainer extends React.Component {
-    render() {
-        const listingComponents = [];
-
-        this.props.data.forEach(datum => {
-            listingComponents.push(<Listing content={datum} />);
-        });
-
-        return (
-            <div className={'postings-container'}>
-                {listingComponents}
-            </div>
-        )
-    }
-}
-
 class Listing extends React.Component {
     render() {
         const content = this.props.content;
@@ -139,7 +123,7 @@ class ListingFilter extends React.Component {
 
 }
 
-class Listings extends React.Component {
+class ListingsPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -217,7 +201,10 @@ class Listings extends React.Component {
             Найдено <span>{ this.state.numTotal }</span> студий
           </div>
 
-          <ListingsContainer data={filteredData}/>
+
+          <div className={'postings-container'}>
+            { filteredData.map(datum => <Listing content={datum} />) }
+          </div>
 
           <div id="postings-more">
             <a href="#">Следующие 20</a>
@@ -229,7 +216,7 @@ class Listings extends React.Component {
 
 window.addEventListener('load', () => {
     ReactDOM.render(<LoginCorner/>, document.querySelector('#login-corner'));
-    ReactDOM.render(<Listings/>, document.querySelector('#listings'));
+    ReactDOM.render(<ListingsPage/>, document.querySelector('#listings'));
 
     const gMapCanvas = document.getElementById('gmap_canvas');
 
