@@ -1,6 +1,8 @@
 const path = require('path');
 const express = require('express');
 
+const cookieParser = require('cookie-parser');
+
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 // const uuid4 = require('uuid/v4');
@@ -16,6 +18,7 @@ let db;
 // });
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.post('/login', (req, res) => {
     const email = req.body.email, password = req.body.password;
@@ -33,9 +36,17 @@ app.post('/login', (req, res) => {
         crypto.randomBytes(48, (err, buf) => {
           if(err) throw err;
 
+          const expiresAt = new Date();
+          expiresAt.setDate(expiresAt.getDate() + 30);
+
           const authToken = buf.toString('hex');
 
-          res.status(200).cookie('authToken', authToken).send(JSON.stringify({
+          db.collection('users').updateOne(
+            { _id: userDoc._id },
+            { $push: { authTokens: { value: authToken, expiresAt } } }
+          );
+
+          res.status(200).cookie('email', userDoc.email).cookie('authToken', authToken).send(JSON.stringify({
             status: 'OK',
             token: authToken,
             displayName: userDoc.displayName,
@@ -100,6 +111,54 @@ app.post('/register', (req, res) => {
       });
     }
   })
+});
+
+app.get('/dashboard', (req, res) => {
+  const { authToken, email } = req.cookies;
+
+  const clearAuthCookies = () => {
+    res.clearCookie('email');
+    res.clearCookie('authToken');
+  };
+
+  if(!email || !authToken) {
+    clearAuthCookies();
+    res.end(`Unauthorized.`);
+  }
+  else {
+    let resBody = `<p>E-mail: <strong>${email}</strong>\n<p>Token: <strong>${authToken}</strong>\n`;
+
+    db.collection('users').findOne({ email: email }).then(userDoc => {
+      // TODO: clean invalid and expired tokens up
+
+      let tokenDoc = null;
+
+      userDoc.authTokens.forEach(tDoc => {
+        console.log(tDoc);
+
+        if(tDoc.value === authToken) {
+          tokenDoc = tDoc;
+          return false;
+        }
+      });
+
+      if(!tokenDoc) {
+        clearAuthCookies();
+        resBody += `<p>Unknown token`;
+      }
+      else if(tokenDoc.expiresAt < new Date()) {
+        clearAuthCookies();
+        resBody += `<p>Expired token`;
+      }
+      else {
+        delete userDoc.authTokens;
+
+        res.write(`<p>Here's you:<pre>${JSON.stringify(userDoc, null, 4)}</pre>`);
+      }
+
+      res.write(resBody);
+    }).catch(err => console.log(err));
+  }
 });
 
 app.get('/studios', (req, res) => {
