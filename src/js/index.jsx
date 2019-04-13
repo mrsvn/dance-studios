@@ -7,8 +7,9 @@ import styled from 'styled-components';
 import { subwayMoscow } from "./util/subway";
 
 import { LoginCorner } from "./containers/loginCorner";
+import { RatingSlider } from "./components/ratingSlider";
 
-class Listing extends React.Component {
+class StudioListing extends React.Component {
     render() {
         const content = this.props.content;
 
@@ -50,40 +51,7 @@ class Listing extends React.Component {
     }
 }
 
-class RatingSlider extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      sliderValue: 25
-    };
-  }
-
-  sliderChange(newValue) {
-    this.setState({
-      sliderValue: newValue
-    });
-
-    this.props.onChange(newValue / 10);
-  }
-
-  render() {
-    return (
-        <span>
-          <span>{(this.state.sliderValue / 10).toFixed(1)}</span>
-          <input
-              onChange={e => this.sliderChange(e.target.value)}
-              type="range"
-              min="0"
-              max="50"
-              value={this.state.sliderValue}
-          />
-        </span>
-    );
-  }
-}
-
-class ListingFilter extends React.Component {
+class StudiosFilter extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -191,7 +159,7 @@ class ListingsPage extends React.Component {
 
     return (
         <>
-          <ListingFilter onQueryChange={q => this.handleQueryChange(q)}
+          <StudiosFilter onQueryChange={q => this.handleQueryChange(q)}
                          onLocationChange={q => this.handleLocationChange(q)}
                          onStyleChange={q => this.handleStyleChange(q)}
                          onRatingChange={q => this.handleRatingChange(q)} />
@@ -203,7 +171,7 @@ class ListingsPage extends React.Component {
 
 
           <div className={'postings-container'}>
-            { filteredData.map(datum => <Listing content={datum} />) }
+            { filteredData.map(datum => <StudioListing content={datum} />) }
           </div>
 
           <div id="postings-more">
