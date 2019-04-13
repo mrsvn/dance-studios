@@ -167,6 +167,9 @@ class LoginCorner extends React.Component {
   constructor(props) {
     super(props);
 
+    // TODO: purge auth data from localStorage if auth cookies are gone
+    // TODO: delete the token on the server when logging out
+
     this.state = {
       formShown: null,
       inProgress: false,
