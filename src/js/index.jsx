@@ -6,28 +6,7 @@ import styled from 'styled-components';
 
 import { subwayMoscow } from "./util/subway";
 
-const DivSpinner = styled.div`
-  position: absolute;
-  background: rgba(255,255,255,0.5);
-  top: 0;
-  width: 100%;
-  left: 0;
-  height: 100%;
-
-  & > img {
-    width: 120px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-  }
-`;
-
-const FormSpinner = ({ src }) => {
-  return <DivSpinner>
-    <img src={src} />
-  </DivSpinner>;
-};
+import { FormSpinner } from "./components/formSpinner";
 
 class LoginForm extends React.Component {
   constructor(props) {
