@@ -202,7 +202,12 @@ app.post('/v1/profile', (req, res) => {
     });
 
     if(isAuthorized) {
-      db.collection('users').updateOne({ email: email }, { $set: req.body }).then(result => {
+      const userUpdate = Object.assign({}, req.body, { isAdmin: undefined, _id: undefined });
+
+      delete userUpdate['isAdmin'];
+      delete userUpdate['_id'];
+
+      db.collection('users').updateOne({ email: email }, { $set: userUpdate }).then(result => {
         if(result) {
           res.send({ status: 'OK' });
         }

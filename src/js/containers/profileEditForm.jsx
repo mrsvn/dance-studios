@@ -21,6 +21,24 @@ class ProfileEditForm extends React.Component {
         });
     }
 
+    handleSubmit(e) {
+        e.preventDefault();
+
+        fetch("/v1/profile", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(this.state)
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            console.log(data);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
     render() {
         return <form action="/v1/profile" method="POST">
             <p>
@@ -56,7 +74,7 @@ class ProfileEditForm extends React.Component {
                 </select>
             </p>
             <p>
-                <button type="submit">Сохранить изменения</button>
+                <button type="submit" onClick={e => this.handleSubmit(e)}>Сохранить изменения</button>
             </p>
             <pre>
                 {JSON.stringify(this.state, null, 4)}
