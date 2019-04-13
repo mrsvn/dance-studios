@@ -1,5 +1,7 @@
 import React from "react";
 
+import { YMaps, Map, GeoObject } from 'react-yandex-maps';
+
 import { StudioFilters } from "../components/studioFilters";
 import { StudioListing } from "../components/studioListing";
 
@@ -69,9 +71,23 @@ class StudiosListPage extends React.Component {
             }
         });
 
+        // TODO: fix balloonContent not being shown
+        // TODO: center map automatically
+
         return (
             <>
-                <div className="map-top" id="ymap" style={{background: 'pink'}}></div>
+                <YMaps>
+                    <Map className="map-top" defaultState={{ center: [34.0619261, -118.29612320000001], zoom: 11 }}>
+                        {
+                            filteredData.map(datum => <GeoObject geometry={{
+                                type: 'Point',
+                                coordinates: datum.mapCoords
+                            }} properties={{
+                                balloonContent: `<strong>${datum.title}</strong>`
+                            }}/>)
+                        }
+                    </Map>
+                </YMaps>
 
                 <main id="listings">
                     <StudioFilters onQueryChange={q => this.handleQueryChange(q)}
