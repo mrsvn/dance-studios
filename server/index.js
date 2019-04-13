@@ -165,6 +165,28 @@ app.get('/dashboard', (req, res) => {
   }
 });
 
+app.get('/v1/profile', (req, res) => {
+  const email = req.cookies.email;
+  const authToken = req.cookies.authToken;
+
+  db.collection('users').findOne({ email: email }).then(userDoc => {
+    let isAuthorized = false;
+
+    userDoc.authTokens.forEach(token => {
+      if(token.value === authToken) {
+        isAuthorized = true;
+      }
+    });
+
+    if(isAuthorized) {
+      res.send(Object.assign({}, userDoc, { authTokens: undefined } ));
+    }
+    else {
+      res.status(403).send({ error: 'UNAUTHORIZED' });
+    }
+  });
+});
+
 app.get('/studios', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
