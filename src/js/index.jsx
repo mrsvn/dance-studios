@@ -9,7 +9,7 @@ import { StudiosListPage } from "./containers/studiosListPage";
 
 window.addEventListener('load', () => {
     ReactDOM.render(<LoginCorner/>, document.querySelector('#login-corner'));
-    ReactDOM.render(<StudiosListPage/>, document.querySelector('#listings'));
+    ReactDOM.render(<StudiosListPage/>, document.querySelector('#studio-list-page'));
 
     const gMapCanvas = document.getElementById('gmap_canvas');
 
