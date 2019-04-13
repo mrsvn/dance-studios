@@ -18,6 +18,7 @@ let db;
 // });
 
 app.use(express.json());
+app.use(express.urlencoded());
 app.use(cookieParser());
 
 app.post('/login', (req, res) => {
@@ -180,6 +181,35 @@ app.get('/v1/profile', (req, res) => {
 
     if(isAuthorized) {
       res.send(Object.assign({}, userDoc, { authTokens: undefined } ));
+    }
+    else {
+      res.status(403).send({ error: 'UNAUTHORIZED' });
+    }
+  });
+});
+
+app.post('/v1/profile', (req, res) => {
+  const email = req.cookies.email;
+  const authToken = req.cookies.authToken;
+
+  db.collection('users').findOne({ email: email }).then(userDoc => {
+    let isAuthorized = false;
+
+    userDoc.authTokens.forEach(token => {
+      if(token.value === authToken) {
+        isAuthorized = true;
+      }
+    });
+
+    if(isAuthorized) {
+      db.collection('users').updateOne({ email: email }, { $set: req.body }).then(result => {
+        if(result) {
+          res.send({ status: 'OK' });
+        }
+        else {
+          res.status(500).send({ status: 'ERROR' });
+        }
+      });
     }
     else {
       res.status(403).send({ error: 'UNAUTHORIZED' });
