@@ -4,7 +4,8 @@ module.exports = {
     entry: {
         index: './src/js/index.jsx',
         classes: './src/js/classes.jsx',
-        calendar: './src/js/calendar.jsx'
+        calendar: './src/js/calendar.jsx',
+        dashboard: './src/js/dashboard.jsx'
     },
     mode: 'development',
     // mode: 'production',
