@@ -96,7 +96,11 @@ app.post('/register', (req, res) => {
         const userDoc = {
           email: email,
           pwdHash: pwdHash,
-          displayName: email,
+          firstName: email,
+          lastName: "",
+          gender: "female",
+          birthDate: "1970-01-01",
+          city: "los-angeles",
           userpic: null,
           isAdmin: false
         };
