@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { BrowserRouter, Link, Route } from "react-router-dom";
+import { BrowserRouter, Link, NavLink, Route } from "react-router-dom";
 
 import styled from 'styled-components';
 
@@ -30,15 +30,15 @@ class AppRouter extends React.Component {
 			</span>
 
                 <nav>
-                    <Link to="/" className="nav-item">Главная</Link>
-                    <Link to="/studios" className="nav-item nav-current">Студии</Link>
-                    <Link to="/classes" className="nav-item">Занятия</Link>
+                    <NavLink to="/" exact className="nav-item" activeClassName="nav-current">Главная</NavLink>
+                    <NavLink to="/studios" className="nav-item" activeClassName="nav-current">Студии</NavLink>
+                    <NavLink to="/classes" className="nav-item" activeClassName="nav-current">Занятия</NavLink>
                 </nav>
 
                 <LoginCorner/>
             </header>
 
-            <Route path="/" exact component={() => <p>Under construction 🏠</p>} />
+            <Route exact path="/" component={() => <p>Under construction 🏠</p>} />
             <Route path="/studios/" component={StudiosListPage} />
             <Route path="/classes/" component={() => <p>Under construction 🌝</p>} />
         </BrowserRouter>;
