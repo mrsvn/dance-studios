@@ -1,4 +1,26 @@
 
+## Как запускать
+
+1. Сервер MongoDB:
+
+   ```bash
+   $ mkdir -p mongodb  # если нет
+   $ mongod -f mongod.conf
+   ```
+
+2. webpack:
+
+   ```bash
+   $ ./node_modules/.bin/webpack --watch
+   ```
+
+3. Сервер на Node.js:
+
+   ```bash
+   $ node server/
+   ```
+
+
 ## Инструменты
 
 ### git
