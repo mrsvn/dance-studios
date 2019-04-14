@@ -42,7 +42,7 @@ class ProfileEditForm extends React.Component {
     render() {
         return <form action="/v1/profile" method="POST">
             <p>
-                <img style={{width: '164px', height: '164px'}} src={this.state.userpic || "http://placehold.jp/164x164.png"} /><br/>
+                <img style={{width: '184px', height: '184px'}} src={this.state.userpic || "http://placehold.jp/184x184.png"} /><br/>
                 <input type="file" name="userpic" onChange={e => this.handleUserpicChange(e)} />
             </p>
             <p>
