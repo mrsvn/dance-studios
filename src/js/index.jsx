@@ -2,14 +2,49 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import { BrowserRouter, Link, Route } from "react-router-dom";
+
 import styled from 'styled-components';
 
 import { LoginCorner } from "./containers/loginCorner";
 import { StudiosListPage } from "./containers/studiosListPage";
 
+class AppRouter extends React.Component {
+    render() {
+        return <>
+            <header>
+                <img src="/img/logo-brand.png" className="brand-logo" />
+
+                <span className="brand-title">
+				NaSheste
+				<span className="loc-options">
+					<a href="#" className="loc-opt-current">Лос-Анджелес</a>
+					<div className="loc-opt-dropdown" style={{display: 'none'}}>
+						<a href="#" data-loc-value="los-angeles" style={{display: 'none'}}>Лос-Анджелес</a>
+						<a href="#" data-loc-value="st-tropez">Сен-Тропе</a>
+						<a href="#" data-loc-value="miami">Майами</a>
+						<a href="#" data-loc-value="volzhsky">Волжский</a>
+						<a href="#" data-loc-value="ivanovo">Иваново</a>
+					</div>
+				</span>
+			</span>
+
+                <nav>
+                    <a href="#" className="nav-item">Рекомендации</a>
+                    <span className="nav-item nav-current">Студии</span>
+                    <a href="#" className="nav-item">Занятия</a>
+                </nav>
+
+                <LoginCorner/>
+            </header>
+
+            <StudiosListPage/>
+        </>;
+    }
+}
+
 window.addEventListener('load', () => {
-    ReactDOM.render(<LoginCorner/>, document.querySelector('#login-corner'));
-    ReactDOM.render(<StudiosListPage/>, document.querySelector('#studio-list-page'));
+    ReactDOM.render(<AppRouter/>, document.querySelector('.wrap-page'));
 
     const gMapCanvas = document.getElementById('gmap_canvas');
 
