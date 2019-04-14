@@ -48,15 +48,6 @@ class AppRouter extends React.Component {
 window.addEventListener('load', () => {
     ReactDOM.render(<AppRouter/>, document.querySelector('.wrap-page'));
 
-    const gMapCanvas = document.getElementById('gmap_canvas');
-
-    gMapCanvas.src = gMapCanvas.dataset.src;
-
-    gMapCanvas.onload = () => {
-        document.getElementById('gmap-spinner').style.display = 'none';
-    };
-
-
     // document.querySelector('#postings-more').onclick = e => {
     //     e.preventDefault();
     //     loadData();
