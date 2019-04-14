@@ -11,7 +11,7 @@ import { StudiosListPage } from "./containers/studiosListPage";
 
 class AppRouter extends React.Component {
     render() {
-        return <>
+        return <BrowserRouter>
             <header>
                 <img src="/img/logo-brand.png" className="brand-logo" />
 
@@ -30,16 +30,18 @@ class AppRouter extends React.Component {
 			</span>
 
                 <nav>
-                    <a href="#" className="nav-item">Рекомендации</a>
-                    <span className="nav-item nav-current">Студии</span>
-                    <a href="#" className="nav-item">Занятия</a>
+                    <Link to="/" className="nav-item">Главная</Link>
+                    <Link to="/studios" className="nav-item nav-current">Студии</Link>
+                    <Link to="/classes" className="nav-item">Занятия</Link>
                 </nav>
 
                 <LoginCorner/>
             </header>
 
-            <StudiosListPage/>
-        </>;
+            <Route path="/" exact component={() => <p>Under construction 🏠</p>} />
+            <Route path="/studios/" component={StudiosListPage} />
+            <Route path="/classes/" component={() => <p>Under construction 🌝</p>} />
+        </BrowserRouter>;
     }
 }
 
