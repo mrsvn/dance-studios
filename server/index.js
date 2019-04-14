@@ -222,7 +222,15 @@ app.post('/v1/profile', (req, res) => {
   });
 });
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
 app.get('/studios', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.get('/classes', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 

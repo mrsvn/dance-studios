@@ -8,6 +8,7 @@ import styled from 'styled-components';
 
 import { LoginCorner } from "./containers/loginCorner";
 import { StudiosListPage } from "./containers/studiosListPage";
+import { ClassesTablePage } from "./containers/classesTablePage";
 
 class AppRouter extends React.Component {
     render() {
@@ -40,7 +41,7 @@ class AppRouter extends React.Component {
 
             <Route exact path="/" component={() => <p>Under construction 🏠</p>} />
             <Route path="/studios/" component={StudiosListPage} />
-            <Route path="/classes/" component={() => <p>Under construction 🌝</p>} />
+            <Route path="/classes/" component={ClassesTablePage} />
         </BrowserRouter>;
     }
 }
