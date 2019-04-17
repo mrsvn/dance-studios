@@ -6,7 +6,8 @@ module.exports = {
         calendar: './src/js/calendar.jsx',
         dashboard: './src/js/dashboard.jsx',
         calendar: './src/js/calendar.jsx',
-        studioPage: './src/js/studio-page.jsx'
+        studioPage: './src/js/studio-page.jsx',
+        imageUpload: './src/js/image-upload.jsx'
     },
     mode: 'development',
     // mode: 'production',
