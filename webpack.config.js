@@ -4,7 +4,9 @@ module.exports = {
     entry: {
         index: './src/js/index.jsx',
         calendar: './src/js/calendar.jsx',
-        dashboard: './src/js/dashboard.jsx'
+        dashboard: './src/js/dashboard.jsx',
+        calendar: './src/js/calendar.jsx',
+        studioPage: './src/js/studio-page.jsx'
     },
     mode: 'development',
     // mode: 'production',
