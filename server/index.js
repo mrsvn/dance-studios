@@ -8,7 +8,7 @@ const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 // const uuid4 = require('uuid/v4');
 
-const MongoClient = require('mongodb').MongoClient
+const MongoClient = require('mongodb').MongoClient;
 
 const app = express();
 
@@ -221,6 +221,43 @@ app.post('/v1/profile', (req, res) => {
     else {
       res.status(403).send({ error: 'UNAUTHORIZED' });
     }
+  });
+});
+
+app.get('/v1/admin/users', (req, res) => {
+  const email = req.cookies.email;
+  const authToken = req.cookies.authToken;
+
+  db.collection('users').findOne({ email: email }).then(user => {
+    if(!user && !user.isAdmin) {
+      res.status(403).send({ status: 'UNAUTHORIZED' });
+      return;
+    }
+
+    let isAuthorized = false;
+
+    user.authTokens.forEach(token => {
+      if(token.value === authToken) {
+        isAuthorized = true;
+      }
+    });
+
+    if(!isAuthorized) {
+      res.status(403).send({ status: 'UNAUTHORIZED' });
+      return;
+    }
+
+    db.collection('users').find({}).toArray((err, users) => {
+      if(err) {
+        console.log(err);
+        return;
+      }
+
+      res.send({
+        status: 'OK',
+        users: users
+      });
+    })
   });
 });
 
