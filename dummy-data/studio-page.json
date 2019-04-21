@@ -1,0 +1,37 @@
+{
+  "title": "Studio 191 Чертаново",
+  "picture": "http://placehold.jp/3000x800.png",
+  "rating": 9.2,
+  "openingHours": [
+    ["07:00", "20:00"],
+    ["07:00", "20:00"],
+    ["07:00", "20:00"],
+    ["07:00", "20:00"],
+    ["07:00", "20:00"],
+    ["07:00", "21:00"],
+    ["07:00", "21:00"]
+  ],
+  "reviews": [
+    {
+      "userpic": "http://placehold.jp/100x100.png",
+      "username": "Gennady1998",
+      "textContent": "Заебись, четко!",
+      "rating": 8,
+      "date": "2019-02-15"
+    },
+    {
+      "userpic": "http://placehold.jp/100x100.png",
+      "username": "Михась",
+      "textContent": "Так себе",
+      "rating": 4,
+      "date": "2019-02-14"
+    },
+    {
+      "userpic": "http://placehold.jp/100x100.png",
+      "username": "Славик",
+      "textContent": "Тренер сказал что я жирный",
+      "rating": 4,
+      "date": "2019-02-11"
+    }
+  ]
+}
