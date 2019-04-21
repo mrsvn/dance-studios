@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 
 const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload');
 
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
@@ -20,6 +21,7 @@ let db;
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cookieParser());
+app.use(fileUpload({ limits: { fileSize: 50 * 1024 * 1024 } }));
 
 app.post('/login', (req, res) => {
     const email = req.body.email, password = req.body.password;
@@ -243,6 +245,16 @@ app.get('/v1/studios/:region', (req, res) => {
       studios: data
     }));
   });
+});
+
+app.post('/upload-images', (req, res) => {
+  Object.keys(req.files).forEach(filename => {
+    req.files[filename].mv(path.join(__dirname, 'files1488', filename));
+  });
+
+  setTimeout(() => {
+    res.send("OK");
+  }, 500);
 });
 
 app.use('/', express.static(path.join(__dirname, '..')));
