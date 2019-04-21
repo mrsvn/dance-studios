@@ -18,7 +18,9 @@
         ],
         "region": "ivanovo",
         "urlBit": "0-i-jeto-oficery",
-        "title": "Lorem Ipsum 00"
+        "title": "Lorem Ipsum 00",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -39,7 +41,9 @@
         ],
         "region": "ivanovo",
         "urlBit": "1-ja-polkovnik",
-        "title": "Lorem Ipsum 01"
+        "title": "Lorem Ipsum 01",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -60,7 +64,9 @@
         ],
         "region": "ivanovo",
         "urlBit": "2-ty-zhivjosh-poslednij-chas",
-        "title": "Lorem Ipsum 02"
+        "title": "Lorem Ipsum 02",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -81,7 +87,9 @@
         ],
         "region": "ivanovo",
         "urlBit": "3-skolko-istrebitelej-suka",
-        "title": "Lorem Ipsum 03"
+        "title": "Lorem Ipsum 03",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -102,7 +110,9 @@
         ],
         "region": "ivanovo",
         "urlBit": "4-nu-pered-snom",
-        "title": "Lorem Ipsum 04"
+        "title": "Lorem Ipsum 04",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -123,7 +133,9 @@
         ],
         "region": "ivanovo",
         "urlBit": "5-na-rabotu",
-        "title": "Lorem Ipsum 05"
+        "title": "Lorem Ipsum 05",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -144,7 +156,9 @@
         ],
         "region": "ivanovo",
         "urlBit": "6-huj-bljad-budesh",
-        "title": "Lorem Ipsum 06"
+        "title": "Lorem Ipsum 06",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -165,7 +179,9 @@
         ],
         "region": "ivanovo",
         "urlBit": "7-da-ja-nichego-net-net",
-        "title": "Lorem Ipsum 07"
+        "title": "Lorem Ipsum 07",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -186,7 +202,9 @@
         ],
         "region": "ivanovo",
         "urlBit": "8-nu-chjo-ty",
-        "title": "Lorem Ipsum 08"
+        "title": "Lorem Ipsum 08",
+        "managerEmail": "",
+        "isShown": true
     },
     {
         "description": [
@@ -207,7 +225,9 @@
         ],
         "region": "los-angeles",
         "urlBit": "9-da-ja-nichego-net-net",
-        "title": "Lorem Ipsum 09"
+        "title": "Lorem Ipsum 09",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -228,7 +248,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "10-i-jeto-oficery",
-        "title": "Lorem Ipsum 10"
+        "title": "Lorem Ipsum 10",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -249,7 +271,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "11-da-ja-nichego-net-net",
-        "title": "Lorem Ipsum 11"
+        "title": "Lorem Ipsum 11",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -270,7 +294,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "12-s-odnoj-duroj",
-        "title": "Lorem Ipsum 12"
+        "title": "Lorem Ipsum 12",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -291,7 +317,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "13-sladkij-hleb",
-        "title": "Lorem Ipsum 13"
+        "title": "Lorem Ipsum 13",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -312,7 +340,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "14-nu-takaja-pesnja-prosto",
-        "title": "Lorem Ipsum 14"
+        "title": "Lorem Ipsum 14",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -333,7 +363,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "15-vot-tak-ja-na-turnichok",
-        "title": "Lorem Ipsum 15"
+        "title": "Lorem Ipsum 15",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -354,7 +386,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "16-nu-pered-snom",
-        "title": "Lorem Ipsum 16"
+        "title": "Lorem Ipsum 16",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -375,7 +409,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "17-sladkij-hleb",
-        "title": "Lorem Ipsum 17"
+        "title": "Lorem Ipsum 17",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -396,7 +432,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "18-na-rabotu",
-        "title": "Lorem Ipsum 18"
+        "title": "Lorem Ipsum 18",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -417,7 +455,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "19-fu-bljad-suka",
-        "title": "Lorem Ipsum 19"
+        "title": "Lorem Ipsum 19",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -438,7 +478,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "20-ja-tebja-sejchas-ubju",
-        "title": "Lorem Ipsum 20"
+        "title": "Lorem Ipsum 20",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -459,7 +501,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "21-ja-tebe-sejchas-rasskazhu",
-        "title": "Lorem Ipsum 21"
+        "title": "Lorem Ipsum 21",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -480,7 +524,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "22-chem-vilkoj-chto-li",
-        "title": "Lorem Ipsum 22"
+        "title": "Lorem Ipsum 22",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -501,7 +547,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "23-nu-chjo-ty",
-        "title": "Lorem Ipsum 23"
+        "title": "Lorem Ipsum 23",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -522,7 +570,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "24-chto-chto-sluchilosja-to",
-        "title": "Lorem Ipsum 24"
+        "title": "Lorem Ipsum 24",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -543,7 +593,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "25-aaaa-huj-tebe",
-        "title": "Lorem Ipsum 25"
+        "title": "Lorem Ipsum 25",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -564,7 +616,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "26-postav-tarelku-idi-mojsja",
-        "title": "Lorem Ipsum 26"
+        "title": "Lorem Ipsum 26",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -585,7 +639,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "27-nu-chjo-ty",
-        "title": "Lorem Ipsum 27"
+        "title": "Lorem Ipsum 27",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -606,7 +662,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "28-sidim-jopta-sidim",
-        "title": "Lorem Ipsum 28"
+        "title": "Lorem Ipsum 28",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -627,7 +685,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "29-vdvojom-sidim-tut-bljad",
-        "title": "Lorem Ipsum 29"
+        "title": "Lorem Ipsum 29",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -648,7 +708,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "30-vyzyval",
-        "title": "Lorem Ipsum 30"
+        "title": "Lorem Ipsum 30",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -669,7 +731,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "31-da-ja-nichego-net-net",
-        "title": "Lorem Ipsum 31"
+        "title": "Lorem Ipsum 31",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -690,7 +754,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "32-poshjol-na-rabotu",
-        "title": "Lorem Ipsum 32"
+        "title": "Lorem Ipsum 32",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -711,7 +777,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "33-ty-jetu-pesenku",
-        "title": "Lorem Ipsum 33"
+        "title": "Lorem Ipsum 33",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -732,7 +800,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "34-skolko-istrebitelej-suka",
-        "title": "Lorem Ipsum 34"
+        "title": "Lorem Ipsum 34",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -753,7 +823,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "35-ty-muzhik-zdorovyj-pravilno",
-        "title": "Lorem Ipsum 35"
+        "title": "Lorem Ipsum 35",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -774,7 +846,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "36-ohuenno-bljad",
-        "title": "Lorem Ipsum 36"
+        "title": "Lorem Ipsum 36",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -795,7 +869,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "37-chto-chto-sluchilosja-to",
-        "title": "Lorem Ipsum 37"
+        "title": "Lorem Ipsum 37",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -816,7 +892,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "38-postav-tarelku-idi-mojsja",
-        "title": "Lorem Ipsum 38"
+        "title": "Lorem Ipsum 38",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -837,7 +915,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "39-nu-takaja-pesnja-prosto",
-        "title": "Lorem Ipsum 39"
+        "title": "Lorem Ipsum 39",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -858,7 +938,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "40-aaaa-huj-tebe",
-        "title": "Lorem Ipsum 40"
+        "title": "Lorem Ipsum 40",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -879,7 +961,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "41-tak-tochno",
-        "title": "Lorem Ipsum 41"
+        "title": "Lorem Ipsum 41",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -900,7 +984,9 @@
         ], 
         "region": "los-angeles",
         "urlBit": "42-zavtrak-isportitsja",
-        "title": "Lorem Ipsum 42"
+        "title": "Lorem Ipsum 42",
+        "managerEmail": "",
+        "isShown": true
     },
     {
         "description": [
@@ -921,7 +1007,9 @@
         ], 
         "region": "miami",
         "urlBit": "43-my-sidim-tuta",
-        "title": "Lorem Ipsum 43"
+        "title": "Lorem Ipsum 43",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -942,7 +1030,9 @@
         ], 
         "region": "miami",
         "urlBit": "44-kakie-korabli",
-        "title": "Lorem Ipsum 44"
+        "title": "Lorem Ipsum 44",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -963,7 +1053,9 @@
         ], 
         "region": "miami",
         "urlBit": "45-slezaj",
-        "title": "Lorem Ipsum 45"
+        "title": "Lorem Ipsum 45",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -984,7 +1076,9 @@
         ], 
         "region": "miami",
         "urlBit": "46-nu-vot-a-pesnja-takaja",
-        "title": "Lorem Ipsum 46"
+        "title": "Lorem Ipsum 46",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1005,7 +1099,9 @@
         ], 
         "region": "miami",
         "urlBit": "47-my-sidim-tuta",
-        "title": "Lorem Ipsum 47"
+        "title": "Lorem Ipsum 47",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1026,7 +1122,9 @@
         ], 
         "region": "miami",
         "urlBit": "48-chem-vilkoj-chto-li",
-        "title": "Lorem Ipsum 48"
+        "title": "Lorem Ipsum 48",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1047,7 +1145,9 @@
         ], 
         "region": "miami",
         "urlBit": "49-skolko-istrebitelej-suka",
-        "title": "Lorem Ipsum 49"
+        "title": "Lorem Ipsum 49",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1068,7 +1168,9 @@
         ], 
         "region": "miami",
         "urlBit": "50-chisti",
-        "title": "Lorem Ipsum 50"
+        "title": "Lorem Ipsum 50",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1089,7 +1191,9 @@
         ], 
         "region": "miami",
         "urlBit": "51-postav-tarelku-idi-mojsja",
-        "title": "Lorem Ipsum 51"
+        "title": "Lorem Ipsum 51",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1110,7 +1214,9 @@
         ], 
         "region": "miami",
         "urlBit": "52-chem-vilkoj-chto-li",
-        "title": "Lorem Ipsum 52"
+        "title": "Lorem Ipsum 52",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1131,7 +1237,9 @@
         ], 
         "region": "miami",
         "urlBit": "53-poshjol-na-rabotu",
-        "title": "Lorem Ipsum 53"
+        "title": "Lorem Ipsum 53",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1152,7 +1260,9 @@
         ], 
         "region": "miami",
         "urlBit": "54-aaaa-huj-tebe",
-        "title": "Lorem Ipsum 54"
+        "title": "Lorem Ipsum 54",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1173,7 +1283,9 @@
         ], 
         "region": "miami",
         "urlBit": "55-poshjol-na-rabotu",
-        "title": "Lorem Ipsum 55"
+        "title": "Lorem Ipsum 55",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1194,7 +1306,9 @@
         ], 
         "region": "miami",
         "urlBit": "56-ja-tebe-sejchas-rasskazhu",
-        "title": "Lorem Ipsum 56"
+        "title": "Lorem Ipsum 56",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1215,7 +1329,9 @@
         ], 
         "region": "miami",
         "urlBit": "57-sidim-jopta-sidim",
-        "title": "Lorem Ipsum 57"
+        "title": "Lorem Ipsum 57",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1236,7 +1352,9 @@
         ], 
         "region": "miami",
         "urlBit": "58-tajczicjuan",
-        "title": "Lorem Ipsum 58"
+        "title": "Lorem Ipsum 58",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1257,7 +1375,9 @@
         ], 
         "region": "miami",
         "urlBit": "59-tak-tochno",
-        "title": "Lorem Ipsum 59"
+        "title": "Lorem Ipsum 59",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1278,7 +1398,9 @@
         ], 
         "region": "miami",
         "urlBit": "60-my-sidim-tuta",
-        "title": "Lorem Ipsum 60"
+        "title": "Lorem Ipsum 60",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1299,7 +1421,9 @@
         ], 
         "region": "miami",
         "urlBit": "61-ja-komanduju-paradom",
-        "title": "Lorem Ipsum 61"
+        "title": "Lorem Ipsum 61",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1320,7 +1444,9 @@
         ], 
         "region": "miami",
         "urlBit": "62-ja-polkovnik",
-        "title": "Lorem Ipsum 62"
+        "title": "Lorem Ipsum 62",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1341,7 +1467,9 @@
         ], 
         "region": "miami",
         "urlBit": "63-huj-bljad-budesh",
-        "title": "Lorem Ipsum 63"
+        "title": "Lorem Ipsum 63",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1362,7 +1490,9 @@
         ], 
         "region": "miami",
         "urlBit": "64-chto-chto-sluchilosja-to",
-        "title": "Lorem Ipsum 64"
+        "title": "Lorem Ipsum 64",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1383,7 +1513,9 @@
         ], 
         "region": "miami",
         "urlBit": "65-ty-jetu-pesenku",
-        "title": "Lorem Ipsum 65"
+        "title": "Lorem Ipsum 65",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1404,7 +1536,9 @@
         ], 
         "region": "miami",
         "urlBit": "66-ty-jetu-pesenku",
-        "title": "Lorem Ipsum 66"
+        "title": "Lorem Ipsum 66",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1425,7 +1559,9 @@
         ], 
         "region": "miami",
         "urlBit": "67-s-odnoj-duroj",
-        "title": "Lorem Ipsum 67"
+        "title": "Lorem Ipsum 67",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1446,7 +1582,9 @@
         ], 
         "region": "miami",
         "urlBit": "68-na-rabotu",
-        "title": "Lorem Ipsum 68"
+        "title": "Lorem Ipsum 68",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1467,7 +1605,9 @@
         ], 
         "region": "miami",
         "urlBit": "69-tak-tochno",
-        "title": "Lorem Ipsum 69"
+        "title": "Lorem Ipsum 69",
+        "managerEmail": "",
+        "isShown": true
     },
     {
         "description": [
@@ -1488,7 +1628,9 @@
         ], 
         "region": "st-tropez",
         "urlBit": "70-v-moju-chest-saljut",
-        "title": "Lorem Ipsum 70"
+        "title": "Lorem Ipsum 70",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1509,7 +1651,9 @@
         ], 
         "region": "st-tropez",
         "urlBit": "71-huj-bljad-budesh",
-        "title": "Lorem Ipsum 71"
+        "title": "Lorem Ipsum 71",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1530,7 +1674,9 @@
         ], 
         "region": "st-tropez",
         "urlBit": "72-kakuju-zimu",
-        "title": "Lorem Ipsum 72"
+        "title": "Lorem Ipsum 72",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1551,7 +1697,9 @@
         ], 
         "region": "st-tropez",
         "urlBit": "73-my-sidim-tuta",
-        "title": "Lorem Ipsum 73"
+        "title": "Lorem Ipsum 73",
+        "managerEmail": "",
+        "isShown": true
     },
     {
         "description": [
@@ -1572,7 +1720,9 @@
         ], 
         "region": "volzhsky",
         "urlBit": "74-ja-stanu-polkovnikom",
-        "title": "Lorem Ipsum 74"
+        "title": "Lorem Ipsum 74",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1593,7 +1743,9 @@
         ], 
         "region": "volzhsky",
         "urlBit": "75-vdvojom-sidim-tut-bljad",
-        "title": "Lorem Ipsum 75"
+        "title": "Lorem Ipsum 75",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1614,7 +1766,9 @@
         ], 
         "region": "volzhsky",
         "urlBit": "76-bratishka-ty-chto",
-        "title": "Lorem Ipsum 76"
+        "title": "Lorem Ipsum 76",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1635,7 +1789,9 @@
         ], 
         "region": "volzhsky",
         "urlBit": "77-na-rabotu",
-        "title": "Lorem Ipsum 77"
+        "title": "Lorem Ipsum 77",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1656,7 +1812,9 @@
         ], 
         "region": "volzhsky",
         "urlBit": "78-huj-bljad-budesh",
-        "title": "Lorem Ipsum 78"
+        "title": "Lorem Ipsum 78",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1677,7 +1835,9 @@
         ], 
         "region": "volzhsky",
         "urlBit": "79-sladkij-hleb",
-        "title": "Lorem Ipsum 79"
+        "title": "Lorem Ipsum 79",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1698,7 +1858,9 @@
         ], 
         "region": "volzhsky",
         "urlBit": "80-ty-jetu-pesenku",
-        "title": "Lorem Ipsum 80"
+        "title": "Lorem Ipsum 80",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1719,7 +1881,9 @@
         ], 
         "region": "volzhsky",
         "urlBit": "81-nu-takaja-pesnja-prosto",
-        "title": "Lorem Ipsum 81"
+        "title": "Lorem Ipsum 81",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1740,7 +1904,9 @@
         ], 
         "region": "volzhsky",
         "urlBit": "82-zdrastitja",
-        "title": "Lorem Ipsum 82"
+        "title": "Lorem Ipsum 82",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1761,7 +1927,9 @@
         ], 
         "region": "volzhsky",
         "urlBit": "83-chem-vilkoj-chto-li",
-        "title": "Lorem Ipsum 83"
+        "title": "Lorem Ipsum 83",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1782,7 +1950,9 @@
         ], 
         "region": "volzhsky",
         "urlBit": "84-ja-tebja-sejchas-ubju",
-        "title": "Lorem Ipsum 84"
+        "title": "Lorem Ipsum 84",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1803,7 +1973,9 @@
         ], 
         "region": "volzhsky",
         "urlBit": "85-ja-polkovnik",
-        "title": "Lorem Ipsum 85"
+        "title": "Lorem Ipsum 85",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1824,7 +1996,9 @@
         ], 
         "region": "volzhsky",
         "urlBit": "86-bratishka-ty-chto",
-        "title": "Lorem Ipsum 86"
+        "title": "Lorem Ipsum 86",
+        "managerEmail": "",
+        "isShown": true
     }, 
     {
         "description": [
@@ -1845,6 +2019,8 @@
         ], 
         "region": "volzhsky",
         "urlBit": "87-fu-bljad-suka",
-        "title": "Lorem Ipsum 87"
+        "title": "Lorem Ipsum 87",
+        "managerEmail": "",
+        "isShown": true
     }
 ]
