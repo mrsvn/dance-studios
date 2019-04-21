@@ -37,6 +37,7 @@ class StudioPage extends React.Component {
               <div>
                 <h1>{this.state.data.title}</h1>
                 <p>Multiple locations</p>
+                {/* TODO: display tags */}
               </div>
               <div id="studio-rating">
                 <div>{this.state.data.rating}</div>

@@ -277,6 +277,10 @@ app.get('/studios/:urlBit', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "studio-page.html"));
 });
 
+app.get('/edit-studio/:urlBit', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "admin-studio.html"));
+});
+
 app.get('/v1/studios/:region', (req, res) => {
   const region = req.params.region;
 
@@ -305,7 +309,60 @@ app.get('/v1/studio/:urlBit', (req, res) => {
     console.log(error);
     res.status(500).send();
   });
-})
+});
+
+app.post('/v1/studio/:urlBit', (req, res) => {
+  const email = req.cookies.email;
+  const authToken = req.cookies.authToken;
+
+  db.collection('studios').findOne({ urlBit: req.params.urlBit }).then(studio => {
+    if(!studio) {
+      res.status(404).send({
+        status: 'NOT_FOUND'
+      });
+      return;
+    }
+
+    if(email != studio.managerEmail) {
+      res.status(403).send({ status: 'UNAUTHORIZED' });
+      return;
+    }
+
+    db.collection('users').findOne({ email: email }).then(user => {
+      if(!user && !user.isAdmin) {
+        res.status(403).send({ status: 'UNAUTHORIZED' });
+        return;
+      }
+
+      let isAuthorized = false;
+
+      user.authTokens.forEach(token => {
+        if(token.value === authToken) {
+          isAuthorized = true;
+        }
+      });
+
+      if(!isAuthorized) {
+        res.status(403).send({ status: 'UNAUTHORIZED' });
+        return;
+      }
+
+      delete req.body._id;
+
+      db.collection('studios').updateOne({ urlBit: studio.urlBit }, { $set: req.body }).then(result => {
+        if(!result) {
+          res.status(500).send({ status: 'ERROR' });
+        }
+        else {
+          res.send({ status: 'OK' });
+        }
+      })
+    });
+  }).catch(error => {
+    console.log(error);
+    res.status(500).send();
+  });
+});
 
 app.post('/upload-images', (req, res) => {
   Object.keys(req.files).forEach(filename => {
