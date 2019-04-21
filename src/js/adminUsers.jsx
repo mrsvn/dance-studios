@@ -2,6 +2,26 @@ import React from 'react';
 import ReactDOM from "react-dom";
 
 class AdminUsers extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            users: []
+        };
+    }
+
+    componentDidMount() {
+        fetch("/v1/admin/users").then(response => {
+            return response.json();
+        }).then(data => {
+            this.setState({
+                users: data.users
+            });
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
     render() {
         return <div className="card">
             <h5 className="card-header">Пользователи</h5>
@@ -19,17 +39,21 @@ class AdminUsers extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>d@k.com</td>
-                            <td>Павел</td>
-                            <td>Драньков</td>
-                            <td>male</td>
-                            <td>1997-03-17</td>
-                            <td>miami</td>
-                            <td>
-                                <a href="#" className="btn btn-sm btn-danger">Удалить</a>
-                            </td>
-                        </tr>
+                        {
+                            this.state.users.map(user => {
+                                return <tr>
+                                    <td>{user.email}</td>
+                                    <td>{user.firstName}</td>
+                                    <td>{user.lastName}</td>
+                                    <td>{user.gender}</td>
+                                    <td>{user.birthDate}</td>
+                                    <td>{user.city}</td>
+                                    <td>
+                                        <a href="#" className="btn btn-sm btn-danger">Удалить</a>
+                                    </td>
+                                </tr>
+                            })
+                        }
                     </tbody>
                 </table>
             </div>
