@@ -4,8 +4,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic12.jpg", 
-        "location": "Андроновка", 
+        "imgUrl": "/content/listpic12.jpg", 
+        "district": "Андроновка",
         "mapCoords": [
             56.99488620000001, 
             40.97818770000001
@@ -16,7 +16,7 @@
             "модерн",
             "джаз-модерн"
         ],
-        "region": "ivanovo",
+        "city": "ivanovo",
         "urlBit": "0-i-jeto-oficery",
         "title": "Lorem Ipsum 00",
         "managerEmail": "",
@@ -27,8 +27,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic02.jpg", 
-        "location": "Кузнецкий мост", 
+        "imgUrl": "/content/listpic02.jpg", 
+        "district": "Кузнецкий мост",
         "mapCoords": [
             56.99597779999999, 
             40.9787329
@@ -39,7 +39,7 @@
             "модерн",
             "джаз-модерн"
         ],
-        "region": "ivanovo",
+        "city": "ivanovo",
         "urlBit": "1-ja-polkovnik",
         "title": "Lorem Ipsum 01",
         "managerEmail": "",
@@ -50,8 +50,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic18.jpg", 
-        "location": "Зябликово", 
+        "imgUrl": "/content/listpic18.jpg", 
+        "district": "Зябликово",
         "mapCoords": [
             56.9934394, 
             40.9824949
@@ -62,7 +62,7 @@
             "модерн",
             "джаз-модерн"
         ],
-        "region": "ivanovo",
+        "city": "ivanovo",
         "urlBit": "2-ty-zhivjosh-poslednij-chas",
         "title": "Lorem Ipsum 02",
         "managerEmail": "",
@@ -73,8 +73,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic08.jpg", 
-        "location": "Арбатская", 
+        "imgUrl": "/content/listpic08.jpg", 
+        "district": "Арбатская",
         "mapCoords": [
             56.997023, 
             40.9823445
@@ -85,7 +85,7 @@
             "модерн",
             "джаз-модерн"
         ],
-        "region": "ivanovo",
+        "city": "ivanovo",
         "urlBit": "3-skolko-istrebitelej-suka",
         "title": "Lorem Ipsum 03",
         "managerEmail": "",
@@ -96,8 +96,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic15.jpg", 
-        "location": "Улица Горчакова", 
+        "imgUrl": "/content/listpic15.jpg", 
+        "district": "Улица Горчакова",
         "mapCoords": [
             56.998729000000004, 
             40.974042
@@ -108,7 +108,7 @@
             "модерн",
             "джаз-модерн"
         ],
-        "region": "ivanovo",
+        "city": "ivanovo",
         "urlBit": "4-nu-pered-snom",
         "title": "Lorem Ipsum 04",
         "managerEmail": "",
@@ -119,8 +119,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic18.jpg", 
-        "location": "Комсомольская", 
+        "imgUrl": "/content/listpic18.jpg", 
+        "district": "Комсомольская",
         "mapCoords": [
             57.00097220000001, 
             40.976158399999996
@@ -131,7 +131,7 @@
             "модерн",
             "джаз-модерн"
         ],
-        "region": "ivanovo",
+        "city": "ivanovo",
         "urlBit": "5-na-rabotu",
         "title": "Lorem Ipsum 05",
         "managerEmail": "",
@@ -142,8 +142,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic04.jpg", 
-        "location": "Сретенский бульвар", 
+        "imgUrl": "/content/listpic04.jpg", 
+        "district": "Сретенский бульвар",
         "mapCoords": [
             56.99523739999999, 
             40.987177200000005
@@ -154,7 +154,7 @@
             "модерн",
             "джаз-модерн"
         ],
-        "region": "ivanovo",
+        "city": "ivanovo",
         "urlBit": "6-huj-bljad-budesh",
         "title": "Lorem Ipsum 06",
         "managerEmail": "",
@@ -165,8 +165,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic16.jpg", 
-        "location": "Жулебино", 
+        "imgUrl": "/content/listpic16.jpg", 
+        "district": "Жулебино",
         "mapCoords": [
             57.0015821, 
             40.9842946
@@ -177,7 +177,7 @@
             "модерн",
             "джаз-модерн"
         ],
-        "region": "ivanovo",
+        "city": "ivanovo",
         "urlBit": "7-da-ja-nichego-net-net",
         "title": "Lorem Ipsum 07",
         "managerEmail": "",
@@ -188,8 +188,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic12.jpg", 
-        "location": "Студенческая", 
+        "imgUrl": "/content/listpic12.jpg", 
+        "district": "Студенческая",
         "mapCoords": [
             57.00154620000001, 
             40.984368100000005
@@ -200,7 +200,7 @@
             "модерн",
             "джаз-модерн"
         ],
-        "region": "ivanovo",
+        "city": "ivanovo",
         "urlBit": "8-nu-chjo-ty",
         "title": "Lorem Ipsum 08",
         "managerEmail": "",
@@ -211,8 +211,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic19.jpg", 
-        "location": "Кантемировская",
+        "imgUrl": "/content/listpic19.jpg", 
+        "district": "Кантемировская",
         "mapCoords": [
             34.101994399999995, 
             -118.2915943
@@ -223,7 +223,7 @@
             "модерн",
             "джаз-модерн"
         ],
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "9-da-ja-nichego-net-net",
         "title": "Lorem Ipsum 09",
         "managerEmail": "",
@@ -234,8 +234,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic15.jpg", 
-        "location": "Петровский парк", 
+        "imgUrl": "/content/listpic15.jpg", 
+        "district": "Петровский парк",
         "mapCoords": [
             34.103829600000005, 
             -118.28781940000002
@@ -246,7 +246,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "10-i-jeto-oficery",
         "title": "Lorem Ipsum 10",
         "managerEmail": "",
@@ -257,8 +257,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic14.jpg", 
-        "location": "Пушкинская", 
+        "imgUrl": "/content/listpic14.jpg", 
+        "district": "Пушкинская",
         "mapCoords": [
             34.1048895, 
             -118.2876009
@@ -269,7 +269,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "11-da-ja-nichego-net-net",
         "title": "Lorem Ipsum 11",
         "managerEmail": "",
@@ -280,8 +280,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic13.jpg", 
-        "location": "Битцевский парк", 
+        "imgUrl": "/content/listpic13.jpg", 
+        "district": "Битцевский парк",
         "mapCoords": [
             34.07607720000001, 
             -118.3093504
@@ -292,7 +292,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "12-s-odnoj-duroj",
         "title": "Lorem Ipsum 12",
         "managerEmail": "",
@@ -303,8 +303,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic02.jpg", 
-        "location": "Новокузнецкая", 
+        "imgUrl": "/content/listpic02.jpg", 
+        "district": "Новокузнецкая",
         "mapCoords": [
             34.0621682, 
             -118.29519099999999
@@ -315,7 +315,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "13-sladkij-hleb",
         "title": "Lorem Ipsum 13",
         "managerEmail": "",
@@ -326,8 +326,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic04.jpg", 
-        "location": "Лубянка", 
+        "imgUrl": "/content/listpic04.jpg", 
+        "district": "Лубянка",
         "mapCoords": [
             34.06162379999999, 
             -118.2921371
@@ -338,7 +338,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "14-nu-takaja-pesnja-prosto",
         "title": "Lorem Ipsum 14",
         "managerEmail": "",
@@ -349,8 +349,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic11.jpg", 
-        "location": "Филевский парк", 
+        "imgUrl": "/content/listpic11.jpg", 
+        "district": "Филевский парк",
         "mapCoords": [
             34.0615716, 
             -118.2918844
@@ -361,7 +361,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "15-vot-tak-ja-na-turnichok",
         "title": "Lorem Ipsum 15",
         "managerEmail": "",
@@ -372,8 +372,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic10.jpg", 
-        "location": "Кантемировская", 
+        "imgUrl": "/content/listpic10.jpg", 
+        "district": "Кантемировская",
         "mapCoords": [
             34.0613973, 
             -118.2914163
@@ -384,7 +384,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "16-nu-pered-snom",
         "title": "Lorem Ipsum 16",
         "managerEmail": "",
@@ -395,8 +395,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic09.jpg", 
-        "location": "Калужская", 
+        "imgUrl": "/content/listpic09.jpg", 
+        "district": "Калужская",
         "mapCoords": [
             34.1014969, 
             -118.3088091
@@ -407,7 +407,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "17-sladkij-hleb",
         "title": "Lorem Ipsum 17",
         "managerEmail": "",
@@ -418,8 +418,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic06.jpg", 
-        "location": "Боровское шоссе", 
+        "imgUrl": "/content/listpic06.jpg", 
+        "district": "Боровское шоссе",
         "mapCoords": [
             34.0619261, 
             -118.29612320000001
@@ -430,7 +430,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "18-na-rabotu",
         "title": "Lorem Ipsum 18",
         "managerEmail": "",
@@ -441,8 +441,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic07.jpg", 
-        "location": "Соколиная Гора", 
+        "imgUrl": "/content/listpic07.jpg", 
+        "district": "Соколиная Гора",
         "mapCoords": [
             34.1116409, 
             -118.2876517
@@ -453,7 +453,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "19-fu-bljad-suka",
         "title": "Lorem Ipsum 19",
         "managerEmail": "",
@@ -464,8 +464,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic12.jpg", 
-        "location": "Шаболовская", 
+        "imgUrl": "/content/listpic12.jpg", 
+        "district": "Шаболовская",
         "mapCoords": [
             34.0614477, 
             -118.29923810000001
@@ -476,7 +476,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "20-ja-tebja-sejchas-ubju",
         "title": "Lorem Ipsum 20",
         "managerEmail": "",
@@ -487,8 +487,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic15.jpg", 
-        "location": "Ботанический сад", 
+        "imgUrl": "/content/listpic15.jpg", 
+        "district": "Ботанический сад",
         "mapCoords": [
             34.0615266, 
             -118.30214509999999
@@ -499,7 +499,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "21-ja-tebe-sejchas-rasskazhu",
         "title": "Lorem Ipsum 21",
         "managerEmail": "",
@@ -510,8 +510,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic03.jpg", 
-        "location": "Бутырская", 
+        "imgUrl": "/content/listpic03.jpg", 
+        "district": "Бутырская",
         "mapCoords": [
             34.061932, 
             -118.3055622
@@ -522,7 +522,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "22-chem-vilkoj-chto-li",
         "title": "Lorem Ipsum 22",
         "managerEmail": "",
@@ -533,8 +533,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic01.jpg", 
-        "location": "Окружная", 
+        "imgUrl": "/content/listpic01.jpg", 
+        "district": "Окружная",
         "mapCoords": [
             34.0614071, 
             -118.3048449
@@ -545,7 +545,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "23-nu-chjo-ty",
         "title": "Lorem Ipsum 23",
         "managerEmail": "",
@@ -556,8 +556,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic15.jpg", 
-        "location": "Октябрьское поле", 
+        "imgUrl": "/content/listpic15.jpg", 
+        "district": "Октябрьское поле",
         "mapCoords": [
             34.063861700000004, 
             -118.3088949
@@ -568,7 +568,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "24-chto-chto-sluchilosja-to",
         "title": "Lorem Ipsum 24",
         "managerEmail": "",
@@ -579,8 +579,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic15.jpg", 
-        "location": "Парк культуры", 
+        "imgUrl": "/content/listpic15.jpg", 
+        "district": "Парк культуры",
         "mapCoords": [
             34.0619412, 
             -118.3068392
@@ -591,7 +591,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "25-aaaa-huj-tebe",
         "title": "Lorem Ipsum 25",
         "managerEmail": "",
@@ -602,8 +602,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic19.jpg", 
-        "location": "Китай-город", 
+        "imgUrl": "/content/listpic19.jpg", 
+        "district": "Китай-город",
         "mapCoords": [
             34.0612768, 
             -118.30629040000001
@@ -614,7 +614,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "26-postav-tarelku-idi-mojsja",
         "title": "Lorem Ipsum 26",
         "managerEmail": "",
@@ -625,8 +625,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic19.jpg", 
-        "location": "Нагорная", 
+        "imgUrl": "/content/listpic19.jpg", 
+        "district": "Нагорная",
         "mapCoords": [
             34.061938399999995, 
             -118.30751310000001
@@ -637,7 +637,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "27-nu-chjo-ty",
         "title": "Lorem Ipsum 27",
         "managerEmail": "",
@@ -648,8 +648,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic11.jpg", 
-        "location": "Локомотив", 
+        "imgUrl": "/content/listpic11.jpg", 
+        "district": "Локомотив",
         "mapCoords": [
             34.062948299999995, 
             -118.30889350000001
@@ -660,7 +660,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "28-sidim-jopta-sidim",
         "title": "Lorem Ipsum 28",
         "managerEmail": "",
@@ -671,8 +671,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic00.jpg", 
-        "location": "Отрадное", 
+        "imgUrl": "/content/listpic00.jpg", 
+        "district": "Отрадное",
         "mapCoords": [
             34.0843595, 
             -118.3205064
@@ -683,7 +683,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "29-vdvojom-sidim-tut-bljad",
         "title": "Lorem Ipsum 29",
         "managerEmail": "",
@@ -694,8 +694,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic12.jpg", 
-        "location": "Локомотив", 
+        "imgUrl": "/content/listpic12.jpg", 
+        "district": "Локомотив",
         "mapCoords": [
             34.07653010000001, 
             -118.25729109999999
@@ -706,7 +706,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "30-vyzyval",
         "title": "Lorem Ipsum 30",
         "managerEmail": "",
@@ -717,8 +717,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic07.jpg", 
-        "location": "Нижегородская", 
+        "imgUrl": "/content/listpic07.jpg", 
+        "district": "Нижегородская",
         "mapCoords": [
             34.1003691, 
             -118.2585922
@@ -729,7 +729,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "31-da-ja-nichego-net-net",
         "title": "Lorem Ipsum 31",
         "managerEmail": "",
@@ -740,8 +740,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic10.jpg", 
-        "location": "Кузнецкий мост", 
+        "imgUrl": "/content/listpic10.jpg", 
+        "district": "Кузнецкий мост",
         "mapCoords": [
             34.0760544, 
             -118.32399
@@ -752,7 +752,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "32-poshjol-na-rabotu",
         "title": "Lorem Ipsum 32",
         "managerEmail": "",
@@ -763,8 +763,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic17.jpg", 
-        "location": "Строгино", 
+        "imgUrl": "/content/listpic17.jpg", 
+        "district": "Строгино",
         "mapCoords": [
             34.075894500000004, 
             -118.32398859999999
@@ -775,7 +775,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "33-ty-jetu-pesenku",
         "title": "Lorem Ipsum 33",
         "managerEmail": "",
@@ -786,8 +786,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic18.jpg", 
-        "location": "Соколиная Гора", 
+        "imgUrl": "/content/listpic18.jpg", 
+        "district": "Соколиная Гора",
         "mapCoords": [
             34.07328629999999, 
             -118.323361
@@ -798,7 +798,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "34-skolko-istrebitelej-suka",
         "title": "Lorem Ipsum 34",
         "managerEmail": "",
@@ -809,8 +809,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic13.jpg", 
-        "location": "Лермонтовский проспект", 
+        "imgUrl": "/content/listpic13.jpg", 
+        "district": "Лермонтовский проспект",
         "mapCoords": [
             34.0977395, 
             -118.32697040000001
@@ -821,7 +821,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "35-ty-muzhik-zdorovyj-pravilno",
         "title": "Lorem Ipsum 35",
         "managerEmail": "",
@@ -832,8 +832,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic01.jpg", 
-        "location": "Рязанский проспект", 
+        "imgUrl": "/content/listpic01.jpg", 
+        "district": "Рязанский проспект",
         "mapCoords": [
             34.0522358, 
             -118.2636034
@@ -844,7 +844,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "36-ohuenno-bljad",
         "title": "Lorem Ipsum 36",
         "managerEmail": "",
@@ -855,8 +855,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic02.jpg", 
-        "location": "Сходненская", 
+        "imgUrl": "/content/listpic02.jpg", 
+        "district": "Сходненская",
         "mapCoords": [
             34.0529078, 
             -118.25712759999999
@@ -867,7 +867,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "37-chto-chto-sluchilosja-to",
         "title": "Lorem Ipsum 37",
         "managerEmail": "",
@@ -878,8 +878,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic10.jpg", 
-        "location": "Котельники", 
+        "imgUrl": "/content/listpic10.jpg", 
+        "district": "Котельники",
         "mapCoords": [
             34.1259341, 
             -118.264606
@@ -890,7 +890,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "38-postav-tarelku-idi-mojsja",
         "title": "Lorem Ipsum 38",
         "managerEmail": "",
@@ -901,8 +901,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic12.jpg", 
-        "location": "Водный стадион", 
+        "imgUrl": "/content/listpic12.jpg", 
+        "district": "Водный стадион",
         "mapCoords": [
             34.049328700000004, 
             -118.2584078
@@ -913,7 +913,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "39-nu-takaja-pesnja-prosto",
         "title": "Lorem Ipsum 39",
         "managerEmail": "",
@@ -924,8 +924,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic03.jpg", 
-        "location": "Лихоборы", 
+        "imgUrl": "/content/listpic03.jpg", 
+        "district": "Лихоборы",
         "mapCoords": [
             34.0450765, 
             -118.26361740000002
@@ -936,7 +936,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "40-aaaa-huj-tebe",
         "title": "Lorem Ipsum 40",
         "managerEmail": "",
@@ -947,8 +947,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic05.jpg", 
-        "location": "Крестьянская застава", 
+        "imgUrl": "/content/listpic05.jpg", 
+        "district": "Крестьянская застава",
         "mapCoords": [
             34.051619099999996, 
             -118.2553727
@@ -959,7 +959,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "41-tak-tochno",
         "title": "Lorem Ipsum 41",
         "managerEmail": "",
@@ -970,8 +970,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic06.jpg", 
-        "location": "Тургеневская", 
+        "imgUrl": "/content/listpic06.jpg", 
+        "district": "Тургеневская",
         "mapCoords": [
             34.1269795, 
             -118.26271729999999
@@ -982,7 +982,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "los-angeles",
+        "city": "los-angeles",
         "urlBit": "42-zavtrak-isportitsja",
         "title": "Lorem Ipsum 42",
         "managerEmail": "",
@@ -993,8 +993,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic03.jpg", 
-        "location": "Александровский сад", 
+        "imgUrl": "/content/listpic03.jpg", 
+        "district": "Александровский сад",
         "mapCoords": [
             25.785018700000002, 
             -80.174549
@@ -1005,7 +1005,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "43-my-sidim-tuta",
         "title": "Lorem Ipsum 43",
         "managerEmail": "",
@@ -1016,8 +1016,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic00.jpg", 
-        "location": "Печатники", 
+        "imgUrl": "/content/listpic00.jpg", 
+        "district": "Печатники",
         "mapCoords": [
             25.7769151, 
             -80.1850705
@@ -1028,7 +1028,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "44-kakie-korabli",
         "title": "Lorem Ipsum 44",
         "managerEmail": "",
@@ -1039,8 +1039,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic04.jpg", 
-        "location": "Солнцево", 
+        "imgUrl": "/content/listpic04.jpg", 
+        "district": "Солнцево",
         "mapCoords": [
             25.777098300000002, 
             -80.1885293
@@ -1051,7 +1051,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "45-slezaj",
         "title": "Lorem Ipsum 45",
         "managerEmail": "",
@@ -1062,8 +1062,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic05.jpg", 
-        "location": "Чкаловская", 
+        "imgUrl": "/content/listpic05.jpg", 
+        "district": "Чкаловская",
         "mapCoords": [
             25.794214899999997, 
             -80.18661290000001
@@ -1074,7 +1074,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "46-nu-vot-a-pesnja-takaja",
         "title": "Lorem Ipsum 46",
         "managerEmail": "",
@@ -1085,8 +1085,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic14.jpg", 
-        "location": "Тургеневская", 
+        "imgUrl": "/content/listpic14.jpg", 
+        "district": "Тургеневская",
         "mapCoords": [
             25.7731166, 
             -80.1878307
@@ -1097,7 +1097,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "47-my-sidim-tuta",
         "title": "Lorem Ipsum 47",
         "managerEmail": "",
@@ -1108,8 +1108,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic01.jpg", 
-        "location": "Арбатская", 
+        "imgUrl": "/content/listpic01.jpg", 
+        "district": "Арбатская",
         "mapCoords": [
             25.773135699999997, 
             -80.18808299999999
@@ -1120,7 +1120,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "48-chem-vilkoj-chto-li",
         "title": "Lorem Ipsum 48",
         "managerEmail": "",
@@ -1131,8 +1131,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic16.jpg", 
-        "location": "Царицыно", 
+        "imgUrl": "/content/listpic16.jpg", 
+        "district": "Царицыно",
         "mapCoords": [
             25.774401, 
             -80.18907159999999
@@ -1143,7 +1143,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "49-skolko-istrebitelej-suka",
         "title": "Lorem Ipsum 49",
         "managerEmail": "",
@@ -1154,8 +1154,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic10.jpg", 
-        "location": "Дубровка", 
+        "imgUrl": "/content/listpic10.jpg", 
+        "district": "Дубровка",
         "mapCoords": [
             25.7753372, 
             -80.19017609999999
@@ -1166,7 +1166,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "50-chisti",
         "title": "Lorem Ipsum 50",
         "managerEmail": "",
@@ -1177,8 +1177,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic06.jpg", 
-        "location": "Зорге", 
+        "imgUrl": "/content/listpic06.jpg", 
+        "district": "Зорге",
         "mapCoords": [
             25.770760600000003, 
             -80.18933940000001
@@ -1189,7 +1189,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "51-postav-tarelku-idi-mojsja",
         "title": "Lorem Ipsum 51",
         "managerEmail": "",
@@ -1200,8 +1200,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic14.jpg", 
-        "location": "Римская", 
+        "imgUrl": "/content/listpic14.jpg", 
+        "district": "Римская",
         "mapCoords": [
             25.773460600000003, 
             -80.1921838
@@ -1212,7 +1212,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "52-chem-vilkoj-chto-li",
         "title": "Lorem Ipsum 52",
         "managerEmail": "",
@@ -1223,8 +1223,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic13.jpg", 
-        "location": "Курская", 
+        "imgUrl": "/content/listpic13.jpg", 
+        "district": "Курская",
         "mapCoords": [
             25.775031, 
             -80.1939485
@@ -1235,7 +1235,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "53-poshjol-na-rabotu",
         "title": "Lorem Ipsum 53",
         "managerEmail": "",
@@ -1246,8 +1246,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic01.jpg", 
-        "location": "Электрозаводская", 
+        "imgUrl": "/content/listpic01.jpg", 
+        "district": "Электрозаводская",
         "mapCoords": [
             25.7990127, 
             -80.1893186
@@ -1258,7 +1258,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "54-aaaa-huj-tebe",
         "title": "Lorem Ipsum 54",
         "managerEmail": "",
@@ -1269,8 +1269,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic05.jpg", 
-        "location": "Таганская", 
+        "imgUrl": "/content/listpic05.jpg", 
+        "district": "Таганская",
         "mapCoords": [
             25.791438, 
             -80.1943381
@@ -1281,7 +1281,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "55-poshjol-na-rabotu",
         "title": "Lorem Ipsum 55",
         "managerEmail": "",
@@ -1292,8 +1292,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic11.jpg", 
-        "location": "Динамо", 
+        "imgUrl": "/content/listpic11.jpg", 
+        "district": "Динамо",
         "mapCoords": [
             25.763731, 
             -80.1889474
@@ -1304,7 +1304,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "56-ja-tebe-sejchas-rasskazhu",
         "title": "Lorem Ipsum 56",
         "managerEmail": "",
@@ -1315,8 +1315,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic16.jpg", 
-        "location": "Чкаловская", 
+        "imgUrl": "/content/listpic16.jpg", 
+        "district": "Чкаловская",
         "mapCoords": [
             25.7651905, 
             -80.1930941
@@ -1327,7 +1327,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "57-sidim-jopta-sidim",
         "title": "Lorem Ipsum 57",
         "managerEmail": "",
@@ -1338,8 +1338,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic06.jpg", 
-        "location": "Охотный ряд", 
+        "imgUrl": "/content/listpic06.jpg", 
+        "district": "Охотный ряд",
         "mapCoords": [
             25.8052489, 
             -80.1892052
@@ -1350,7 +1350,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "58-tajczicjuan",
         "title": "Lorem Ipsum 58",
         "managerEmail": "",
@@ -1361,8 +1361,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic02.jpg", 
-        "location": "Зорге", 
+        "imgUrl": "/content/listpic02.jpg", 
+        "district": "Зорге",
         "mapCoords": [
             25.799897, 
             -80.19925450000001
@@ -1373,7 +1373,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "59-tak-tochno",
         "title": "Lorem Ipsum 59",
         "managerEmail": "",
@@ -1384,8 +1384,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic14.jpg", 
-        "location": "Павелецкая", 
+        "imgUrl": "/content/listpic14.jpg", 
+        "district": "Павелецкая",
         "mapCoords": [
             25.8037293, 
             -80.19635790000001
@@ -1396,7 +1396,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "60-my-sidim-tuta",
         "title": "Lorem Ipsum 60",
         "managerEmail": "",
@@ -1407,8 +1407,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic19.jpg", 
-        "location": "Севастопольская", 
+        "imgUrl": "/content/listpic19.jpg", 
+        "district": "Севастопольская",
         "mapCoords": [
             25.8018475, 
             -80.19871479999999
@@ -1419,7 +1419,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "61-ja-komanduju-paradom",
         "title": "Lorem Ipsum 61",
         "managerEmail": "",
@@ -1430,8 +1430,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic10.jpg", 
-        "location": "Лихоборы", 
+        "imgUrl": "/content/listpic10.jpg", 
+        "district": "Лихоборы",
         "mapCoords": [
             25.802085100000003, 
             -80.1995637
@@ -1442,7 +1442,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "62-ja-polkovnik",
         "title": "Lorem Ipsum 62",
         "managerEmail": "",
@@ -1453,8 +1453,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic12.jpg", 
-        "location": "Технопарк", 
+        "imgUrl": "/content/listpic12.jpg", 
+        "district": "Технопарк",
         "mapCoords": [
             25.7946527, 
             -80.14425159999999
@@ -1465,7 +1465,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "63-huj-bljad-budesh",
         "title": "Lorem Ipsum 63",
         "managerEmail": "",
@@ -1476,8 +1476,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic06.jpg", 
-        "location": "Парк Победы", 
+        "imgUrl": "/content/listpic06.jpg", 
+        "district": "Парк Победы",
         "mapCoords": [
             25.8014956, 
             -80.20180340000002
@@ -1488,7 +1488,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "64-chto-chto-sluchilosja-to",
         "title": "Lorem Ipsum 64",
         "managerEmail": "",
@@ -1499,8 +1499,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic01.jpg", 
-        "location": "Марксистская", 
+        "imgUrl": "/content/listpic01.jpg", 
+        "district": "Марксистская",
         "mapCoords": [
             25.8027174, 
             -80.201323
@@ -1511,7 +1511,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "65-ty-jetu-pesenku",
         "title": "Lorem Ipsum 65",
         "managerEmail": "",
@@ -1522,8 +1522,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic13.jpg", 
-        "location": "ЦСКА", 
+        "imgUrl": "/content/listpic13.jpg", 
+        "district": "ЦСКА",
         "mapCoords": [
             25.801613, 
             -80.20259159999999
@@ -1534,7 +1534,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "66-ty-jetu-pesenku",
         "title": "Lorem Ipsum 66",
         "managerEmail": "",
@@ -1545,8 +1545,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic12.jpg", 
-        "location": "Шелепиха", 
+        "imgUrl": "/content/listpic12.jpg", 
+        "district": "Шелепиха",
         "mapCoords": [
             25.7906036, 
             -80.14050999999999
@@ -1557,7 +1557,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "67-s-odnoj-duroj",
         "title": "Lorem Ipsum 67",
         "managerEmail": "",
@@ -1568,8 +1568,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic17.jpg", 
-        "location": "Смоленская", 
+        "imgUrl": "/content/listpic17.jpg", 
+        "district": "Смоленская",
         "mapCoords": [
             25.8133419, 
             -80.19232020000001
@@ -1580,7 +1580,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "68-na-rabotu",
         "title": "Lorem Ipsum 68",
         "managerEmail": "",
@@ -1591,8 +1591,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic14.jpg", 
-        "location": "Борисово", 
+        "imgUrl": "/content/listpic14.jpg", 
+        "district": "Борисово",
         "mapCoords": [
             25.790336399999997, 
             -80.1396545
@@ -1603,7 +1603,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "miami",
+        "city": "miami",
         "urlBit": "69-tak-tochno",
         "title": "Lorem Ipsum 69",
         "managerEmail": "",
@@ -1614,8 +1614,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic12.jpg", 
-        "location": "Нагатинская", 
+        "imgUrl": "/content/listpic12.jpg", 
+        "district": "Нагатинская",
         "mapCoords": [
             43.3087621, 
             6.6391005000000005
@@ -1626,7 +1626,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "st-tropez",
+        "city": "st-tropez",
         "urlBit": "70-v-moju-chest-saljut",
         "title": "Lorem Ipsum 70",
         "managerEmail": "",
@@ -1637,8 +1637,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic14.jpg", 
-        "location": "Селигерская", 
+        "imgUrl": "/content/listpic14.jpg", 
+        "district": "Селигерская",
         "mapCoords": [
             43.342110600000005, 
             6.6914619
@@ -1649,7 +1649,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "st-tropez",
+        "city": "st-tropez",
         "urlBit": "71-huj-bljad-budesh",
         "title": "Lorem Ipsum 71",
         "managerEmail": "",
@@ -1660,8 +1660,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic13.jpg", 
-        "location": "Каширская", 
+        "imgUrl": "/content/listpic13.jpg", 
+        "district": "Каширская",
         "mapCoords": [
             43.3420779, 
             6.691660400000001
@@ -1672,7 +1672,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "st-tropez",
+        "city": "st-tropez",
         "urlBit": "72-kakuju-zimu",
         "title": "Lorem Ipsum 72",
         "managerEmail": "",
@@ -1683,8 +1683,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic11.jpg", 
-        "location": "Авиамоторная", 
+        "imgUrl": "/content/listpic11.jpg", 
+        "district": "Авиамоторная",
         "mapCoords": [
             43.342005, 
             6.6926246
@@ -1695,7 +1695,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "st-tropez",
+        "city": "st-tropez",
         "urlBit": "73-my-sidim-tuta",
         "title": "Lorem Ipsum 73",
         "managerEmail": "",
@@ -1706,8 +1706,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic18.jpg", 
-        "location": "Авиамоторная", 
+        "imgUrl": "/content/listpic18.jpg", 
+        "district": "Авиамоторная",
         "mapCoords": [
             48.7798546, 
             44.7779844
@@ -1718,7 +1718,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "74-ja-stanu-polkovnikom",
         "title": "Lorem Ipsum 74",
         "managerEmail": "",
@@ -1729,8 +1729,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic09.jpg", 
-        "location": "Пушкинская", 
+        "imgUrl": "/content/listpic09.jpg", 
+        "district": "Пушкинская",
         "mapCoords": [
             48.7789165, 
             44.7781255
@@ -1741,7 +1741,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "75-vdvojom-sidim-tut-bljad",
         "title": "Lorem Ipsum 75",
         "managerEmail": "",
@@ -1752,8 +1752,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic07.jpg", 
-        "location": "Китай-город", 
+        "imgUrl": "/content/listpic07.jpg", 
+        "district": "Китай-город",
         "mapCoords": [
             48.780748100000004, 
             44.7804472
@@ -1764,7 +1764,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "76-bratishka-ty-chto",
         "title": "Lorem Ipsum 76",
         "managerEmail": "",
@@ -1775,8 +1775,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic00.jpg", 
-        "location": "Авиамоторная", 
+        "imgUrl": "/content/listpic00.jpg", 
+        "district": "Авиамоторная",
         "mapCoords": [
             48.78490120000001, 
             44.7829651
@@ -1787,7 +1787,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "77-na-rabotu",
         "title": "Lorem Ipsum 77",
         "managerEmail": "",
@@ -1798,8 +1798,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic05.jpg", 
-        "location": "Новохохловская", 
+        "imgUrl": "/content/listpic05.jpg", 
+        "district": "Новохохловская",
         "mapCoords": [
             48.7824045, 
             44.7844876
@@ -1810,7 +1810,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "78-huj-bljad-budesh",
         "title": "Lorem Ipsum 78",
         "managerEmail": "",
@@ -1821,8 +1821,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic03.jpg", 
-        "location": "Перово", 
+        "imgUrl": "/content/listpic03.jpg", 
+        "district": "Перово",
         "mapCoords": [
             48.7857809, 
             44.7826055
@@ -1833,7 +1833,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "79-sladkij-hleb",
         "title": "Lorem Ipsum 79",
         "managerEmail": "",
@@ -1844,8 +1844,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic03.jpg", 
-        "location": "Калужская", 
+        "imgUrl": "/content/listpic03.jpg", 
+        "district": "Калужская",
         "mapCoords": [
             48.7818331, 
             44.785579299999995
@@ -1856,7 +1856,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "80-ty-jetu-pesenku",
         "title": "Lorem Ipsum 80",
         "managerEmail": "",
@@ -1867,8 +1867,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic14.jpg", 
-        "location": "Выхино", 
+        "imgUrl": "/content/listpic14.jpg", 
+        "district": "Выхино",
         "mapCoords": [
             48.79015220000001, 
             44.771740799999996
@@ -1879,7 +1879,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "81-nu-takaja-pesnja-prosto",
         "title": "Lorem Ipsum 81",
         "managerEmail": "",
@@ -1890,8 +1890,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic17.jpg", 
-        "location": "Жулебино", 
+        "imgUrl": "/content/listpic17.jpg", 
+        "district": "Жулебино",
         "mapCoords": [
             48.7776337, 
             44.764946
@@ -1902,7 +1902,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "82-zdrastitja",
         "title": "Lorem Ipsum 82",
         "managerEmail": "",
@@ -1913,8 +1913,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic10.jpg", 
-        "location": "Строгино", 
+        "imgUrl": "/content/listpic10.jpg", 
+        "district": "Строгино",
         "mapCoords": [
             48.779105200000004, 
             44.7928025
@@ -1925,7 +1925,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "83-chem-vilkoj-chto-li",
         "title": "Lorem Ipsum 83",
         "managerEmail": "",
@@ -1936,8 +1936,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic03.jpg", 
-        "location": "Андроновка", 
+        "imgUrl": "/content/listpic03.jpg", 
+        "district": "Андроновка",
         "mapCoords": [
             48.7881669, 
             44.7647732
@@ -1948,7 +1948,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "84-ja-tebja-sejchas-ubju",
         "title": "Lorem Ipsum 84",
         "managerEmail": "",
@@ -1959,8 +1959,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic08.jpg", 
-        "location": "Алтуфьево", 
+        "imgUrl": "/content/listpic08.jpg", 
+        "district": "Алтуфьево",
         "mapCoords": [
             48.7762816, 
             44.7606526
@@ -1971,7 +1971,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "85-ja-polkovnik",
         "title": "Lorem Ipsum 85",
         "managerEmail": "",
@@ -1982,8 +1982,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic16.jpg", 
-        "location": "ЦСКА", 
+        "imgUrl": "/content/listpic16.jpg", 
+        "district": "ЦСКА",
         "mapCoords": [
             48.776528000000006, 
             44.797424400000004
@@ -1994,7 +1994,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "86-bratishka-ty-chto",
         "title": "Lorem Ipsum 86",
         "managerEmail": "",
@@ -2005,8 +2005,8 @@
             "Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так.",
             "Его корни уходят в один фрагмент классической латыни 45 года н.э."
         ], 
-        "imgUrl": "content/listpic05.jpg", 
-        "location": "Филевский парк", 
+        "imgUrl": "/content/listpic05.jpg", 
+        "district": "Филевский парк",
         "mapCoords": [
             48.773278999999995, 
             44.797784899999996
@@ -2017,7 +2017,7 @@
             "модерн",
             "джаз-модерн"
         ], 
-        "region": "volzhsky",
+        "city": "volzhsky",
         "urlBit": "87-fu-bljad-suka",
         "title": "Lorem Ipsum 87",
         "managerEmail": "",

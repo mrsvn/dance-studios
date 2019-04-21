@@ -66,7 +66,7 @@ class StudioEditPage extends React.Component {
                             <div className="input-group-prepend">
                                 <span className="input-group-text">Город:</span>
                             </div>
-                            <select className="form-control" value={ this.state.region } onChange={e => this.setState({ region: e.target.value })}>
+                            <select className="form-control" value={ this.state.city } onChange={e => this.setState({ city: e.target.value })}>
                                 <option>los-angeles</option>
                                 <option>miami</option>
                                 <option>ivanovo</option>
@@ -79,7 +79,7 @@ class StudioEditPage extends React.Component {
                             <div className="input-group-prepend">
                                 <span className="input-group-text">Район:</span>
                             </div>
-                            <input className="form-control" value={ this.state.location } onChange={e => this.setState({ location: e.target.value })}/>
+                            <input className="form-control" value={ this.state.district } onChange={e => this.setState({ district: e.target.value })}/>
                         </div>
                     </p>
 

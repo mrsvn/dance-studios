@@ -27,7 +27,7 @@ class StudioListing extends React.Component {
                             <p>{ tag_links }</p>
                         </div>
                         <div className={'p-row'}>
-                            <b>Расположение:</b> <span> м. { content.location } </span>
+                            <b>Расположение:</b> <span> { content.district } </span>
                         </div>
                         <div className={'p-description'}>
                             <p>{ content.description }</p>

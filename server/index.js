@@ -281,10 +281,10 @@ app.get('/edit-studio/:urlBit', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "admin-studio.html"));
 });
 
-app.get('/v1/studios/:region', (req, res) => {
-  const region = req.params.region;
+app.get('/v1/studios/:city', (req, res) => {
+  const city = req.params.city;
 
-  db.collection('studios').find({ region: region }).toArray().then(data => {
+  db.collection('studios').find({ city: city }).toArray().then(data => {
     res.status(200).send(JSON.stringify({
       numTotal: Object.keys(data).length,
       studios: data

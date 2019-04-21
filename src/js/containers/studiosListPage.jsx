@@ -61,7 +61,7 @@ class StudiosListPage extends React.Component {
 
         this.state.data.forEach(item => {
             if (item.title.toLowerCase().includes(this.state.searchQuery.toLowerCase())) {
-                if (item.location === this.state.filterLocation || this.state.filterLocation === null) {
+                if (item.district === this.state.filterLocation || this.state.filterLocation === null) {
                     if (item.tags.includes(this.state.filterStyle) || this.state.filterStyle === null) {
                         if (item.rating >= this.state.filterRating) {
                             filteredData.push(item);
