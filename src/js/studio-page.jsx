@@ -1,21 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import { YMaps, Map, GeoObject } from 'react-yandex-maps';
+
 class StudioPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: []
+      data: {}
     };
   }
 
   componentDidMount() {
-    fetch("/dummy-data/studio-page.json").then(response => {
+    fetch("/v1/studio/" + location.pathname.split('/').pop()).then(response => {
       return response.json();
     }).then(data => {
       this.setState({
-        data: data
+        data: data.studio
       });
     }).catch(error => {
       console.log(error);
@@ -23,14 +25,11 @@ class StudioPage extends React.Component {
   }
 
   render() {
-
-
     return (
       <div>
         <div id="studio-image">
-          <img src={this.state.data.picture}/>
+          <img src={this.state.data.imgUrl}/>
         </div>
-
 
         <div id="studio-information-container">
           <div id="studio-information">
@@ -43,6 +42,13 @@ class StudioPage extends React.Component {
                 <div>{this.state.data.rating}</div>
               </div>
             </div>
+
+            <div>
+              {
+                this.state.data.description && this.state.data.description.map(p => <p>{ p }</p>)
+              }
+            </div>
+
             <hr/>
 
             <div>
@@ -97,10 +103,16 @@ class StudioPage extends React.Component {
 
           </div>
           <div id="studio-map-and-hours">
-            <div id="studio-map">
-              <img style={{width: "100%"}} src={"/img/studio-map.png"}/>
-            </div>
-
+            <YMaps>
+              <Map className="studio-map" defaultState={{ center: this.state.data.mapCoords, zoom: 11 }}>
+                <GeoObject geometry={{
+                  type: 'Point',
+                  coordinates: this.state.data.mapCoords
+                }} properties={{
+                  balloonContent: `<strong>${this.state.data.title}</strong>`
+                }}/>
+              </Map>
+            </YMaps>
           </div>
 
         </div>

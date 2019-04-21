@@ -273,6 +273,10 @@ app.get('/classes', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
+app.get('/studios/:urlBit', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "studio-page.html"));
+});
+
 app.get('/v1/studios/:region', (req, res) => {
   const region = req.params.region;
 
@@ -283,6 +287,25 @@ app.get('/v1/studios/:region', (req, res) => {
     }));
   });
 });
+
+app.get('/v1/studio/:urlBit', (req, res) => {
+  db.collection('studios').findOne({ urlBit: req.params.urlBit }).then(studio => {
+    if(studio) {
+      res.send({
+        status: 'OK',
+        studio: studio
+      });
+    }
+    else {
+      res.status(404).send({
+        status: 'NOT_FOUND'
+      });
+    }
+  }).catch(error => {
+    console.log(error);
+    res.status(500).send();
+  });
+})
 
 app.post('/upload-images', (req, res) => {
   Object.keys(req.files).forEach(filename => {
