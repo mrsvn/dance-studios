@@ -364,6 +364,55 @@ app.post('/v1/studio/:urlBit', (req, res) => {
   });
 });
 
+// Вернуть все занятия для данной студии
+app.get('/v1/studio/:studioId/classes', (req, res) => {
+  db.collection('classes').find({ studioId: req.params.studioId }).toArray((err, classes) => {
+    if(err) {
+      res.status(500).send({ status: 'ERROR' });
+      console.log("Ne udalos");
+      return;
+    }
+
+    res.send({
+      status: 'OK',
+      classes: classes
+    });
+  });
+});
+
+// Добавить новое занятие
+app.post('/v1/studio/:studioId/classes', (req, res) => {
+  db.collection('classes').insertOne({
+    studioId: req.body.studioId,
+    startTime: req.body.startTime,
+    endTime: req.body.endTime,
+    tags: req.body.tags,
+    title: req.body.title,
+    tainer: req.body.trainer,
+    capacity: req.body.capacity,
+    enrolledUsers: []
+  }).then(result => {
+    if(result) {
+      res.send({
+        status: 'OK'
+      });
+    }
+    else {
+      res.send({
+        status: 'ERROR'
+      });
+    }
+  });
+});
+
+app.delete('/v1/studio/:studioId/classes/:classId', (req, res) => {
+  // Удалить занятие
+});
+
+app.put('/v1/studio/:studioId/classes/:classId', (req, res) => {
+  // Заменить (отредактировать) занятие
+});
+
 app.post('/upload-images', (req, res) => {
   Object.keys(req.files).forEach(filename => {
     req.files[filename].mv(path.join(__dirname, 'files1488', filename));
