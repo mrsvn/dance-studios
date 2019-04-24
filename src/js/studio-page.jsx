@@ -8,12 +8,16 @@ class StudioPage extends React.Component {
     super(props);
 
     this.state = {
-      data: {}
+      data: {},
+      classes: []
     };
+
+    this.urlBit = location.pathname.split('/').pop();
   }
 
   componentDidMount() {
-    fetch("/v1/studio/" + location.pathname.split('/').pop()).then(response => {
+    // Studio profile
+    fetch(`/v1/studio/${this.urlBit}`).then(response => {
       return response.json();
     }).then(data => {
       this.setState({
@@ -21,6 +25,42 @@ class StudioPage extends React.Component {
       });
     }).catch(error => {
       console.log(error);
+    });
+
+    // Studio schedule
+    fetch(`/v1/studio/${this.urlBit}/classes`).then(response => {
+      return response.json();
+    }).then(data => {
+      if(data.status === 'OK') {
+        this.setState({
+          classes: data.classes
+        });
+      }
+      else {
+        console.log(data);
+      }
+    }).catch(error => {
+      console.log(error);
+    });
+  }
+
+  handleEnroll(e, classId) {
+    e.preventDefault();
+
+    fetch("/v1/enrollments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        classId: classId
+      })
+    }).then(response => {
+      return response.json();
+    }).then(data => {
+      console.log(data);
+    }).catch(err => {
+      console.log(err);
     });
   }
 
@@ -49,6 +89,17 @@ class StudioPage extends React.Component {
                 this.state.data.description && this.state.data.description.map(p => <p>{ p }</p>)
               }
             </div>
+
+            <hr/>
+
+            {
+              this.state.classes.map(classInfo => {
+                return <div key={classInfo._id}>
+                  <pre>{ JSON.stringify(classInfo, null, 4) }</pre>
+                  <a href="#" onClick={e => this.handleEnroll(e, classInfo._id)}>Записаться!</a>
+                </div>;
+              })
+            }
 
             <hr/>
 
@@ -100,8 +151,6 @@ class StudioPage extends React.Component {
                 )
               })
             }
-
-
           </div>
           <div id="studio-map-and-hours">
             <YMaps>

@@ -8,7 +8,7 @@ const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 // const uuid4 = require('uuid/v4');
 
-const MongoClient = require('mongodb').MongoClient;
+const mongodb = require('mongodb');
 
 const app = express();
 
@@ -425,6 +425,80 @@ app.put('/v1/studio/:urlBit/classes/:classId', (req, res) => {
   // Заменить (отредактировать) занятие
 });
 
+// Получить список занятий, на которые записан (данный) пользователь
+app.get('/v1/enrollments', (req, res) => {
+  console.log(`GET ${req.path}:`, req.body);
+
+  const email = req.cookies.email;
+  const authToken = req.cookies.authToken;
+
+  db.collection('users').findOne({ email: email }).then(user => {
+    let isAuthorized = false;
+
+    user.authTokens.forEach(token => {
+      if(token.value === authToken) {
+        isAuthorized = true;
+      }
+    });
+
+    if(!isAuthorized) {
+      res.status(403).send({ status: 'UNAUTHORIZED' });
+      return;
+    }
+
+    db.collection('classes').find().toArray((_, classes) => {
+      const usersClasses = classes.filter(classInfo => {
+        return classInfo.enrolledUsers.some(userId => userId.equals(user._id));
+      });
+
+      res.send({
+        status: 'OK',
+        classes: usersClasses
+      });
+    });
+  });
+});
+
+// Записаться на новое занятие (от лица пользователя)
+app.post('/v1/enrollments', (req, res) => {
+  console.log(`POST ${req.path}:`, req.body);
+
+  const email = req.cookies.email;
+  const authToken = req.cookies.authToken;
+
+  db.collection('users').findOne({ email: email }).then(user => {
+    let isAuthorized = false;
+
+    user.authTokens.forEach(token => {
+      if(token.value === authToken) {
+        isAuthorized = true;
+      }
+    });
+
+    if(!isAuthorized) {
+      res.status(403).send({ status: 'UNAUTHORIZED' });
+      return;
+    }
+
+    const classId = req.body.classId;
+
+    db.collection('classes').updateOne({ _id: mongodb.ObjectId(classId) }, { $addToSet: { enrolledUsers: user._id } }).then(result => {
+      console.log(result.result);
+
+      if(result) {
+        res.send({ status: "OK" });
+      }
+      else {
+        res.send({ status: "ERROR" });
+      }
+    });
+  });
+});
+
+app.delete('/v1/enrollments/:classId', (req, res) => {
+  // Отписаться от занятия
+})
+
 app.post('/upload-images', (req, res) => {
   Object.keys(req.files).forEach(filename => {
     req.files[filename].mv(path.join(__dirname, 'files1488', filename));
@@ -437,7 +511,7 @@ app.post('/upload-images', (req, res) => {
 
 app.use('/', express.static(path.join(__dirname, '..')));
 
-MongoClient.connect('mongodb://localhost:27017/dancer', { useNewUrlParser: true }, (err, client) => {
+mongodb.MongoClient.connect('mongodb://localhost:27017/dancer', { useNewUrlParser: true }, (err, client) => {
     if(err) {
         throw err;
     }
