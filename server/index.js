@@ -365,51 +365,63 @@ app.post('/v1/studio/:urlBit', (req, res) => {
 });
 
 // Вернуть все занятия для данной студии
-app.get('/v1/studio/:studioId/classes', (req, res) => {
-  db.collection('classes').find({ studioId: req.params.studioId }).toArray((err, classes) => {
-    if(err) {
-      res.status(500).send({ status: 'ERROR' });
-      console.log("Ne udalos");
-      return;
-    }
+app.get('/v1/studio/:urlBit/classes', (req, res) => {
+  console.log(`GET ${req.path}`);
 
-    res.send({
-      status: 'OK',
-      classes: classes
+  db.collection('studios').findOne({ urlBit: req.params.urlBit }).then(studio => {
+    db.collection('classes').find({ studioId: studio._id }).toArray((err, classes) => {
+      if(err) {
+        res.status(500).send({ status: 'ERROR' });
+        console.log("Ne udalos");
+        return;
+      }
+
+      res.send({
+        status: 'OK',
+        classes: classes
+      });
     });
   });
 });
 
 // Добавить новое занятие
-app.post('/v1/studio/:studioId/classes', (req, res) => {
-  db.collection('classes').insertOne({
-    studioId: req.body.studioId,
-    startTime: req.body.startTime,
-    endTime: req.body.endTime,
-    tags: req.body.tags,
-    title: req.body.title,
-    tainer: req.body.trainer,
-    capacity: req.body.capacity,
-    enrolledUsers: []
-  }).then(result => {
-    if(result) {
-      res.send({
-        status: 'OK'
-      });
+app.post('/v1/studio/:urlBit/classes', (req, res) => {
+  db.collection('studios').findOne({ urlBit: req.params.urlBit }).then(studio => {
+    if(!studio) {
+      res.status(500).send({ status: 'NO_STUDIO' });
+      return
     }
-    else {
-      res.send({
-        status: 'ERROR'
-      });
-    }
+
+    db.collection('classes').insertOne({
+      studioId: studio._id,
+      title: req.body.title,
+      startTime: req.body.startTime,
+      endTime: req.body.endTime,
+      tags: req.body.tags,
+      title: req.body.title,
+      tainer: req.body.trainer,
+      capacity: req.body.capacity,
+      enrolledUsers: []
+    }).then(result => {
+      if(result) {
+        res.send({
+          status: 'OK'
+        });
+      }
+      else {
+        res.send({
+          status: 'ERROR'
+        });
+      }
+    });
   });
 });
 
-app.delete('/v1/studio/:studioId/classes/:classId', (req, res) => {
+app.delete('/v1/studio/:urlBit/classes/:classId', (req, res) => {
   // Удалить занятие
 });
 
-app.put('/v1/studio/:studioId/classes/:classId', (req, res) => {
+app.put('/v1/studio/:urlBit/classes/:classId', (req, res) => {
   // Заменить (отредактировать) занятие
 });
 
