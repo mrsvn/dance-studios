@@ -34,7 +34,7 @@ class StudioListing extends React.Component {
                         </div>
                     </div>
                     <div className={ 'p-link' }>
-                        <a href={`/studio/${ content.urlBit}`}>Подробнее &rarr;</a>
+                        <a href={`/studios/${ content.urlBit}`}>Подробнее &rarr;</a>
                     </div>
                 </div>
             </div>
