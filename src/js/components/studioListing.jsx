@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 class StudioListing extends React.Component {
     render() {
         const content = this.props.content;
@@ -34,7 +36,7 @@ class StudioListing extends React.Component {
                         </div>
                     </div>
                     <div className={ 'p-link' }>
-                        <a href={`/studios/${ content.urlBit}`}>Подробнее &rarr;</a>
+                        <Link to={`/studios/${ content.urlBit}`}>Подробнее &rarr;</Link>
                     </div>
                 </div>
             </div>
