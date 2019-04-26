@@ -1,7 +1,53 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import styled from 'styled-components';
+
 import { YMaps, Map, GeoObject } from 'react-yandex-maps';
+
+const StudioPageDiv = styled.div`
+  #studio-image {
+      overflow: hidden;
+      height: 400px;
+      position: relative;
+  }
+  #studio-image img {
+      /*height: 400px;*/
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+
+  #studio-information-container {
+      display: flex;
+      max-width: 1000px;
+      margin: 0 auto;
+  }
+  #studio-information {
+      width: 70%;
+      /*background: #c4d9ff;*/
+  }
+  #studio-map-and-hours {
+      width: 30%;
+      /*background: #ba89cc;*/
+  }
+
+  #studio-heading {
+      display: flex;
+      justify-content: space-between;
+  }
+  .studio-review {
+      display: flex;
+  }
+  .review-metadata {
+      display: flex;
+  }
+
+  .studio-map {
+      width: 100%;
+      height: 25em;
+  }
+`;
 
 class StudioPage extends React.Component {
   constructor(props) {
@@ -68,7 +114,7 @@ class StudioPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <StudioPageDiv>
         <div id="studio-image">
           <img src={this.state.data.imgUrl}/>
         </div>
@@ -168,7 +214,7 @@ class StudioPage extends React.Component {
           </div>
 
         </div>
-      </div>
+      </StudioPageDiv>
     );
   }
 }
