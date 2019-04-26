@@ -41,8 +41,8 @@ class AppRouter extends React.Component {
             </header>
 
             <Route exact path="/" component={() => <p>Under construction 🏠</p>} />
-            <Route path="/studios/:urlBit" component={StudioPage} />
-            <Route path="/studios/" component={StudiosListPage} />
+            <Route exact path="/studios" component={StudiosListPage} />
+            <Route exact path="/studios/:urlBit" component={StudioPage} />
             <Route path="/classes/" component={ClassesTablePage} />
         </BrowserRouter>;
     }
