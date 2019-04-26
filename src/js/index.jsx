@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import { LoginCorner } from "./containers/loginCorner";
 import { StudiosListPage } from "./containers/studiosListPage";
 import { ClassesTablePage } from "./containers/classesTablePage";
+import { StudioPage } from "./containers/studioPage";
 
 class AppRouter extends React.Component {
     render() {
@@ -40,6 +41,7 @@ class AppRouter extends React.Component {
             </header>
 
             <Route exact path="/" component={() => <p>Under construction 🏠</p>} />
+            <Route path="/studios/:urlBit" component={StudioPage} />
             <Route path="/studios/" component={StudiosListPage} />
             <Route path="/classes/" component={ClassesTablePage} />
         </BrowserRouter>;

@@ -9,14 +9,9 @@ const bcrypt = require('bcrypt');
 // const uuid4 = require('uuid/v4');
 
 const mongodb = require('mongodb');
-
-const app = express();
-
 let db;
 
-// app.get('/', (req, res) => {
-//     res.send('Hello, world!');
-// });
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded());
@@ -274,7 +269,7 @@ app.get('/classes', (req, res) => {
 });
 
 app.get('/studios/:urlBit', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "studio-page.html"));
+  res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
 app.get('/edit-studio/:urlBit', (req, res) => {

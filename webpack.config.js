@@ -5,7 +5,6 @@ module.exports = {
         index: './src/js/index.jsx',
         calendar: './src/js/calendar.jsx',
         dashboard: './src/js/dashboard.jsx',
-        studioPage: './src/js/studio-page.jsx',
         imageUpload: './src/js/image-upload.jsx',
         adminUsers: './src/js/adminUsers.jsx',
         studioEdit: './src/js/studioEdit.jsx'

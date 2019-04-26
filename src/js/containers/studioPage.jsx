@@ -12,7 +12,9 @@ class StudioPage extends React.Component {
       classes: []
     };
 
-    this.urlBit = location.pathname.split('/').pop();
+    console.log(props);
+
+    this.urlBit = this.props.match.params.urlBit;
   }
 
   componentDidMount() {
@@ -171,4 +173,6 @@ class StudioPage extends React.Component {
   }
 }
 
-ReactDOM.render(<StudioPage/>, document.querySelector('#studio-page'));
+export { StudioPage };
+
+// ReactDOM.render(<StudioPage/>, document.querySelector('#studio-page'));
