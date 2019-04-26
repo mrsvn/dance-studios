@@ -15,7 +15,7 @@ class AppRouter extends React.Component {
     render() {
         return <BrowserRouter>
             <header>
-                <img src="/img/logo-brand.png" className="brand-logo" />
+                <img alt="🕺" src="/img/logo-brand.png" className="brand-logo" />
 
                 <span className="brand-title">
 				NaSheste
