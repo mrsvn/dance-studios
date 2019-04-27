@@ -11,6 +11,7 @@ import { StudiosListPage } from "./containers/studiosListPage";
 import { ClassesTablePage } from "./containers/classesTablePage";
 import { StudioPage } from "./containers/studioPage";
 import { ProfilePage } from "./containers/profilePage";
+import { AdminUsersPage } from "./containers/adminUsersPage";
 
 class AppRouter extends React.Component {
     render() {
@@ -47,6 +48,7 @@ class AppRouter extends React.Component {
             <Route exact path="/studios/:urlBit" component={StudioPage} />
             <Route path="/classes/" component={ClassesTablePage} />
             <Route exact path="/profile" component={ProfilePage} />
+            <Route exact path="/admin/users" component={AdminUsersPage} />
         </BrowserRouter>;
     }
 }
