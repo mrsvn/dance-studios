@@ -401,7 +401,6 @@ app.post('/v1/studio/:urlBit/classes', (req, res) => {
       startTime: req.body.startTime,
       endTime: req.body.endTime,
       tags: req.body.tags,
-      title: req.body.title,
       tainer: req.body.trainer,
       capacity: req.body.capacity,
       enrolledUsers: []

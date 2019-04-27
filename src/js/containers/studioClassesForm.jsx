@@ -13,10 +13,11 @@ class AddClassForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        if(this.state.startTime === undefined /* TODO: other fields */) {
-            console.error("Вы не ввели дранькова");
-            return;
-        }
+        // TODO: validate this and other fields
+        // if(this.state.startTime === undefined) {
+        //     console.error("Вы не ввели дранькова");
+        //     return;
+        // }
 
         fetch(`/v1/studio/${this.urlBit}/classes`, {
             method: "POST",
@@ -46,9 +47,11 @@ class AddClassForm extends React.Component {
     }
 
     render() {
+        console.log(this.state);
+
         return <tr>
             <td>
-                <input name="title" placeholder="Утренняя разминочка" value={this.state.title} onChange={e => this.setState({ trainer: e.target.title })}/>
+                <input name="title" placeholder="Утренняя разминочка" value={this.state.title} onChange={e => this.setState({ title: e.target.value })}/>
             </td>
             <td>
                 <input name="startTime" type="datetime-local" value={this.state.startTime} onChange={e => this.setState({ startTime: e.target.value })}/>
