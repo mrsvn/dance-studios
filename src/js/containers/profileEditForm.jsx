@@ -16,9 +16,15 @@ class ProfileEditForm extends React.Component {
     }
 
     handleUserpicChange(e) {
-        this.setState({
-            userpic: URL.createObjectURL(e.target.files[0])
-        });
+        const reader = new FileReader();
+
+        reader.readAsDataURL(e.target.files[0]);
+
+        reader.onload = () => {
+            this.setState({
+                userpic: reader.result
+            });
+        };
     }
 
     handleSubmit(e) {
@@ -42,7 +48,7 @@ class ProfileEditForm extends React.Component {
     render() {
         return <form action="/v1/profile" method="POST">
             <p>
-                <img style={{width: '184px', height: '184px'}} src={this.state.userpic || "http://placehold.jp/184x184.png"} /><br/>
+                <img style={{width: '184px', height: '184px', imageRendering: 'pixelated'}} src={this.state.userpic || "http://placehold.jp/184x184.png"} /><br/>
                 <input type="file" name="userpic" onChange={e => this.handleUserpicChange(e)} />
             </p>
             <p>
