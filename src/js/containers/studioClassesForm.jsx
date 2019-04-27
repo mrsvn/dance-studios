@@ -4,7 +4,9 @@ class AddClassForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            tags: "Бачата" // TODO: remove
+        };
 
         // TODO!: ...
         this.urlBit = "9-da-ja-nichego-net-net";
@@ -47,8 +49,6 @@ class AddClassForm extends React.Component {
     }
 
     render() {
-        console.log(this.state);
-
         return <tr>
             <td>
                 <input name="title" placeholder="Утренняя разминочка" value={this.state.title} onChange={e => this.setState({ title: e.target.value })}/>
