@@ -138,7 +138,7 @@ class LoginCorner extends React.Component {
             { email }
             <img src={ userpic ? userpic : "https://placehold.jp/80x80.png" } style={{ height:"40px", borderRadius: "50%" }}/>
             <Link to="/profile">Профиль</Link>&nbsp;
-            <a href="#">Студия</a>&nbsp;
+            <Link to="/edit-studio">Студия</Link>&nbsp;
             <Link to="/admin/users">Админка</Link>&nbsp;
             <a href="#" onClick={e => this.handleLogoutClick(e)}>Выйти</a>
         </div>;

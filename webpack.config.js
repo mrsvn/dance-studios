@@ -4,8 +4,7 @@ module.exports = {
     entry: {
         index: './src/js/index.jsx',
         calendar: './src/js/calendar.jsx',
-        imageUpload: './src/js/image-upload.jsx',
-        studioEdit: './src/js/studioEdit.jsx'
+        imageUpload: './src/js/image-upload.jsx'
     },
     mode: 'development',
     // mode: 'production',
