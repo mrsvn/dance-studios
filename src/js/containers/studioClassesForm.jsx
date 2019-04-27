@@ -6,7 +6,8 @@ class AddClassForm extends React.Component {
 
         this.state = {};
 
-        this.urlBit = location.pathname.split('/').pop();
+        // TODO!: ...
+        this.urlBit = "9-da-ja-nichego-net-net";
     }
 
     handleSubmit(e) {
@@ -85,7 +86,8 @@ class StudioClassesForm extends React.Component {
             classes: []
         };
 
-        this.urlBit = location.pathname.split('/').pop();
+        // TODO!: ...
+        this.urlBit = "9-da-ja-nichego-net-net";
     }
 
     componentDidMount() {
