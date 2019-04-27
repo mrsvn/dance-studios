@@ -280,8 +280,8 @@ app.get('/admin/*', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
-app.get('/edit-studio/:urlBit', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "admin-studio.html"));
+app.get('/edit-studio', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
 app.get('/v1/studios/:city', (req, res) => {

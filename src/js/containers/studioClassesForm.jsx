@@ -48,7 +48,7 @@ class AddClassForm extends React.Component {
     render() {
         return <tr>
             <td>
-                <input name="title" placeholder="Бачата с Павликом" value={this.state.title} onChange={e => this.setState({ trainer: e.target.title })}/>
+                <input name="title" placeholder="Утренняя разминочка" value={this.state.title} onChange={e => this.setState({ trainer: e.target.title })}/>
             </td>
             <td>
                 <input name="startTime" type="datetime-local" value={this.state.startTime} onChange={e => this.setState({ startTime: e.target.value })}/>
@@ -63,12 +63,12 @@ class AddClassForm extends React.Component {
                 </select>
             </td>
             <td>
-                <input name="trainer" placeholder="Павел Драньков" value={this.state.trainer} onChange={e => this.setState({ trainer: e.target.value })}/>
+                <input name="trainer" placeholder="Иван Иванов" value={this.state.trainer} onChange={e => this.setState({ trainer: e.target.value })}/>
             </td>
             <td>
                 <input name="capacity" type="number" value={this.state.capacity} onChange={e => this.setState({ capacity: e.target.value })}/>
             </td>
-            <td>49</td>
+            <td>&nbsp;</td>
             <td colSpan="2">
                 <a href="#" className="btn btn-sm btn-success" onClick={e => this.handleSubmit(e)}>
                     Добавить
