@@ -3,7 +3,6 @@ const path = require('path');
 module.exports = {
     entry: {
         index: './src/js/index.jsx',
-        calendar: './src/js/calendar.jsx',
         imageUpload: './src/js/image-upload.jsx'
     },
     mode: 'development',

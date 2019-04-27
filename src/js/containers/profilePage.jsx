@@ -1,6 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 
+import styled from 'styled-components';
+import { BrowserRouter, Route, NavLink } from "react-router-dom";
+
+import { UserCalendar } from "./userCalendar";
 import { ProfileEditForm } from "./profileEditForm";
 
 const ProfileMain = styled.main`
@@ -13,34 +16,31 @@ const ProfileMain = styled.main`
   .dashboard-main {
     flex-grow: 1;
   }
+  
+  .link-current {
+    font-weight: 500;
+  }
 `;
 
 class ProfilePage extends React.Component {
     render() {
-        return (
+        return <BrowserRouter>
             <ProfileMain>
                 <nav>
                     <ul>
-                        <li><a href="#">Расписание</a></li>
+                        <li><NavLink exact to="/profile/" activeClassName="link-current">Профиль</NavLink></li>
+                        <li><NavLink to="/profile/calendar" activeClassName="link-current">Расписание</NavLink></li>
                         <li><a href="#">Избранные студии</a></li>
-                        <li><a href="#">Редактировать профиль</a></li>
-                        <li><a href="#">Выход</a></li>
+                        <li><NavLink to="/profile/edit" activeClassName="link-current">Редактировать профиль</NavLink></li>
                     </ul>
                 </nav>
                 <div className="dashboard-main">
-                    {/*// <!--				<div class="calendar-modes">-->*/}
-                    {/*// <!--					<a href="#">месяц</a>-->*/}
-                    {/*// <!--					<a href="#">неделя</a>-->*/}
-                    {/*// <!--					<a href="#">списком</a>-->*/}
-                    {/*// <!--				</div>-->*/}
-                    {/*// <!--				<div style="height: 1000px; font-size: 40px; background: pink;">-->*/}
-                    {/*// <!--					календарь-->*/}
-                    {/*// <!--				</div>-->*/}
-
-                    <ProfileEditForm/>
+                    <Route exact path="/profile" render={() => <div>Under construction 🏠</div>} />
+                    <Route exact path="/profile/calendar" component={UserCalendar} />
+                    <Route exact path="/profile/edit" component={ProfileEditForm} />
                 </div>
             </ProfileMain>
-        );
+        </BrowserRouter>;
     }
 }
 

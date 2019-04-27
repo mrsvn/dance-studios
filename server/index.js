@@ -272,7 +272,7 @@ app.get('/studios/:urlBit', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
-app.get('/profile', (req, res) => {
+app.get('/profile/*', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
