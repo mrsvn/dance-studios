@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import { LoginForm } from "../components/loginForm";
 import { RegisterForm } from "../components/registerForm";
 
@@ -130,11 +132,14 @@ class LoginCorner extends React.Component {
     }
 
     renderAuthorized() {
-        const { email, displayName, userpic } = this.state.currentAuth;
+        const { email, userpic } = this.state.currentAuth;
 
         return <div>
-            { displayName }
+            { email }
             <img src={ userpic ? userpic : "https://placehold.jp/80x80.png" } style={{ height:"40px", borderRadius: "50%" }}/>
+            <Link to="/profile">Профиль</Link>&nbsp;
+            <a href="#">Студия</a>&nbsp;
+            <a href="#">Админка</a>&nbsp;
             <a href="#" onClick={e => this.handleLogoutClick(e)}>Выйти</a>
         </div>;
     }

@@ -10,6 +10,7 @@ import { LoginCorner } from "./containers/loginCorner";
 import { StudiosListPage } from "./containers/studiosListPage";
 import { ClassesTablePage } from "./containers/classesTablePage";
 import { StudioPage } from "./containers/studioPage";
+import { ProfilePage } from "./containers/profilePage";
 
 class AppRouter extends React.Component {
     render() {
@@ -40,10 +41,12 @@ class AppRouter extends React.Component {
                 <LoginCorner/>
             </header>
 
+            {/* TODO: city parameter */}
             <Route exact path="/" component={() => <p>Under construction 🏠</p>} />
             <Route exact path="/studios" component={StudiosListPage} />
             <Route exact path="/studios/:urlBit" component={StudioPage} />
             <Route path="/classes/" component={ClassesTablePage} />
+            <Route exact path="/profile" component={ProfilePage} />
         </BrowserRouter>;
     }
 }
