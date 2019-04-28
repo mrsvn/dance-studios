@@ -132,12 +132,12 @@ class LoginCorner extends React.Component {
     }
 
     renderAuthorized() {
-        const { email, userpic } = this.state.currentAuth;
+        const { email } = this.state.currentAuth;
 
         return <div>
             { email }
-            <img src={ userpic ? userpic : "https://placehold.jp/80x80.png" } style={{ height:"40px", borderRadius: "50%" }}/>
-            <Link to="/profile/calendar">Профиль</Link>&nbsp;
+            <img src={ `/v1/userpics/${email}` } style={{ height:"40px", borderRadius: "50%" }}/>
+            <Link to="/profile">Профиль</Link>&nbsp;
             <Link to="/edit-studio">Студия</Link>&nbsp;
             <Link to="/admin/users">Админка</Link>&nbsp;
             <a href="#" onClick={e => this.handleLogoutClick(e)}>Выйти</a>

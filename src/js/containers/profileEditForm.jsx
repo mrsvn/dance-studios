@@ -16,26 +16,31 @@ class ProfileEditForm extends React.Component {
     }
 
     handleUserpicChange(e) {
+        const newUserpic = e.target.files[0];
+
         const reader = new FileReader();
-
-        reader.readAsDataURL(e.target.files[0]);
-
         reader.onload = () => {
             this.setState({
-                userpic: reader.result
+                userpic: newUserpic,
+                userpicData: reader.result
             });
         };
+
+        reader.readAsDataURL(newUserpic);
     }
 
     handleSubmit(e) {
         e.preventDefault();
 
+        const formData = new FormData();
+
+        ['firstName', 'lastName', 'gender', 'birthDate', 'city', 'userpic'].forEach(k => {
+            formData.append(k, this.state[k]);
+        });
+
         fetch("/v1/profile", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(this.state)
+            body: formData
         }).then(response => {
             return response.json();
         }).then(data => {
@@ -48,7 +53,8 @@ class ProfileEditForm extends React.Component {
     render() {
         return <form action="/v1/profile" method="POST">
             <p>
-                <img style={{width: '184px', height: '184px', imageRendering: 'pixelated'}} src={this.state.userpic || "http://placehold.jp/184x184.png"} /><br/>
+                {/* TODO: this user's userpic */}
+                <img style={{width: '184px', height: '184px'}} src={this.state.userpicData || "/v1/userpics/q@q"} /><br/>
                 <input type="file" name="userpic" onChange={e => this.handleUserpicChange(e)} />
             </p>
             <p>

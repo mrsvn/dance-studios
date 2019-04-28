@@ -6,7 +6,7 @@ const fileUpload = require('express-fileupload');
 
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
-// const uuid4 = require('uuid/v4');
+const uuid4 = require('uuid/v4');
 
 const mongodb = require('mongodb');
 let db;
@@ -163,6 +163,20 @@ app.get('/dashboard', (req, res) => {
   }
 });
 
+app.get('/v1/userpics/:email', (req, res) => {
+  db.collection('users').findOne({ email: req.params.email }).then(user => {
+    if(!user) {
+      res.status(404).send();
+    }
+    else if(!user.userpic) {
+      // TODO: show the default one
+    }
+    else {
+      res.sendFile(path.join(__dirname, "files1488", user.userpic));
+    }
+  });
+});
+
 app.get('/v1/profile', (req, res) => {
   const email = req.cookies.email;
   const authToken = req.cookies.authToken;
@@ -186,6 +200,8 @@ app.get('/v1/profile', (req, res) => {
 });
 
 app.post('/v1/profile', (req, res) => {
+  console.log(`POST ${req.path}`, req.body, Object.keys(req.files));
+
   const email = req.cookies.email;
   const authToken = req.cookies.authToken;
 
@@ -199,10 +215,39 @@ app.post('/v1/profile', (req, res) => {
     });
 
     if(isAuthorized) {
-      const userUpdate = Object.assign({}, req.body, { isAdmin: undefined, _id: undefined });
+      const userUpdate = {};
 
-      delete userUpdate['isAdmin'];
-      delete userUpdate['_id'];
+      userUpdate.firstName = req.body.firstName;
+      userUpdate.lastName = req.body.lastName;
+      userUpdate.gender = req.body.gender;
+      userUpdate.birthDate = req.body.birthDate;
+      userUpdate.city = req.body.city;
+
+      if(req.files.userpic) {
+        const newUserpic = (file => {
+          let filename;
+
+          if(file.mimetype === "image/jpeg") {
+            filename = uuid4() + ".jpg";
+          }
+          else if(file.mimetype === "image/png") {
+            filename = uuid4() + ".png";
+          }
+          else if(file.mimetype === "image/gif") {
+            filename = uuid4() + ".gif";
+          }
+
+          if(filename) {
+            file.mv(path.join(__dirname, "files1488", filename));
+          }
+
+          return filename;
+        })(req.files.userpic);
+
+        if(newUserpic) {
+          userUpdate.userpic = newUserpic;
+        }
+      }
 
       db.collection('users').updateOne({ email: email }, { $set: userUpdate }).then(result => {
         if(result) {
@@ -264,11 +309,7 @@ app.get('/studios', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
-app.get('/classes', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
-});
-
-app.get('/studios/:urlBit', (req, res) => {
+app.get('/classes/*', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
@@ -389,6 +430,8 @@ app.get('/v1/studio/:urlBit/classes', (req, res) => {
 
 // Добавить новое занятие
 app.post('/v1/studio/:urlBit/classes', (req, res) => {
+  console.log(`POST ${req.path}:`, req.body);
+
   db.collection('studios').findOne({ urlBit: req.params.urlBit }).then(studio => {
     if(!studio) {
       res.status(500).send({ status: 'NO_STUDIO' });
@@ -499,7 +542,7 @@ app.post('/v1/enrollments', (req, res) => {
 
 app.delete('/v1/enrollments/:classId', (req, res) => {
   // Отписаться от занятия
-})
+});
 
 app.post('/upload-images', (req, res) => {
   Object.keys(req.files).forEach(filename => {
