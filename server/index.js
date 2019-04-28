@@ -200,7 +200,7 @@ app.get('/v1/profile', (req, res) => {
 });
 
 app.post('/v1/profile', (req, res) => {
-  console.log(`POST ${req.path}`, req.body, Object.keys(req.files));
+  console.log(`POST ${req.path}`, req.body);
 
   const email = req.cookies.email;
   const authToken = req.cookies.authToken;
@@ -223,7 +223,7 @@ app.post('/v1/profile', (req, res) => {
       userUpdate.birthDate = req.body.birthDate;
       userUpdate.city = req.body.city;
 
-      if(req.files.userpic) {
+      if(req.files && req.files.userpic) {
         const newUserpic = (file => {
           let filename;
 
