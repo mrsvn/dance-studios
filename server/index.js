@@ -181,17 +181,27 @@ app.get('/v1/profile', (req, res) => {
   const email = req.cookies.email;
   const authToken = req.cookies.authToken;
 
-  db.collection('users').findOne({ email: email }).then(userDoc => {
+  db.collection('users').findOne({ email: email }).then(user => {
     let isAuthorized = false;
 
-    userDoc.authTokens.forEach(token => {
+    user.authTokens.forEach(token => {
       if(token.value === authToken) {
         isAuthorized = true;
       }
     });
 
     if(isAuthorized) {
-      res.send(Object.assign({}, userDoc, { authTokens: undefined } ));
+      const userRepr = Object.assign({}, user);
+
+      delete userRepr._id;
+      delete userRepr.pwdHash;
+      delete userRepr.authTokens;
+      delete userRepr.userpic;
+
+      // TODO: convert to urlBit before sending?
+      delete userRepr.managedStudio;
+
+      res.send(userRepr);
     }
     else {
       res.status(403).send({ error: 'UNAUTHORIZED' });

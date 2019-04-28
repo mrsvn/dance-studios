@@ -1,5 +1,7 @@
 import React from "react";
 
+import { getCurrentUser } from "../util/sessionData";
+
 class ProfileEditForm extends React.Component {
     constructor(props) {
         super(props);
@@ -8,11 +10,7 @@ class ProfileEditForm extends React.Component {
     }
 
     componentDidMount() {
-        fetch("/v1/profile").then(response => {
-            return response.json();
-        }).then(profileData => {
-            this.setState(profileData);
-        }).catch(err => {});
+        getCurrentUser().then(data => this.setState(data));
     }
 
     handleUserpicChange(e) {
@@ -44,7 +42,13 @@ class ProfileEditForm extends React.Component {
         }).then(response => {
             return response.json();
         }).then(data => {
-            console.log(data);
+            if(data.status === 'OK') {
+                sessionStorage.removeItem('currentUser');
+                location.reload();
+            }
+            else {
+                console.log(data);
+            }
         }).catch(err => {
             console.log(err);
         });
