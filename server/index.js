@@ -14,9 +14,45 @@ let db;
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(fileUpload({ limits: { fileSize: 50 * 1024 * 1024 } }));
+
+const checkAuth = fHasRights => {
+  return (req, res, next) => {
+    console.log(`${req.method} ${req.path} with ${fHasRights} auth`);
+
+    const email = req.cookies.email;
+    const authToken = req.cookies.authToken;
+
+    if(!email || !authToken) {
+      return res.status(401).send({ status: 'UNAUTHORIZED' });
+    }
+
+    db.collection('users').findOne({ email: email }).then(user => {
+      if(!user || !(!fHasRights || fHasRights(user))) {
+        res.status(401).send({ status: 'UNAUTHORIZED' });
+      }
+      else {
+        let isAuthorized = false;
+
+        user.authTokens.forEach(token => {
+          if(token.value === authToken) {
+            isAuthorized = true;
+          }
+        });
+
+        if(!isAuthorized) {
+          res.status(401).send({ status: 'UNAUTHORIZED' });
+        }
+        else {
+          req.user = user;
+          next();
+        }
+      }
+    }).catch(console.error);
+  };
+};
 
 app.post('/login', (req, res) => {
     const email = req.body.email, password = req.body.password;
@@ -115,54 +151,6 @@ app.post('/register', (req, res) => {
   })
 });
 
-app.get('/dashboard', (req, res) => {
-  const { authToken, email } = req.cookies;
-
-  const clearAuthCookies = () => {
-    res.clearCookie('email');
-    res.clearCookie('authToken');
-  };
-
-  if(!email || !authToken) {
-    clearAuthCookies();
-    res.end(`Unauthorized.`);
-  }
-  else {
-    let resBody = `<p>E-mail: <strong>${email}</strong>\n<p>Token: <strong>${authToken}</strong>\n`;
-
-    db.collection('users').findOne({ email: email }).then(userDoc => {
-      // TODO: clean invalid and expired tokens up
-
-      let tokenDoc = null;
-
-      userDoc.authTokens.forEach(tDoc => {
-        console.log(tDoc);
-
-        if(tDoc.value === authToken) {
-          tokenDoc = tDoc;
-          return false;
-        }
-      });
-
-      if(!tokenDoc) {
-        clearAuthCookies();
-        resBody += `<p>Unknown token`;
-      }
-      else if(tokenDoc.expiresAt < new Date()) {
-        clearAuthCookies();
-        resBody += `<p>Expired token`;
-      }
-      else {
-        delete userDoc.authTokens;
-
-        res.write(`<p>Here's you:<pre>${JSON.stringify(userDoc, null, 4)}</pre>`);
-      }
-
-      res.write(resBody);
-    }).catch(err => console.log(err));
-  }
-});
-
 app.get('/v1/userpics/:email', (req, res) => {
   db.collection('users').findOne({ email: req.params.email }).then(user => {
     if(!user) {
@@ -177,6 +165,7 @@ app.get('/v1/userpics/:email', (req, res) => {
   });
 });
 
+app.use('/v1/profile', checkAuth());
 app.get('/v1/profile', (req, res) => {
   const email = req.cookies.email;
   const authToken = req.cookies.authToken;
@@ -212,167 +201,78 @@ app.get('/v1/profile', (req, res) => {
 app.post('/v1/profile', (req, res) => {
   console.log(`POST ${req.path}`, req.body);
 
-  const email = req.cookies.email;
-  const authToken = req.cookies.authToken;
+  const userUpdate = {};
 
-  db.collection('users').findOne({ email: email }).then(userDoc => {
-    let isAuthorized = false;
+  userUpdate.firstName = req.body.firstName;
+  userUpdate.lastName = req.body.lastName;
 
-    userDoc.authTokens.forEach(token => {
-      if(token.value === authToken) {
-        isAuthorized = true;
+  if(req.body.gender && ['female', 'male', 'none'].includes(req.body.gender)) {
+    userUpdate.gender = req.body.gender;
+  }
+
+  userUpdate.birthDate = req.body.birthDate;
+  userUpdate.city = req.body.city;
+
+  if(req.files && req.files.userpic) {
+    const newUserpic = (file => {
+      let filename;
+
+      if(file.mimetype === "image/jpeg") {
+        filename = uuid4() + ".jpg";
       }
-    });
-
-    if(isAuthorized) {
-      const userUpdate = {};
-
-      userUpdate.firstName = req.body.firstName;
-      userUpdate.lastName = req.body.lastName;
-
-      if(req.body.gender && ['female', 'male', 'none'].includes(req.body.gender)) {
-        userUpdate.gender = req.body.gender;
+      else if(file.mimetype === "image/png") {
+        filename = uuid4() + ".png";
       }
-
-      userUpdate.birthDate = req.body.birthDate;
-      userUpdate.city = req.body.city;
-
-      if(req.files && req.files.userpic) {
-        const newUserpic = (file => {
-          let filename;
-
-          if(file.mimetype === "image/jpeg") {
-            filename = uuid4() + ".jpg";
-          }
-          else if(file.mimetype === "image/png") {
-            filename = uuid4() + ".png";
-          }
-          else if(file.mimetype === "image/gif") {
-            filename = uuid4() + ".gif";
-          }
-
-          if(filename) {
-            file.mv(path.join(__dirname, "files1488", filename));
-          }
-
-          return filename;
-        })(req.files.userpic);
-
-        if(newUserpic) {
-          userUpdate.userpic = newUserpic;
-        }
+      else if(file.mimetype === "image/gif") {
+        filename = uuid4() + ".gif";
       }
 
-      db.collection('users').updateOne({ email: email }, { $set: userUpdate }).then(result => {
-        if(result) {
-          res.send({ status: 'OK' });
-        }
-        else {
-          res.status(500).send({ status: 'ERROR' });
-        }
-      });
+      if(filename) {
+        file.mv(path.join(__dirname, "files1488", filename));
+      }
+
+      return filename;
+    })(req.files.userpic);
+
+    if(newUserpic) {
+      userUpdate.userpic = newUserpic;
+    }
+  }
+
+  db.collection('users').updateOne({ email: req.user.email }, { $set: userUpdate }).then(result => {
+    if(result) {
+      res.send({ status: 'OK' });
     }
     else {
-      res.status(403).send({ error: 'UNAUTHORIZED' });
+      res.status(500).send({ status: 'ERROR' });
     }
   });
 });
 
+app.use('/v1/users', checkAuth(user => user.isAdmin));
 app.get('/v1/users', (req, res) => {
-  const email = req.cookies.email;
-  const authToken = req.cookies.authToken;
-
-  db.collection('users').findOne({ email: email }).then(user => {
-    if(!user && !user.isAdmin) {
-      res.status(403).send({ status: 'UNAUTHORIZED' });
-      return;
+  db.collection('users').find({}).toArray((err, users) => {
+    if(err) {
+      return console.log(err);
     }
 
-    let isAuthorized = false;
-
-    user.authTokens.forEach(token => {
-      if(token.value === authToken) {
-        isAuthorized = true;
-      }
+    res.send({
+      status: 'OK',
+      users: users
     });
-
-    if(!isAuthorized) {
-      res.status(403).send({ status: 'UNAUTHORIZED' });
-      return;
-    }
-
-    db.collection('users').find({}).toArray((err, users) => {
-      if(err) {
-        console.log(err);
-        return;
-      }
-
-      res.send({
-        status: 'OK',
-        users: users
-      });
-    })
   });
 });
 
+app.use('/v1/users/:id', checkAuth(user => user.isAdmin));
 app.delete('/v1/users/:id', (req, res) => {
-  // TODO: an auth lib, for fuck's sake!
-
-  const email = req.cookies.email;
-  const authToken = req.cookies.authToken;
-
-  db.collection('users').findOne({ email: email }).then(user => {
-    if(!user && !user.isAdmin) {
-      res.status(403).send({ status: 'UNAUTHORIZED' });
-      return;
+  db.collection('users').deleteOne({ _id: mongodb.ObjectId(req.params.id) }).then(nDeleted => {
+    if(nDeleted) {
+      res.send({ status: 'OK' });
     }
-
-    let isAuthorized = false;
-
-    user.authTokens.forEach(token => {
-      if(token.value === authToken) {
-        isAuthorized = true;
-      }
-    });
-
-    if(!isAuthorized) {
-      res.status(403).send({ status: 'UNAUTHORIZED' });
-      return;
+    else {
+      res.send({ status: 'NO_OP' });
     }
-
-    db.collection('users').deleteOne({ _id: mongodb.ObjectId(req.params.id) }).then(nDeleted => {
-      if(nDeleted) {
-        res.send({ status: 'OK' });
-      }
-      else {
-        res.send({ status: 'NO_OP' });
-      }
-    });
   });
-});
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
-});
-
-app.get('/studios*', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
-});
-
-app.get('/classes*', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
-});
-
-app.get('/profile*', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
-});
-
-app.get('/admin*', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
-});
-
-app.get('/edit-studio', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
 app.get('/v1/studios/:city', (req, res) => {
@@ -602,6 +502,30 @@ app.post('/upload-images', (req, res) => {
   setTimeout(() => {
     res.send("OK");
   }, 500);
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.get('/studios*', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.get('/classes*', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.get('/profile*', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.get('/admin*', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.get('/edit-studio', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
 app.use('/', express.static(path.join(__dirname, '..')));
