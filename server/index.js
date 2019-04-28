@@ -96,7 +96,7 @@ app.post('/register', (req, res) => {
           pwdHash: pwdHash,
           firstName: email,
           lastName: "",
-          gender: "female",
+          gender: "none",
           birthDate: "1970-01-01",
           city: "los-angeles",
           userpic: null,
@@ -229,7 +229,11 @@ app.post('/v1/profile', (req, res) => {
 
       userUpdate.firstName = req.body.firstName;
       userUpdate.lastName = req.body.lastName;
-      userUpdate.gender = req.body.gender;
+
+      if(req.body.gender && ['female', 'male', 'none'].includes(req.body.gender)) {
+        userUpdate.gender = req.body.gender;
+      }
+
       userUpdate.birthDate = req.body.birthDate;
       userUpdate.city = req.body.city;
 
