@@ -34,7 +34,8 @@ class AdminUsersPage extends React.Component {
                         <th scope="col">Пол</th>
                         <th scope="col">Дата рождения</th>
                         <th scope="col">Город</th>
-                        <th scope="col"></th>
+                        <th scope="col">Студия</th>
+                        <th scope="col">&nbsp;</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -47,7 +48,9 @@ class AdminUsersPage extends React.Component {
                                 <td>{user.gender}</td>
                                 <td>{user.birthDate}</td>
                                 <td>{user.city}</td>
-                                <td>{user.managedStudio}</td>
+                                <td>
+                                    { user.managedStudio || <em>нет</em>}
+                                </td>
                                 <td>
                                     <a href="#" className="btn btn-sm btn-danger">Удалить</a>
                                 </td>
