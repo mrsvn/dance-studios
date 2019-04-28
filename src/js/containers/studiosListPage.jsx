@@ -74,8 +74,8 @@ class StudiosListPage extends React.Component {
         // TODO: fix balloonContent not being shown
         // TODO: center map automatically
 
-        return (
-            <>
+        return <>
+            <div style={{minHeight: '350px'}}>
                 <YMaps>
                     <Map className="map-top" defaultState={{ center: [34.0619261, -118.29612320000001], zoom: 11 }}>
                         {
@@ -88,29 +88,28 @@ class StudiosListPage extends React.Component {
                         }
                     </Map>
                 </YMaps>
+            </div>
 
-                <main id="listings">
-                    <StudioFilters onQueryChange={q => this.handleQueryChange(q)}
-                                   onLocationChange={q => this.handleLocationChange(q)}
-                                   onStyleChange={q => this.handleStyleChange(q)}
-                                   onRatingChange={q => this.handleRatingChange(q)} />
+            <main id="listings">
+                <StudioFilters onQueryChange={q => this.handleQueryChange(q)}
+                               onLocationChange={q => this.handleLocationChange(q)}
+                               onStyleChange={q => this.handleStyleChange(q)}
+                               onRatingChange={q => this.handleRatingChange(q)} />
+
+                <div className="postings-count">
+                    Найдено <span>{ this.state.numTotal }</span> студий
+                </div>
 
 
-                    <div className="postings-count">
-                        Найдено <span>{ this.state.numTotal }</span> студий
-                    </div>
+                <div className={'postings-container'}>
+                    { filteredData.map(datum => <StudioListing content={datum} />) }
+                </div>
 
-
-                    <div className={'postings-container'}>
-                        { filteredData.map(datum => <StudioListing content={datum} />) }
-                    </div>
-
-                    <div id="postings-more">
-                        <a href="#">Следующие 20</a>
-                    </div>
-                </main>
-            </>
-        )
+                <div id="postings-more">
+                    <a href="#">Следующие 20</a>
+                </div>
+            </main>
+        </>;
     }
 }
 
