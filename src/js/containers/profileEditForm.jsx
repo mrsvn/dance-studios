@@ -69,11 +69,20 @@ class ProfileEditForm extends React.Component {
             </p>
             <p>
                 Пол:
-                <select name="gender" value={this.state.gender || 'none'} onChange={e => this.setState({ gender: e.target.value })}>
-                    <option value="male">Мужской</option>
-                    <option value="female">Женский</option>
-                    <option value="none">Предпочитаю не указывать</option>
-                </select>
+                <radiogroup>
+                    <label>
+                        <input name="gender" checked={this.state.gender === 'male'} type="radio" onChange={() => this.setState({ gender: 'male' })}/>
+                        Мужской
+                    </label>
+                    <label>
+                        <input name="gender" checked={this.state.gender === 'female'} type="radio" onChange={() => this.setState({ gender: 'female' })}/>
+                        Женский
+                    </label>
+                    <label>
+                        <input name="gender" checked={this.state.gender === 'none' || !this.state.gender} type="radio" onChange={() => this.setState({ gender: 'none' })}/>
+                        Предпочитаю не указывать
+                    </label>
+                </radiogroup>
             </p>
             <p>
                 Дата рождения:
