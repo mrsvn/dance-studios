@@ -305,19 +305,19 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
-app.get('/studios', (req, res) => {
+app.get('/studios*', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
-app.get('/classes/*', (req, res) => {
+app.get('/classes*', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
-app.get('/profile/*', (req, res) => {
+app.get('/profile*', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
-app.get('/admin/*', (req, res) => {
+app.get('/admin*', (req, res) => {
   res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
