@@ -62,14 +62,14 @@ class ProfileEditForm extends React.Component {
                 <input type="file" name="userpic" onChange={e => this.handleUserpicChange(e)} />
             </p>
             <p>
-                Имя: <input name="firstName" value={this.state.firstName} onChange={e => this.setState({ firstName: e.target.value })} />
+                Имя: <input name="firstName" value={this.state.firstName || ""} onChange={e => this.setState({ firstName: e.target.value })} />
             </p>
             <p>
-                Фамилия: <input name="lastName" value={this.state.lastName} onChange={e => this.setState({ lastName: e.target.value })}/>
+                Фамилия: <input name="lastName" value={this.state.lastName || ""} onChange={e => this.setState({ lastName: e.target.value })}/>
             </p>
             <p>
                 Пол:
-                <select name="gender" value={this.state.gender} onChange={e => this.setState({ gender: e.target.value })}>
+                <select name="gender" value={this.state.gender || 'none'} onChange={e => this.setState({ gender: e.target.value })}>
                     <option value="male">Мужской</option>
                     <option value="female">Женский</option>
                     <option value="none">Предпочитаю не указывать</option>
@@ -77,11 +77,11 @@ class ProfileEditForm extends React.Component {
             </p>
             <p>
                 Дата рождения:
-                <input type="date" name="birthDate" value={this.state.birthDate} onChange={e => this.setState({ birthDate: e.target.value })}/>
+                <input type="date" name="birthDate" value={this.state.birthDate || ""} onChange={e => this.setState({ birthDate: e.target.value })}/>
             </p>
             <p>
                 Город:
-                <select name="city" value={this.state.city} onChange={e => this.setState({ city: e.target.value })}>
+                <select name="city" value={this.state.city || ""} onChange={e => this.setState({ city: e.target.value })}>
                     <option value="los-angeles">Лос-Анджелес</option>
                     <option value="st-tropez">Сен-Тропе</option>
                     <option value="miami">Майами</option>
