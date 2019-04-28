@@ -278,7 +278,7 @@ app.post('/v1/profile', (req, res) => {
   });
 });
 
-app.get('/v1/admin/users', (req, res) => {
+app.get('/v1/users', (req, res) => {
   const email = req.cookies.email;
   const authToken = req.cookies.authToken;
 
@@ -312,6 +312,42 @@ app.get('/v1/admin/users', (req, res) => {
         users: users
       });
     })
+  });
+});
+
+app.delete('/v1/users/:id', (req, res) => {
+  // TODO: an auth lib, for fuck's sake!
+
+  const email = req.cookies.email;
+  const authToken = req.cookies.authToken;
+
+  db.collection('users').findOne({ email: email }).then(user => {
+    if(!user && !user.isAdmin) {
+      res.status(403).send({ status: 'UNAUTHORIZED' });
+      return;
+    }
+
+    let isAuthorized = false;
+
+    user.authTokens.forEach(token => {
+      if(token.value === authToken) {
+        isAuthorized = true;
+      }
+    });
+
+    if(!isAuthorized) {
+      res.status(403).send({ status: 'UNAUTHORIZED' });
+      return;
+    }
+
+    db.collection('users').deleteOne({ _id: mongodb.ObjectId(req.params.id) }).then(nDeleted => {
+      if(nDeleted) {
+        res.send({ status: 'OK' });
+      }
+      else {
+        res.send({ status: 'NO_OP' });
+      }
+    });
   });
 });
 

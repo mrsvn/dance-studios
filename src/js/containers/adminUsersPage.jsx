@@ -10,7 +10,7 @@ class AdminUsersPage extends React.Component {
     }
 
     componentDidMount() {
-        fetch("/v1/admin/users").then(response => {
+        fetch("/v1/users").then(response => {
             return response.json();
         }).then(data => {
             this.setState({
@@ -18,6 +18,23 @@ class AdminUsersPage extends React.Component {
             });
         }).catch(error => {
             console.log(error);
+        });
+    }
+
+    handleDeleteClick(id, e) {
+        e.preventDefault();
+
+        fetch(`/v1/users/${id}`, { method: 'DELETE' }).then(response => {
+            return response.json();
+        }).then(response => {
+            if(response.status === 'OK') {
+                this.setState({
+                    users: this.state.users.filter(user => user._id !== id)
+                });
+            }
+            else {
+                console.log(response);
+            }
         });
     }
 
@@ -52,7 +69,9 @@ class AdminUsersPage extends React.Component {
                                     { user.managedStudio || <em>нет</em>}
                                 </td>
                                 <td>
-                                    <a href="#" className="btn btn-sm btn-danger">Удалить</a>
+                                    <a href="#" className="btn btn-sm btn-danger" onClick={e => this.handleDeleteClick(user._id, e)}>
+                                        Удалить
+                                    </a>
                                 </td>
                             </tr>
                         })
