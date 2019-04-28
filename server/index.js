@@ -8,6 +8,11 @@ const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 const uuid4 = require('uuid/v4');
 
+const ArgumentParser = require('argparse').ArgumentParser;
+const parser = new ArgumentParser({ addHelp: true });
+parser.addArgument(['-d', '--delay'], { type: 'int', help: "Introduce artificial delay (in milliseconds)" });
+const args = parser.parseArgs();
+
 const mongodb = require('mongodb');
 let db;
 
@@ -17,6 +22,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(fileUpload({ limits: { fileSize: 50 * 1024 * 1024 } }));
+
+let delay = args.delay || 0;
+app.use((req, res, next) => {
+  delay > 0 ? setTimeout(next, 1000) : next();
+});
 
 const checkAuth = fHasRights => {
   return (req, res, next) => {
