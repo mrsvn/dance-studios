@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import { LoginForm } from "../components/loginForm";
 import { RegisterForm } from "../components/registerForm";
+import { getCurrentUser } from "../util/sessionData";
 
 class LoginCorner extends React.Component {
     constructor(props) {
@@ -16,11 +17,15 @@ class LoginCorner extends React.Component {
             formShown: null,
             inProgress: false,
 
-            currentAuth: JSON.parse(localStorage.getItem('currentAuth')),
+            currentAuth: null,
 
             loginError: null,
             registerError: null
         };
+    }
+
+    componentDidMount() {
+        getCurrentUser().then(data => this.setState({ currentAuth: data }));
     }
 
     setFormShown(newFormShown, e) {
