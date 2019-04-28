@@ -40,7 +40,7 @@ class AdminUsersPage extends React.Component {
                     <tbody>
                     {
                         this.state.users.map(user => {
-                            return <tr>
+                            return <tr key={user.email}>
                                 <td>{user.email}</td>
                                 <td>{user.firstName}</td>
                                 <td>{user.lastName}</td>
