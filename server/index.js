@@ -311,6 +311,39 @@ app.delete('/v1/users/:id', (req, res) => {
   });
 });
 
+app.use('/v1/invitations', checkAuth(user => user.isAdmin));
+app.post('/v1/invitations', (req, res) => {
+  const secret = uuid4();
+
+  // TODO: choose this based on user input
+  const expiresAt = new Date();
+  expiresAt.setDate(expiresAt.getDate() + 7);
+
+  db.collection('invitations').insertOne({
+    secret: secret,
+    createdAt: new Date(),
+    expiresAt: expiresAt,
+    deactivated: null
+  }).then(result => {
+    if(result.result.ok) {
+      res.send({ status: 'OK' });
+    }
+    else {
+      console.log(result);
+      res.status(500).send({ status: 'ERROR' });
+    }
+  });
+});
+
+app.get('/v1/invitations', (req, res) => {
+  db.collection('invitations').find().toArray().then(data => {
+    res.send({
+      status: 'OK',
+      invitations: data
+    });
+  });
+});
+
 app.get('/v1/studios', (req, res) => {
   db.collection('studios').find().toArray().then(data => {
     res.status(200).send(JSON.stringify({
