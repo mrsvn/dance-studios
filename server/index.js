@@ -51,7 +51,7 @@ app.use('/', express.static(path.join(__dirname, '..')));
 
 let delay = args.delay || 0;
 app.use((req, res, next) => {
-  delay > 0 ? setTimeout(next, 1000) : next();
+  delay > 0 ? setTimeout(next, delay) : next();
 });
 
 const checkAuth = fHasRights => {
