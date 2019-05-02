@@ -137,10 +137,14 @@ class AdminUsersPage extends React.Component {
                         {
                             this.state.invitations.map(invitation => {
                                 return <tr key={invitation.secret}>
-                                    <td>{invitation.secret}</td>
+                                    <td>
+                                        <a href={`/invite/${invitation.secret}`} className="text-monospace">
+                                            {invitation.secret}
+                                        </a>
+                                    </td>
                                     <td>{invitation.createdAt}</td>
                                     <td>{invitation.expiresAt}</td>
-                                    <td>
+                                    <td className="p-2">
                                         <a href="#" className="btn btn-sm btn-danger">Удалить</a>
                                     </td>
                                 </tr>;

@@ -13,6 +13,7 @@ import { StudioPage } from "./containers/studioPage";
 import { ProfilePage } from "./containers/profilePage";
 import { AdminUsersPage } from "./containers/adminUsersPage";
 import { StudioEditPage } from "./containers/studioEditPage";
+import { InvitationPage } from "./containers/invitationPage";
 
 class AppRouter extends React.Component {
     render() {
@@ -51,6 +52,7 @@ class AppRouter extends React.Component {
             <Route path="/profile/" component={ProfilePage} />
             <Route exact path="/admin/users" component={AdminUsersPage} />
             <Route exact path="/edit-studio" component={StudioEditPage} />
+            <Route exact path="/invite/:secret" component={InvitationPage} />
         </BrowserRouter>;
     }
 }

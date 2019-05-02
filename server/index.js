@@ -163,6 +163,8 @@ app.post('/register', (req, res) => {
     }
     else {
       bcrypt.hash(password, 10).then(pwdHash => {
+        const authToken = uuid4(); // TODO: extract from here and /login
+
         const userDoc = {
           email: email,
           pwdHash: pwdHash,
@@ -172,7 +174,10 @@ app.post('/register', (req, res) => {
           birthDate: "1970-01-01",
           city: "los-angeles",
           userpic: null,
-          isAdmin: false
+          isAdmin: false,
+          authTokens: [
+            { value: authToken }
+          ]
         };
 
         db.collection('users').insertOne(userDoc);
@@ -180,11 +185,33 @@ app.post('/register', (req, res) => {
         res.status(200).send(JSON.stringify({
           status: 'OK',
           displayName: email,
-          userpic: null
+          userpic: null,
+          authToken
         }));
       });
     }
   })
+});
+
+app.get('/invite/:secret', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.get('/v1/invitations/:secret', (req, res) => {
+  db.collection('invitations').findOne({ secret: req.params.secret }).then(invitation => {
+    if(invitation === null) {
+      return res.status(404).send({ status: 'NOT_FOUND' });
+    }
+
+    if(invitation.deactivated) {
+      return res.status(403).send({ status: invitation.deactivated });
+    }
+
+    res.send({ status: 'ACTIVE' });
+  }).catch(err => {
+    console.log(err);
+    res.status(500).send();
+  });
 });
 
 app.get('/v1/userpics/:email', (req, res) => {
