@@ -24,6 +24,8 @@ const ProfileMain = styled.main`
 
 class ProfilePage extends React.Component {
     render() {
+        // TODO: keep on the same page as profile display: editing, favourites
+
         return <BrowserRouter>
             <ProfileMain>
                 <nav>

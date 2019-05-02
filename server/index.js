@@ -311,6 +311,15 @@ app.delete('/v1/users/:id', (req, res) => {
   });
 });
 
+app.get('/v1/studios', (req, res) => {
+  db.collection('studios').find().toArray().then(data => {
+    res.status(200).send(JSON.stringify({
+      numTotal: Object.keys(data).length,
+      studios: data
+    }));
+  });
+});
+
 app.get('/v1/studios/:city', (req, res) => {
   const city = req.params.city;
 
