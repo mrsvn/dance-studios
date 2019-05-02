@@ -7,9 +7,6 @@ class AddClassForm extends React.Component {
         this.state = {
             tags: "Бачата" // TODO: remove
         };
-
-        // TODO!: ...
-        this.urlBit = "9-da-ja-nichego-net-net";
     }
 
     handleSubmit(e) {
@@ -21,7 +18,7 @@ class AddClassForm extends React.Component {
         //     return;
         // }
 
-        fetch(`/v1/studio/${this.urlBit}/classes`, {
+        fetch(`/v1/studio/${this.props.urlBit}/classes`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -88,13 +85,10 @@ class StudioClassesForm extends React.Component {
         this.state = {
             classes: []
         };
-
-        // TODO!: ...
-        this.urlBit = "9-da-ja-nichego-net-net";
     }
 
     componentDidMount() {
-        fetch(`/v1/studio/${this.urlBit}/classes`).then(response => {
+        fetch(`/v1/studio/${this.props.urlBit}/classes`).then(response => {
             return response.json();
         }).then(data => {
             if(data.status === 'OK') {
@@ -183,7 +177,7 @@ class StudioClassesForm extends React.Component {
                         {/*</tr>*/}
                     </tbody>
                     <tbody style={{borderTop: "0.5em black solid"}}>
-                        <AddClassForm/>
+                        <AddClassForm urlBit={this.props.urlBit}/>
                     </tbody>
                 </table>
             </div>

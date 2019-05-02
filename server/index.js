@@ -180,14 +180,42 @@ app.post('/register', (req, res) => {
           ]
         };
 
-        db.collection('users').insertOne(userDoc);
+        db.collection('users').insert(userDoc, (err, result) => {
+          const userId = result.insertedIds['0'];
+          console.log(userId);
 
-        res.status(200).send(JSON.stringify({
-          status: 'OK',
-          displayName: email,
-          userpic: null,
-          authToken
-        }));
+          if(req.body.secret) {
+            db.collection('studios').insert({
+              description: [""],
+              imgUrl: "/content/listpic12.jpg",
+              district: null,
+              mapCoords: null,
+              rating: 0,
+              tags: [],
+              city: null,
+              urlBit: `studio-${userId}`,
+              title: "",
+              managerId: userId,
+              isShown: false
+            }, (err, result) => {
+              res.status(200).send(JSON.stringify({
+                status: 'OK',
+                displayName: email,
+                userpic: null,
+                studioUrlBit: `studio-${userId}`,
+                authToken
+              }));
+            });
+          }
+          else {
+            res.status(200).send(JSON.stringify({
+              status: 'OK',
+              displayName: email,
+              userpic: null,
+              authToken
+            }));
+          }
+        });
       });
     }
   })
@@ -422,13 +450,8 @@ app.post('/v1/studio/:urlBit', (req, res) => {
       return;
     }
 
-    if(email != studio.managerEmail) {
-      res.status(403).send({ status: 'UNAUTHORIZED' });
-      return;
-    }
-
     db.collection('users').findOne({ email: email }).then(user => {
-      if(!user && !user.isAdmin) {
+      if(!user) {
         res.status(403).send({ status: 'UNAUTHORIZED' });
         return;
       }
@@ -444,6 +467,10 @@ app.post('/v1/studio/:urlBit', (req, res) => {
       if(!isAuthorized) {
         res.status(403).send({ status: 'UNAUTHORIZED' });
         return;
+      }
+
+      if(!user._id.equals(studio.managerId) && !user.isAdmin) {
+        return res.status(403).send({ status: 'NOT_THE_MANAGER' });
       }
 
       delete req.body._id;

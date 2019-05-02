@@ -39,7 +39,7 @@ class BigRegisterForm extends React.Component {
                 document.cookie = `email=${this.state.email}`;
                 document.cookie = `authToken=${data.authToken}`;
 
-                location.href = '/edit-studio';
+                location.href = `/studios/${data.studioUrlBit}`;
             }
             else {
                 console.log(data);

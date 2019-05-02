@@ -5,13 +5,10 @@ class StudioProfileEditForm extends React.Component {
         super(props);
 
         this.state = {};
-
-        // TODO!: ...
-        this.urlBit = "9-da-ja-nichego-net-net";
     }
 
     componentDidMount() {
-        fetch("/v1/studio/" + this.urlBit).then(response => {
+        fetch("/v1/studio/" + this.props.urlBit).then(response => {
             return response.json();
         }).then(data => {
             this.setState(data.studio);
@@ -23,7 +20,7 @@ class StudioProfileEditForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        fetch("/v1/studio/" + this.urlBit, {
+        fetch(`/v1/studio/${this.props.urlBit}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

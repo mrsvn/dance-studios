@@ -48,10 +48,10 @@ class AppRouter extends React.Component {
             <Route exact path="/" component={() => <p>Under construction 🏠</p>} />
             <Route exact path="/studios" component={StudiosListPage} />
             <Route exact path="/studios/:urlBit" component={StudioPage} />
+            <Route exact path="/studios/:urlBit/edit" component={StudioEditPage} />
             <Route path="/classes/" component={ClassesTablePage} />
             <Route path="/profile/" component={ProfilePage} />
             <Route exact path="/admin/users" component={AdminUsersPage} />
-            <Route exact path="/edit-studio" component={StudioEditPage} />
             <Route exact path="/invite/:secret" component={InvitationPage} />
         </BrowserRouter>;
     }

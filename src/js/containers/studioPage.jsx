@@ -201,17 +201,21 @@ class StudioPage extends React.Component {
             }
           </div>
           <div id="studio-map-and-hours">
-            <YMaps>
-              <Map className="studio-map" defaultState={{ center: this.state.data.mapCoords, zoom: 11 }}>
-                <GeoObject geometry={{
-                  type: 'Point',
-                  coordinates: this.state.data.mapCoords
-                }} properties={{
-                  balloonContent: `<strong>${this.state.data.title}</strong>`
-                }}/>
-              </Map>
-            </YMaps>
-          </div>
+            {
+              this.state.data.mapCoords && (
+                  <YMaps>
+                    <Map className="studio-map" defaultState={{ center: this.state.data.mapCoords, zoom: 11 }}>
+                      <GeoObject geometry={{
+                        type: 'Point',
+                        coordinates: this.state.data.mapCoords
+                      }} properties={{
+                        balloonContent: `<strong>${this.state.data.title}</strong>`
+                      }}/>
+                    </Map>
+                  </YMaps>
+              )
+            }
+            </div>
 
         </div>
       </StudioPageDiv>
