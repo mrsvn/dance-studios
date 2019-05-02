@@ -1,5 +1,7 @@
 import React from "react";
 
+import cities from '../util/cities';
+
 class StudioProfileEditForm extends React.Component {
     constructor(props) {
         super(props);
@@ -36,6 +38,14 @@ class StudioProfileEditForm extends React.Component {
     }
 
     render() {
+        let cityData = { districts: [] };
+
+        cities.forEach(city => {
+            if(city.id === this.state.city) {
+                cityData = city;
+            }
+        });
+
         return <div className="card">
             <h5 className="card-header">Профиль студии</h5>
             <div className="card-body">
@@ -64,9 +74,12 @@ class StudioProfileEditForm extends React.Component {
                                 <span className="input-group-text">Город:</span>
                             </div>
                             <select className="form-control" value={ this.state.city } onChange={e => this.setState({ city: e.target.value })}>
-                                <option>los-angeles</option>
-                                <option>miami</option>
-                                <option>ivanovo</option>
+                                <option>Выберите город</option>
+                                {
+                                    cities.map(city => {
+                                        return <option key={city.id} value={city.id}>{city.name}</option>
+                                    })
+                                }
                             </select>
                         </div>
                     </p>
@@ -76,7 +89,13 @@ class StudioProfileEditForm extends React.Component {
                             <div className="input-group-prepend">
                                 <span className="input-group-text">Район:</span>
                             </div>
-                            <input className="form-control" value={ this.state.district } onChange={e => this.setState({ district: e.target.value })}/>
+                            <select className="form-control" value={ this.state.district } onChange={e => this.setState({ district: e.target.value })}>
+                                {
+                                    cityData.districts.map(district => {
+                                        return <option key={district.id} value={district.id}>{district.name}</option>
+                                    })
+                                }
+                            </select>
                         </div>
                     </p>
 

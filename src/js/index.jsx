@@ -15,6 +15,59 @@ import { AdminUsersPage } from "./containers/adminUsersPage";
 import { StudioEditPage } from "./containers/studioEditPage";
 import { InvitationPage } from "./containers/invitationPage";
 
+import cities from './util/cities';
+
+class LocOptions extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            location: 'los-angeles',
+            isExpanded: false
+        };
+    }
+
+    handleCurrentClick(e) {
+        e.preventDefault();
+
+        this.setState({ isExpanded: !this.state.isExpanded });
+    }
+
+    handleOptionClick(e) {
+        e.preventDefault();
+
+        this.setState({
+            location: e.target.dataset.locValue,
+            isExpanded: false
+        });
+    }
+
+    render() {
+        let selectedName = "";
+
+        cities.forEach(city => {
+            if(city.id === this.state.location) {
+                selectedName = city.name;
+            }
+        });
+
+        return <span className="loc-options">
+            <a href="#" className="loc-opt-current" onClick={e => this.handleCurrentClick(e)}>{ selectedName }</a>
+            <div className="loc-opt-dropdown" style={{display: this.state.isExpanded ? 'flex' : 'none'}}>
+                {
+                    cities.map(city => {
+                        if(city.id === this.state.location) {
+                            return null;
+                        }
+
+                        return <a href="#" data-loc-value={city.id} onClick={e => this.handleOptionClick(e)}>{city.name}</a>;
+                    })
+                }
+            </div>
+        </span>;
+    }
+}
+
 class AppRouter extends React.Component {
     render() {
         return <BrowserRouter>
@@ -23,16 +76,7 @@ class AppRouter extends React.Component {
 
                 <span className="brand-title">
 				NaSheste
-				<span className="loc-options">
-					<a href="#" className="loc-opt-current">Лос-Анджелес</a>
-					<div className="loc-opt-dropdown" style={{display: 'none'}}>
-						<a href="#" data-loc-value="los-angeles" style={{display: 'none'}}>Лос-Анджелес</a>
-						<a href="#" data-loc-value="st-tropez">Сен-Тропе</a>
-						<a href="#" data-loc-value="miami">Майами</a>
-						<a href="#" data-loc-value="volzhsky">Волжский</a>
-						<a href="#" data-loc-value="ivanovo">Иваново</a>
-					</div>
-				</span>
+				<LocOptions/>
 			</span>
 
                 <nav>
