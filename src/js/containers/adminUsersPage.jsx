@@ -142,8 +142,8 @@ class AdminUsersPage extends React.Component {
                                             {invitation.secret}
                                         </a>
                                     </td>
-                                    <td>{invitation.createdAt}</td>
-                                    <td>{invitation.expiresAt}</td>
+                                    <td>{new Date(invitation.createdAt).toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}</td>
+                                    <td>{new Date(invitation.expiresAt).toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}</td>
                                     <td className="p-2">
                                         <a href="#" className="btn btn-sm btn-danger">Удалить</a>
                                     </td>
