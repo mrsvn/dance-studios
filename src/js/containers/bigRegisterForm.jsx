@@ -14,6 +14,7 @@ class BigRegisterForm extends React.Component {
             password: "",
             passwordConfirm: "",
             agree: false,
+            agreeStudio: false,
             isSending: false
         };
     }
@@ -49,13 +50,19 @@ class BigRegisterForm extends React.Component {
         })
     }
 
+    allowSubmission() {
+        return !this.state.isSending && this.state.agree && this.state.agreeStudio;
+    }
+
     render() {
+        // TODO: continuously validate errors after first submission attempt
+
         return <form className="mx-auto" style={{maxWidth: "400px", marginTop: "100px"}}>
             <div className="form-group">
                 <label htmlFor="reg-email">Адрес e-mail:</label>
                 <input type="email" className="form-control" id="reg-email" placeholder="drankov@pavel.ru" value={this.state.email} onChange={e => this.setState({ email: e.target.value })}/>
-                <small id="emailHelp" className="form-text text-muted">
-                    Мы даже под фашистскими пытками не выдадим ваш e-mail!
+                <small className="form-text text-muted">
+                    Мы не выдадим его даже под фашистскими пытками!
                 </small>
             </div>
             <div className="form-group">
@@ -71,8 +78,16 @@ class BigRegisterForm extends React.Component {
                     <input type="checkbox" className="form-check-input" name="reg-accept" value={this.state.agree} onChange={e => this.setState({ agree: e.target.checked })} /> Я согласен с <a href="#">пользовательским соглашением</a>.
                 </label>
             </div>
+            <div className="form-group">
+                <small className="form-text text-muted">
+                    Вы регистрируетесь в качестве представителя студии.
+                </small>
+                <label className="form-check-label form-check">
+                    <input type="checkbox" className="form-check-input" name="reg-accept-studio" value={this.state.agreeStudio} onChange={e => this.setState({ agreeStudio: e.target.checked })} /> Я согласен с <a href="#">партнерским соглашением</a>.
+                </label>
+            </div>
             {/*<input type="hidden" name="reg-secret" value="aba-caba"/>*/}
-            <button type="submit" className="btn btn-primary" onClick={e => this.handleSubmit(e)} disabled={this.state.isSending}>
+            <button type="submit" className="btn btn-primary" onClick={e => this.handleSubmit(e)} disabled={!this.allowSubmission()}>
                 Submit
             </button>
         </form>;
