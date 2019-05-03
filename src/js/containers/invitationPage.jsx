@@ -38,7 +38,7 @@ class InvitationPage extends React.Component {
                 this.setState({ status: 'VALID' });
             }
             else {
-                this.setState({ status: 'ERROR', errorMsg: data.status });
+                this.setState({ status: 'ERROR', errorType: data.status });
             }
         }).catch(err => {
             console.error(err);
@@ -55,11 +55,7 @@ class InvitationPage extends React.Component {
             </SpinnerDiv>;
         }
         else if(status === 'ERROR') {
-            return <ErrorDiv>
-                <h2>Ошибка!</h2>
-
-                { this.state.errorMsg }
-            </ErrorDiv>
+            return <BigRegisterForm secretError={this.state.errorType}/>;
         }
         else if(status === 'VALID') {
             return <BigRegisterForm secret={this.secret}/>;
