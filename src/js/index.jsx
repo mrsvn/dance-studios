@@ -33,6 +33,16 @@ class LocOptions extends React.Component {
         this.setState({ isExpanded: !this.state.isExpanded });
     }
 
+    hideDropdown() {
+        this.setState({ isExpanded: false });
+    }
+
+    handleCurrentKeyDown(e) {
+        if(e.key === 'Escape') {
+            this.setState({ isExpanded: false });
+        }
+    }
+
     handleOptionClick(e) {
         e.preventDefault();
 
@@ -52,7 +62,7 @@ class LocOptions extends React.Component {
         });
 
         return <span className="loc-options">
-            <a href="#" className="loc-opt-current" onClick={e => this.handleCurrentClick(e)}>{ selectedName }</a>
+            <a href="#" className="loc-opt-current" onClick={e => this.handleCurrentClick(e)} onKeyDown={e => this.handleCurrentKeyDown(e)} onBlur={() => this.hideDropdown()}>{ selectedName }</a>
             <div className="loc-opt-dropdown" style={{display: this.state.isExpanded ? 'flex' : 'none'}}>
                 {
                     cities.map(city => {
@@ -103,54 +113,4 @@ class AppRouter extends React.Component {
 
 window.addEventListener('load', () => {
     ReactDOM.render(<AppRouter/>, document.querySelector('.wrap-page'));
-
-    // document.querySelector('#postings-more').onclick = e => {
-    //     e.preventDefault();
-    //     loadData();
-    // };
-
-    // const locOptions = document.querySelector('.loc-options');
-    // const locCurrent = locOptions.querySelector('.loc-opt-current');
-    // const locDropdown = locOptions.querySelector('.loc-opt-dropdown')
-    // const locVariants = Array.from(locOptions.querySelectorAll('a'));
-    //
-    // locOptions.querySelector('.loc-opt-current').onclick = e => {
-    //     e.preventDefault();
-    // };
-    //
-    // locOptions.querySelector('.loc-opt-current').onfocus = e => {
-    //     locDropdown.style.display = null;
-    // };
-    //
-    // locVariants.forEach(el => {
-    //     if(el.dataset.locValue) {
-    //         el.onclick = e => {
-    //             e.preventDefault();
-    //
-    //             if(!locOptions.style.minWidth) {
-    //                 locOptions.style.minWidth = e.target.clientWidth + 'px';
-    //             }
-    //
-    //             locCurrent.textContent = el.textContent;
-    //
-    //             el.style.display = 'none';
-    //
-    //             locVariants.forEach(otherEl => {
-    //                 otherEl.style.display = (el.dataset.locValue === otherEl.dataset.locValue) ? 'none' : null;
-    //             });
-    //         }
-    //     }
-    //
-    //     el.onblur = e => {
-    //         if(!e.relatedTarget || e.relatedTarget.parentNode !== locOptions.querySelector('.loc-opt-dropdown')) {
-    //             locDropdown.style.display = 'none';
-    //         }
-    //     };
-    //
-    //     el.onkeydown = e => {
-    //         if(e.key === 'Escape') {
-    //             e.target.blur();
-    //         }
-    //     };
-    // });
 });
