@@ -60,7 +60,7 @@ class LocOptions extends React.Component {
                             return null;
                         }
 
-                        return <a href="#" data-loc-value={city.id} onClick={e => this.handleOptionClick(e)}>{city.name}</a>;
+                        return <a href="#" key={city.id} data-loc-value={city.id} onClick={e => this.handleOptionClick(e)}>{city.name}</a>;
                     })
                 }
             </div>
