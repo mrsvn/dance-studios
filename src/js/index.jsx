@@ -4,8 +4,7 @@ import ReactDOM from "react-dom";
 
 import { BrowserRouter, Link, NavLink, Route } from "react-router-dom";
 
-import styled from 'styled-components';
-
+import { CityDropdown } from "./components/cityDropdown";
 import { LoginCorner } from "./containers/loginCorner";
 import { StudiosListPage } from "./containers/studiosListPage";
 import { ClassesTablePage } from "./containers/classesTablePage";
@@ -15,70 +14,20 @@ import { AdminUsersPage } from "./containers/adminUsersPage";
 import { StudioEditPage } from "./containers/studioEditPage";
 import { InvitationPage } from "./containers/invitationPage";
 
-import cities from './util/cities';
-
-class LocOptions extends React.Component {
+class AppRouter extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            location: 'los-angeles',
-            isExpanded: false
+            city: 'los-angeles'
         };
     }
 
-    handleCurrentClick(e) {
-        e.preventDefault();
-
-        this.setState({ isExpanded: !this.state.isExpanded });
+    handleCityChange(city) {
+        // TODO: do stuff to local and session storage...
+        this.setState({ city: city });
     }
 
-    hideDropdown() {
-        this.setState({ isExpanded: false });
-    }
-
-    handleCurrentKeyDown(e) {
-        if(e.key === 'Escape') {
-            this.setState({ isExpanded: false });
-        }
-    }
-
-    handleOptionClick(e) {
-        e.preventDefault();
-
-        this.setState({
-            location: e.target.dataset.locValue,
-            isExpanded: false
-        });
-    }
-
-    render() {
-        let selectedName = "";
-
-        cities.forEach(city => {
-            if(city.id === this.state.location) {
-                selectedName = city.name;
-            }
-        });
-
-        return <span className="loc-options">
-            <a href="#" className="loc-opt-current" onClick={e => this.handleCurrentClick(e)} onKeyDown={e => this.handleCurrentKeyDown(e)} onBlur={() => this.hideDropdown()}>{ selectedName }</a>
-            <div className="loc-opt-dropdown" style={{display: this.state.isExpanded ? 'flex' : 'none'}}>
-                {
-                    cities.map(city => {
-                        if(city.id === this.state.location) {
-                            return null;
-                        }
-
-                        return <a href="#" key={city.id} data-loc-value={city.id} onClick={e => this.handleOptionClick(e)}>{city.name}</a>;
-                    })
-                }
-            </div>
-        </span>;
-    }
-}
-
-class AppRouter extends React.Component {
     render() {
         return <BrowserRouter>
             <header>
@@ -86,7 +35,7 @@ class AppRouter extends React.Component {
 
                 <span className="brand-title">
 				NaSheste
-				<LocOptions/>
+				<CityDropdown value={this.state.city} onChange={city => this.handleCityChange(city)}/>
 			</span>
 
                 <nav>
