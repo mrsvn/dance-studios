@@ -22,6 +22,10 @@ class BigRegisterForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        this.setState({
+            isSending: true
+        });
+
         fetch('/register', {
             method: 'POST',
             headers: {
@@ -43,9 +47,11 @@ class BigRegisterForm extends React.Component {
                 location.href = `/studios/${data.studioUrlBit}`;
             }
             else {
+                this.setState({ isSending: false });
                 console.log(data);
             }
         }).catch(err => {
+            this.setState({ isSending: false });
             console.error(err);
         })
     }
@@ -89,7 +95,7 @@ class BigRegisterForm extends React.Component {
 
         return <>
             { this.renderStatusMsg() }
-            <form className="mx-auto" style={{maxWidth: "400px", marginTop: "100px"}}>
+            <form className="mx-auto" style={{maxWidth: "400px", marginTop: "100px"}} onSubmit={e => this.handleSubmit(e)}>
                 <div className="form-group">
                     <label htmlFor="reg-email">Адрес e-mail:</label>
                     <input type="email" className="form-control" id="reg-email" placeholder="drankov@pavel.ru" value={this.state.email} onChange={e => this.setState({ email: e.target.value })}/>
@@ -119,7 +125,7 @@ class BigRegisterForm extends React.Component {
                     </label>
                 </div>
                 {/*<input type="hidden" name="reg-secret" value="aba-caba"/>*/}
-                <button type="submit" className="btn btn-primary" onClick={e => this.handleSubmit(e)} disabled={!this.allowSubmission()}>
+                <button type="submit" className="btn btn-primary" disabled={!this.allowSubmission()}>
                     Зарегистрироваться
                 </button>
             </form>
