@@ -50,66 +50,56 @@ class StudioProfileEditForm extends React.Component {
             <h5 className="card-header">Профиль студии</h5>
             <div className="card-body">
                 <form onSubmit={e => this.handleSubmit(e)}>
-                    <p>
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Название:</span>
-                            </div>
-                            <input className="form-control" value={ this.state.title } onChange={e => this.setState({ title: e.target.value })}/>
+                    <div className="input-group my-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text">Название:</span>
                         </div>
-                    </p>
+                        <input className="form-control" value={ this.state.title || "" } onChange={e => this.setState({ title: e.target.value })}/>
+                    </div>
+
+                    <div className="input-group my-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text">Заглавная картинка:</span>
+                        </div>
+                        <input className="form-control" value={ this.state.imgUrl || "" } onChange={e => this.setState({ imgUrl: e.target.value })}/>
+                    </div>
+
+                    <div className="input-group my-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text">Город:</span>
+                        </div>
+                        <select className="form-control" value={ this.state.city || "" } onChange={e => this.setState({ city: e.target.value })}>
+                            <option>Выберите город</option>
+                            {
+                                cities.map(city => {
+                                    return <option key={city.id} value={city.id}>{city.name}</option>
+                                })
+                            }
+                        </select>
+                    </div>
+
+                    <div className="input-group my-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text">Район:</span>
+                        </div>
+                        <select className="form-control" value={ this.state.district || "" } onChange={e => this.setState({ district: e.target.value })}>
+                            {
+                                cityData.districts.map(district => {
+                                    return <option key={district.id} value={district.id}>{district.name}</option>
+                                })
+                            }
+                        </select>
+                    </div>
+
+                    <div className="input-group my-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text">URL:</span>
+                        </div>
+                        <input className="form-control" value={ this.state.urlBit || "" } onChange={e => this.setState({ urlBit: e.target.value })}/>
+                    </div>
 
                     <p>
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Заглавная картинка:</span>
-                            </div>
-                            <input className="form-control" value={ this.state.imgUrl } onChange={e => this.setState({ imgUrl: e.target.value })}/>
-                        </div>
-                    </p>
-
-                    <p>
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Город:</span>
-                            </div>
-                            <select className="form-control" value={ this.state.city } onChange={e => this.setState({ city: e.target.value })}>
-                                <option>Выберите город</option>
-                                {
-                                    cities.map(city => {
-                                        return <option key={city.id} value={city.id}>{city.name}</option>
-                                    })
-                                }
-                            </select>
-                        </div>
-                    </p>
-
-                    <p>
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">Район:</span>
-                            </div>
-                            <select className="form-control" value={ this.state.district } onChange={e => this.setState({ district: e.target.value })}>
-                                {
-                                    cityData.districts.map(district => {
-                                        return <option key={district.id} value={district.id}>{district.name}</option>
-                                    })
-                                }
-                            </select>
-                        </div>
-                    </p>
-
-                    <p>
-                        <div className="input-group">
-                            <div className="input-group-prepend">
-                                <span className="input-group-text">URL:</span>
-                            </div>
-                            <input className="form-control" value={ this.state.urlBit } onChange={e => this.setState({ urlBit: e.target.value })}/>
-                        </div>
-                    </p>
-
-                    <p>
-                        <button className="btn btn-lg btn-primary" onClick={e => this.handleSubmit(e)}>
+                        <button className="btn btn-primary" onClick={e => this.handleSubmit(e)}>
                             Сохранить изменения
                         </button>
                     </p>
