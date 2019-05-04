@@ -12,8 +12,13 @@ const getCurrentUser = () => {
         fetch("/v1/profile").then(response => {
             return response.json();
         }).then(data => {
-            sessionStorage.setItem('currentUser', JSON.stringify(data));
-            resolve(data);
+            if(data.status === 'UNAUTHORIZED') {
+                resolve(undefined);
+            }
+            else {
+                sessionStorage.setItem('currentUser', JSON.stringify(data));
+                resolve(data);
+            }
         }).catch(reject);
     });
 };

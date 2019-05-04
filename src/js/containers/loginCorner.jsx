@@ -80,7 +80,7 @@ class LoginCorner extends React.Component {
             loginError: null,
             registerError: null
         }, () => {
-            localStorage.setItem('currentAuth', JSON.stringify(newAuth));
+            // localStorage.setItem('currentAuth', JSON.stringify(newAuth));
         });
     }
 
@@ -130,8 +130,9 @@ class LoginCorner extends React.Component {
     handleLogoutClick(e) {
         e.preventDefault();
 
-        localStorage.removeItem('currentAuth');
-        document.cookie = "authToken=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+        sessionStorage.removeItem('currentUser');
+        document.cookie = "email=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+        document.cookie = "authToken=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 
         this.setState({ currentAuth: null });
     }

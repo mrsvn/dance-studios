@@ -64,7 +64,7 @@ class BigRegisterForm extends React.Component {
         if(this.props.secret) {
             return <div className="alert alert-success">
                 <h4 className="alert-heading">Регистрация новой студии</h4>
-                <p>Вы пошли по уникальной ссылке для регистрации новой студии.</p>
+                <p>Вы прошли по уникальной ссылке для регистрации новой студии.</p>
                 <p className="mb-0">Заполните нижеследующую форму, чтобы создать учетную запись менеджера.</p>
             </div>;
         }
