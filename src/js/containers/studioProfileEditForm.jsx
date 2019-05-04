@@ -46,63 +46,83 @@ class StudioProfileEditForm extends React.Component {
             }
         });
 
-        return <div className="card">
+        return <div className="card m-2">
             <h5 className="card-header">Профиль студии</h5>
             <div className="card-body">
                 <form onSubmit={e => this.handleSubmit(e)}>
-                    <div className="input-group my-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">Название:</span>
-                        </div>
+                    <div className="form-group">
+                        <label>Название:</label>
                         <input className="form-control" value={ this.state.title || "" } onChange={e => this.setState({ title: e.target.value })}/>
                     </div>
 
-                    <div className="input-group my-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">Заглавная картинка:</span>
-                        </div>
+                    <div className="form-group">
+                        <label>Заглавная картинка:</label>
                         <input className="form-control" value={ this.state.imgUrl || "" } onChange={e => this.setState({ imgUrl: e.target.value })}/>
-                    </div>
-
-                    <div className="input-group my-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">Город:</span>
+                        <div className="form-text text-muted">
+                            TODO: загрузка картинок.
                         </div>
-                        <select className="form-control" value={ this.state.city || "" } onChange={e => this.setState({ city: e.target.value })}>
-                            <option>Выберите город</option>
-                            {
-                                cities.map(city => {
-                                    return <option key={city.id} value={city.id}>{city.name}</option>
-                                })
-                            }
-                        </select>
                     </div>
 
-                    <div className="input-group my-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">Район:</span>
+                    <div className="form-row">
+                        <div className="form-group col">
+                            <label>Город:</label>
+                            <select className="form-control" value={ this.state.city || "" } onChange={e => this.setState({ city: e.target.value })}>
+                                <option>Выберите город</option>
+                                {
+                                    cities.map(city => {
+                                        return <option key={city.id} value={city.id}>{city.name}</option>
+                                    })
+                                }
+                            </select>
                         </div>
-                        <select className="form-control" value={ this.state.district || "" } onChange={e => this.setState({ district: e.target.value })}>
-                            {
-                                cityData.districts.map(district => {
-                                    return <option key={district.id} value={district.id}>{district.name}</option>
-                                })
-                            }
-                        </select>
-                    </div>
-
-                    <div className="input-group my-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">URL:</span>
+                        <div className="form-group col">
+                            <label>Район:</label>
+                            <select className="form-control" value={ this.state.district || "" } onChange={e => this.setState({ district: e.target.value })}>
+                                {
+                                    cityData.districts.map(district => {
+                                        return <option key={district.id} value={district.id}>{district.name}</option>
+                                    })
+                                }
+                            </select>
                         </div>
-                        <input className="form-control" value={ this.state.urlBit || "" } onChange={e => this.setState({ urlBit: e.target.value })}/>
                     </div>
 
-                    <p>
+                    <div className="form-group">
+                        <label>Адрес и координаты:</label>
+                        <input className="form-control" value={ "ул. Уважаемых Ветеранов, д.14" }/>
+                    </div>
+
+                    <div className="form-group">
+                        <label>URL:</label>
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">{ location.host }/studios/</span>
+                            </div>
+                            <input className="form-control text-monospace" value={ this.state.urlBit || "" } onChange={e => this.setState({ urlBit: e.target.value })}/>
+                        </div>
+                        <div className="form-text text-muted">
+                            TODO: после смены URL перенаправлять на новый со старого.
+                        </div>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Направления:</label>
+                        <input className="form-control" value={ this.state.tags && this.state.tags.join(', ') }/>
+                        <div className="form-text text-muted">
+                            TODO: элемент выбора тэгов с автодополнением.
+                        </div>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Описание:</label>
+                        <textarea className="form-control" value={this.state.description && this.state.description.join('\n\n')}/>
+                    </div>
+
+                    <div className="form-group">
                         <button className="btn btn-primary" onClick={e => this.handleSubmit(e)}>
                             Сохранить изменения
                         </button>
-                    </p>
+                    </div>
                 </form>
             </div>
         </div>;
