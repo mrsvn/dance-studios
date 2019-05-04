@@ -13,6 +13,8 @@ const CityDropdownDiv = styled.div`
     font-size: .5em;
     vertical-align: bottom;
 
+    min-width: 10em;
+
     &::after {
         content: "";
         display: inline-block;
@@ -69,7 +71,7 @@ const CityDropdownDiv = styled.div`
     }
 
     .loc-opt-dropdown a {
-        padding: 10px 0;
+        padding: 1ex 0;
         padding-left: 2px;
 
         color: black;
