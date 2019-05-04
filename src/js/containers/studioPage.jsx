@@ -81,8 +81,7 @@ class StudioPage extends React.Component {
     });
 
     getCurrentUser().then(user => {
-      // TODO: check if the user is the studio's manager as well
-      if(user && user.isAdmin) {
+      if(user && (user.isAdmin || user.managedStudio === this.urlBit)) {
         this.setState({ canEdit: true });
       }
     });

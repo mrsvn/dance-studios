@@ -279,9 +279,16 @@ app.get('/v1/profile', (req, res) => {
       delete userRepr.userpic;
 
       // TODO: convert to urlBit before sending?
-      delete userRepr.managedStudio;
+      if(userRepr.managedStudio) {
+        db.collection('studios').findOne({ _id: userRepr.managedStudio }).then(studio => {
+          userRepr.managedStudio = studio.urlBit;
 
-      res.send(userRepr);
+          res.send(userRepr);
+        })
+      }
+      else {
+        res.send(userRepr);
+      }
     }
     else {
       res.status(403).send({ error: 'UNAUTHORIZED' });

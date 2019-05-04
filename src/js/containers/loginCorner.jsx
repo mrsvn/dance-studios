@@ -75,6 +75,8 @@ class LoginCorner extends React.Component {
     }
 
     rememberAuth(newAuth) {
+        // TODO!: use getCurrentUser() instead!
+
         this.setState({
             currentAuth: newAuth,
             loginError: null,
@@ -144,7 +146,11 @@ class LoginCorner extends React.Component {
             { email }
             <img src={ `/v1/userpics/${email}` } style={{ height:"40px", borderRadius: "50%" }}/>
             <Link to="/profile">Профиль</Link>&nbsp;
-            <Link to="/edit-studio">Студия</Link>&nbsp;
+            {
+                this.state.currentAuth.managedStudio && <>
+                    <Link to={`/studios/${this.state.currentAuth.managedStudio}/edit`}>Студия</Link>&nbsp;
+                </>
+            }
             <Link to="/admin/users">Админка</Link>&nbsp;
             <a href="#" onClick={e => this.handleLogoutClick(e)}>Выйти</a>
         </div>;
