@@ -151,7 +151,11 @@ class LoginCorner extends React.Component {
                     <Link to={`/studios/${this.state.currentAuth.managedStudio}/edit`}>Студия</Link>&nbsp;
                 </>
             }
-            <Link to="/admin/users">Админка</Link>&nbsp;
+            {
+                this.state.currentAuth.isAdmin && <>
+                    <Link to="/admin">Админка</Link>&nbsp;
+                </>
+            }
             <a href="#" onClick={e => this.handleLogoutClick(e)}>Выйти</a>
         </div>;
     }

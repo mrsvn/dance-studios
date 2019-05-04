@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AdminInvitationsPage extends React.Component {
+class AdminInvitationsForm extends React.Component {
     constructor(props) {
         super(props);
 
@@ -80,4 +80,4 @@ class AdminInvitationsPage extends React.Component {
     }
 }
 
-export { AdminInvitationsPage };
+export { AdminInvitationsForm };

@@ -10,9 +10,9 @@ import { StudiosListPage } from "./containers/studiosListPage";
 import { ClassesTablePage } from "./containers/classesTablePage";
 import { StudioPage } from "./containers/studioPage";
 import { ProfilePage } from "./containers/profilePage";
-import { AdminUsersPage } from "./containers/adminUsersPage";
 import { StudioEditPage } from "./containers/studioEditPage";
 import { InvitationPage } from "./containers/invitationPage";
+import { AdminPage } from "./containers/adminPage";
 
 class AppRouter extends React.Component {
     constructor(props) {
@@ -54,7 +54,7 @@ class AppRouter extends React.Component {
             <Route exact path="/studios/:urlBit/edit" component={StudioEditPage} />
             <Route path="/classes/" component={ClassesTablePage} />
             <Route path="/profile/" component={ProfilePage} />
-            <Route exact path="/admin/users" component={AdminUsersPage} />
+            <Route path="/admin" component={AdminPage} />
             <Route exact path="/invite/:secret" component={InvitationPage} />
         </BrowserRouter>;
     }

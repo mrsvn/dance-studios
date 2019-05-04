@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AdminStudiosPage extends React.Component {
+class AdminStudiosForm extends React.Component {
     constructor(props) {
         super(props);
 
@@ -66,4 +66,4 @@ class AdminStudiosPage extends React.Component {
     }
 }
 
-export { AdminStudiosPage };
+export { AdminStudiosForm };
