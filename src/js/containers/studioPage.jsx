@@ -4,18 +4,22 @@ import ReactDOM from "react-dom";
 import styled from 'styled-components';
 
 import { YMaps, Map, GeoObject } from 'react-yandex-maps';
+import { getCurrentUser } from "../util/sessionData";
 
 const StudioPageDiv = styled.div`
   #studio-image {
       overflow: hidden;
-      height: 400px;
+      height: 250px;
+      width: 100vw;
       position: relative;
   }
   #studio-image img {
-      /*height: 400px;*/
+      //height: 250px;
+      width: 100%;
       position: absolute;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) translateY(-50%);
   }
 
   #studio-information-container {
@@ -55,6 +59,7 @@ class StudioPage extends React.Component {
 
     this.state = {
       data: {},
+      canEdit: false,
       classes: []
     };
 
@@ -73,6 +78,13 @@ class StudioPage extends React.Component {
       });
     }).catch(error => {
       console.log(error);
+    });
+
+    getCurrentUser().then(user => {
+      // TODO: check if the user is the studio's manager as well
+      if(user && user.isAdmin) {
+        this.setState({ canEdit: true });
+      }
     });
 
     // Studio schedule
@@ -113,32 +125,43 @@ class StudioPage extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <StudioPageDiv>
         <div id="studio-image">
-          <img src={this.state.data.imgUrl}/>
+          <img alt="" src={this.state.data.imgUrl}/>
         </div>
 
         <div id="studio-information-container">
           <div id="studio-information">
             <div id="studio-heading">
               <div>
-                <h1>{this.state.data.title}</h1>
-                <p>Multiple locations</p>
-                {/* TODO: display tags */}
+                <h1>
+                  { this.state.data.title }
+                  { this.state.canEdit && <a href="#" className="btn btm-sm btn-primary ml-3">Редактировать</a> }
+                </h1>
               </div>
               <div id="studio-rating">
-                <div>{this.state.data.rating}</div>
+                {this.state.data.rating}
               </div>
             </div>
+            <p>
+              {
+                this.state.data.tags && this.state.data.tags.map(tag => {
+                  return <a href={`#${tag}`} className="btn btn-sm btn-link" key={tag}>{tag}</a>;
+                })
+              }
+            </p>
 
             <div>
               {
-                this.state.data.description && this.state.data.description.map(p => <p>{ p }</p>)
+                this.state.data.description && this.state.data.description.map((p, i) => <p key={i}>{ p }</p>)
               }
             </div>
 
             <hr/>
+
+            <h4>Расписание занятий</h4>
 
             {
               this.state.classes.map(classInfo => {
@@ -152,10 +175,9 @@ class StudioPage extends React.Component {
             <hr/>
 
             <div>
-              <p>Отзывы:</p>
+              <h4>Отзывы</h4>
               <div>звездочки</div>
             </div>
-            <hr/>
 
             {/*<div className="studio-review">*/}
               {/*<div className="review-author">*/}
@@ -215,7 +237,11 @@ class StudioPage extends React.Component {
                   </YMaps>
               )
             }
-            </div>
+            <p>
+              Москва / Дорогомиловская <br/>
+              ул. Ветеранов, д. 14/88
+            </p>
+          </div>
 
         </div>
       </StudioPageDiv>
