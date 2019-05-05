@@ -2,6 +2,8 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import { weekDayShortNames } from "../util/dateStrings";
+
 const ScheduleDiv = styled.div`
 
 
@@ -81,9 +83,30 @@ class StudioSchedule extends React.Component {
     constructor(props) {
         super(props);
 
+        const monday = new Date();
+
+        while(monday.getDay() !== 1) {
+            monday.setDate(monday.getDate() - 1);
+        }
+
         this.state = {
-            classes: []
+            classes: [],
+            weekMonday: monday
         };
+    }
+
+    weekDays() {
+        const weekDays = [];
+
+        for(let i = 0; i < 7; i++) {
+            const weekDay = new Date(this.state.weekMonday); // copy the object
+
+            weekDay.setDate(weekDay.getDate() + i);
+
+            weekDays.push(weekDay);
+        }
+
+        return weekDays;
     }
 
     componentDidMount() {
@@ -103,6 +126,26 @@ class StudioSchedule extends React.Component {
         });
     }
 
+    handleEnroll(e, classId) {
+        e.preventDefault();
+
+        fetch("/v1/enrollments", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                classId: classId
+            })
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            console.log(data);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
     render() {
         console.log("classes", this.state.classes);
 
@@ -111,34 +154,23 @@ class StudioSchedule extends React.Component {
                 <div className="cal-left">
                     <img src="/img/circle-right.svg"/>
                 </div>
-                <div className="day day-past">
-                    <span>Пн</span>
-                    <span>6</span>
-                </div>
-                <div className="day day-current">
-                    <span>Пн</span>
-                    <span>6</span>
-                </div>
-                <div className="day">
-                    <span>Пн</span>
-                    <span>6</span>
-                </div>
-                <div className="day">
-                    <span>Пн</span>
-                    <span>6</span>
-                </div>
-                <div className="day">
-                    <span>Пн</span>
-                    <span>6</span>
-                </div>
-                <div className="day">
-                    <span>Пн</span>
-                    <span>6</span>
-                </div>
-                <div className="day">
-                    <span>Пн</span>
-                    <span>6</span>
-                </div>
+                {
+                    this.weekDays().map(date => {
+                        let className = "day";
+
+                        if(date.getDate() === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
+                            className += " day-current";
+                        }
+                        else if(date < new Date()) {
+                            className += " day-past";
+                        }
+
+                        return <div className={className}>
+                            <span>{ weekDayShortNames[date.getDay()] }</span>
+                            <span>{ date.getDate() }</span>
+                        </div>;
+                    })
+                }
                 <div className="cal-right">
                     <img src="/img/circle-right.svg"/>
                 </div>

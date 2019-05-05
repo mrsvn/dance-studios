@@ -70,8 +70,6 @@ class StudioPage extends React.Component {
       canEdit: false
     };
 
-    console.log(props);
-
     this.urlBit = this.props.match.params.urlBit;
   }
 
@@ -94,28 +92,7 @@ class StudioPage extends React.Component {
     });
   }
 
-  handleEnroll(e, classId) {
-    e.preventDefault();
-
-    fetch("/v1/enrollments", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        classId: classId
-      })
-    }).then(response => {
-      return response.json();
-    }).then(data => {
-      console.log(data);
-    }).catch(err => {
-      console.log(err);
-    });
-  }
-
   render() {
-    console.log(this.state);
     return (
       <StudioPageDiv>
         <div id="studio-image">
