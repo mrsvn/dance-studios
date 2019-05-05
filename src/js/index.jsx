@@ -39,9 +39,9 @@ class AppRouter extends React.Component {
 			</span>
 
                 <nav>
-                    <NavLink to="/" exact className="nav-item" activeClassName="nav-current">Главная</NavLink>
-                    <NavLink to="/studios" className="nav-item" activeClassName="nav-current">Студии</NavLink>
-                    <NavLink to="/classes" className="nav-item" activeClassName="nav-current">Занятия</NavLink>
+                    <NavLink exact to="/" className="nav-item" activeClassName="nav-current">Главная</NavLink>
+                    <NavLink exact to="/studios" className="nav-item" activeClassName="nav-current">Студии</NavLink>
+                    <NavLink exact to="/classes" className="nav-item" activeClassName="nav-current">Занятия</NavLink>
                 </nav>
 
                 <LoginCorner/>
