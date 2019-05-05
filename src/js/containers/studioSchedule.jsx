@@ -50,6 +50,10 @@ const ScheduleDiv = styled.div`
         cursor: pointer;
       }
 
+      span:first-child {
+        font-size: 0.875em;
+      }
+
       &.day-current {
         color: #007bff;
         font-weight: 300;
@@ -89,6 +93,10 @@ class StudioSchedule extends React.Component {
         while(monday.getDay() !== 1) {
             monday.setDate(monday.getDate() - 1);
         }
+
+        monday.setHours(0);
+        monday.setMinutes(0);
+        monday.setSeconds(0);
 
         this.state = {
             classes: [],
@@ -148,14 +156,27 @@ class StudioSchedule extends React.Component {
     }
 
     shiftWeek(d) {
-        const weekDay = new Date(this.state.weekMonday);
-        weekDay.setDate(weekDay.getDate() + d * 7);
+        const anotherMonday = new Date(this.state.weekMonday);
+        anotherMonday.setDate(anotherMonday.getDate() + d * 7);
 
-        this.setState({weekMonday: weekDay});
+        this.setState({
+            weekMonday: anotherMonday
+        });
+    }
+
+    classesThisWeek() {
+        const nextMonday = new Date(this.state.weekMonday);
+        nextMonday.setDate(nextMonday.getDate() + 7);
+
+        return this.state.classes.filter(classInfo => {
+            const startDate = new Date(classInfo.startTime);
+
+            return (this.state.weekMonday < startDate && startDate < nextMonday) && new Date() < startDate;
+        });
     }
 
     render() {
-        console.log("classes", this.state.classes);
+        const classes = this.classesThisWeek();
 
         return <ScheduleDiv>
             <div className="calendar-bar">
@@ -187,7 +208,7 @@ class StudioSchedule extends React.Component {
             <table className="class-entries">
                 <tbody>
                 {
-                    this.state.classes.map(classInfo => {
+                    classes.length !== 0 ? classes.map(classInfo => {
                         return <tr key={classInfo._id}>
                             <td className="class-time">
                                 <div>9:05</div>
@@ -198,7 +219,7 @@ class StudioSchedule extends React.Component {
                                 <div>{classInfo.trainer}</div>
                             </td>
                             <td className="class-tag">
-                                {classInfo.tag}
+                                {classInfo.tags}
                                 {/*<pre>{ JSON.stringify(classInfo, null, 4) }</pre>*/}
                             </td>
                             <td className="class-join">
@@ -208,7 +229,7 @@ class StudioSchedule extends React.Component {
                                 <div className="spots-left">Осталось 7 мест</div>
                             </td>
                         </tr>;
-                    })
+                    }) : <div>Занятий на этой неделе нет</div>
                 }
                 </tbody>
             </table>
