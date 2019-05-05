@@ -6,6 +6,7 @@
         ], 
         "imgUrl": "/content/listpic12.jpg", 
         "district": "Андроновка",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             56.99488620000001, 
             40.97818770000001
@@ -29,6 +30,7 @@
         ], 
         "imgUrl": "/content/listpic02.jpg", 
         "district": "Кузнецкий мост",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             56.99597779999999, 
             40.9787329
@@ -52,6 +54,7 @@
         ], 
         "imgUrl": "/content/listpic18.jpg", 
         "district": "Зябликово",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             56.9934394, 
             40.9824949
@@ -75,6 +78,7 @@
         ], 
         "imgUrl": "/content/listpic08.jpg", 
         "district": "Арбатская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             56.997023, 
             40.9823445
@@ -98,6 +102,7 @@
         ], 
         "imgUrl": "/content/listpic15.jpg", 
         "district": "Улица Горчакова",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             56.998729000000004, 
             40.974042
@@ -121,6 +126,7 @@
         ], 
         "imgUrl": "/content/listpic18.jpg", 
         "district": "Комсомольская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             57.00097220000001, 
             40.976158399999996
@@ -144,6 +150,7 @@
         ], 
         "imgUrl": "/content/listpic04.jpg", 
         "district": "Сретенский бульвар",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             56.99523739999999, 
             40.987177200000005
@@ -167,6 +174,7 @@
         ], 
         "imgUrl": "/content/listpic16.jpg", 
         "district": "Жулебино",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             57.0015821, 
             40.9842946
@@ -190,6 +198,7 @@
         ], 
         "imgUrl": "/content/listpic12.jpg", 
         "district": "Студенческая",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             57.00154620000001, 
             40.984368100000005
@@ -213,6 +222,7 @@
         ], 
         "imgUrl": "/content/listpic19.jpg", 
         "district": "Кантемировская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.101994399999995, 
             -118.2915943
@@ -236,6 +246,7 @@
         ], 
         "imgUrl": "/content/listpic15.jpg", 
         "district": "Петровский парк",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.103829600000005, 
             -118.28781940000002
@@ -259,6 +270,7 @@
         ], 
         "imgUrl": "/content/listpic14.jpg", 
         "district": "Пушкинская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.1048895, 
             -118.2876009
@@ -282,6 +294,7 @@
         ], 
         "imgUrl": "/content/listpic13.jpg", 
         "district": "Битцевский парк",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.07607720000001, 
             -118.3093504
@@ -305,6 +318,7 @@
         ], 
         "imgUrl": "/content/listpic02.jpg", 
         "district": "Новокузнецкая",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0621682, 
             -118.29519099999999
@@ -328,6 +342,7 @@
         ], 
         "imgUrl": "/content/listpic04.jpg", 
         "district": "Лубянка",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.06162379999999, 
             -118.2921371
@@ -351,6 +366,7 @@
         ], 
         "imgUrl": "/content/listpic11.jpg", 
         "district": "Филевский парк",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0615716, 
             -118.2918844
@@ -374,6 +390,7 @@
         ], 
         "imgUrl": "/content/listpic10.jpg", 
         "district": "Кантемировская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0613973, 
             -118.2914163
@@ -397,6 +414,7 @@
         ], 
         "imgUrl": "/content/listpic09.jpg", 
         "district": "Калужская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.1014969, 
             -118.3088091
@@ -420,6 +438,7 @@
         ], 
         "imgUrl": "/content/listpic06.jpg", 
         "district": "Боровское шоссе",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0619261, 
             -118.29612320000001
@@ -443,6 +462,7 @@
         ], 
         "imgUrl": "/content/listpic07.jpg", 
         "district": "Соколиная Гора",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.1116409, 
             -118.2876517
@@ -466,6 +486,7 @@
         ], 
         "imgUrl": "/content/listpic12.jpg", 
         "district": "Шаболовская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0614477, 
             -118.29923810000001
@@ -489,6 +510,7 @@
         ], 
         "imgUrl": "/content/listpic15.jpg", 
         "district": "Ботанический сад",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0615266, 
             -118.30214509999999
@@ -512,6 +534,7 @@
         ], 
         "imgUrl": "/content/listpic03.jpg", 
         "district": "Бутырская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.061932, 
             -118.3055622
@@ -535,6 +558,7 @@
         ], 
         "imgUrl": "/content/listpic01.jpg", 
         "district": "Окружная",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0614071, 
             -118.3048449
@@ -558,6 +582,7 @@
         ], 
         "imgUrl": "/content/listpic15.jpg", 
         "district": "Октябрьское поле",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.063861700000004, 
             -118.3088949
@@ -581,6 +606,7 @@
         ], 
         "imgUrl": "/content/listpic15.jpg", 
         "district": "Парк культуры",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0619412, 
             -118.3068392
@@ -604,6 +630,7 @@
         ], 
         "imgUrl": "/content/listpic19.jpg", 
         "district": "Китай-город",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0612768, 
             -118.30629040000001
@@ -627,6 +654,7 @@
         ], 
         "imgUrl": "/content/listpic19.jpg", 
         "district": "Нагорная",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.061938399999995, 
             -118.30751310000001
@@ -650,6 +678,7 @@
         ], 
         "imgUrl": "/content/listpic11.jpg", 
         "district": "Локомотив",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.062948299999995, 
             -118.30889350000001
@@ -673,6 +702,7 @@
         ], 
         "imgUrl": "/content/listpic00.jpg", 
         "district": "Отрадное",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0843595, 
             -118.3205064
@@ -696,6 +726,7 @@
         ], 
         "imgUrl": "/content/listpic12.jpg", 
         "district": "Локомотив",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.07653010000001, 
             -118.25729109999999
@@ -719,6 +750,7 @@
         ], 
         "imgUrl": "/content/listpic07.jpg", 
         "district": "Нижегородская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.1003691, 
             -118.2585922
@@ -742,6 +774,7 @@
         ], 
         "imgUrl": "/content/listpic10.jpg", 
         "district": "Кузнецкий мост",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0760544, 
             -118.32399
@@ -765,6 +798,7 @@
         ], 
         "imgUrl": "/content/listpic17.jpg", 
         "district": "Строгино",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.075894500000004, 
             -118.32398859999999
@@ -788,6 +822,7 @@
         ], 
         "imgUrl": "/content/listpic18.jpg", 
         "district": "Соколиная Гора",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.07328629999999, 
             -118.323361
@@ -811,6 +846,7 @@
         ], 
         "imgUrl": "/content/listpic13.jpg", 
         "district": "Лермонтовский проспект",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0977395, 
             -118.32697040000001
@@ -834,6 +870,7 @@
         ], 
         "imgUrl": "/content/listpic01.jpg", 
         "district": "Рязанский проспект",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0522358, 
             -118.2636034
@@ -857,6 +894,7 @@
         ], 
         "imgUrl": "/content/listpic02.jpg", 
         "district": "Сходненская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0529078, 
             -118.25712759999999
@@ -880,6 +918,7 @@
         ], 
         "imgUrl": "/content/listpic10.jpg", 
         "district": "Котельники",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.1259341, 
             -118.264606
@@ -903,6 +942,7 @@
         ], 
         "imgUrl": "/content/listpic12.jpg", 
         "district": "Водный стадион",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.049328700000004, 
             -118.2584078
@@ -926,6 +966,7 @@
         ], 
         "imgUrl": "/content/listpic03.jpg", 
         "district": "Лихоборы",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.0450765, 
             -118.26361740000002
@@ -949,6 +990,7 @@
         ], 
         "imgUrl": "/content/listpic05.jpg", 
         "district": "Крестьянская застава",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.051619099999996, 
             -118.2553727
@@ -972,6 +1014,7 @@
         ], 
         "imgUrl": "/content/listpic06.jpg", 
         "district": "Тургеневская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             34.1269795, 
             -118.26271729999999
@@ -995,6 +1038,7 @@
         ], 
         "imgUrl": "/content/listpic03.jpg", 
         "district": "Александровский сад",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.785018700000002, 
             -80.174549
@@ -1018,6 +1062,7 @@
         ], 
         "imgUrl": "/content/listpic00.jpg", 
         "district": "Печатники",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.7769151, 
             -80.1850705
@@ -1041,6 +1086,7 @@
         ], 
         "imgUrl": "/content/listpic04.jpg", 
         "district": "Солнцево",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.777098300000002, 
             -80.1885293
@@ -1064,6 +1110,7 @@
         ], 
         "imgUrl": "/content/listpic05.jpg", 
         "district": "Чкаловская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.794214899999997, 
             -80.18661290000001
@@ -1087,6 +1134,7 @@
         ], 
         "imgUrl": "/content/listpic14.jpg", 
         "district": "Тургеневская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.7731166, 
             -80.1878307
@@ -1110,6 +1158,7 @@
         ], 
         "imgUrl": "/content/listpic01.jpg", 
         "district": "Арбатская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.773135699999997, 
             -80.18808299999999
@@ -1133,6 +1182,7 @@
         ], 
         "imgUrl": "/content/listpic16.jpg", 
         "district": "Царицыно",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.774401, 
             -80.18907159999999
@@ -1156,6 +1206,7 @@
         ], 
         "imgUrl": "/content/listpic10.jpg", 
         "district": "Дубровка",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.7753372, 
             -80.19017609999999
@@ -1179,6 +1230,7 @@
         ], 
         "imgUrl": "/content/listpic06.jpg", 
         "district": "Зорге",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.770760600000003, 
             -80.18933940000001
@@ -1202,6 +1254,7 @@
         ], 
         "imgUrl": "/content/listpic14.jpg", 
         "district": "Римская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.773460600000003, 
             -80.1921838
@@ -1225,6 +1278,7 @@
         ], 
         "imgUrl": "/content/listpic13.jpg", 
         "district": "Курская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.775031, 
             -80.1939485
@@ -1248,6 +1302,7 @@
         ], 
         "imgUrl": "/content/listpic01.jpg", 
         "district": "Электрозаводская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.7990127, 
             -80.1893186
@@ -1271,6 +1326,7 @@
         ], 
         "imgUrl": "/content/listpic05.jpg", 
         "district": "Таганская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.791438, 
             -80.1943381
@@ -1294,6 +1350,7 @@
         ], 
         "imgUrl": "/content/listpic11.jpg", 
         "district": "Динамо",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.763731, 
             -80.1889474
@@ -1317,6 +1374,7 @@
         ], 
         "imgUrl": "/content/listpic16.jpg", 
         "district": "Чкаловская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.7651905, 
             -80.1930941
@@ -1340,6 +1398,7 @@
         ], 
         "imgUrl": "/content/listpic06.jpg", 
         "district": "Охотный ряд",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.8052489, 
             -80.1892052
@@ -1363,6 +1422,7 @@
         ], 
         "imgUrl": "/content/listpic02.jpg", 
         "district": "Зорге",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.799897, 
             -80.19925450000001
@@ -1386,6 +1446,7 @@
         ], 
         "imgUrl": "/content/listpic14.jpg", 
         "district": "Павелецкая",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.8037293, 
             -80.19635790000001
@@ -1409,6 +1470,7 @@
         ], 
         "imgUrl": "/content/listpic19.jpg", 
         "district": "Севастопольская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.8018475, 
             -80.19871479999999
@@ -1432,6 +1494,7 @@
         ], 
         "imgUrl": "/content/listpic10.jpg", 
         "district": "Лихоборы",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.802085100000003, 
             -80.1995637
@@ -1455,6 +1518,7 @@
         ], 
         "imgUrl": "/content/listpic12.jpg", 
         "district": "Технопарк",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.7946527, 
             -80.14425159999999
@@ -1478,6 +1542,7 @@
         ], 
         "imgUrl": "/content/listpic06.jpg", 
         "district": "Парк Победы",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.8014956, 
             -80.20180340000002
@@ -1501,6 +1566,7 @@
         ], 
         "imgUrl": "/content/listpic01.jpg", 
         "district": "Марксистская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.8027174, 
             -80.201323
@@ -1524,6 +1590,7 @@
         ], 
         "imgUrl": "/content/listpic13.jpg", 
         "district": "ЦСКА",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.801613, 
             -80.20259159999999
@@ -1547,6 +1614,7 @@
         ], 
         "imgUrl": "/content/listpic12.jpg", 
         "district": "Шелепиха",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.7906036, 
             -80.14050999999999
@@ -1570,6 +1638,7 @@
         ], 
         "imgUrl": "/content/listpic17.jpg", 
         "district": "Смоленская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.8133419, 
             -80.19232020000001
@@ -1593,6 +1662,7 @@
         ], 
         "imgUrl": "/content/listpic14.jpg", 
         "district": "Борисово",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             25.790336399999997, 
             -80.1396545
@@ -1616,6 +1686,7 @@
         ], 
         "imgUrl": "/content/listpic12.jpg", 
         "district": "Нагатинская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             43.3087621, 
             6.6391005000000005
@@ -1639,6 +1710,7 @@
         ], 
         "imgUrl": "/content/listpic14.jpg", 
         "district": "Селигерская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             43.342110600000005, 
             6.6914619
@@ -1662,6 +1734,7 @@
         ], 
         "imgUrl": "/content/listpic13.jpg", 
         "district": "Каширская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             43.3420779, 
             6.691660400000001
@@ -1685,6 +1758,7 @@
         ], 
         "imgUrl": "/content/listpic11.jpg", 
         "district": "Авиамоторная",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             43.342005, 
             6.6926246
@@ -1708,6 +1782,7 @@
         ], 
         "imgUrl": "/content/listpic18.jpg", 
         "district": "Авиамоторная",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.7798546, 
             44.7779844
@@ -1731,6 +1806,7 @@
         ], 
         "imgUrl": "/content/listpic09.jpg", 
         "district": "Пушкинская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.7789165, 
             44.7781255
@@ -1754,6 +1830,7 @@
         ], 
         "imgUrl": "/content/listpic07.jpg", 
         "district": "Китай-город",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.780748100000004, 
             44.7804472
@@ -1777,6 +1854,7 @@
         ], 
         "imgUrl": "/content/listpic00.jpg", 
         "district": "Авиамоторная",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.78490120000001, 
             44.7829651
@@ -1800,6 +1878,7 @@
         ], 
         "imgUrl": "/content/listpic05.jpg", 
         "district": "Новохохловская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.7824045, 
             44.7844876
@@ -1823,6 +1902,7 @@
         ], 
         "imgUrl": "/content/listpic03.jpg", 
         "district": "Перово",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.7857809, 
             44.7826055
@@ -1846,6 +1926,7 @@
         ], 
         "imgUrl": "/content/listpic03.jpg", 
         "district": "Калужская",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.7818331, 
             44.785579299999995
@@ -1869,6 +1950,7 @@
         ], 
         "imgUrl": "/content/listpic14.jpg", 
         "district": "Выхино",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.79015220000001, 
             44.771740799999996
@@ -1892,6 +1974,7 @@
         ], 
         "imgUrl": "/content/listpic17.jpg", 
         "district": "Жулебино",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.7776337, 
             44.764946
@@ -1915,6 +1998,7 @@
         ], 
         "imgUrl": "/content/listpic10.jpg", 
         "district": "Строгино",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.779105200000004, 
             44.7928025
@@ -1938,6 +2022,7 @@
         ], 
         "imgUrl": "/content/listpic03.jpg", 
         "district": "Андроновка",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.7881669, 
             44.7647732
@@ -1961,6 +2046,7 @@
         ], 
         "imgUrl": "/content/listpic08.jpg", 
         "district": "Алтуфьево",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.7762816, 
             44.7606526
@@ -1984,6 +2070,7 @@
         ], 
         "imgUrl": "/content/listpic16.jpg", 
         "district": "ЦСКА",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.776528000000006, 
             44.797424400000004
@@ -2007,6 +2094,7 @@
         ], 
         "imgUrl": "/content/listpic05.jpg", 
         "district": "Филевский парк",
+        "streetAddress": "ул. Бассейная, д. 1337",
         "mapCoords": [
             48.773278999999995, 
             44.797784899999996

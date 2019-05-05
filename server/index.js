@@ -190,6 +190,7 @@ app.post('/register', (req, res) => {
               imgUrl: "/content/listpic12.jpg",
               district: null,
               mapCoords: null,
+              streetAddress: "",
               rating: 0,
               tags: [],
               city: null,

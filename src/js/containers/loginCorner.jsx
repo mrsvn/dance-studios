@@ -148,7 +148,7 @@ class LoginCorner extends React.Component {
             <Link to="/profile">Профиль</Link>&nbsp;
             {
                 this.state.currentAuth.managedStudio && <>
-                    <Link to={`/studios/${this.state.currentAuth.managedStudio}/edit`}>Студия</Link>&nbsp;
+                    <Link to={`/studios/${this.state.currentAuth.managedStudio}/manage`}>Студия</Link>&nbsp;
                 </>
             }
             {

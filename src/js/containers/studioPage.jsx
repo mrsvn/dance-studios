@@ -1,5 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
+
+import { Link } from "react-router-dom";
 
 import styled from 'styled-components';
 
@@ -137,7 +138,7 @@ class StudioPage extends React.Component {
               <div>
                 <h1>
                   { this.state.data.title }
-                  { this.state.canEdit && <a href="#" className="btn btm-sm btn-primary ml-3">Редактировать</a> }
+                  { this.state.canEdit && <Link to={`/studios/${this.urlBit}/manage`} className="btn btm-sm btn-primary ml-3">Редактировать</Link> }
                 </h1>
               </div>
               <div id="studio-rating">

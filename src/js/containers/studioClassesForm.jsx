@@ -105,7 +105,7 @@ class StudioClassesForm extends React.Component {
     }
 
     render() {
-        return <div className="card">
+        return <div className="card m-2">
             <h5 className="card-header">Расписание студии</h5>
             <div className="card-body">
                 <table className="table">
