@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { weekDayShortNames } from "../util/dateStrings";
+import { getCurrentUser } from "../util/sessionData";
 
 const ScheduleDiv = styled.div`
 
@@ -114,7 +115,8 @@ class StudioSchedule extends React.Component {
 
         this.state = {
             classes: [],
-            weekMonday: monday
+            weekMonday: monday,
+            currentUserId: null
         };
     }
 
@@ -132,7 +134,7 @@ class StudioSchedule extends React.Component {
         return weekDays;
     }
 
-    componentDidMount() {
+    loadClasses() {
         fetch(`/v1/studio/${this.props.urlBit}/classes`).then(response => {
             return response.json();
         }).then(data => {
@@ -149,9 +151,19 @@ class StudioSchedule extends React.Component {
         });
     }
 
-    handleEnroll(e, classId) {
-        e.preventDefault();
+    componentDidMount() {
+        this.loadClasses();
 
+        getCurrentUser().then(user => {
+            if(user) {
+                this.setState({
+                    currentUserId: user._id
+                });
+            }
+        });
+    }
+
+    handleEnroll(classId) {
         fetch("/v1/enrollments", {
             method: "POST",
             headers: {
@@ -163,6 +175,26 @@ class StudioSchedule extends React.Component {
         }).then(response => {
             return response.json();
         }).then(data => {
+            if(data.status === 'OK') {
+                this.loadClasses();
+            }
+
+            console.log(data);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
+    handleUnenroll(classId) {
+        fetch(`/v1/enrollments/${classId}`, {
+            method: "DELETE"
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            if(data.status === 'OK') {
+                this.loadClasses();
+            }
+
             console.log(data);
         }).catch(err => {
             console.log(err);
@@ -208,7 +240,7 @@ class StudioSchedule extends React.Component {
                             className += " day-past";
                         }
 
-                        return <div className={className}>
+                        return <div className={className} key={date.toString()}>
                             <span>{ weekDayShortNames[date.getDay()] }</span>
                             <span>{ date.getDate() }</span>
                         </div>;
@@ -226,6 +258,8 @@ class StudioSchedule extends React.Component {
                         const startDate = new Date(classInfo.startTime);
                         const endDate = new Date(classInfo.endTime);
 
+                        const isEnrolled = this.state.currentUserId && classInfo.enrolledUsers.includes(this.state.currentUserId);
+
                         return <tr key={classInfo._id}>
                             <td className="class-time">
                                 <div>{startDate.getHours()}:{leftPad(startDate.getMinutes(), 2)}</div>
@@ -241,9 +275,17 @@ class StudioSchedule extends React.Component {
                             </td>
                             <td className="class-join">
                                 <div>
-                                    <button className="btn btn-sm btn-link btn-primary" onClick={e => this.handleEnroll(e, classInfo._id)}>Записаться</button>
+                                    {
+                                        isEnrolled ? (
+                                            <button className="btn btn-sm btn-outline-danger" onClick={() => this.handleUnenroll(classInfo._id)}>Отписаться</button>
+                                        ) : (
+                                            <button className="btn btn-sm btn-outline-primary" onClick={() => this.handleEnroll(classInfo._id)} disabled={classInfo.enrolledUsers.length == classInfo.capacity}>Записаться</button>
+                                        )
+                                    }
                                 </div>
-                                <div className="spots-left">Осталось 7 мест</div>
+                                <div className="spots-left">
+                                    Осталось { classInfo.capacity - classInfo.enrolledUsers.length } мест
+                                </div>
                             </td>
                         </tr>;
                     }) : <div>Занятий на этой неделе нет</div>

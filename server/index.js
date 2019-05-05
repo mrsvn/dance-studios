@@ -274,7 +274,8 @@ app.get('/v1/profile', (req, res) => {
     if(isAuthorized) {
       const userRepr = Object.assign({}, user);
 
-      delete userRepr._id;
+      // TODO: eliminate mongodb ids from the client
+      // delete userRepr._id;
       delete userRepr.pwdHash;
       delete userRepr.authTokens;
       delete userRepr.userpic;
@@ -630,8 +631,21 @@ app.post('/v1/enrollments', (req, res) => {
   });
 });
 
+// Отписаться от занятия
+app.use('/v1/enrollments/:classId', checkAuth());
 app.delete('/v1/enrollments/:classId', (req, res) => {
-  // Отписаться от занятия
+  console.log(`DELETE ${req.path}:`, req.body);
+
+  const classId = mongodb.ObjectId(req.params.classId);
+
+  db.collection('classes').updateOne({ _id: classId }, { $pull: { enrolledUsers: req.user._id } }).then(result => {
+    if(result.result.nModified !== 0) {
+      res.send({ status: "OK" });
+    }
+    else {
+      res.send({ status: "NO_OP" });
+    }
+  });
 });
 
 app.post('/upload-images', (req, res) => {
