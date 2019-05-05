@@ -125,9 +125,11 @@ class BigRegisterForm extends React.Component {
                     </label>
                 </div>
                 {/*<input type="hidden" name="reg-secret" value="aba-caba"/>*/}
-                <button type="submit" className="btn btn-primary" disabled={!this.allowSubmission()}>
-                    Зарегистрироваться
-                </button>
+                <div className="form-group">
+                    <button type="submit" className="btn btn-block btn-primary" disabled={!this.allowSubmission()}>
+                        Зарегистрироваться
+                    </button>
+                </div>
             </form>
         </>;
     }
