@@ -175,11 +175,11 @@ class StudioSchedule extends React.Component {
         }).then(response => {
             return response.json();
         }).then(data => {
-            if(data.status === 'OK') {
-                this.loadClasses();
+            if(data.status !== 'OK') {
+                console.log(data);
             }
 
-            console.log(data);
+            this.loadClasses();
         }).catch(err => {
             console.log(err);
         });
@@ -191,11 +191,11 @@ class StudioSchedule extends React.Component {
         }).then(response => {
             return response.json();
         }).then(data => {
-            if(data.status === 'OK') {
-                this.loadClasses();
+            if(data.status !== 'OK') {
+                console.log(data);
             }
 
-            console.log(data);
+            this.loadClasses();
         }).catch(err => {
             console.log(err);
         });
