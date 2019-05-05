@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import { YMaps, Map, GeoObject } from 'react-yandex-maps';
 import { getCurrentUser } from "../util/sessionData";
+import { StudioSchedule } from "./studioSchedule";
 
 const StudioPageDiv = styled.div`
   #studio-image {
@@ -60,8 +61,7 @@ class StudioPage extends React.Component {
 
     this.state = {
       data: {},
-      canEdit: false,
-      classes: []
+      canEdit: false
     };
 
     console.log(props);
@@ -85,22 +85,6 @@ class StudioPage extends React.Component {
       if(user && (user.isAdmin || user.managedStudio === this.urlBit)) {
         this.setState({ canEdit: true });
       }
-    });
-
-    // Studio schedule
-    fetch(`/v1/studio/${this.urlBit}/classes`).then(response => {
-      return response.json();
-    }).then(data => {
-      if(data.status === 'OK') {
-        this.setState({
-          classes: data.classes
-        });
-      }
-      else {
-        console.log(data);
-      }
-    }).catch(error => {
-      console.log(error);
     });
   }
 
@@ -163,14 +147,7 @@ class StudioPage extends React.Component {
 
             <h4>Расписание занятий</h4>
 
-            {
-              this.state.classes.map(classInfo => {
-                return <div key={classInfo._id}>
-                  <pre>{ JSON.stringify(classInfo, null, 4) }</pre>
-                  <a href="#" onClick={e => this.handleEnroll(e, classInfo._id)}>Записаться!</a>
-                </div>;
-              })
-            }
+            <StudioSchedule urlBit={this.urlBit}/>
 
             <hr/>
 
