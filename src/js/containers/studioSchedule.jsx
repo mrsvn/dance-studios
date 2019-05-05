@@ -255,6 +255,8 @@ class StudioSchedule extends React.Component {
                 <tbody>
                 {
                     classes.length !== 0 ? classes.map(classInfo => {
+                        // TODO: add rows denoting dates
+
                         const startDate = new Date(classInfo.startTime);
                         const endDate = new Date(classInfo.endTime);
 

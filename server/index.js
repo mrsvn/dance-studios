@@ -279,6 +279,7 @@ app.get('/v1/profile', (req, res) => {
       delete userRepr.pwdHash;
       delete userRepr.authTokens;
       delete userRepr.userpic;
+      delete userRepr.favouriteStudios;
 
       // TODO: convert to urlBit before sending?
       if(userRepr.managedStudio) {
@@ -656,6 +657,52 @@ app.post('/upload-images', (req, res) => {
   setTimeout(() => {
     res.send("OK");
   }, 500);
+});
+
+// Получить список избранных студий
+app.use('/v1/favourites', checkAuth());
+app.get('/v1/favourites', (req, res) => {
+  db.collection('studios').find({ _id: { $in: req.user.favouriteStudios || [] }}).toArray().then(studios => {
+    res.send({
+      status: 'OK',
+      favourites: studios.map(studio => {
+        return {
+          _id: studio._id,
+          urlBit: studio.urlBit,
+          title: studio.title
+        };
+      })
+    });
+  });
+});
+
+// Добавить студию в избранные
+app.use('/v1/favourites/:studioId', checkAuth()); // TODO: does this do anything?
+app.post('/v1/favourites/:studioId', (req, res) => {
+  const studioId = mongodb.ObjectId.valueOf(req.params.studioId);
+
+  db.collection('users').updateOne({ _id: req.user._id }, { $addToSet: { favouriteStudios: studioId } }).then(result => {
+    if(result.result.nModified !== 0) {
+      res.send({ status: 'OK' });
+    }
+    else {
+      res.send({ status: 'NO_OP' });
+    }
+  });
+});
+
+// Удалить студию из избранных
+app.delete('/v1/favourites/:studioId', (req, res) => {
+  const studioId = mongodb.ObjectId.valueOf(req.params.studioId);
+
+  db.collection('users').updateOne({ _id: req.user._id }, { $pull: { favouriteStudios: studioId } }).then(result => {
+    if(result.result.nModified !== 0) {
+      res.send({ status: 'OK' });
+    }
+    else {
+      res.send({ status: 'NO_OP' });
+    }
+  });
 });
 
 mongodb.MongoClient.connect('mongodb://localhost:27017/dancer', { useNewUrlParser: true }, (err, client) => {
