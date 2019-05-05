@@ -27,6 +27,7 @@ const ScheduleDiv = styled.div`
 
     .cal-left img, .cal-right img {
       height: 2.5em;
+      cursor: pointer;
     }
 
     .cal-left img {
@@ -146,12 +147,19 @@ class StudioSchedule extends React.Component {
         });
     }
 
+    shiftWeek(d) {
+        const weekDay = new Date(this.state.weekMonday);
+        weekDay.setDate(weekDay.getDate() + d * 7);
+
+        this.setState({weekMonday: weekDay});
+    }
+
     render() {
         console.log("classes", this.state.classes);
 
         return <ScheduleDiv>
             <div className="calendar-bar">
-                <div className="cal-left">
+                <div className="cal-left" onClick={() => this.shiftWeek(-1)}>
                     <img src="/img/circle-right.svg"/>
                 </div>
                 {
@@ -171,7 +179,7 @@ class StudioSchedule extends React.Component {
                         </div>;
                     })
                 }
-                <div className="cal-right">
+                <div className="cal-right" onClick={() => this.shiftWeek(1)}>
                     <img src="/img/circle-right.svg"/>
                 </div>
             </div>
