@@ -84,6 +84,20 @@ const ScheduleDiv = styled.div`
   }
 `;
 
+const leftPad = (s, n) => {
+    let result = s + "";
+
+    while(result.length < n) {
+        result = "0" + result;
+    }
+
+    return result
+};
+
+const dMinutes = (start, end) => {
+    return ((end - start) / 1000 / 60).toFixed(0);
+};
+
 class StudioSchedule extends React.Component {
     constructor(props) {
         super(props);
@@ -209,10 +223,13 @@ class StudioSchedule extends React.Component {
                 <tbody>
                 {
                     classes.length !== 0 ? classes.map(classInfo => {
+                        const startDate = new Date(classInfo.startTime);
+                        const endDate = new Date(classInfo.endTime);
+
                         return <tr key={classInfo._id}>
                             <td className="class-time">
-                                <div>9:05</div>
-                                <div>55 минут</div>
+                                <div>{startDate.getHours()}:{leftPad(startDate.getMinutes(), 2)}</div>
+                                <div>{dMinutes(startDate, endDate)} мин</div>
                             </td>
                             <td className="class-id">
                                 <div>{classInfo.title}</div>
