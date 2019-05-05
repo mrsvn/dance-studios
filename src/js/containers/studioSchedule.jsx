@@ -57,6 +57,24 @@ const ScheduleDiv = styled.div`
       }
     }
   }
+
+  .class-entries {
+    width: 100%;
+
+    margin-top: 2em;
+
+    td {
+      padding: 0.5em 0;
+    }
+
+    .class-join {
+      width: 8em;
+    }
+
+    .spots-left {
+      font-size: 0.625em;
+    }
+  }
 `;
 
 class StudioSchedule extends React.Component {
@@ -126,14 +144,36 @@ class StudioSchedule extends React.Component {
                 </div>
             </div>
 
-            {
-                this.state.classes.map(classInfo => {
-                    return <div key={classInfo._id}>
-                        <pre>{ JSON.stringify(classInfo, null, 4) }</pre>
-                        <a href="#" onClick={e => this.handleEnroll(e, classInfo._id)}>Записаться!</a>
-                    </div>;
-                })
-            }
+            <table className="class-entries">
+                <tbody>
+                {
+                    this.state.classes.map(classInfo => {
+                        return <tr key={classInfo._id}>
+                            <td className="class-time">
+                                <div>9:05</div>
+                                <div>55 минут</div>
+                            </td>
+                            <td className="class-id">
+                                <div>{classInfo.title}</div>
+                                <div>{classInfo.trainer}</div>
+                            </td>
+                            <td className="class-tag">
+                                {classInfo.tag}
+                                {/*<pre>{ JSON.stringify(classInfo, null, 4) }</pre>*/}
+                            </td>
+                            <td className="class-join">
+                                <div>
+                                    <button className="btn btn-sm btn-link btn-primary" onClick={e => this.handleEnroll(e, classInfo._id)}>Записаться</button>
+                                </div>
+                                <div className="spots-left">Осталось 7 мест</div>
+                            </td>
+                        </tr>;
+                    })
+                }
+                </tbody>
+            </table>
+
+
         </ScheduleDiv>;
     }
 }
