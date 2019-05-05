@@ -29,6 +29,12 @@ const StudioPageDiv = styled.div`
       max-width: 1000px;
       margin: 0 auto;
   }
+
+  #studio-main-stuff {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
   #studio-information {
       width: 70%;
       /*background: #c4d9ff;*/
@@ -142,62 +148,6 @@ class StudioPage extends React.Component {
                 this.state.data.description && this.state.data.description.map((p, i) => <p key={i}>{ p }</p>)
               }
             </div>
-
-            <hr/>
-
-            <h4>Расписание занятий</h4>
-
-            <StudioSchedule urlBit={this.urlBit}/>
-
-            <hr/>
-
-            <div>
-              <h4>Отзывы</h4>
-              <div>звездочки</div>
-            </div>
-
-            {/*<div className="studio-review">*/}
-              {/*<div className="review-author">*/}
-                {/*<img src="http://placehold.jp/64x64.png"/>*/}
-                  {/*<div className="">Gennady Pr</div>*/}
-              {/*</div>*/}
-
-              {/*<div className="review-content">*/}
-                {/*<div className="review-text">В касание</div>*/}
-                {/*<div className="review-metadata">*/}
-                  {/*<div className="review-date">Февраль, 2019 </div>*/}
-                  {/*<div className="review-rating">★★★★☆</div>*/}
-                {/*</div>*/}
-              {/*</div>*/}
-            {/*</div>*/}
-
-            {
-              this.state.data.reviews && this.state.data.reviews.map(review => {
-                let ratingStars = "";
-                for (let i = 0; i < review.rating; i++) {
-                  ratingStars += "★";
-                }
-                for (let i = 0; i < 10-review.rating; i++) {
-                  ratingStars += "☆";
-                }
-                return (
-                    <div className="studio-review">
-                      <div className="review-author">
-                        <img src={review.userpic}/>
-                        <div className="">{review.username}</div>
-                      </div>
-
-                      <div className="review-content">
-                        <div className="review-text">{review.textContent}</div>
-                        <div className="review-metadata">
-                          <div className="review-date">{review.date}</div>
-                          <div className="review-rating">{ratingStars}</div>
-                        </div>
-                      </div>
-                    </div>
-                )
-              })
-            }
           </div>
           <div id="studio-map-and-hours">
             {
@@ -220,6 +170,63 @@ class StudioPage extends React.Component {
             </p>
           </div>
 
+        </div>
+        <div id="studio-main-stuff">
+          <hr/>
+
+          <h4>Расписание занятий</h4>
+
+          <StudioSchedule urlBit={this.urlBit}/>
+
+          <hr/>
+
+          <div>
+            <h4>Отзывы</h4>
+            <div>звездочки</div>
+          </div>
+
+          {/*<div className="studio-review">*/}
+          {/*<div className="review-author">*/}
+          {/*<img src="http://placehold.jp/64x64.png"/>*/}
+          {/*<div className="">Gennady Pr</div>*/}
+          {/*</div>*/}
+
+          {/*<div className="review-content">*/}
+          {/*<div className="review-text">В касание</div>*/}
+          {/*<div className="review-metadata">*/}
+          {/*<div className="review-date">Февраль, 2019 </div>*/}
+          {/*<div className="review-rating">★★★★☆</div>*/}
+          {/*</div>*/}
+          {/*</div>*/}
+          {/*</div>*/}
+
+          {
+            this.state.data.reviews && this.state.data.reviews.map(review => {
+              let ratingStars = "";
+              for (let i = 0; i < review.rating; i++) {
+                ratingStars += "★";
+              }
+              for (let i = 0; i < 10-review.rating; i++) {
+                ratingStars += "☆";
+              }
+              return (
+                  <div className="studio-review">
+                    <div className="review-author">
+                      <img src={review.userpic}/>
+                      <div className="">{review.username}</div>
+                    </div>
+
+                    <div className="review-content">
+                      <div className="review-text">{review.textContent}</div>
+                      <div className="review-metadata">
+                        <div className="review-date">{review.date}</div>
+                        <div className="review-rating">{ratingStars}</div>
+                      </div>
+                    </div>
+                  </div>
+              )
+            })
+          }
         </div>
       </StudioPageDiv>
     );
