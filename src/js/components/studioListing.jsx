@@ -9,10 +9,10 @@ class StudioListing extends React.Component {
         let tag_links = [];
 
         content.tags.forEach(tag => {
-            tag_links.push(<>
+            tag_links.push(<React.Fragment key={tag}>
                 <a href='#'>{tag}</a>
                 &nbsp;
-            </>);
+            </React.Fragment>);
         });
 
         return (

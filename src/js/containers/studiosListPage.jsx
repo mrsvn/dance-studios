@@ -79,7 +79,7 @@ class StudiosListPage extends React.Component {
                 <YMaps>
                     <Map className="map-top" defaultState={{ center: [34.0619261, -118.29612320000001], zoom: 11 }}>
                         {
-                            filteredData.map(datum => <GeoObject geometry={{
+                            filteredData.map(datum => <GeoObject key={datum._id} geometry={{
                                 type: 'Point',
                                 coordinates: datum.mapCoords
                             }} properties={{
@@ -102,7 +102,7 @@ class StudiosListPage extends React.Component {
 
 
                 <div className={'postings-container'}>
-                    { filteredData.map(datum => <StudioListing content={datum} />) }
+                    { filteredData.map(datum => <StudioListing key={datum._id} content={datum} />) }
                 </div>
 
                 <div id="postings-more">

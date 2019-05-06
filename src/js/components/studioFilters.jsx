@@ -22,15 +22,15 @@ class StudioFilters extends React.Component {
                 </div>
 
                 <div id="postings-filters-form">
-                    <select onChange={e => this.props.onStyleChange(e.target.value)}>
-                        <option disabled={true} selected={true}>Направление</option>
+                    <select onChange={e => this.props.onStyleChange(e.target.value)} value="Направление">
+                        <option>Направление</option>
                         <option>джаз</option>
                         <option>модерн</option>
                         <option>джаз-модерн</option>
                         <option>бачата</option>
                     </select>
-                    <select onChange={e => this.props.onLocationChange(e.target.value)}>
-                        <option disabled={true} selected={true}>Станция метро</option>
+                    <select onChange={e => this.props.onLocationChange(e.target.value)} value="Станция метро">
+                        <option>Станция метро</option>
                         {
                             subwayMoscow.map((stationName, i) => <option key={i}>{stationName}</option>)
                         }

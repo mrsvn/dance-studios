@@ -3,36 +3,6 @@ import React from "react";
 import { ClassDateSelector } from "../components/classDateSelector";
 import { ClassesTable } from "../components/classesTable";
 
-{/*<style>*/}
-{/*    #class-filters {*/}
-{/*    display: flex;*/}
-{/*    justify-content: space-evenly;*/}
-{/*}*/}
-{/*    #date-selector {*/}
-{/*    margin: 50px 0;*/}
-{/*    display: flex;*/}
-{/*}*/}
-{/*    #classes-calendar {*/}
-{/*    display: flex;*/}
-{/*    flex-grow: 1;*/}
-{/*}*/}
-{/*    .classes-date {*/}
-{/*    padding: 10px;*/}
-{/*    border: 1px transparent solid;*/}
-{/*    cursor: pointer;*/}
-{/*}*/}
-{/*    .classes-date:hover {*/}
-{/*    border: 1px salmon solid;*/}
-
-{/*}*/}
-{/*    .classes-date-weekend {*/}
-{/*    color: darkred;*/}
-{/*}*/}
-{/*    .classes-date-selected {*/}
-{/*    background: chartreuse;*/}
-{/*}*/}
-{/*</style>*/}
-
 class ClassesTablePage extends React.Component {
     render() {
         return <main>
