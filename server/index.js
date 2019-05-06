@@ -563,35 +563,18 @@ app.put('/v1/studio/:urlBit/classes/:classId', (req, res) => {
 });
 
 // Получить список занятий, на которые записан (данный) пользователь
+app.use('/v1/enrollments', checkAuth());
 app.get('/v1/enrollments', (req, res) => {
   console.log(`GET ${req.path}:`, req.body);
 
-  const email = req.cookies.email;
-  const authToken = req.cookies.authToken;
-
-  db.collection('users').findOne({ email: email }).then(user => {
-    let isAuthorized = false;
-
-    user.authTokens.forEach(token => {
-      if(token.value === authToken) {
-        isAuthorized = true;
-      }
+  db.collection('classes').find().toArray((_, classes) => {
+    const usersClasses = classes.filter(classInfo => {
+      return classInfo.enrolledUsers.some(userId => userId.equals(req.user._id));
     });
 
-    if(!isAuthorized) {
-      res.status(403).send({ status: 'UNAUTHORIZED' });
-      return;
-    }
-
-    db.collection('classes').find().toArray((_, classes) => {
-      const usersClasses = classes.filter(classInfo => {
-        return classInfo.enrolledUsers.some(userId => userId.equals(user._id));
-      });
-
-      res.send({
-        status: 'OK',
-        classes: usersClasses
-      });
+    res.send({
+      status: 'OK',
+      classes: usersClasses
     });
   });
 });

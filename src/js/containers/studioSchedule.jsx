@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { weekDayShortNames } from "../util/dateStrings";
 import { getCurrentUser } from "../util/sessionData";
+import leftPad from "../util/leftPad";
 
 const ScheduleDiv = styled.div`
 
@@ -84,16 +85,6 @@ const ScheduleDiv = styled.div`
     }
   }
 `;
-
-const leftPad = (s, n) => {
-    let result = s + "";
-
-    while(result.length < n) {
-        result = "0" + result;
-    }
-
-    return result
-};
 
 const dMinutes = (start, end) => {
     return ((end - start) / 1000 / 60).toFixed(0);

@@ -12,7 +12,8 @@ const CalendarDiv = styled.div`
 
     #time-column > div {
         font-size: 10px;
-        height: 100px;
+        height: 60px;
+        padding-right: 1ex;
     }
 
     .day-header, #time-column .day-header {
@@ -32,12 +33,14 @@ class UserCalendar extends React.Component {
     }
 
     componentDidMount() {
-        fetch("/dummy-data/user-schedule.json").then(response => {
+        fetch("/v1/enrollments").then(response => {
             return response.json();
         }).then(data => {
-            this.setState({
-                data: data
-            });
+            if(data.status === 'OK') {
+                this.setState({
+                    data: data.classes
+                });
+            }
         }).catch(error => {
             console.log(error);
         });
@@ -56,23 +59,27 @@ class UserCalendar extends React.Component {
 
         for (let i = 0; i < 7; i++) {
             dayColumns.push(
-                <div  key={i} className="day-column">
+                <div key={i} className="day-column">
                     <div className="day-header">{weekDayShortNames[day.getDay()]}, <strong>{day.getDate()}</strong></div>
                     <div style={{position: "relative"}}>
                         {
-                            this.state.data.map(datum => {
-                                const datumDate = new Date(datum.date);
+                            this.state.data.map(classInfo => {
+                                const startDate = new Date(classInfo.startTime);
+                                const endDate = new Date(classInfo.endTime);
 
-                                if (datumDate.getDate() === day.getDate() && datumDate.getMonth() === day.getMonth()) {
+                                const startTimeMinutes = startDate.getHours() * 60 + startDate.getMinutes();
+                                const durationMinutes = (endDate.getHours() - startDate.getHours()) * 60 + (endDate.getMinutes() - startDate.getMinutes());
+
+                                if (startDate.getDate() === day.getDate() && startDate.getMonth() === day.getMonth()) {
                                     return (
-                                        <div style={{
+                                        <div key={classInfo._id} style={{
                                             position: "absolute",
                                             background: "plum",
                                             opacity: "0.5",
-                                            top: (datum.tStart[0] + "" + datum.tStart[1]) + "px",
-                                            height: (datum.tDuration[0] + "" + datum.tDuration[1]) + "px",
+                                            top: startTimeMinutes + "px",
+                                            height: durationMinutes + "px",
                                             width: "100%"
-                                        }}>{datum.classTitle}</div>
+                                        }}>{classInfo.title}</div>
                                     )
                                 }
                             })
