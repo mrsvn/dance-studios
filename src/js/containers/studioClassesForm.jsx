@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 class AddClassForm extends React.Component {
     constructor(props) {
         super(props);
@@ -126,7 +128,11 @@ class StudioClassesForm extends React.Component {
                     {
                         this.state.classes.map(classInfo => {
                             return <tr>
-                                <td>{classInfo.title}</td>
+                                <td>
+                                    <Link to={`/studios/${this.props.urlBit}/manage/classes/${classInfo._id}`}>
+                                        { classInfo.title }
+                                    </Link>
+                                </td>
                                 <td>{ classInfo.startTime }</td>
                                 <td>{ classInfo.endTime }</td>
                                 <td>{ classInfo.tags }</td>

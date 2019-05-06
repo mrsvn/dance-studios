@@ -5,6 +5,7 @@ import { Link, NavLink, Route } from "react-router-dom";
 import { StudioProfileEditForm } from "../containers/studioProfileEditForm";
 import { StudioClassesForm } from "../containers/studioClassesForm";
 import { EnrolledUsersForm } from "./enrolledUsersForm";
+import { ClassCard } from "./classCard";
 
 class StudioManagePage extends React.Component {
     constructor(props) {
@@ -35,6 +36,7 @@ class StudioManagePage extends React.Component {
             <Route exact path={`/studios/${this.urlBit}/manage`} render={() => <StudioProfileEditForm urlBit={this.urlBit}/>}/>
             <Route exact path={`/studios/${this.urlBit}/manage/schedule`} render={() => <StudioClassesForm urlBit={this.urlBit}/>}/>
             <Route exact path={`/studios/${this.urlBit}/manage/enrolledUsers`} render={() => <EnrolledUsersForm urlBit={this.urlBit}/>}/>
+            <Route exact path={`/studios/${this.urlBit}/manage/classes/:classId`} component={ClassCard}/>
         </>;
     }
 }
