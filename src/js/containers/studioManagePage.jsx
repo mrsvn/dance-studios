@@ -4,6 +4,7 @@ import { Link, NavLink, Route } from "react-router-dom";
 
 import { StudioProfileEditForm } from "../containers/studioProfileEditForm";
 import { StudioClassesForm } from "../containers/studioClassesForm";
+import { EnrolledUsersForm } from "./enrolledUsersForm";
 
 class StudioManagePage extends React.Component {
     constructor(props) {
@@ -27,12 +28,13 @@ class StudioManagePage extends React.Component {
                     <NavLink exact to={`/studios/${this.urlBit}/manage/schedule`} className="nav-link" activeClassName="active">Расписание</NavLink>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link disabled" href="#">Записавшиеся</a>
+                    <NavLink exact to={`/studios/${this.urlBit}/manage/enrolledUsers`} className="nav-link" activeClassName="active">Записавшиеся</NavLink>
                 </li>
             </ul>
 
             <Route exact path={`/studios/${this.urlBit}/manage`} render={() => <StudioProfileEditForm urlBit={this.urlBit}/>}/>
             <Route exact path={`/studios/${this.urlBit}/manage/schedule`} render={() => <StudioClassesForm urlBit={this.urlBit}/>}/>
+            <Route exact path={`/studios/${this.urlBit}/manage/enrolledUsers`} render={() => <EnrolledUsersForm urlBit={this.urlBit}/>}/>
         </>;
     }
 }

@@ -508,7 +508,7 @@ app.get('/v1/studio/:urlBit/classes', (req, res) => {
     db.collection('classes').find({ studioId: studio._id }).toArray((err, classes) => {
       if(err) {
         res.status(500).send({ status: 'ERROR' });
-        console.log("Ne udalos");
+        console.log(err);
         return;
       }
 
@@ -562,7 +562,28 @@ app.put('/v1/studio/:urlBit/classes/:classId', (req, res) => {
   // Заменить (отредактировать) занятие
 });
 
-// Получить список занятий, на которые записан (данный) пользователь
+// Список пользователей, записанных на данное занятие
+app.use('/v1/classes/:classId/enrolledUsers', checkAuth());
+app.get('/v1/classes/:classId/enrolledUsers', (req, res) => {
+  const classId = new mongodb.ObjectId(req.params.classId);
+
+  db.collection('classes').findOne({ _id: classId }).then(classInfo => {
+    db.collection('users').find({ _id: { $in: classInfo.enrolledUsers } }).toArray().then(users => {
+      res.send({
+        status: 'OK',
+        enrolledUsers: users.map(user => {
+          return {
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName
+          };
+        })
+      });
+    });
+  });
+});
+
+// Список занятий, на которые записан (данный) пользователь
 app.use('/v1/enrollments', checkAuth());
 app.get('/v1/enrollments', (req, res) => {
   console.log(`GET ${req.path}:`, req.body);
