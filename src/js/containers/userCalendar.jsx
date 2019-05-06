@@ -8,6 +8,15 @@ const CalendarDiv = styled.div`
     .day-column {
         border-right: 1px #dddddd solid;
         flex-grow: 1;
+
+        .calendar-item {
+          background: rgba(0, 0, 0, 0.05);
+          position: absolute;
+          width: 100%;
+
+          border: 1px black solid;
+          box-shadow: 1px 4px rgba(0, 0, 0, 0.1);
+        }
     }
 
     #time-column > div {
@@ -72,13 +81,9 @@ class UserCalendar extends React.Component {
 
                                 if (startDate.getDate() === day.getDate() && startDate.getMonth() === day.getMonth()) {
                                     return (
-                                        <div key={classInfo._id} style={{
-                                            position: "absolute",
-                                            background: "plum",
-                                            opacity: "0.5",
+                                        <div key={classInfo._id} className="calendar-item" style={{
                                             top: startTimeMinutes + "px",
-                                            height: durationMinutes + "px",
-                                            width: "100%"
+                                            height: durationMinutes + "px"
                                         }}>{classInfo.title}</div>
                                     )
                                 }
