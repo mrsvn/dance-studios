@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { BrowserRouter, Link, NavLink, Route } from "react-router-dom";
+import { BrowserRouter, Link, NavLink, Route, Switch } from "react-router-dom";
 
 import { CityDropdown } from "./components/cityDropdown";
 import { LoginCorner } from "./containers/loginCorner";
@@ -17,15 +17,11 @@ import { AdminPage } from "./containers/adminPage";
 class AppRouter extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            city: 'los-angeles'
-        };
     }
 
-    handleCityChange(city) {
-        // TODO: do stuff to local and session storage...
-        this.setState({ city: city });
+    defaultCity() {
+        // TODO: derive from session state...
+        return 'moscow';
     }
 
     render() {
@@ -35,7 +31,12 @@ class AppRouter extends React.Component {
 
                 <span className="brand-title">
 				NaSheste
-				<CityDropdown value={this.state.city} onChange={city => this.handleCityChange(city)}/>
+                {/* TODO: implement the city dropdown for /classes */}
+				<Switch>
+                    <Route exact path="/studios" render={() => <CityDropdown value={this.defaultCity()}/>} />
+                    <Route exact path="/:city/studios" render={props => <CityDropdown value={props.match.params.city}/>} />
+                    <Route render={() => <div style={{minWidth: '5em'}}/>} />
+                </Switch>
 			</span>
 
                 <nav>
@@ -50,6 +51,7 @@ class AppRouter extends React.Component {
             {/* TODO: city parameter */}
             <Route exact path="/" component={() => <p>Under construction 🏠</p>} />
             <Route exact path="/studios" component={StudiosListPage} />
+            <Route exact path="/:city/studios" component={StudiosListPage} />
             <Route exact path="/studios/:urlBit" component={StudioPage} />
             <Route path="/studios/:urlBit/manage" component={StudioManagePage} />
             <Route path="/classes/" component={ClassesTablePage} />

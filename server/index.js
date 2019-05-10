@@ -23,32 +23,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(fileUpload({ limits: { fileSize: 50 * 1024 * 1024 } }));
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
-});
-
-app.get('/studios*', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
-});
-
-app.get('/classes*', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
-});
-
-app.get('/profile*', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
-});
-
-app.get('/admin*', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
-});
-
-app.get('/edit-studio', (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
-});
-
-app.use('/', express.static(path.join(__dirname, '..')));
-
 let delay = args.delay || 0;
 app.use((req, res, next) => {
   delay > 0 ? setTimeout(next, delay) : next();
@@ -708,6 +682,36 @@ app.delete('/v1/favourites/:studioId', (req, res) => {
     }
   });
 });
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.get('/studios*', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.get('/*/studios*', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.get('/classes*', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.get('/profile*', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.get('/admin*', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.get('/edit-studio', (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "index.html"));
+});
+
+app.use('/', express.static(path.join(__dirname, '..')));
 
 mongodb.MongoClient.connect('mongodb://localhost:27017/dancer', { useNewUrlParser: true }, (err, client) => {
     if(err) {

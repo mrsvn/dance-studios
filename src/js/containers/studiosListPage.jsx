@@ -43,8 +43,12 @@ class StudiosListPage extends React.Component {
         });
     }
 
-    componentDidMount() {
-        fetch("/v1/studios/los-angeles").then(response => {
+    currentCity() {
+        return this.props.match.params.city || 'moscow';
+    }
+
+    loadStudios() {
+        fetch(`/v1/studios/${this.currentCity()}`).then(response => {
             return response.json();
         }).then(data => {
             this.setState({
@@ -54,6 +58,14 @@ class StudiosListPage extends React.Component {
         }).catch(error => {
             console.log(error);
         });
+    }
+
+    componentDidMount() {
+        this.loadStudios();
+    }
+
+    componentDidUpdate() {
+        this.loadStudios();
     }
 
     render() {

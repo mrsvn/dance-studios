@@ -1,6 +1,7 @@
 import React from "react";
 
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 import cities from "../util/cities";
 
@@ -111,11 +112,11 @@ class CityDropdown extends React.Component {
     }
 
     handleOptionClick(e) {
-        e.preventDefault();
+        // e.preventDefault();
 
         this.setState({ isExpanded: false });
 
-        this.props.onChange(e.target.dataset.locValue);
+        this.props.onChange && this.props.onChange(e.target.dataset.locValue);
     }
 
     render() {
@@ -137,7 +138,8 @@ class CityDropdown extends React.Component {
                             return null;
                         }
 
-                        return <a href="#" key={city.id} data-loc-value={city.id} onClick={e => this.handleOptionClick(e)}>{city.name}</a>;
+                        // return <a href="#" key={city.id} data-loc-value={city.id} onClick={e => this.handleOptionClick(e)}>{city.name}</a>;
+                        return <Link to={`/${city.id}/studios`} onMouseUp={e => this.handleOptionClick(e)} key={city.id}>{city.name}</Link>;
                     })
                 }
             </div>
