@@ -98,8 +98,10 @@ class CityDropdown extends React.Component {
         this.setState({ isExpanded: !this.state.isExpanded });
     }
 
-    hideDropdown() {
-        this.setState({ isExpanded: false });
+    handleBlur(e) {
+        if(e.relatedTarget === null) {
+            this.setState({ isExpanded: false });
+        }
     }
 
     handleCurrentKeyDown(e) {
@@ -126,7 +128,7 @@ class CityDropdown extends React.Component {
         });
 
         // TODO: hide on blur as well (make sure to still register an option click, though)
-        return <CityDropdownDiv className="loc-options">
+        return <CityDropdownDiv className="loc-options" onBlur={e => this.handleBlur(e)}>
             <a href="#" className="loc-opt-current" onClick={e => this.handleCurrentClick(e)} onKeyDown={e => this.handleCurrentKeyDown(e)}>{ selectedName }</a>
             <div className="loc-opt-dropdown" style={{display: this.state.isExpanded ? 'flex' : 'none'}}>
                 {
