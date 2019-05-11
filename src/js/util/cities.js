@@ -3,6 +3,10 @@ const cities = [
 	{
 		"id": "los-angeles",
 		"name": "Лос-Анджелес",
+		"map": {
+			"center": [34.0619261, -118.2961232],
+			"zoom": 11
+		},
 		"districts": [
 			{ "id": "compton", "name": "Комптон" },
 			{ "id": "willowbrook", "name": "Виллоубрук" },
@@ -13,6 +17,10 @@ const cities = [
 	{
 		"id": "moscow",
 		"name": "Москва",
+		"map": {
+			"center": [55.751574, 37.573856],
+			"zoom": 10
+		},
 		"districts": [
 			{ "id": "novoslobodskaya", "name": "Новослободская" },
 			{ "id": "aeroport", "name": "Аэропорт" },
@@ -23,6 +31,10 @@ const cities = [
 	{
 		"id": "ivanovo",
 		"name": "Иваново",
+		"map": {
+			"center": [56.999780, 40.978469],
+			"zoom": 13
+		},
 		"districts": [
 			{ "id": "sovetsky", "name": "Советсий" },
 			{ "id": "leninsky", "name": "Ленинский" },
@@ -32,4 +44,15 @@ const cities = [
 	}
 ];
 
+const cityById = id => {
+	for(const city of cities) {
+		if(city.id === id) {
+			return city;
+		}
+	}
+
+	return null;
+};
+
 export default cities;
+export { cityById };

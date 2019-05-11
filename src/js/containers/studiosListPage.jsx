@@ -1,9 +1,11 @@
 import React from "react";
 
-import { YMaps, Map, GeoObject } from 'react-yandex-maps';
+import { YMaps, Map, Placemark } from 'react-yandex-maps';
 
 import { StudioFilters } from "../components/studioFilters";
 import { StudioListing } from "../components/studioListing";
+
+import { cityById } from "../util/cities";
 
 class StudiosListPage extends React.Component {
     constructor(props) {
@@ -90,20 +92,28 @@ class StudiosListPage extends React.Component {
             }
         });
 
-        // TODO: fix balloonContent not being shown
-        // TODO: center map automatically
+        // TODO: center map automatically; move it when switching cities
+        const city = cityById(this.state.filterCity);
 
         return <>
             <div style={{minHeight: '350px'}}>
                 <YMaps>
-                    <Map className="map-top" defaultState={{ center: [34.0619261, -118.29612320000001], zoom: 11 }}>
+                    <Map className="map-top" defaultState={{ center: city && city.map.center, zoom: city && city.map.zoom }}>
                         {
-                            filteredData.map(datum => <GeoObject key={datum._id} geometry={{
-                                type: 'Point',
-                                coordinates: datum.mapCoords
-                            }} properties={{
-                                balloonContent: `<strong>${datum.title}</strong>`
-                            }}/>)
+                            filteredData.map(studio => {
+                                return <Placemark key={studio._id}
+                                                  geometry={{
+                                                      type: 'Point',
+                                                      coordinates: studio.mapCoords
+                                                  }}
+                                                  modules={["geoObject.addon.balloon"]}
+                                                  properties={{
+                                                      balloonContentHeader: studio.title,
+                                                      balloonContentBody: `<a href="#">Перейти &rarr;</a>`
+                                                  }}
+                                                  onClick={() => console.log(studio)}
+                                />;
+                            })
                         }
                     </Map>
                 </YMaps>
