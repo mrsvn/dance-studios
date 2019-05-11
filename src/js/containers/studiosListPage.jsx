@@ -13,6 +13,8 @@ class StudiosListPage extends React.Component {
             data: [],
             numTotal: null,
             searchQuery: "",
+            loadedCity: null,
+            filterCity: null,
             filterLocation: null,
             filterStyle: null,
             filterRating: null
@@ -43,17 +45,20 @@ class StudiosListPage extends React.Component {
         });
     }
 
-    currentCity() {
-        return this.props.match.params.city || 'moscow';
+    static getDerivedStateFromProps(props, state) {
+        return Object.assign({}, state, { filterCity: props.match.params.city || 'moscow' });
     }
 
     loadStudios() {
-        fetch(`/v1/studios/${this.currentCity()}`).then(response => {
+        const city = this.state.filterCity;
+
+        fetch(`/v1/studios/${city}`).then(response => {
             return response.json();
         }).then(data => {
             this.setState({
                 data: data.studios,
-                numTotal: data.numTotal
+                numTotal: data.numTotal,
+                loadedCity: city
             });
         }).catch(error => {
             console.log(error);
@@ -65,7 +70,9 @@ class StudiosListPage extends React.Component {
     }
 
     componentDidUpdate() {
-        this.loadStudios();
+        if(this.state.loadedCity !== this.state.filterCity) {
+            this.loadStudios();
+        }
     }
 
     render() {
@@ -109,7 +116,13 @@ class StudiosListPage extends React.Component {
                                onRatingChange={q => this.handleRatingChange(q)} />
 
                 <div className="postings-count">
-                    Найдено <span>{ this.state.numTotal }</span> студий
+                    {
+                        (filteredData.length === this.state.numTotal) ? <>
+                            Найдено <span>{ this.state.numTotal }</span> студий
+                        </> : <>
+                            Отображено <span>{ filteredData.length }</span> из <span>{ this.state.numTotal }</span> студий
+                        </>
+                    }
                 </div>
 
 
