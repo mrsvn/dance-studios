@@ -6,10 +6,11 @@ class ClassReviewForm extends React.Component {
 
         this.state = {
             isLoading: true,
+            isInvalid: false,
+            isSuccessful: false,
             classTitle: "",
             rating: -1,
-            reviewContent: "",
-            isInvalid: false
+            reviewContent: ""
 
         };
 
@@ -36,6 +37,10 @@ class ClassReviewForm extends React.Component {
             });
         }
 
+        this.setState({
+            isLoading: true
+        });
+
         fetch('/v1/reviews', {
             method: "POST",
             headers: {
@@ -49,7 +54,24 @@ class ClassReviewForm extends React.Component {
         }).then(response => {
             return response.json();
         }).then(data => {
-            console.log(data);
+            if(data.status === 'OK') {
+                this.setState({
+                    isSuccessful: true
+                });
+
+                setTimeout(() => {
+                    this.props.history.push({
+                            pathname: '/profile/reviews'
+                    });
+                }, 1000);
+            }
+            else {
+                console.log(data);
+
+                this.setState({
+                    isLoading: false
+                });
+            }
         });
     }
 
@@ -110,11 +132,10 @@ class ClassReviewForm extends React.Component {
                     <div className="form-group mb-0">
                         <button type="submit" className={"btn " + (this.state.isInvalid ? "btn-danger" : "btn-success")} disabled={this.state.isLoading}>Оставить отзыв</button>
                         {
-                            this.state.isInvalid ? (
-                                <span className="text-danger ml-4">Поставьте оценку!</span>
-                            ) : (
-                                false && <span className="text-success ml-4">Спасибо за отзыв! ✓</span>
-                            )
+                            this.state.isInvalid && <span className="text-danger ml-4">Поставьте оценку!</span>
+                        }
+                        {
+                            this.state.isSuccessful && <span className="text-success ml-4">Спасибо за отзыв! ✓</span>
                         }
                     </div>
                 </form>
