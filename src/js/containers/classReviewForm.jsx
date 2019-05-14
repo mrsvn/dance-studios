@@ -8,7 +8,8 @@ class ClassReviewForm extends React.Component {
             isLoading: true,
             classTitle: "",
             rating: -1,
-            reviewContent: ""
+            reviewContent: "",
+            isInvalid: false
 
         };
 
@@ -29,6 +30,12 @@ class ClassReviewForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        if(this.state.rating === -1) {
+            return this.setState({
+                isInvalid: true
+            });
+        }
+
         fetch('/v1/reviews', {
             method: "POST",
             headers: {
@@ -44,8 +51,13 @@ class ClassReviewForm extends React.Component {
         }).then(data => {
             console.log(data);
         });
+    }
 
-
+    updateRating(newRating) {
+        this.setState({
+            rating: newRating,
+            isInvalid: newRating === -1
+        });
     }
 
     render() {
@@ -65,10 +77,11 @@ class ClassReviewForm extends React.Component {
                     <div className="form-group row">
                         <label htmlFor="exampleFormControlSelect1" className="col-sm-2 col-form-label">Оценка</label>
                         <select className="form-control col-sm-2"
+                                style={this.state.isInvalid ? {border: '1px red solid'} : {}}
                                 id="exampleFormControlSelect1"
                                 disabled={this.state.isLoading}
                                 value={this.state.rating}
-                                onChange={e => this.setState({ rating: e.target.value })}
+                                onChange={e => this.updateRating(e.target.value) }
                         >
                             <option value={-1}>Выберите оценку</option>
                             <option>0</option>
@@ -95,9 +108,13 @@ class ClassReviewForm extends React.Component {
                         />
                     </div>
                     <div className="form-group mb-0">
-                        <button type="submit" className="btn btn-success" disabled={this.state.isLoading}>Оставить отзыв</button>
+                        <button type="submit" className={"btn " + (this.state.isInvalid ? "btn-danger" : "btn-success")} disabled={this.state.isLoading}>Оставить отзыв</button>
                         {
-                            false && <span className="text-success ml-4">Спасибо за отзыв! ✓</span>
+                            this.state.isInvalid ? (
+                                <span className="text-danger ml-4">Поставьте оценку!</span>
+                            ) : (
+                                false && <span className="text-success ml-4">Спасибо за отзыв! ✓</span>
+                            )
                         }
                     </div>
                 </form>
