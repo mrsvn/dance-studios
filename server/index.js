@@ -493,6 +493,20 @@ app.get('/v1/studio/:urlBit/reviews', (req, res) => {
           userIds.add(review.userId);
         });
 
+        let avgRating = null;
+
+        if(reviews.length !== 0) {
+          avgRating = 0;
+
+          reviews.forEach(review => {
+            avgRating += review.rating;
+          });
+
+          avgRating /= reviews.length;
+        }
+
+        db.collection('studios').updateOne({ _id: studio._id }, { $set: { rating: avgRating } });
+
         db.collection('users').find({ _id: { $in: Array.from(userIds) }}).toArray().then(users => {
           const userById = {};
 
