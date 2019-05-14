@@ -641,6 +641,48 @@ app.delete('/v1/enrollments/:classId', (req, res) => {
   });
 });
 
+app.use('/v1/reviews', checkAuth());
+app.post('/v1/reviews', (req, res) => {
+  const classId = new mongodb.ObjectId(req.body.classId);
+
+  db.collection('classes').findOne({ _id: classId }).then(classInfo => {
+    if(!classInfo) {
+      return res.status(404).send({ status: 'CLASS_NOT_FOUND' });
+    }
+
+    if(!classInfo.enrolledUsers.includes(req.user._id)) {
+      return res.status(403).send({ status: 'NOT_ENROLLED' });
+    }
+
+    const endTime = new Date(classInfo.endTime);
+
+    if(new Date() < endTime) {
+      return res.status(403).send({ status: 'CLASS_HAVENT_ENDED' });
+    }
+
+    const rating = parseFloat(req.body.rating);
+
+    if(rating < 0 || rating > 5) {
+      return res.status(403).send({ status: 'ILLEGAL_RATING' });
+    }
+
+    if(req.body.reviewContent.length > 500) {
+      return res.status(403).send({ status: 'CONTENT_TOO_LONG' });
+    }
+
+    // TODO: ensure one review per class enrollment
+
+    db.collection('reviews').insertOne({
+      userId: req.user._id,
+      classId: classId,
+      rating: rating,
+      content: req.body.reviewContent
+    }).then(() => {
+      res.send({ status: 'OK' });
+    });
+  });
+});
+
 app.post('/upload-images', (req, res) => {
   Object.keys(req.files).forEach(filename => {
     req.files[filename].mv(path.join(__dirname, 'files1488', filename));
