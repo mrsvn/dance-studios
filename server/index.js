@@ -557,6 +557,20 @@ app.get('/v1/classes/:classId/enrolledUsers', (req, res) => {
   });
 });
 
+// Информация о данном занятии
+app.use('/v1/classes/:classId', checkAuth());
+app.get('/v1/classes/:classId', async(req, res) => {
+  const classId = new mongodb.ObjectId(req.params.classId);
+
+  db.collection('classes').findOne({ _id: classId }).then(classInfo => {
+    if(!classInfo) {
+      return res.status(404).send({ status: 'NOT_FOUND' });
+    }
+
+    res.send({ status: 'OK', class: classInfo });
+  });
+});
+
 // Список занятий, на которые записан (данный) пользователь
 app.use('/v1/enrollments', checkAuth());
 app.get('/v1/enrollments', (req, res) => {

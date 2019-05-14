@@ -115,7 +115,7 @@ class StudioProfileEditForm extends React.Component {
 
                     <div className="form-group">
                         <label>Описание:</label>
-                        <textarea className="form-control" value={this.state.description && this.state.description.join('\n\n')}/>
+                        <textarea className="form-control" rows={8} value={this.state.description && this.state.description.join('\n\n')}/>
                     </div>
 
                     <div className="form-group">
