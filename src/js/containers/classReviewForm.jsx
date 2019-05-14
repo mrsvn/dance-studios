@@ -29,6 +29,22 @@ class ClassReviewForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        fetch('/v1/reviews', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                classId: this.classId,
+                rating: this.state.rating,
+                reviewContent: this.state.reviewContent
+            })
+        }).then(response => {
+            return response.json();
+        }).then(data => {
+            console.log(data);
+        });
+
 
     }
 

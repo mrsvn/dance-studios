@@ -650,7 +650,15 @@ app.post('/v1/reviews', (req, res) => {
       return res.status(404).send({ status: 'CLASS_NOT_FOUND' });
     }
 
-    if(!classInfo.enrolledUsers.includes(req.user._id)) {
+    let isEnrolled = false;
+
+    classInfo.enrolledUsers.forEach(userId => {
+      if(userId.equals(req.user._id)) {
+        isEnrolled = true;
+      }
+    });
+
+    if(!isEnrolled) {
       return res.status(403).send({ status: 'NOT_ENROLLED' });
     }
 
@@ -670,15 +678,19 @@ app.post('/v1/reviews', (req, res) => {
       return res.status(403).send({ status: 'CONTENT_TOO_LONG' });
     }
 
-    // TODO: ensure one review per class enrollment
+    db.collection('reviews').findOne({ classId: classId, userId: req.user._id }).then(existingReview => {
+      if(existingReview) {
+        return res.status(403).send({ status: 'ALREADY_REVIEWED' });
+      }
 
-    db.collection('reviews').insertOne({
-      userId: req.user._id,
-      classId: classId,
-      rating: rating,
-      content: req.body.reviewContent
-    }).then(() => {
-      res.send({ status: 'OK' });
+      db.collection('reviews').insertOne({
+        userId: req.user._id,
+        classId: classId,
+        rating: rating,
+        content: req.body.reviewContent
+      }).then(() => {
+        res.send({ status: 'OK' });
+      });
     });
   });
 });
