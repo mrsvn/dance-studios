@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { YMaps, Map, GeoObject } from 'react-yandex-maps';
 import { getCurrentUser } from "../util/sessionData";
 import { StudioSchedule } from "./studioSchedule";
+import { StudioReviews } from "./studioReviews";
 
 const StudioPageDiv = styled.div`
   #studio-image {
@@ -159,7 +160,8 @@ class StudioPage extends React.Component {
 
           <div>
             <h4>Отзывы</h4>
-            <div>звездочки</div>
+
+            <StudioReviews urlBit={this.urlBit}/>
           </div>
 
           {/*<div className="studio-review">*/}

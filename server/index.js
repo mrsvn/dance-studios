@@ -474,6 +474,48 @@ app.post('/v1/studio/:urlBit', (req, res) => {
   });
 });
 
+// Вернуть все отзывы на данную студию
+app.get('/v1/studio/:urlBit/reviews', (req, res) => {
+  db.collection('studios').findOne({ urlBit: req.params.urlBit }).then(studio => {
+    db.collection('classes').find({ studioId: studio._id }).toArray().then(classes => {
+      const classIds = classes.map(classInfo => classInfo._id);
+
+      const tagsById = {};
+
+      classes.forEach(classInfo => {
+        tagsById[classInfo._id] = classInfo.tags;
+      });
+
+      db.collection('reviews').find({ classId: { $in: classIds } }).sort({ createdAt: -1 }).toArray().then(reviews => {
+        const userIds = new Set();
+
+        reviews.forEach(review => {
+          userIds.add(review.userId);
+        });
+
+        db.collection('users').find({ _id: { $in: Array.from(userIds) }}).toArray().then(users => {
+          const userById = {};
+
+          users.forEach(user => {
+            userById[user._id] = user;
+          });
+
+          res.send(reviews.map(review => {
+            return {
+              createdAt: review.createdAt,
+              rating: review.rating,
+              content: review.content,
+              tags: tagsById[review.classId],
+              firstName: userById[review.userId].firstName,
+              email: userById[review.userId].email
+            };
+          }));
+        });
+      });
+    });
+  });
+});
+
 // Вернуть все занятия для данной студии
 app.get('/v1/studio/:urlBit/classes', (req, res) => {
   console.log(`GET ${req.path}`);
@@ -687,7 +729,8 @@ app.post('/v1/reviews', (req, res) => {
         userId: req.user._id,
         classId: classId,
         rating: rating,
-        content: req.body.reviewContent
+        content: req.body.reviewContent,
+        createdAt: new Date().toString()
       }).then(() => {
         res.send({ status: 'OK' });
       });
