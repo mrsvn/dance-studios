@@ -6,6 +6,7 @@ import { BrowserRouter, Route, NavLink } from "react-router-dom";
 import { UserCalendar } from "./userCalendar";
 import { ProfileEditForm } from "./profileEditForm";
 import { FavouriteStudiosList } from "./favouriteStudiosList";
+import { ClassReviewForm } from "./classReviewForm";
 
 const ProfileMain = styled.main`
   display: flex;
@@ -34,6 +35,7 @@ class ProfilePage extends React.Component {
                         <li><NavLink exact to="/profile/" activeClassName="link-current">Профиль</NavLink></li>
                         <li><NavLink to="/profile/calendar" activeClassName="link-current">Расписание</NavLink></li>
                         <li><NavLink to="/profile/favourites" activeClassName="link-current">Избранные студии</NavLink></li>
+                        <li><NavLink to="/profile/reviews" activeClassName="link-current">Мои отзывы</NavLink></li>
                         <li><NavLink to="/profile/edit" activeClassName="link-current">Редактировать профиль</NavLink></li>
                     </ul>
                 </nav>
@@ -41,6 +43,8 @@ class ProfilePage extends React.Component {
                     <Route exact path="/profile" render={() => <div>Under construction 🏠</div>} />
                     <Route exact path="/profile/calendar" component={UserCalendar} />
                     <Route exact path="/profile/favourites" component={FavouriteStudiosList} />
+                    <Route exact path="/profile/reviews" render={() => <div>Отзывы 🌝</div>} />
+                    <Route exact path="/profile/reviews/new/:classId" component={ClassReviewForm} />
                     <Route exact path="/profile/edit" component={ProfileEditForm} />
                 </div>
             </ProfileMain>

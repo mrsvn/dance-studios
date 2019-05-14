@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import styled from "styled-components";
 
 const CalendarDiv = styled.div`
@@ -84,7 +86,14 @@ class UserCalendar extends React.Component {
                                         <div key={classInfo._id} className="calendar-item" style={{
                                             top: startTimeMinutes + "px",
                                             height: durationMinutes + "px"
-                                        }}>{classInfo.title}</div>
+                                        }}>
+                                            <div>
+                                                {classInfo.title}
+                                            </div>
+                                            <div>
+                                                <Link to={`/profile/reviews/new/${classInfo._id}`}>Оставить отзыв</Link>
+                                            </div>
+                                        </div>
                                     )
                                 }
                             })
