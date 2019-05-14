@@ -19,6 +19,11 @@ const CalendarDiv = styled.div`
           border: 1px black solid;
           box-shadow: 1px 4px rgba(0, 0, 0, 0.1);
         }
+
+        .calendar-past {
+          background: transparent;
+          border-style: dotted;
+        }
     }
 
     #time-column > div {
@@ -81,9 +86,15 @@ class UserCalendar extends React.Component {
                                 const startTimeMinutes = startDate.getHours() * 60 + startDate.getMinutes();
                                 const durationMinutes = (endDate.getHours() - startDate.getHours()) * 60 + (endDate.getMinutes() - startDate.getMinutes());
 
+                                let className = "calendar-item";
+
+                                if(endDate < new Date()) {
+                                    className += " calendar-past";
+                                }
+
                                 if (startDate.getDate() === day.getDate() && startDate.getMonth() === day.getMonth()) {
                                     return (
-                                        <div key={classInfo._id} className="calendar-item" style={{
+                                        <div key={classInfo._id} className={className} style={{
                                             top: startTimeMinutes + "px",
                                             height: durationMinutes + "px"
                                         }}>
