@@ -13,6 +13,7 @@ import { ProfilePage } from "./containers/profilePage";
 import { StudioManagePage } from "./containers/studioManagePage";
 import { InvitationPage } from "./containers/invitationPage";
 import { AdminPage } from "./containers/adminPage";
+import cities from "./util/cities";
 
 class AppRouter extends React.Component {
     constructor(props) {
@@ -51,7 +52,7 @@ class AppRouter extends React.Component {
             {/* TODO: city parameter */}
             <Route exact path="/" component={() => <p>Under construction 🏠</p>} />
             <Route exact path="/studios" component={StudiosListPage} />
-            <Route exact path="/:city/studios" component={StudiosListPage} />
+            { cities.map(city => <Route exact path={`/${city.id}/studios`} render={() => <StudiosListPage city={city.id}/>} />) }
             <Route exact path="/studios/:urlBit" component={StudioPage} />
             <Route path="/studios/:urlBit/manage" component={StudioManagePage} />
             <Route path="/classes/" component={ClassesTablePage} />

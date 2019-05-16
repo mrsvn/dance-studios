@@ -48,7 +48,7 @@ class StudiosListPage extends React.Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        return Object.assign({}, state, { filterCity: props.match.params.city || 'moscow' });
+        return Object.assign({}, state, { filterCity: props.city || 'moscow' });
     }
 
     loadStudios() {
