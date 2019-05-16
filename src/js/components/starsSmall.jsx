@@ -9,10 +9,6 @@ const StarsDiv = styled.div`
     height: 1em;
   }
 
-  div {
-    display: inline;
-  }
-
   .stars-on {
     position: absolute;
     left: 0;
@@ -24,21 +20,22 @@ const StarsDiv = styled.div`
 
 class StarsSmall extends React.Component {
     render() {
+        // TODO: display hidden text (for screen reader)
         return <StarsDiv>
-            <div className="stars-off">
+            <span className="stars-off">
                 <img src={"/img/star-off.svg"}/>
                 <img src={"/img/star-off.svg"}/>
                 <img src={"/img/star-off.svg"}/>
                 <img src={"/img/star-off.svg"}/>
                 <img src={"/img/star-off.svg"}/>
-            </div>
-            <div className="stars-on" style={{width: (this.props.rating / 5 * 100) + '%'}}>
+            </span>
+            <span className="stars-on" style={{width: (this.props.rating / 5 * 100) + '%'}}>
                 <img src={"/img/star-on.svg"}/>
                 <img src={"/img/star-on.svg"}/>
                 <img src={"/img/star-on.svg"}/>
                 <img src={"/img/star-on.svg"}/>
                 <img src={"/img/star-on.svg"}/>
-            </div>
+            </span>
         </StarsDiv>;
     }
 }

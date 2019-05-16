@@ -8,6 +8,7 @@ import { YMaps, Map, GeoObject } from 'react-yandex-maps';
 import { getCurrentUser } from "../util/sessionData";
 import { StudioSchedule } from "./studioSchedule";
 import { StudioReviews } from "./studioReviews";
+import { StarsLarge } from "../components/starsLarge";
 
 const StudioPageDiv = styled.div`
   #studio-image {
@@ -49,6 +50,11 @@ const StudioPageDiv = styled.div`
       display: flex;
       justify-content: space-between;
   }
+
+  #studio-rating {
+    margin-top: 0.75em;
+  }
+
   .studio-review {
       display: flex;
   }
@@ -109,9 +115,9 @@ class StudioPage extends React.Component {
                   { this.state.canEdit && <Link to={`/studios/${this.urlBit}/manage`} className="btn btm-sm btn-primary ml-3">Редактировать</Link> }
                 </h1>
               </div>
-              <div id="studio-rating">
-                {this.state.data.rating}
-              </div>
+              <h3 id="studio-rating">
+                <StarsLarge rating={this.state.data.rating}/>
+              </h3>
             </div>
             <p>
               {
@@ -163,49 +169,6 @@ class StudioPage extends React.Component {
 
             <StudioReviews urlBit={this.urlBit}/>
           </div>
-
-          {/*<div className="studio-review">*/}
-          {/*<div className="review-author">*/}
-          {/*<img src="http://placehold.jp/64x64.png"/>*/}
-          {/*<div className="">Gennady Pr</div>*/}
-          {/*</div>*/}
-
-          {/*<div className="review-content">*/}
-          {/*<div className="review-text">В касание</div>*/}
-          {/*<div className="review-metadata">*/}
-          {/*<div className="review-date">Февраль, 2019 </div>*/}
-          {/*<div className="review-rating">★★★★☆</div>*/}
-          {/*</div>*/}
-          {/*</div>*/}
-          {/*</div>*/}
-
-          {
-            this.state.data.reviews && this.state.data.reviews.map(review => {
-              let ratingStars = "";
-              for (let i = 0; i < review.rating; i++) {
-                ratingStars += "★";
-              }
-              for (let i = 0; i < 10-review.rating; i++) {
-                ratingStars += "☆";
-              }
-              return (
-                  <div className="studio-review">
-                    <div className="review-author">
-                      <img src={review.userpic}/>
-                      <div className="">{review.username}</div>
-                    </div>
-
-                    <div className="review-content">
-                      <div className="review-text">{review.textContent}</div>
-                      <div className="review-metadata">
-                        <div className="review-date">{review.date}</div>
-                        <div className="review-rating">{ratingStars}</div>
-                      </div>
-                    </div>
-                  </div>
-              )
-            })
-          }
         </div>
       </StudioPageDiv>
     );
