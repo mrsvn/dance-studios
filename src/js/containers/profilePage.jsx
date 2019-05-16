@@ -7,6 +7,7 @@ import { UserCalendar } from "./userCalendar";
 import { ProfileEditForm } from "./profileEditForm";
 import { FavouriteStudiosList } from "./favouriteStudiosList";
 import { ClassReviewForm } from "./classReviewForm";
+import { UserReviews } from "./userReviews";
 
 const ProfileMain = styled.main`
   display: flex;
@@ -43,7 +44,7 @@ class ProfilePage extends React.Component {
                     <Route exact path="/profile" render={() => <div>Under construction 🏠</div>} />
                     <Route exact path="/profile/calendar" component={UserCalendar} />
                     <Route exact path="/profile/favourites" component={FavouriteStudiosList} />
-                    <Route exact path="/profile/reviews" render={() => <div>Отзывы 🌝</div>} />
+                    <Route exact path="/profile/reviews" component={UserReviews} />
                     <Route exact path="/profile/reviews/new/:classId" component={ClassReviewForm} />
                     <Route exact path="/profile/edit" component={ProfileEditForm} />
                 </div>

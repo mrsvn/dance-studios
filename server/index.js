@@ -273,6 +273,33 @@ app.get('/v1/profile', (req, res) => {
   });
 });
 
+app.get('/v1/profile/reviews', (req, res) => {
+  db.collection('reviews').find({ userId: req.user._id }).sort({ createdAt: -1 }).toArray().then(reviews => {
+    const classIds = new Set();
+
+    reviews.forEach(review => {
+      classIds.add(review.classId);
+    });
+
+    db.collection('classes').find({ _id: { $in: Array.from(classIds) }}).toArray().then(classes => {
+      const classTitlesById = {};
+
+      classes.forEach(classInfo => {
+        classTitlesById[classInfo._id] = classInfo.title;
+      });
+
+      reviews.forEach(review => {
+        delete review.userId;
+        review.classTitle = classTitlesById[review.classId];
+      });
+
+      res.send(reviews);
+    })
+
+
+  });
+});
+
 app.post('/v1/profile', (req, res) => {
   console.log(`POST ${req.path}`, req.body);
 
