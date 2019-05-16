@@ -1,6 +1,8 @@
 import React from 'react';
 
 import styled from "styled-components";
+
+import { StarsSmall } from "../components/starsSmall";
 import { monthNames } from "../util/dateStrings";
 
 const ReviewDiv = styled.div`
@@ -58,8 +60,7 @@ class StudioReviews extends React.Component {
                         </div>
                         <div className="review-content">
                             <div>
-                                { review.rating }
-                                {/*★★★★☆*/}
+                                <StarsSmall rating={review.rating}/>
                             </div>
                             {
                                 review.content && <div>
