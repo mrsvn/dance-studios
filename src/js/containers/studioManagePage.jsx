@@ -11,8 +11,11 @@ class StudioManagePage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.urlBit = this.props.match.params.urlBit;
         console.log("EDITING", this.urlBit);
+    }
+
+    urlBit() {
+        return this.props.match.params.urlBit;
     }
 
     render() {
@@ -20,23 +23,23 @@ class StudioManagePage extends React.Component {
             {/* TODO: implement this navigation (& mark the "back" link better" */}
             <ul className="nav nav-pills nav-fill m-2">
                 <li className="nav-item">
-                    <Link exact="true" to={`/studios/${this.urlBit}`} className="nav-link">&larr; назад</Link>
+                    <Link exact="true" to={`/studios/${this.urlBit()}`} className="nav-link">&larr; назад</Link>
                 </li>
                 <li className="nav-item">
-                    <NavLink exact to={`/studios/${this.urlBit}/manage`} className="nav-link" activeClassName="active">Профиль</NavLink>
+                    <NavLink exact to={`/studios/${this.urlBit()}/manage`} className="nav-link" activeClassName="active">Профиль</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink exact to={`/studios/${this.urlBit}/manage/schedule`} className="nav-link" activeClassName="active">Расписание</NavLink>
+                    <NavLink exact to={`/studios/${this.urlBit()}/manage/schedule`} className="nav-link" activeClassName="active">Расписание</NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink exact to={`/studios/${this.urlBit}/manage/enrolledUsers`} className="nav-link" activeClassName="active">Записавшиеся</NavLink>
+                    <NavLink exact to={`/studios/${this.urlBit()}/manage/enrolledUsers`} className="nav-link" activeClassName="active">Записавшиеся</NavLink>
                 </li>
             </ul>
 
-            <Route exact path={`/studios/${this.urlBit}/manage`} render={() => <StudioProfileEditForm urlBit={this.urlBit}/>}/>
-            <Route exact path={`/studios/${this.urlBit}/manage/schedule`} render={() => <StudioClassesForm urlBit={this.urlBit}/>}/>
-            <Route exact path={`/studios/${this.urlBit}/manage/enrolledUsers`} render={() => <EnrolledUsersForm urlBit={this.urlBit}/>}/>
-            <Route exact path={`/studios/${this.urlBit}/manage/classes/:classId`} component={ClassCard}/>
+            <Route exact path={'/studios/:urlBit/manage'} component={StudioProfileEditForm}/>
+            <Route exact path={`/studios/${this.urlBit()}/manage/schedule`} render={() => <StudioClassesForm urlBit={this.urlBit()}/>}/>
+            <Route exact path={`/studios/${this.urlBit()}/manage/enrolledUsers`} render={() => <EnrolledUsersForm urlBit={this.urlBit()}/>}/>
+            <Route exact path={`/studios/${this.urlBit()}/manage/classes/:classId`} component={ClassCard}/>
         </>;
     }
 }
