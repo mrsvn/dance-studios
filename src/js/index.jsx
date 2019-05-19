@@ -52,7 +52,7 @@ class AppRouter extends React.Component {
             {/* TODO: city parameter */}
             <Route exact path="/" component={() => <p>Under construction 🏠</p>} />
             <Route exact path="/studios" component={StudiosListPage} />
-            { cities.map(city => <Route exact path={`/${city.id}/studios`} render={() => <StudiosListPage city={city.id}/>} />) }
+            { cities.map(city => <Route key={city.id} exact path={`/${city.id}/studios`} render={() => <StudiosListPage city={city.id}/>} />) }
             <Route exact path="/studios/:urlBit" component={StudioPage} />
             <Route path="/studios/:urlBit/manage" component={StudioManagePage} />
             <Route path="/classes/" component={ClassesTablePage} />

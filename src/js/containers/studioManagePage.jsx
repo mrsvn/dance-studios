@@ -20,7 +20,7 @@ class StudioManagePage extends React.Component {
             {/* TODO: implement this navigation (& mark the "back" link better" */}
             <ul className="nav nav-pills nav-fill m-2">
                 <li className="nav-item">
-                    <Link exact to={`/studios/${this.urlBit}`} className="nav-link">&larr; назад</Link>
+                    <Link exact="true" to={`/studios/${this.urlBit}`} className="nav-link">&larr; назад</Link>
                 </li>
                 <li className="nav-item">
                     <NavLink exact to={`/studios/${this.urlBit}/manage`} className="nav-link" activeClassName="active">Профиль</NavLink>

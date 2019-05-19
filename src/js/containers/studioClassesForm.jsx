@@ -2,83 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-class AddClassForm extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            tags: "Бачата" // TODO: remove
-        };
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-
-        // TODO: validate this and other fields
-        // if(this.state.startTime === undefined) {
-        //     console.error("Вы не ввели дранькова");
-        //     return;
-        // }
-
-        fetch(`/v1/studio/${this.props.urlBit}/classes`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(this.state)
-        }).then(response => {
-            return response.json();
-        }).then(data => {
-            console.log(data);
-
-            if(data.status === 'OK') {
-                // TODO: clear the form  vvv
-                this.setState({
-                    title: undefined,
-                    startTime: undefined,
-                    endTime: undefined,
-                    tags: undefined,
-                    trainer: undefined,
-                    capacity: undefined
-                });
-            }
-        }).catch(err => {
-            console.log(err);
-        });
-    }
-
-    render() {
-        return <tr>
-            <td>
-                <input name="title" placeholder="Утренняя разминочка" value={this.state.title} onChange={e => this.setState({ title: e.target.value })}/>
-            </td>
-            <td>
-                <input name="startTime" type="datetime-local" value={this.state.startTime} onChange={e => this.setState({ startTime: e.target.value })}/>
-            </td>
-            <td>
-                <input name="endTime" type="datetime-local" value={this.state.endTime} onChange={e => this.setState({ endTime: e.target.value })}/>
-            </td>
-            <td>
-                <select name="tags" value={this.state.tags} onChange={e => this.setState({ tags: e.target.value })}>
-                    <option>Бачата</option>
-                    <option>Бальные танцы</option>
-                </select>
-            </td>
-            <td>
-                <input name="trainer" placeholder="Иван Иванов" value={this.state.trainer} onChange={e => this.setState({ trainer: e.target.value })}/>
-            </td>
-            <td>
-                <input name="capacity" type="number" value={this.state.capacity} onChange={e => this.setState({ capacity: e.target.value })}/>
-            </td>
-            <td>&nbsp;</td>
-            <td colSpan="2">
-                <a href="#" className="btn btn-sm btn-success" onClick={e => this.handleSubmit(e)}>
-                    Добавить
-                </a>
-            </td>
-        </tr>;
-    }
-}
+import { AddClassForm } from "./addClassForm";
 
 class StudioClassesForm extends React.Component {
     constructor(props) {
@@ -127,7 +51,7 @@ class StudioClassesForm extends React.Component {
                     <tbody>
                     {
                         this.state.classes.map(classInfo => {
-                            return <tr>
+                            return <tr key={classInfo._id}>
                                 <td>
                                     <Link to={`/studios/${this.props.urlBit}/manage/classes/${classInfo._id}`}>
                                         { classInfo.title }
