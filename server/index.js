@@ -158,6 +158,8 @@ app.post('/register', (req, res) => {
           const userId = result.insertedIds['0'];
           console.log(userId);
 
+          const urlBit = `studio-${userId}`;
+
           if(req.body.secret) {
             db.collection('studios').insert({
               description: [""],
@@ -168,18 +170,22 @@ app.post('/register', (req, res) => {
               rating: 0,
               tags: [],
               city: null,
-              urlBit: `studio-${userId}`,
+              urlBit: urlBit,
               title: "",
               managerId: userId,
               isShown: false
-            }, (err, result) => {
-              res.status(200).send(JSON.stringify({
-                status: 'OK',
-                displayName: email,
-                userpic: null,
-                studioUrlBit: `studio-${userId}`,
-                authToken
-              }));
+            }).then(result => {
+              const studioId = result.ops[0]._id;
+
+              db.collection('users').updateOne({ _id: userId }, { $set: { managedStudio: studioId } }).then(() => {
+                res.status(200).send(JSON.stringify({
+                  status: 'OK',
+                  displayName: email,
+                  userpic: null,
+                  studioUrlBit: `studio-${userId}`,
+                  authToken
+                }));
+              });
             });
           }
           else {
