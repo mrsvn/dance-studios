@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from "react-router-dom";
+
 class AdminStudiosForm extends React.Component {
     constructor(props) {
         super(props);
@@ -50,7 +52,7 @@ class AdminStudiosForm extends React.Component {
                                 <td>{studio.city}</td>
                                 <td>{studio.isShown ? "да" : "нет"}</td>
                                 <td className="p-2">
-                                    <a href="#" className="btn btn-sm btn-primary">Редактировать</a>
+                                    <Link to={`/studios/${studio.urlBit}/manage`} className="btn btn-sm btn-primary">Редактировать</Link>
                                     &nbsp;
                                     <a href="#" className="btn btn-sm btn-danger">Удалить</a>
                                 </td>
