@@ -58,6 +58,8 @@ class AddClassForm extends React.Component {
             if(data.status === 'OK') {
                 // TODO: clear the form  vvv
                 this.setState(this.initialState());
+
+                this.props.onNewClass();
             }
         }).catch(err => {
             console.log(err);

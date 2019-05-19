@@ -13,13 +13,13 @@ class StudioClassesForm extends React.Component {
         };
     }
 
-    componentDidMount() {
+    loadClasses() {
         fetch(`/v1/studio/${this.props.urlBit}/classes`).then(response => {
             return response.json();
         }).then(data => {
             if(data.status === 'OK') {
                 this.setState({
-                   classes: data.classes
+                    classes: data.classes
                 });
             }
             else {
@@ -30,7 +30,13 @@ class StudioClassesForm extends React.Component {
         });
     }
 
+    componentDidMount() {
+        this.loadClasses();
+    }
+
     render() {
+        // TODO: class edit form
+
         return <div className="card m-2">
             <h5 className="card-header">Расписание студии</h5>
             <div className="card-body">
@@ -57,8 +63,8 @@ class StudioClassesForm extends React.Component {
                                         { classInfo.title }
                                     </Link>
                                 </td>
-                                <td>{ classInfo.startTime }</td>
-                                <td>{ classInfo.endTime }</td>
+                                <td style={{fontSize: '0.75em'}}>{ classInfo.startTime }</td>
+                                <td style={{fontSize: '0.75em'}}>{ classInfo.endTime }</td>
                                 <td>{ classInfo.tags }</td>
                                 <td>{ classInfo.trainer }</td>
                                 <td>{ classInfo.capacity }</td>
@@ -76,38 +82,9 @@ class StudioClassesForm extends React.Component {
                             </tr>;
                         })
                     }
-                        {/*<tr style={{background: '#efe'}}>*/}
-                        {/*    <td>*/}
-                        {/*        <input value="Бачата с Павликом"/>*/}
-                        {/*    </td>*/}
-                        {/*    <td>*/}
-                        {/*        <input type="datetime-local"/>*/}
-                        {/*    </td>*/}
-                        {/*    <td>*/}
-                        {/*        <input type="datetime-local"/>*/}
-                        {/*    </td>*/}
-                        {/*    <td>*/}
-                        {/*        <select>*/}
-                        {/*            <option>Бачата</option>*/}
-                        {/*            <option>Бальные танцы</option>*/}
-                        {/*        </select>*/}
-                        {/*    </td>*/}
-                        {/*    <td>*/}
-                        {/*        <input value="Драньков Павел"/>*/}
-                        {/*    </td>*/}
-                        {/*    <td>*/}
-                        {/*        <input type="number" value="50"/>*/}
-                        {/*    </td>*/}
-                        {/*    <td>49</td>*/}
-                        {/*    <td colSpan="2">*/}
-                        {/*        <a href="#" className="btn btn-sm btn-primary">*/}
-                        {/*            Сохранить*/}
-                        {/*        </a>*/}
-                        {/*    </td>*/}
-                        {/*</tr>*/}
                     </tbody>
                     <tbody style={{borderTop: "0.5em black solid"}}>
-                        <AddClassForm urlBit={this.props.urlBit}/>
+                        <AddClassForm urlBit={this.props.urlBit} onNewClass={() => this.loadClasses()}/>
                     </tbody>
                 </table>
             </div>
