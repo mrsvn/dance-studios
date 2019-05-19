@@ -1,6 +1,7 @@
 import React from "react";
 
 import leftPad from '../util/leftPad';
+import { tags } from "../util/tags";
 
 class AddClassForm extends React.Component {
     constructor(props) {
@@ -80,8 +81,11 @@ class AddClassForm extends React.Component {
             </td>
             <td>
                 <select name="tags" value={this.state.tags} onChange={e => this.setState({ tags: e.target.value })}>
-                    <option>Бачата</option>
-                    <option>Бальные танцы</option>
+                    {
+                        tags.map(tag => {
+                            return <option value={tag.id}>{ tag.name }</option>;
+                        })
+                    }
                 </select>
             </td>
             <td>

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { weekDayShortNames } from "../util/dateStrings";
 import { getCurrentUser } from "../util/sessionData";
 import leftPad from "../util/leftPad";
+import { tagNameById } from "../util/tags";
 
 const ScheduleDiv = styled.div`
 
@@ -263,7 +264,7 @@ class StudioSchedule extends React.Component {
                                 <div>{classInfo.trainer}</div>
                             </td>
                             <td className="class-tag">
-                                {classInfo.tags}
+                                { tagNameById(classInfo.tags) }
                                 {/*<pre>{ JSON.stringify(classInfo, null, 4) }</pre>*/}
                             </td>
                             <td className="class-join">

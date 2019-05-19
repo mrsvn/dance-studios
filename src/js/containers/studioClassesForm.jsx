@@ -2,6 +2,7 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
+import { tagNameById } from "../util/tags";
 import { AddClassForm } from "./addClassForm";
 
 class StudioClassesForm extends React.Component {
@@ -65,7 +66,7 @@ class StudioClassesForm extends React.Component {
                                 </td>
                                 <td style={{fontSize: '0.75em'}}>{ classInfo.startTime }</td>
                                 <td style={{fontSize: '0.75em'}}>{ classInfo.endTime }</td>
-                                <td>{ classInfo.tags }</td>
+                                <td>{ tagNameById(classInfo.tags) }</td>
                                 <td>{ classInfo.trainer }</td>
                                 <td>{ classInfo.capacity }</td>
                                 <td>{ classInfo.enrolledUsers.length }</td>
