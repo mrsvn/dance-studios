@@ -213,6 +213,20 @@ class StudioSchedule extends React.Component {
         });
     }
 
+    renderHoursMins(mins) {
+        if(mins < 60) {
+            return <>{mins} мин</>;
+        }
+
+        const h = parseInt(mins / 60), m = mins % 60;
+
+        if(m !== 0) {
+            return <>{h} ч {m} мин</>;
+        }
+
+        return <>{h} ч</>;
+    }
+
     render() {
         const classes = this.classesThisWeek();
 
@@ -257,7 +271,7 @@ class StudioSchedule extends React.Component {
                         return <tr key={classInfo._id}>
                             <td className="class-time">
                                 <div>{startDate.getHours()}:{leftPad(startDate.getMinutes(), 2)}</div>
-                                <div>{dMinutes(startDate, endDate)} мин</div>
+                                <div>{ this.renderHoursMins(dMinutes(startDate, endDate)) }</div>
                             </td>
                             <td className="class-id">
                                 <div>{classInfo.title}</div>
