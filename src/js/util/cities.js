@@ -44,6 +44,18 @@ const cities = [
 	}
 ];
 
+cities.forEach(city => {
+	city.districtNameById = id => {
+		for(const district of city.districts) {
+			if(district.id === id) {
+				return district.name;
+			}
+		}
+
+		return null;
+	};
+});
+
 const cityById = id => {
 	for(const city of cities) {
 		if(city.id === id) {

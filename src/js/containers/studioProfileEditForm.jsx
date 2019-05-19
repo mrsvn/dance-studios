@@ -1,6 +1,6 @@
 import React from "react";
 
-import cities from '../util/cities';
+import cities, { cityById } from '../util/cities';
 
 class StudioProfileEditForm extends React.Component {
     constructor(props) {
@@ -32,7 +32,6 @@ class StudioProfileEditForm extends React.Component {
         }).then(response => {
             return response.json();
         }).then(data => {
-            console.log(data);
             if(data.status === 'OK') {
                 if(this.state.urlBit !== this.urlBit) {
                     this.props.history.push({
@@ -46,6 +45,38 @@ class StudioProfileEditForm extends React.Component {
 
         }).catch(err => {
             console.log(err);
+        });
+    }
+
+    handleDescriptionChange(newDescription) {
+        this.setState({
+            description: newDescription.split('\n\n')
+        });
+    }
+
+    updateMapCoords() {
+        const apiKey = "0ca1104f-7293-4f9c-84e6-7ae602db62f6";
+
+        let query = this.state.streetAddress;
+
+        const city = cityById(this.state.city);
+
+        if(city) {
+            query = city.name + ", " + query;
+        }
+
+        fetch(`https://geocode-maps.yandex.ru/1.x/?apikey=${apiKey}&format=json&geocode=${query}`).then(response => {
+            return response.json();
+        }).then(data => {
+            const objects = data.response.GeoObjectCollection.featureMember;
+
+            if(objects.length !== 0) {
+                const coords = objects[0].GeoObject.Point.pos.split(' ');
+
+                this.setState({
+                    mapCoords: [parseFloat(coords[1]), parseFloat(coords[0])]
+                });
+            }
         });
     }
 
@@ -99,9 +130,21 @@ class StudioProfileEditForm extends React.Component {
                         </div>
                     </div>
 
-                    <div className="form-group">
-                        <label>Адрес и координаты:</label>
-                        <input className="form-control" value={ "ул. Уважаемых Ветеранов, д.14" }/>
+                    <div className="form-row">
+                        <div className="form-group col-8">
+                            <label>Адрес:</label>
+                            <input className="form-control"
+                                   value={ this.state.streetAddress }
+                                   onChange={e => this.setState({ streetAddress: e.target.value })}
+                                   onBlur={() => this.updateMapCoords()}/>
+                        </div>
+                        <div className="form-group col-4">
+                            <label>Координаты:</label>
+                            <div className="form-row">
+                                <input className="form-control col" disabled value={this.state.mapCoords && this.state.mapCoords[0]}/>
+                                <input className="form-control col" disabled value={this.state.mapCoords && this.state.mapCoords[1]}/>
+                            </div>
+                        </div>
                     </div>
 
                     <div className="form-group">
@@ -112,14 +155,12 @@ class StudioProfileEditForm extends React.Component {
                             </div>
                             <input className="form-control text-monospace" value={ this.state.urlBit || "" } onChange={e => this.setState({ urlBit: e.target.value })}/>
                         </div>
-                        <div className="form-text text-muted">
-                            TODO: после смены URL перенаправлять на новый со старого.
-                        </div>
                     </div>
 
                     <div className="form-group">
                         <label>Направления:</label>
-                        <input className="form-control" value={ this.state.tags && this.state.tags.join(', ') }/>
+                        <input className="form-control"
+                               value={ this.state.tags && this.state.tags.join(', ') }/>
                         <div className="form-text text-muted">
                             TODO: элемент выбора тэгов с автодополнением.
                         </div>
@@ -127,7 +168,9 @@ class StudioProfileEditForm extends React.Component {
 
                     <div className="form-group">
                         <label>Описание:</label>
-                        <textarea className="form-control" rows={8} value={this.state.description && this.state.description.join('\n\n')}/>
+                        <textarea className="form-control" rows={8}
+                                  value={this.state.description && this.state.description.join('\n\n')}
+                                  onChange={e => this.handleDescriptionChange(e.target.value)}/>
                     </div>
 
                     <div className="form-group">

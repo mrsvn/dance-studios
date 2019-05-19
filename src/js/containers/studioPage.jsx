@@ -10,6 +10,8 @@ import { StudioSchedule } from "./studioSchedule";
 import { StudioReviews } from "./studioReviews";
 import { StarsLarge } from "../components/starsLarge";
 
+import { cityById } from "../util/cities";
+
 const StudioPageDiv = styled.div`
   #studio-image {
       overflow: hidden;
@@ -100,6 +102,8 @@ class StudioPage extends React.Component {
   }
 
   render() {
+    const city = cityById(this.state.data.city);
+
     return (
       <StudioPageDiv>
         <div id="studio-image">
@@ -149,8 +153,10 @@ class StudioPage extends React.Component {
               )
             }
             <p>
-              Москва / Дорогомиловская <br/>
-              ул. Ветеранов, д. 14/88
+              {
+                city && <>{ city.name } / { city.districtNameById(this.state.data.district) }</>
+              } <br/>
+              { this.state.data.streetAddress }
             </p>
           </div>
 
