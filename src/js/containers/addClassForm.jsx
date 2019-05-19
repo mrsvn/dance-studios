@@ -83,7 +83,7 @@ class AddClassForm extends React.Component {
                 <select name="tags" value={this.state.tags} onChange={e => this.setState({ tags: e.target.value })}>
                     {
                         tags.map(tag => {
-                            return <option value={tag.id}>{ tag.name }</option>;
+                            return <option key={tag.id} value={tag.id}>{ tag.name }</option>;
                         })
                     }
                 </select>

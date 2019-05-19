@@ -80,6 +80,12 @@ class StudioProfileEditForm extends React.Component {
         });
     }
 
+    handleTagsChange(newTags) {
+        this.setState({
+            tags: newTags.split(', ')
+        });
+    }
+
     render() {
         let cityData = { districts: [] };
 
@@ -160,7 +166,8 @@ class StudioProfileEditForm extends React.Component {
                     <div className="form-group">
                         <label>Направления:</label>
                         <input className="form-control"
-                               value={ this.state.tags && this.state.tags.join(', ') }/>
+                               value={ this.state.tags && this.state.tags.join(', ') }
+                               onChange={e => this.handleTagsChange(e.target.value)}/>
                         <div className="form-text text-muted">
                             TODO: элемент выбора тэгов с автодополнением.
                         </div>

@@ -11,6 +11,7 @@ import { StudioReviews } from "./studioReviews";
 import { StarsLarge } from "../components/starsLarge";
 
 import { cityById } from "../util/cities";
+import { tagNameById } from "../util/tags";
 
 const StudioPageDiv = styled.div`
   #studio-image {
@@ -126,7 +127,7 @@ class StudioPage extends React.Component {
             <p>
               {
                 this.state.data.tags && this.state.data.tags.map(tag => {
-                  return <a href={`#${tag}`} className="btn btn-sm btn-link" key={tag}>{tag}</a>;
+                  return <a href={`#${tag}`} className="btn btn-sm btn-link" key={tag}>{ tagNameById(tag) }</a>;
                 })
               }
             </p>
