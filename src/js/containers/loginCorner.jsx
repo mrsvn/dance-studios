@@ -137,6 +137,10 @@ class LoginCorner extends React.Component {
         document.cookie = "authToken=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 
         this.setState({ currentAuth: null });
+
+        if(location.pathname.startsWith('/profile')) {
+            location.pathname = '/studios';
+        }
     }
 
     renderAuthorized() {

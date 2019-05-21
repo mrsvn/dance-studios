@@ -8,6 +8,7 @@ import { ProfileEditForm } from "./profileEditForm";
 import { FavouriteStudiosList } from "./favouriteStudiosList";
 import { ClassReviewForm } from "./classReviewForm";
 import { UserReviews } from "./userReviews";
+import { getCurrentUser } from "../util/sessionData";
 
 const ProfileMain = styled.main`
   display: flex;
@@ -28,6 +29,14 @@ const ProfileMain = styled.main`
 class ProfilePage extends React.Component {
     render() {
         // TODO: keep on the same page as profile display: editing, favourites
+
+        getCurrentUser().then(user => {
+            if(!user) {
+                this.props.history.push({
+                    pathname: '/studios'
+                });
+            }
+        });
 
         return <BrowserRouter>
             <ProfileMain>
