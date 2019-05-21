@@ -381,6 +381,10 @@ main .postings-container {
 	transform: translateX(-50%) translateY(-50%);
 }
 
+.p-title a {
+	color: initial;
+}
+
 .p-body {
 	display: flex;
 	flex-direction: column;

@@ -24,7 +24,9 @@ class StudioListing extends React.Component {
                 </div>
                 <div className={'p-body'}>
                     <div className={'p-details'}>
-                        <h3 className={'p-title'}>{ content.title }</h3>
+                        <h3 className={'p-title'}>
+                            <Link to={`/studios/${ content.urlBit}`}>{ content.title }</Link>
+                        </h3>
 
                         <div className={'p-tags'}>
                             <p>{ tag_links }</p>
