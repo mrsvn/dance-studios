@@ -112,7 +112,7 @@ class StudioPage extends React.Component {
     return (
       <StudioPageDiv>
         <div id="studio-image">
-          <img alt="" src={this.state.data.imgUrl}/>
+          <img alt="" src={`/v1/studiopics/${this.state.data.urlBit}`}/>
         </div>
 
         <div id="studio-information-container">

@@ -23,12 +23,20 @@ class StudioProfileEditForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        const formData = new FormData();
+
+        Object.entries(this.state).map(([k, v]) => {
+            if(k === 'description') {
+                formData.append(k, v.join('\n\n'));
+            }
+            else {
+                formData.append(k, v);
+            }
+        });
+
         fetch(`/v1/studio/${this.urlBit}`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(this.state)
+            body: formData
         }).then(response => {
             return response.json();
         }).then(data => {
@@ -48,7 +56,7 @@ class StudioProfileEditForm extends React.Component {
                 }
             }
             else {
-                consooe.log(data);
+                console.log(data);
             }
 
         }).catch(err => {
@@ -109,13 +117,15 @@ class StudioProfileEditForm extends React.Component {
                 <form onSubmit={e => this.handleSubmit(e)}>
                     <div className="form-group">
                         <label>Название:</label>
-                        <input className="form-control" value={ this.state.title || "" } onChange={e => this.setState({ title: e.target.value })}/>
+                        <input className="form-control" value={ this.state.title || "" }
+                               onChange={e => this.setState({ title: e.target.value })}/>
                     </div>
 
                     <div className="form-group">
                         <div className="form-check">
                             <label className="form-check-label">
-                                <input className="form-check-input" type="checkbox" checked={this.state.isShown} onChange={e => this.setState({ isShown: e.target.checked })}/>
+                                <input className="form-check-input" type="checkbox" checked={this.state.isShown}
+                                       onChange={e => this.setState({ isShown: e.target.checked })}/>
                                 Отображать студию в поиске
                             </label>
                         </div>
@@ -123,9 +133,10 @@ class StudioProfileEditForm extends React.Component {
 
                     <div className="form-group">
                         <label>Заглавная картинка:</label>
-                        <input className="form-control" value={ this.state.imgUrl || "" } onChange={e => this.setState({ imgUrl: e.target.value })}/>
+                        <input type="file" className="form-control"
+                               onChange={e => this.setState({ studiopic: e.target.files[0] })} />
                         <div className="form-text text-muted">
-                            TODO: загрузка картинок.
+                            {/*TODO: человеческая загрузка картинок здесь и в профиле.*/}
                         </div>
                     </div>
 

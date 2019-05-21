@@ -237,6 +237,20 @@ app.get('/v1/userpics/:email', (req, res) => {
   });
 });
 
+app.get('/v1/studiopics/:urlBit', (req, res) => {
+  db.collection('studios').findOne({ urlBit: req.params.urlBit }).then(studio => {
+    if(!studio) {
+      res.status(404).send();
+    }
+    else if(!studio.studiopic) {
+      res.sendFile(path.join(__dirname, "studiopics", "default.png"));
+    }
+    else {
+      res.sendFile(path.join(__dirname, "studiopics", studio.studiopic));
+    }
+  });
+});
+
 app.use('/v1/profile', checkAuth());
 app.get('/v1/profile', (req, res) => {
   const email = req.cookies.email;
@@ -492,7 +506,39 @@ app.post('/v1/studio/:urlBit', (req, res) => {
 
       delete req.body._id;
 
-      db.collection('studios').updateOne({ urlBit: studio.urlBit }, { $set: req.body }).then(result => {
+      const studioUpdate = Object.assign({}, req.body);
+
+      if(typeof studioUpdate.tags === 'string') {
+        studioUpdate.tags = studioUpdate.tags.split(',');
+      }
+
+      if(typeof studioUpdate.description === 'string') {
+        studioUpdate.description = studioUpdate.description.split('\n\n');
+      }
+
+      if(req.files && req.files.studiopic) {
+        studioUpdate.studiopic = (file => {
+          let filename;
+
+          if(file.mimetype === "image/jpeg") {
+            filename = uuid4() + ".jpg";
+          }
+          else if(file.mimetype === "image/png") {
+            filename = uuid4() + ".png";
+          }
+          else if(file.mimetype === "image/gif") {
+            filename = uuid4() + ".gif";
+          }
+
+          if(filename) {
+            file.mv(path.join(__dirname, "studiopics", filename));
+          }
+
+          return filename;
+        })(req.files.studiopic);
+      }
+
+      db.collection('studios').updateOne({ urlBit: studio.urlBit }, { $set: studioUpdate }).then(result => {
         if(!result) {
           res.status(500).send({ status: 'ERROR' });
         }

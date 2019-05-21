@@ -19,7 +19,7 @@ class StudioListing extends React.Component {
         return (
             <div className={'posting'}>
                 <div className={'p-thumbnail'}>
-                    <img src={content.imgUrl}>
+                    <img src={`/v1/studiopics/${content.urlBit}`}>
                     </img>
                 </div>
                 <div className={'p-body'}>
