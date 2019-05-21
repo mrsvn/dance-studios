@@ -14,10 +14,10 @@ class StudioFilters extends React.Component {
                 <div className="search-query-container">
                     <input onChange={e => this.props.onQueryChange(e.target.value)} id="search-query" placeholder="Поиск по названию" autoFocus={true} />
                     <button className="search-query-showfilters" id="show-filters">
-                        <img src="img/filter.svg" />
+                        <img src="/img/filter.svg" />
                     </button>
                     <button className="search-query-submit" type="submit">
-                        <img src="img/search.svg" />
+                        <img src="/img/search.svg" />
                     </button>
                 </div>
 
