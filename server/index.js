@@ -520,6 +520,12 @@ app.post('/v1/studio/:urlBit', (req, res) => {
         studioUpdate.isShown = studioUpdate.isShown === "true";
       }
 
+      if(typeof studioUpdate.mapCoords === 'string') {
+        const cs = studioUpdate.mapCoords.split(',');
+
+        studioUpdate.mapCoords = [parseFloat(cs[0]), parseFloat(cs[1])];
+      }
+
       if(req.files && req.files.studiopic) {
         studioUpdate.studiopic = (file => {
           let filename;
