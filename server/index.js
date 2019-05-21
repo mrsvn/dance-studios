@@ -431,7 +431,7 @@ app.get('/v1/invitations', (req, res) => {
 });
 
 app.get('/v1/studios', (req, res) => {
-  db.collection('studios').find({ isShown: true }).toArray().then(data => {
+  db.collection('studios').find().toArray().then(data => {
     res.status(200).send(JSON.stringify({
       numTotal: Object.keys(data).length,
       studios: data
