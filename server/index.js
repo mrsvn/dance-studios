@@ -417,7 +417,7 @@ app.get('/v1/invitations', (req, res) => {
 });
 
 app.get('/v1/studios', (req, res) => {
-  db.collection('studios').find().toArray().then(data => {
+  db.collection('studios').find({ isShown: true }).toArray().then(data => {
     res.status(200).send(JSON.stringify({
       numTotal: Object.keys(data).length,
       studios: data
@@ -428,7 +428,7 @@ app.get('/v1/studios', (req, res) => {
 app.get('/v1/studios/:city', (req, res) => {
   const city = req.params.city;
 
-  db.collection('studios').find({ city: city }).toArray().then(data => {
+  db.collection('studios').find({ city: city, isShown: true }).toArray().then(data => {
     res.status(200).send(JSON.stringify({
       numTotal: Object.keys(data).length,
       studios: data

@@ -113,6 +113,15 @@ class StudioProfileEditForm extends React.Component {
                     </div>
 
                     <div className="form-group">
+                        <div className="form-check">
+                            <label className="form-check-label">
+                                <input className="form-check-input" type="checkbox" checked={this.state.isShown} onChange={e => this.setState({ isShown: e.target.checked })}/>
+                                Отображать студию в поиске
+                            </label>
+                        </div>
+                    </div>
+
+                    <div className="form-group">
                         <label>Заглавная картинка:</label>
                         <input className="form-control" value={ this.state.imgUrl || "" } onChange={e => this.setState({ imgUrl: e.target.value })}/>
                         <div className="form-text text-muted">
