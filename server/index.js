@@ -178,7 +178,7 @@ app.post('/register', (req, res) => {
               const studioId = result.ops[0]._id;
 
               db.collection('users').updateOne({ _id: userId }, { $set: { managedStudio: studioId } }).then(() => {
-                res.status(200).send(JSON.stringify({
+                res.status(200).cookie('email', email).cookie('authToken', authToken).send(JSON.stringify({
                   status: 'OK',
                   displayName: email,
                   userpic: null,
@@ -189,7 +189,7 @@ app.post('/register', (req, res) => {
             });
           }
           else {
-            res.status(200).send(JSON.stringify({
+            res.status(200).cookie('email', email).cookie('authToken', authToken).send(JSON.stringify({
               status: 'OK',
               displayName: email,
               userpic: null,
