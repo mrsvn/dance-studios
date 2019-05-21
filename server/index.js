@@ -229,10 +229,10 @@ app.get('/v1/userpics/:email', (req, res) => {
       res.status(404).send();
     }
     else if(!user.userpic) {
-      // TODO: show the default one
+      res.sendFile(path.join(__dirname, "avatars", "default.png"));
     }
     else {
-      res.sendFile(path.join(__dirname, "uploads", user.userpic));
+      res.sendFile(path.join(__dirname, "avatars", user.userpic));
     }
   });
 });
@@ -336,7 +336,7 @@ app.post('/v1/profile', (req, res) => {
       }
 
       if(filename) {
-        file.mv(path.join(__dirname, "uploads", filename));
+        file.mv(path.join(__dirname, "avatars", filename));
       }
 
       return filename;
@@ -787,7 +787,7 @@ app.post('/v1/reviews', (req, res) => {
 
 app.post('/upload-images', (req, res) => {
   Object.keys(req.files).forEach(filename => {
-    req.files[filename].mv(path.join(__dirname, 'uploads', filename));
+    req.files[filename].mv(path.join(__dirname, 'avatars', filename));
   });
 
   setTimeout(() => {

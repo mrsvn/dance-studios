@@ -58,7 +58,7 @@ class ProfileEditForm extends React.Component {
         return <form action="/v1/profile" method="POST">
             <p>
                 {/* TODO: this user's userpic */}
-                <img style={{width: '184px', height: '184px'}} src={this.state.userpicData || `/v1/userpics/${this.state.email}`} /><br/>
+                <img style={{width: '256px', height: '256px'}} src={this.state.userpicData || `/v1/userpics/${this.state.email}`} /><br/>
                 <input type="file" name="userpic" onChange={e => this.handleUserpicChange(e)} />
             </p>
             <p>
