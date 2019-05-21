@@ -516,6 +516,10 @@ app.post('/v1/studio/:urlBit', (req, res) => {
         studioUpdate.description = studioUpdate.description.split('\n\n');
       }
 
+      if(typeof studioUpdate.isShown === 'string') {
+        studioUpdate.isShown = studioUpdate.isShown === "true";
+      }
+
       if(req.files && req.files.studiopic) {
         studioUpdate.studiopic = (file => {
           let filename;
