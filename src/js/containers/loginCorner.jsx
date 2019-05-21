@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { LoginForm } from "../components/loginForm";
 import { RegisterForm } from "../components/registerForm";
 import { getCurrentUser } from "../util/sessionData";
+import { UserDropdown } from "../components/userDropdown";
 
 class LoginCorner extends React.Component {
     constructor(props) {
@@ -132,8 +133,6 @@ class LoginCorner extends React.Component {
     }
 
     handleLogoutClick(e) {
-        e.preventDefault();
-
         sessionStorage.removeItem('currentUser');
         document.cookie = "email=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
         document.cookie = "authToken=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
@@ -146,25 +145,7 @@ class LoginCorner extends React.Component {
     }
 
     renderAuthorized() {
-        const { email } = this.state.currentAuth;
-
-        return <div>
-            <img src={ `/v1/userpics/${email}` } style={{ height:"40px", borderRadius: "50%" }}/>
-            &nbsp;
-            { email }
-            <Link to="/profile">Профиль</Link>&nbsp;
-            {
-                this.state.currentAuth.managedStudio && <>
-                    <Link to={`/studios/${this.state.currentAuth.managedStudio}/manage`}>Студия</Link>&nbsp;
-                </>
-            }
-            {
-                this.state.currentAuth.isAdmin && <>
-                    <Link to="/admin">Админка</Link>&nbsp;
-                </>
-            }
-            <a href="#" onClick={e => this.handleLogoutClick(e)}>Выйти</a>
-        </div>;
+        return <UserDropdown auth={this.state.currentAuth} onLogout={() => this.handleLogoutClick()}/>;
     }
 
     renderUnauthorized() {
