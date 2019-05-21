@@ -37,6 +37,14 @@ class StudioProfileEditForm extends React.Component {
                     this.props.history.push({
                         pathname: `/studios/${this.state.urlBit}/manage`
                     });
+
+                    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+
+                    if(currentUser.managedStudio === this.urlBit) {
+                        currentUser.managedStudio = this.state.urlBit;
+                        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+                        // TODO: make the updated value show up in LoginCorner
+                    }
                 }
             }
             else {
