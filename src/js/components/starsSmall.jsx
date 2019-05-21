@@ -5,6 +5,8 @@ import styled from 'styled-components';
 const StarsDiv = styled.div`
   position: relative;
 
+  display: inline-block;
+
   img {
     height: 1em;
   }

@@ -140,9 +140,11 @@ class StudiosListPage extends React.Component {
                     { filteredData.map(datum => <StudioListing key={datum._id} content={datum} />) }
                 </div>
 
-                <div id="postings-more">
-                    <a href="#">Следующие 20</a>
-                </div>
+                {
+                    false && <div id="postings-more">
+                        <a href="#">Следующие 20</a>
+                    </div>
+                }
             </main>
         </>;
     }
