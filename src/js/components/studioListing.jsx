@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import { cityById } from "../util/cities";
 
 class StudioListing extends React.Component {
     render() {
@@ -29,7 +30,7 @@ class StudioListing extends React.Component {
                             <p>{ tag_links }</p>
                         </div>
                         <div className={'p-row'}>
-                            <b>Расположение:</b> <span> { content.district } </span>
+                            <b>Расположение:</b> <span> { cityById(content.city).districtNameById(content.district) } </span>
                         </div>
                         <div className={'p-description'}>
                             <p>{ content.description }</p>
