@@ -149,8 +149,9 @@ class LoginCorner extends React.Component {
         const { email } = this.state.currentAuth;
 
         return <div>
-            { email }
             <img src={ `/v1/userpics/${email}` } style={{ height:"40px", borderRadius: "50%" }}/>
+            &nbsp;
+            { email }
             <Link to="/profile">Профиль</Link>&nbsp;
             {
                 this.state.currentAuth.managedStudio && <>
