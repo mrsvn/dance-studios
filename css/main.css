@@ -29,6 +29,8 @@ footer {
 	flex-shrink: 0;
 }
 
+/* Navbar */
+
 header {
 	display: flex;
 
@@ -127,9 +129,13 @@ header nav .nav-item.nav-current {
 	color: initial;
 }
 
+/* ??? */
+
 main {
 	margin: 1rem;
 }
+
+/* Map at /studios */
 
 .map-top, .map-top iframe, .gmap_canvas {
 	height: 350px;
@@ -152,6 +158,8 @@ main {
 
 	opacity: .5;
 }
+
+/* /studios page */
 
 main .postings-filter {
 	margin: 1rem 0.5rem;
@@ -335,6 +343,19 @@ main .postings-container {
 	padding: 1em;
 }
 
+main #postings-more {
+	text-align: center;
+
+	font-size: 1.25em;
+}
+
+main #postings-more a {
+	text-decoration: none;
+	border-bottom: 1px #007bff dotted;
+}
+
+/* /studios listing */
+
 .postings-container .posting {
 	display: flex;
 
@@ -461,16 +482,7 @@ main .postings-container {
 	background: #e8f3ff;
 }
 
-main #postings-more {
-	text-align: center;
-
-	font-size: 1.25em;
-}
-
-main #postings-more a {
-	text-decoration: none;
-	border-bottom: 1px #007bff dotted;
-}
+/* Footer */
 
 footer {
 	padding: .75em .5em;
