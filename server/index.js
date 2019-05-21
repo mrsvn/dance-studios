@@ -232,7 +232,7 @@ app.get('/v1/userpics/:email', (req, res) => {
       // TODO: show the default one
     }
     else {
-      res.sendFile(path.join(__dirname, "files1488", user.userpic));
+      res.sendFile(path.join(__dirname, "uploads", user.userpic));
     }
   });
 });
@@ -336,7 +336,7 @@ app.post('/v1/profile', (req, res) => {
       }
 
       if(filename) {
-        file.mv(path.join(__dirname, "files1488", filename));
+        file.mv(path.join(__dirname, "uploads", filename));
       }
 
       return filename;
@@ -787,7 +787,7 @@ app.post('/v1/reviews', (req, res) => {
 
 app.post('/upload-images', (req, res) => {
   Object.keys(req.files).forEach(filename => {
-    req.files[filename].mv(path.join(__dirname, 'files1488', filename));
+    req.files[filename].mv(path.join(__dirname, 'uploads', filename));
   });
 
   setTimeout(() => {
