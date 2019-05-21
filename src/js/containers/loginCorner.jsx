@@ -94,6 +94,8 @@ class LoginCorner extends React.Component {
                     displayName: data.displayName,
                     userpic: data.userpic
                 });
+                // REMOVE: ^
+                getCurrentUser().then(data => this.setState({ currentAuth: data }));
             }
             else if(data.status === "THROTTLED") {
                 this.setState({ loginError: "Превышено ограничение на количество попыток входа" });
