@@ -142,6 +142,13 @@ class LoginCorner extends React.Component {
         if(location.pathname.startsWith('/profile')) {
             location.pathname = '/studios';
         }
+        else {
+            const m = location.pathname.match(/\/studios\/([^/]+)\/.+/);
+
+            if(m) {
+                location.pathname = `/studios/${m[1]}`;
+            }
+        }
     }
 
     renderAuthorized() {
