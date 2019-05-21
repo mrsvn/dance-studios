@@ -6,6 +6,7 @@ import { BrowserRouter, Link, NavLink, Route, Switch } from "react-router-dom";
 
 import { CityDropdown } from "./components/cityDropdown";
 import { LoginCorner } from "./containers/loginCorner";
+import { MainPage } from "./components/mainPage";
 import { StudiosListPage } from "./containers/studiosListPage";
 import { ClassesTablePage } from "./containers/classesTablePage";
 import { StudioPage } from "./containers/studioPage";
@@ -50,7 +51,7 @@ class AppRouter extends React.Component {
             </header>
 
             {/* TODO: city parameter */}
-            <Route exact path="/" component={() => <p>Under construction 🏠</p>} />
+            <Route exact path="/" component={MainPage} />
             <Route exact path="/studios" component={StudiosListPage} />
             { cities.map(city => <Route key={city.id} exact path={`/${city.id}/studios`} render={() => <StudiosListPage city={city.id}/>} />) }
             <Route exact path="/studios/:urlBit" component={StudioPage} />
