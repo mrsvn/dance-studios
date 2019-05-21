@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { StarsSmall } from "../components/starsSmall";
 import { monthNames } from "../util/dateStrings";
+import { tagNameById } from "../util/tags";
 
 const ReviewDiv = styled.div`
   display: flex;
@@ -47,7 +48,7 @@ class StudioReviews extends React.Component {
                                 <img src={`/v1/userpics/${review.email}`}/>
                                 <span>{ review.firstName }</span>
                             </div>
-                            <div className="review-class-title">{ review.tags }</div>
+                            <div className="review-class-title">{ tagNameById(review.tags) }</div>
                             <div className="review-date">
                                 {
                                     createdAt.getDate()
