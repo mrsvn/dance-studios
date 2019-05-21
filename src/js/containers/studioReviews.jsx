@@ -41,7 +41,7 @@ class StudioReviews extends React.Component {
                 this.state.reviews.map(review => {
                     const createdAt = new Date(review.createdAt);
 
-                    return <ReviewDiv>
+                    return <ReviewDiv key={review.createdAt}>
                         <div>
                             <div className="review-author">
                                 <img src={`/v1/userpics/${review.email}`}/>

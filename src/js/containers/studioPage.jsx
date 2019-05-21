@@ -103,6 +103,10 @@ class StudioPage extends React.Component {
   }
 
   render() {
+    if(!this.state.data) {
+      return <div>Студия не найдена</div>;
+    }
+
     const city = cityById(this.state.data.city);
 
     return (
