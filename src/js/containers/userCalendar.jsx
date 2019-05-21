@@ -44,7 +44,8 @@ class UserCalendar extends React.Component {
         super(props);
 
         this.state = {
-            data: []
+            data: [],
+            reviewedIds: []
         };
     }
 
@@ -59,6 +60,14 @@ class UserCalendar extends React.Component {
             }
         }).catch(error => {
             console.log(error);
+        });
+
+        fetch('/v1/profile/reviews').then(response => {
+            return response.json();
+        }).then(data => {
+            this.setState({
+                reviewedIds: data.map(review => review.classId)
+            });
         });
     }
 
@@ -92,6 +101,8 @@ class UserCalendar extends React.Component {
                                     className += " calendar-past";
                                 }
 
+                                const canLeaveReview = endDate < new Date() && !this.state.reviewedIds.includes(classInfo._id);
+
                                 if (startDate.getDate() === day.getDate() && startDate.getMonth() === day.getMonth()) {
                                     return (
                                         <div key={classInfo._id} className={className} style={{
@@ -102,7 +113,11 @@ class UserCalendar extends React.Component {
                                                 {classInfo.title}
                                             </div>
                                             <div>
-                                                <Link to={`/profile/reviews/new/${classInfo._id}`}>Оставить отзыв</Link>
+                                                {
+                                                    canLeaveReview && (
+                                                        <Link to={`/profile/reviews/new/${classInfo._id}`}>Оставить отзыв</Link>
+                                                    )
+                                                }
                                             </div>
                                         </div>
                                     )
