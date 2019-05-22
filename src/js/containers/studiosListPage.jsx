@@ -123,7 +123,8 @@ class StudiosListPage extends React.Component {
                 <StudioFilters onQueryChange={q => this.handleQueryChange(q)}
                                onLocationChange={q => this.handleLocationChange(q)}
                                onStyleChange={q => this.handleStyleChange(q)}
-                               onRatingChange={q => this.handleRatingChange(q)} />
+                               onRatingChange={q => this.handleRatingChange(q)}
+                               city={city} />
 
                 <div className="postings-count">
                     {

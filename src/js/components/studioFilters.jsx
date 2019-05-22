@@ -1,11 +1,36 @@
 import React from "react";
 
-import { subwayMoscow } from "../util/subway";
 import { RatingSlider } from "./ratingSlider";
+import { tags } from "../util/tags";
 
 class StudioFilters extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            tag: 'null',
+            district: 'null'
+        };
+    }
+
+    handleTagChange(e) {
+        const v = e.target.value;
+
+        this.props.onStyleChange(v === 'null' ? null : v);
+
+        this.setState({
+            tag: v
+        });
+    }
+
+    handleDistrictChange(e) {
+        const v = e.target.value;
+
+        this.props.onLocationChange(v === 'null' ? null : v);
+
+        this.setState({
+            district: v
+        });
     }
 
     render() {
@@ -21,21 +46,30 @@ class StudioFilters extends React.Component {
                     </button>
                 </div>
 
-                <div id="postings-filters-form">
-                    <select onChange={e => this.props.onStyleChange(e.target.value)} value="Направление">
-                        <option>Направление</option>
-                        <option>джаз</option>
-                        <option>модерн</option>
-                        <option>джаз-модерн</option>
-                        <option>бачата</option>
-                    </select>
-                    <select onChange={e => this.props.onLocationChange(e.target.value)} value="Станция метро">
-                        <option>Станция метро</option>
-                        {
-                            subwayMoscow.map((stationName, i) => <option key={i}>{stationName}</option>)
-                        }
-                    </select>
-                    <RatingSlider onChange={v => this.props.onRatingChange(v)} />
+                <div id="postings-filters-form" className="row">
+                    <div className="col-4">
+                        <select className="form-control form-control-sm" onChange={e => this.handleTagChange(e)} value={this.state.tag}>
+                            <option value="null">Направление</option>
+                            {
+                                tags.map(tag => {
+                                    return <option key={tag.id} value={tag.id}>{tag.name}</option>
+                                })
+                            }
+                        </select>
+                    </div>
+                    <div className="col-4">
+                        <select className="form-control form-control-sm" onChange={e => this.handleDistrictChange(e)} value={this.state.district}>
+                            <option value="null">Район</option>
+                            {
+                                this.props.city.districts.map(district => {
+                                    return <option key={district.id} value={district.id}>{district.name}</option>;
+                                })
+                            }
+                        </select>
+                    </div>
+                    <div className="col-4">
+                        <RatingSlider onChange={v => this.props.onRatingChange(v)} />
+                    </div>
                 </div>
             </div>
         );

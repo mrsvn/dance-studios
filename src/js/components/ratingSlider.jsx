@@ -1,5 +1,20 @@
 import React from "react";
 
+import styled from 'styled-components';
+
+const SliderSpan = styled.span`
+  display: flex;
+  flex-direction: row;
+
+  span {
+    padding-right: 1em;
+  }
+
+  input {
+    flex-grow: 1;
+  }
+`;
+
 class RatingSlider extends React.Component {
     constructor(props) {
         super(props);
@@ -18,18 +33,14 @@ class RatingSlider extends React.Component {
     }
 
     render() {
-        return (
-            <span>
-          <span>{(this.state.sliderValue / 10).toFixed(1)}</span>
-          <input
-              onChange={e => this.sliderChange(e.target.value)}
-              type="range"
-              min="0"
-              max="50"
-              value={this.state.sliderValue}
-          />
-        </span>
-        );
+        return <SliderSpan>
+            <span>{(this.state.sliderValue / 10).toFixed(1)}</span>
+            <input onChange={e => this.sliderChange(e.target.value)}
+                   type="range"
+                   min="0"
+                   max="50"
+                   value={this.state.sliderValue}/>
+        </SliderSpan>;
     }
 }
 

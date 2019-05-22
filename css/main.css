@@ -248,8 +248,12 @@ button.search-query-showfilters img {
 	opacity: 1;
 }
 
-main .postings-filter > div, #postings-filters-form > div {
+main .postings-filter > div {
 	margin-bottom: 0.5em;
+}
+
+#postings-filters-form {
+	padding-top: 0.5em;
 }
 
 .filter-location {
